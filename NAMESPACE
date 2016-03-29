@@ -1,0 +1,22 @@
+# Import of packages
+import(
+	foreign,
+	methods,
+	vegdata
+)
+
+# Export of regular function names
+export(
+	importVegTable,
+	poolssp,
+	vegtableStat
+)
+
+# Export of classes
+exportClasses(VegTable)
+
+# Export of methods
+exportMethods(
+	print,
+	subset
+)

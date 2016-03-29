@@ -1,0 +1,87 @@
+# TODO:   Statistical report of vegetation data bases.
+# 
+# Author: Miguel Alvarez
+################################################################################
+
+vegbankStat <- function(db, tv_home) {
+	if(missing(tv_home)) tv_home <- tv.home()
+	site <- tv.site(db, tv_home)
+	cat("\n")
+	cat("## GENERAL STATISTICS", "\n")
+	cat("Primary references: ", length(unique(site$REFERENCE)), sep="", "\n")
+	cat("Number of veg.-plots (non-overlapping): ", nrow(site), sep="", "\n")
+	cat("\n")
+	# Area statistics
+	cat("## AREA", "\n")
+	area <- site$SURF_AREA
+	cat("Area range (m^2): ", min(area, na.rm=TRUE), " - ", max(area,
+					na.rm=TRUE), sep="", "\n")
+	cat("<1 m^2: ", round(sum(area < 1, na.rm=TRUE)/nrow(site)*100), "%",
+			sep="", "\n")
+	cat("1-<10 m^2: ", round(sum(area >= 1 & area < 10,
+							na.rm=TRUE)/nrow(site)*100), "%", sep="", "\n")
+	cat("10-<100 m^2: ", round(sum(area >= 10 & area < 100,
+							na.rm=TRUE)/nrow(site)*100), "%", sep="", "\n")
+	cat("100-<1000 m^2: ", round(sum(area >= 100 & area < 1000,
+							na.rm=TRUE)/nrow(site)*100), "%", sep="", "\n")
+	cat("1000-<10000 m^2: ", round(sum(area >= 1000 & area < 10000,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat(">=10000 m^2: ", round(sum(area >= 10000, na.rm=TRUE)/nrow(site)*100),
+			"%", sep="", "\n")
+	cat("unknow: ", round(sum(is.na(area))/nrow(site)*100), "%", sep="", "\n")
+	cat("\n")
+	# Time statistics
+	cat("## TIME", "\n")
+	years <- as.numeric(format(strptime(site$DATE, "%Y%m%d"), "%Y"))
+	cat("oldest: ", min(years, na.rm=TRUE), " - youngest: ", max(years,
+					na.rm=TRUE), sep=",", "\n")
+	cat("<=1919: ", round(sum(years >= 1919, na.rm=TRUE)/nrow(site)*100), "%",
+			sep="", "\n")
+	cat("1920-1929: ", round(sum(years > 1919 & years < 1930,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1930-1939: ", round(sum(years > 1929 & years < 1940,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1940-1949: ", round(sum(years > 1939 & years < 1950,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1950-1959: ", round(sum(years > 1949 & years < 1960,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1960-1969: ", round(sum(years > 1959 & years < 1970,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1970-1979: ", round(sum(years > 1969 & years < 1980,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1980-1989: ", round(sum(years > 1979 & years < 1990,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("1990-1999: ", round(sum(years > 1989 & years < 2000,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("2000-2009: ", round(sum(years > 1999 & years < 2010,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("2010-2019: ", round(sum(years > 2009 & years < 2020,
+									na.rm=TRUE)/nrow(site)*100), "%", sep="",
+					"\n")
+	cat("unknow: ", round(sum(is.na(years))/nrow(site)*100), "%", sep="", "\n")
+	cat("\n")
+	# Country
+	cat("## DISTRIBUTION", "\n")
+	countries <- summary(as.factor(site$COUNTRY), maxsum = nrow(site))
+	for(i in names(countries)) {
+		cat(i, ": ", round(countries[i]/nrow(site)*100), "%", sep="", "\n")
+	}
+	cat("\n")
+	# Performance
+	cat("## PERFORMANCE", "\n")
+	covscale <- summary(as.factor(site$COVERSCALE), maxsum = nrow(site))
+	for(i in names(covscale)) {
+		cat(i, ": ", round(covscale[i]/nrow(site)*100), "%", sep="", "\n")
+	}
+	cat("\n")
+}

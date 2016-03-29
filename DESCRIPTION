@@ -1,0 +1,22 @@
+Package: vegtables
+Version: 0.0.0.9001
+Encoding: UTF-8
+Date: 2016-03-29
+Title: Handling Vegetation Data Sets
+Author: Miguel Alvarez <malvarez@uni-bonn.de>
+Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
+Depends: R(>= 3.1.0)
+Imports:
+	foreign,
+	methods,
+	taxlist,
+	vegdata
+Suggests:
+	devtools,
+	vegan
+Description: Import routine for Turboveg databases, a S4 object class
+	('VegTable'), and methods applied to this class. 'Vegtables' has been tested
+	in Turboveg 2.119 and may not work properly with earlier versions.
+License: GPL (>= 2)
+URL: https://github.com/kamapu/vegtables
+BugReports: https://github.com/kamapu/vegtables/issues
