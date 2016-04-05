@@ -1,22 +1,15 @@
-# Import of packages
+## Import of packages
 import(
 	foreign,
 	methods,
+	taxlist,
 	vegdata
 )
 
-# Export of regular function names
+## Export of regular function names
 export(
-	importVegTable,
-	poolssp,
-	vegtableStat
+	import_vegtable
 )
 
-# Export of classes
-exportClasses(VegTable)
-
-# Export of methods
-exportMethods(
-	print,
-	subset
-)
+## Export of classes
+exportClasses(vegtable)
