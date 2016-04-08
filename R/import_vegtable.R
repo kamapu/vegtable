@@ -35,65 +35,36 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
 		attr(coverconvert[[i]], "long.name") <- long.name
 	}
     VEG@coverconvert <- coverconvert
-    # Importing popups
-    Files <- c(references="tvrefenc", authors="tvauthor",
-			projects="tvprojct", countries="country", syntaxa="syntaxa",
-			aspect="exposit")
-    for(i in names(Files)) {
-		if(!is.na(VEG@description["dictionary"])) {
-			VEG@popups[[i]] <- read.dbf(file.path(tv_home, "popup",
-                            VEG@description["dictionary"], paste0(Files[i],
-                                    ".dbf")), as.is=TRUE)
-		} else {
-			VEG@popups[[i]] <- read.dbf(file.path(tv_home, "popup",
-							paste0(Files[i], ".dbf")), as.is=TRUE)
-		}
-	}
-	# Importing header data
-	VEG@head <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
+    # Importing head data
+    VEG@head <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
             as.is=TRUE)
-	rownames(VEG@head) <- VEG@head$RELEVE_NR
-	
-    
-    # check links to popups
-	colnames(VEG@popups$authors)[colnames(VEG@popups$authors) ==
-                    "AUTH_CODE"] <- "AUTHOR"
-	colnames(VEG@popups$syntaxa) <- c("SYNTAXON","SYNTAX_NAME")
-	popvars <- c(references="REFERENCE", authors="AUTHOR", projects="PROJECT",
-			syntaxa="SYNTAXON")
-	for(i in names(popvars)) {
-		VEG@head[,popvars[i]] <- as.integer(VEG@head[,popvars[i]])
-		VEG@popups[[i]][,popvars[[i]]] <- as.integer(VEG@popups[[i]][,
-                        popvars[[i]]])
-		if(dim(VEG@popups[[i]])[1] > 0) {
-			if(!all(VEG@head[,popvars[i]] %in% VEG@popups[[i]][,popvars[i]])) {
-				warning(paste(c("some values of", i, "are missing in the head",
-										"or vice versa."), collapse=" "),
-						call.=FALSE)
-			}
-		}
-	}
-	colnames(VEG@popups$countries) <- c("COUNTRY","COUNTRY_NAME")
-	popvars <- c(countries="COUNTRY", aspect="EXPOSITION")
-	for(i in names(popvars)) {
-		if(dim(VEG@popups[[i]])[1] > 0) {
-			if(!all(VEG@head[,popvars[i]] %in% VEG@popups[[i]][,popvars[i]])) {
-				warning(paste(c("some values of", i, "are missing in the head",
-										"or vice versa."), collapse=" "),
-						call.=FALSE)
-			}
-		}
-	}
+    rownames(VEG@head) <- VEG@head$RELEVE_NR
+    # Formating dates and some numeric variables
+    VEG@head$DATE <- as.Date(VEG@head$DATE, format="%Y%m%d")
+    VEG@head$ALTITUDE <- as.numeric(VEG@head$ALTITUDE)
+    VEG@head$INCLINATIO <- as.numeric(VEG@head$INCLINATIO)
+    # Importing popups
+    if(is.na(VEG@description["dictionary"])) {
+        popups_path <- file.path(tv_home, "popup")
+    } else popups_path <- file.path(tv_home, "popup",
+                VEG@description["dictionary"])
+    Files <- list.files(popups_path, pattern=".dbf", ignore.case=TRUE)
+    Files <- Files[!toupper(Files) %in% c("DBASEDIC.DBF","FILES.DBF",
+                    "TVSCALE.DBF")]
+    popups <- list()
+    for(i in Files) {
+        popups[[i]] <- read.dbf(file.path(popups_path, i), as.is=TRUE)
+    }
+    names(popups) <- sub(".dbf", "", tolower(names(popups)))
+    # some changes are needed in the standard popups
+    colnames(popups$country)[1:2] <- c("COUNTRY","COUNTRY_NAME")
+    colnames(popups$syntaxa)[1:2] <- c("SYNTAXON","SYNTAXON_NAME")
+    colnames(popups$tvauthor)[1] <- c("AUTHOR")
 	# Deleting empty popups
-	if(skip_empty_popups) {
-		zeropop <- lapply(VEG@popups, nrow)
-		VEG@popups <- VEG@popups[zeropop != 0]
-	}
-	# Formating dates and some numeric variables
-	VEG@head$DATE <- as.Date(VEG@head$DATE, format="%Y%m%d")
-	VEG@head$ALTITUDE <- as.numeric(VEG@head$ALTITUDE)
-	VEG@head$INCLINATIO <- as.numeric(VEG@head$INCLINATIO)
-	# Adding tails in remarks
+	if(skip_empty_popups) popups <- popups[sapply(popups, nrow) > 0]
+    # Popus to vegtable
+    for(i in names(popups)) popup(VEG, i, popups[[i]])
+    # Adding tails in remarks
 	remarks <- read.dbf(file.path(tv_home, "Data", db, "remarks.dbf"),
 			as.is=TRUE)
 	releves <- remarks$RELEVE_NR
@@ -134,8 +105,8 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
 	VEG@samples <- unsplit(samples, coverscale)
 	# Import species
     VEG@species <- tvsplist(VEG@description["sp.list"], tv_home)
-    VEG@species <- subset(VEG@species, TaxonUsageID %in%
-                    unique(VEG@samples$TaxonUsageID))
+    ## VEG@species <- subset(VEG@species, TaxonUsageID %in%
+    ##                 unique(VEG@samples$TaxonUsageID))
 	# Logging import
 	VEG@log[["import"]] <- c(time=paste(Sys.time()), database=db)
 	return(VEG)
