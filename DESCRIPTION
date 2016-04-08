@@ -16,7 +16,7 @@ Suggests:
 	devtools,
 	vegan
 Description: Import routine for Turboveg databases, a S4 object class
-	('VegTable'), and methods applied to this class. 'Vegtables' has been tested
+	('vegtable'), and methods applied to this class. 'vegtables' has been tested
 	in Turboveg 2.119 and may not work properly with earlier versions.
 License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtables

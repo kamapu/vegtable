@@ -14,7 +14,7 @@ object.
 	\item{description}{A named character vector containing metadata.}
 	\item{samples}{A data frame with samples list.}
 	\item{head}{A data frame with plots data.}
-	\item{species}{Species list as a \code{\link[=vegtable-class]{taxlist}}
+	\item{species}{Species list as a \code{\link[=taxlist-class]{taxlist}}
 		object.}
 	\item{popups}{A list including popup lists as data frames.}
 	\item{coverconvert}{A list with conversion tables for cover scales.}
