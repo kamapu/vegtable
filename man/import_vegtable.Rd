@@ -38,10 +38,10 @@ The respective species list will be imported by using the function
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
 }
 \author{
-Miguel Alvarez.
+Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
 \seealso{
-\code{\link{taxlist}}, \code{\link{approxfun}}.
+\code{\link{tvsplist}}, code{\link{import_coverconvert}}, \code{\link{tv.home}}.
 }
 \examples{
 \dontrun{

@@ -23,6 +23,13 @@ popup(vegtable, popup) <- value
 \item{value}{A data frame containing the new popup.}
 \item{...}{Further arguments to be passed among methods.}
 }
+\value{
+\code{popup} retrieves and object of class
+\code{\link[=data.frame-class]{data.frame}}.
+In the replacement method, an object of class
+\code{\link[=vegtable-class]{vegtable}} including \code{value} in the slot
+\code{popups}.
+}
 \author{
 Miguel Alvarez, \email{malvarez@uni-bonn.de}
 }
