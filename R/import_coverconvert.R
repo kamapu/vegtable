@@ -16,4 +16,5 @@ import_coverconvert <- function(file, as.is=TRUE) {
         attr(file[[i]], "short.name") <- short.name
         attr(file[[i]], "long.name") <- long.name
     }
+    return(file)
 }

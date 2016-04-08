@@ -14,7 +14,8 @@ import_coverconvert(file, as.is=TRUE)
 \item{as.is}{A logical value passed to \code{\link{read.dbf}}}
 }
 \details{
-This function is used internally by \code{\link{import_vegtable}}
+This function is used internally by \code{\link{import_vegtable}}.
+Short and long names of each cover scale will be added as attribute.
 }
 \value{
 A list, where each element is a data frame including the classes of the

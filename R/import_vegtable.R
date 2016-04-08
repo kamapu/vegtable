@@ -88,7 +88,7 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
 			samples[[i]]$COVER_PERC <- with(samples[[i]],
 					as.numeric(replace(COVER_CODE, COVER_CODE == "9X", "100")))
 		} else {
-			samples[[i]]$COVER_PERC <- with(coverconvert[[i]],
+			samples[[i]]$COVER_PERC <- with(VEG@coverconvert[[i]],
 					percent[match(samples[[i]]$COVER_CODE, value)])
 		}
 	}
@@ -101,3 +101,8 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
 	VEG@log[["import"]] <- c(time=paste(Sys.time()), database=db)
 	return(VEG)
 }
+
+
+Test <- read.dbf(file.path(tv.home(), "popup", "Swea", "TVSCALE.DBF"))
+
+Test <- import_coverconvert(file.path(tv.home(), "popup", "Swea", "TVSCALE.DBF"))
