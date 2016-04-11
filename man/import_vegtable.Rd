@@ -33,6 +33,8 @@ The use of \code{\link{approxfun}} may be more appropriate for back conversion.
 
 The respective species list will be imported by using the function
 \code{\link{tvsplist}} from the package \code{\link[=taxlist-package]{taxlist}}.
+Additionally the imported species list will be restricted to 'observed taxa'
+(only species occurring in plots).
 }
 \value{
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.

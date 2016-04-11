@@ -9,14 +9,18 @@ import(
 ## Export of regular function names
 export(
 	import_coverconvert,
-	import_vegtable
+	import_vegtable,
+	vegtable_stat
 )
 
 ## Export of classes
-exportClasses(vegtable)
+exportClasses(
+	vegtable
+)
 
 ## Export of methods
 exportMethods(
 	popup,
-	"popup<-"
+	"popup<-",
+	summary
 )

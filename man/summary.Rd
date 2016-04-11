@@ -1,0 +1,28 @@
+\name{summary}
+\docType{methods}
+\alias{summary}
+\alias{summary,vegtable-method}
+
+\title{Summary Method for 'vegtable' Objects.}
+\description{
+Overview of \code{\link[=vegtable-class]{vegtable}} objects will be displayed
+in the R-console.
+}
+\usage{
+\S4method{summary}{vegtable}(object, ...)
+}
+\arguments{
+\item{object}{object of class \code{\link[=vegtable-class]{vegtable}}.}
+\item{...}{further arguments to be passed to or from other methods.}
+}
+\details{
+This function return a quick overview about the amount of data included in the
+respective \code{\link[=vegtable-class]{vegtable}} object.
+Such information includes number of plots, number of species and number of
+variables.
+Additionally an overview on the content of the slot \code{log} will be shown.
+}
+\author{Miguel Alvarez.}
+\examples{
+## A example may require an example data set
+}

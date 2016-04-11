@@ -54,7 +54,12 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
     colnames(popups$country)[1:2] <- c("COUNTRY","COUNTRY_NAME")
     colnames(popups$syntaxa)[1:2] <- c("SYNTAXON","SYNTAXON_NAME")
     colnames(popups$tvauthor)[1] <- c("AUTHOR")
-	# Deleting empty popups
+    # Next cases have to be reformatted
+    popups$tvauthor[,1] <- as.integer(popups$tvauthor[,1])
+    popups$tvprojct[,1] <- as.integer(popups$tvprojct[,1])
+    popups$tvrefenc[,1] <- as.integer(popups$tvrefenc[,1])
+    popups$syntaxa[,1] <- as.integer(popups$syntaxa[,1])
+    # Deleting empty popups
 	if(skip_empty_popups) popups <- popups[sapply(popups, nrow) > 0]
     # Popus to vegtable
     for(i in names(popups)) {
@@ -94,15 +99,12 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
 	}
 	VEG@samples <- unsplit(samples, coverscale)
 	# Import species
+    .UsageIDs <- list(UsageIDs=VEG@samples$TaxonUsageID)
+    attach(.UsageIDs)
     VEG@species <- tvsplist(VEG@description["sp.list"], tv_home)
-    ## VEG@species <- subset(VEG@species, TaxonUsageID %in%
-    ##                 unique(VEG@samples$TaxonUsageID))
-	# Logging import
+    VEG@species <- subset(VEG@species, TaxonUsageID %in% UsageIDs)
+    detach(.UsageIDs)
+    # Logging import
 	VEG@log[["import"]] <- c(time=paste(Sys.time()), database=db)
 	return(VEG)
 }
-
-
-Test <- read.dbf(file.path(tv.home(), "popup", "Swea", "TVSCALE.DBF"))
-
-Test <- import_coverconvert(file.path(tv.home(), "popup", "Swea", "TVSCALE.DBF"))
