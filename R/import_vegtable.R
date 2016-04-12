@@ -99,9 +99,9 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
 	}
 	VEG@samples <- unsplit(samples, coverscale)
 	# Import species
-    .UsageIDs <- list(UsageIDs=VEG@samples$TaxonUsageID)
-    attach(.UsageIDs)
     VEG@species <- tvsplist(VEG@description["sp.list"], tv_home)
+    .UsageIDs <- list(UsageIDs=unique(VEG@samples$TaxonUsageID))
+    attach(.UsageIDs)
     VEG@species <- subset(VEG@species, TaxonUsageID %in% UsageIDs)
     detach(.UsageIDs)
     # Logging import
