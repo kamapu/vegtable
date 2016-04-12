@@ -3,15 +3,18 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
+import_vegtable <- function(db, tv_home=tv.home(), folder,
+        skip_empty_popups=TRUE) {
+    # Folder option
+    if(missing(folder)) folder <- "Data" else folder <- file.path("Data",folder)
     # Empty object
     VEG <- new("vegtable")
-    VEG@description <- unlist(c(db, read.dbf(file.path(tv_home, "Data", db,
+    VEG@description <- unlist(c(db, read.dbf(file.path(tv_home, folder, db,
                             "tvwin.dbf"), as.is=TRUE)[,c("FLORA","DICTIONARY"),
                     drop=FALSE]))
     names(VEG@description) <- c("db.name","sp.list","dictionary")
     # Importing samples
-    VEG@samples <- read.dbf(file.path(tv_home, "Data", db, "tvabund.dbf"),
+    VEG@samples <- read.dbf(file.path(tv_home, folder, db, "tvabund.dbf"),
             as.is=TRUE)
     names(VEG@samples) <- TCS.replace(names(VEG@samples))
     # Importing coverconvert in a list format
@@ -23,7 +26,7 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
                         "tvscale.dbf"))
     }
     # Importing head data
-    VEG@head <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
+    VEG@head <- read.dbf(file.path(tv_home, folder, db, "tvhabita.dbf"),
             as.is=TRUE)
     rownames(VEG@head) <- VEG@head$RELEVE_NR
     # Formating dates and some numeric variables
@@ -67,7 +70,7 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
             popup(VEG, i) <- popups[[i]]
     }
     # Adding tails in remarks
-	remarks <- read.dbf(file.path(tv_home, "Data", db, "remarks.dbf"),
+	remarks <- read.dbf(file.path(tv_home, folder, db, "remarks.dbf"),
 			as.is=TRUE)
 	releves <- remarks$RELEVE_NR
 	remarks <- split(remarks, releves)

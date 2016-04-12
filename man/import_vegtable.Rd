@@ -7,11 +7,12 @@
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-import_vegtable(db, tv_home=tv.home(), skip_empty_popups=TRUE)
+import_vegtable(db, tv_home=tv.home(), folder, skip_empty_popups=TRUE)
 }
 \arguments{
 \item{db}{Name of Turboveg data base as character value.}
 \item{tv_home}{Turboveg installation path as character value.}
+\item{folder}{Character value indicating the name of sub-folder (see details).}
 \item{skip_empty_popups}{Logical value indicating wether empty popups may be
 	excluded from imported database or not.}
 }
@@ -35,6 +36,9 @@ The respective species list will be imported by using the function
 \code{\link{tvsplist}} from the package \code{\link[=taxlist-package]{taxlist}}.
 Additionally the imported species list will be restricted to 'observed taxa'
 (only species occurring in plots).
+
+Argument \code{folder} may be applied in the cases where databases are organized
+by folders in Turboveg.
 }
 \value{
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
