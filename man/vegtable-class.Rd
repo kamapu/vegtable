@@ -18,7 +18,7 @@ object.
 		object.}
 	\item{popups}{A list including popup lists as data frames.}
 	\item{coverconvert}{A list with conversion tables for cover scales.}
-	\item{log}{A list with action reports (from import and subset).}
+	\item{syntax}{A list with action reports (from import and subset).}
 }
 }
 \details{

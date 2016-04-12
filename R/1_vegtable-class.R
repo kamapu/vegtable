@@ -10,11 +10,10 @@ setClass("vegtable", slots=c(
 				species="ANY",
 				popups="list",
 				coverconvert="ANY",
-                syntax="ANY",
-				log="list"),
+                syntax="ANY"),
 		prototype=list(description=character(), samples=data.frame(),
 				head=data.frame(), species=NULL, popups=list(),
-				coverconvert=NULL, syntax=NULL, log=list()),
+				coverconvert=NULL, syntax=NULL),
 		validity=function(object) {
 			if(!is.character(object@description))
 				return("slot 'description' should be a character vector")
@@ -24,7 +23,5 @@ setClass("vegtable", slots=c(
 				return("slot 'head' should be a data frame")
 			if(!is.list(object@popups))
 				return("slot 'popups' should be a list")
-			if(!is.list(object@log))
-				return("slot 'log' should be a list")
         }
 )

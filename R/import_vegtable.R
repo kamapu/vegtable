@@ -104,7 +104,6 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
     attach(.UsageIDs)
     VEG@species <- subset(VEG@species, TaxonUsageID %in% UsageIDs)
     detach(.UsageIDs)
-    # Logging import
-	VEG@log[["import"]] <- c(time=paste(Sys.time()), database=db)
-	return(VEG)
+    # Output object
+    return(VEG)
 }
