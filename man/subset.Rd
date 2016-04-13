@@ -3,22 +3,24 @@
 \alias{subset}
 \alias{subset_by_species}
 \alias{subset_by_head}
+\alias{subset_by_popup}
 
 \title{Subset Functions for 'vegtable' Objects.}
 \description{
-A subset of \code{\link[=VegTable-class]{VegTable}} objects will be done either
+A subset of \code{\link[=vegtable-class]{vegtable}} objects will be done either
 by plots, species or popups.
 }
 \usage{
 subset_by_species(vegtable, ...)
 subset_by_head(vegtable, ...)
-# subset_by_popup
+subset_by_popup(vegtable, popup, ...)
 # subset_by_syntax
 }
 \arguments{
-	\item{vegtable}{Object of class \code{\link[=vegtable-class]{vegtable}}.}
-	\item{...}{Further arguments to be passed to or from other methods (see
-		details).}
+\item{vegtable}{Object of class \code{\link[=vegtable-class]{vegtable}}.}
+\item{popup}{A character vector indicating the popup list used for subset.}
+\item{...}{Further arguments to be passed to or from other methods (see
+	details).}
 }
 \details{
 This function generate subsets of \code{\link[=vegtable-class]{vegtable}}

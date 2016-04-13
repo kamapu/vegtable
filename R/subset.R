@@ -3,6 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+# subset_by_species ------------------------------------------------------------
 subset_by_species <- function(vegtable, ...) {
     if(class(vegtable) != "vegtable")
         stop("'vegtable' should be an object of class vegtable.")
@@ -26,7 +27,7 @@ subset_by_species <- function(vegtable, ...) {
     return(vegtable)
 }
 
-# subset_by_head
+# subset_by_head ---------------------------------------------------------------
 subset_by_head <- function(vegtable, ...) {
     if(class(vegtable) != "vegtable")
         stop("'vegtable' should be an object of class vegtable.")
@@ -48,5 +49,32 @@ subset_by_head <- function(vegtable, ...) {
     return(vegtable)
 }
 
-# subset_by_popup
-# subset_by_syntax
+# subset_by_popup --------------------------------------------------------------
+subset_by_popup <- function(vegtable, popup, ...) {
+    if(class(vegtable) != "vegtable")
+        stop("'vegtable' should be an object of class vegtable.")
+    if(!popup %in% names(vegtable@popups))
+        stop("The requested 'popup' is not existing in 'vegtable'.")
+    # Subset on popup
+    vegtable@popup[[popup]] <- subset(vegtable@popup[[popup]], ...)
+    vegtable@popup[[popup]][,1] <- factor(vegtable@popup[[popup]][,1])
+    popvar <- colnames(vegtable@popup[[popup]])[1]
+    # Subset on head
+    vegtable@head <- vegtable@head[paste(vegtable@head[,popvar]) %in%
+                    levels(vegtable@popup[[popup]][,popvar]),]
+    vegtable@head[,popvar] <- factor(paste(vegtable@head[,popvar]),
+            levels=levels(vegtable@popup[[popup]][,popvar]))
+    # Subset on samples
+    vegtable@samples <- vegtable@samples[vegtable@samples$RELEVE_NR %in%
+                    vegtable@head$RELEVE_NR,]
+    # Subset on species (same procedure as in import_vegtable)
+    .UsageIDs <- list(UsageIDs=unique(vegtable@samples$TaxonUsageID))
+    attach(.UsageIDs)
+    vegtable@species <- subset(vegtable@species, TaxonUsageID %in% UsageIDs)
+    detach(.UsageIDs)
+    # Subset on syntax (not yet implemented)
+    # Output
+    return(vegtable)
+}
+
+# subset_by_syntax -------------------------------------------------------------

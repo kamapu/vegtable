@@ -10,6 +10,9 @@ import(
 export(
 	import_coverconvert,
 	import_vegtable,
+	subset_by_head,
+	subset_by_popup,
+	subset_by_species,
 	vegtable_stat
 )
 
@@ -20,6 +23,7 @@ exportClasses(
 
 ## Export of methods
 exportMethods(
+	merge_species,
 	popup,
 	"popup<-",
 	summary
