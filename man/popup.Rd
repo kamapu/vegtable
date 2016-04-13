@@ -31,7 +31,7 @@ In the replacement method, an object of class
 \code{popups}.
 }
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
 ## Add example for this function

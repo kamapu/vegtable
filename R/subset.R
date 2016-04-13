@@ -9,7 +9,7 @@ subset_by_species <- function(vegtable, ...) {
     # First subset species list
     if(class(vegtable@species) == "taxlist") {
         vegtable@species <- subset(vegtable@species, ...)
-        # Subset on observations
+        # Subset on samples
         vegtable@samples <- vegtable@samples[vegtable@samples$TaxonUsageID %in%
                         vegtable@species@taxonNames$TaxonUsageID,]
     }
@@ -27,4 +27,26 @@ subset_by_species <- function(vegtable, ...) {
 }
 
 # subset_by_head
+subset_by_head <- function(vegtable, ...) {
+    if(class(vegtable) != "vegtable")
+        stop("'vegtable' should be an object of class vegtable.")
+    # First subset head
+    vegtable@head <- subset(vegtable@head, ...)
+    # Subset on samples
+    vegtable@samples <- vegtable@samples[vegtable@samples$RELEVE_NR %in%
+                    vegtable@head$RELEVE_NR,]
+    # Subset on species (same procedure as in import_vegtable)
+    .UsageIDs <- list(UsageIDs=unique(vegtable@samples$TaxonUsageID))
+    attach(.UsageIDs)
+    vegtable@species <- subset(vegtable@species, TaxonUsageID %in% UsageIDs)
+    detach(.UsageIDs)
+    # Subset on popups
+    vegtable@popups <- vegtable@popups[sapply(sapply(vegtable@popups,
+                            "colnames"), "[", 1) %in% colnames(vegtable@head)]
+    # Subset on syntax (not yet implemented)
+    # Output
+    return(vegtable)
+}
+
 # subset_by_popup
+# subset_by_syntax

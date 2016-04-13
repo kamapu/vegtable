@@ -44,7 +44,7 @@ by folders in Turboveg.
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
 }
 \author{
-Miguel Alvarez, \email{malvarez@uni-bonn.de}
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \seealso{
 \code{\link{tvsplist}}, code{\link{import_coverconvert}}, \code{\link{tv.home}}.

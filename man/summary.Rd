@@ -22,7 +22,9 @@ Such information includes number of plots, number of species and number of
 variables.
 Additionally an overview on the content of the slot \code{log} will be shown.
 }
-\author{Miguel Alvarez.}
+\author{
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+}
 \examples{
 ## A example may require an example data set
 }

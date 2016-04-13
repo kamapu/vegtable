@@ -28,7 +28,9 @@ form \code{new("vegtable", ...)}.
 Deletion done by
 \code{\link{subset}} or "poolssp" will be recorded in the slot \code{log}.
 }
-\author{Miguel Alvarez.}
+\author{
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+}
 \seealso{
 \code{\link{import_vegtable}}.
 }

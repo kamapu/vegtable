@@ -2,6 +2,7 @@
 \docType{methods}
 \alias{subset}
 \alias{subset_by_species}
+\alias{subset_by_head}
 
 \title{Subset Functions for 'vegtable' Objects.}
 \description{
@@ -10,7 +11,7 @@ by plots, species or popups.
 }
 \usage{
 subset_by_species(vegtable, ...)
-# subset_by_head
+subset_by_head(vegtable, ...)
 # subset_by_popup
 # subset_by_syntax
 }
@@ -31,8 +32,12 @@ In \code{subset_by_species}, arguments in \code{...} are passed to
 Superfluous information will be deleted from the slots \code{head} and
 \code{popus} as well.
 }
-\value{A S4 object of class \code{\link[=VegTable-class]{VegTable}}.}
-\author{Miguel Alvarez.}
+\value{
+A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
+}
+\author{
+Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+}
 \seealso{\code{\link{substitute}}}
 \examples{
 ## Examples are comming soon

@@ -19,7 +19,9 @@ This function is based on a script delivered by GIVD for
 summarising statistics required in the descriptions of databases (see meta data
 in the page of the Global Index for Vegetation-Plot Databases).
 }
-\author{GIVD. Adapted by Miguel Alvarez.}
+\author{
+GIVD. Adapted by Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+}
 \examples{
 ## Same example as in 'Africa_veg' data
 }
