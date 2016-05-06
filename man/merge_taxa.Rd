@@ -1,11 +1,11 @@
-\name{merge_species}
+\name{merge_taxa}
 \docType{methods}
-\alias{merge_species}
-\alias{merge_species,vegtable-method}
+\alias{merge_taxa}
+\alias{merge_taxa,vegtable-method}
 
 \title{Merge Sub-Specific Taxa into Corresponding Species in vegtable Objects}
 \usage{
-\S4method{merge_species}{vegtable}(taxlist, ...)
+\S4method{merge_taxa}{vegtable}(taxlist, ...)
 }
 \arguments{
 \item{taxlist}{Object of class \code{vegtable}.}

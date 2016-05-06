@@ -23,7 +23,7 @@ exportClasses(
 
 ## Export of methods
 exportMethods(
-	merge_species,
+	merge_taxa,
 	popup,
 	"popup<-",
 	summary
