@@ -24,6 +24,7 @@ exportClasses(
 ## Export of methods
 exportMethods(
 <<<<<<< HEAD
+<<<<<<< HEAD
 	merge_taxa,
 	popup,
 	"popup<-",
@@ -33,5 +34,11 @@ exportMethods(
 	merge_taxa,
 	popup,"popup<-",
 >>>>>>> refs/heads/miguel
+=======
+	"[", "[<-", "$", "$<-",
+	head,"head<-",
+	merge_taxa,
+	popup,"popup<-",
+>>>>>>> refs/remotes/origin/miguel
 	summary
 )

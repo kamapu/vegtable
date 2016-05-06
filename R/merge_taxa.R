@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # TODO:   Method of merge_species for vegtable objects
 =======
 # TODO:   Method of merge_taxa for vegtable objects
 >>>>>>> refs/heads/miguel
+=======
+# TODO:   Method of merge_taxa for vegtable objects
+>>>>>>> refs/remotes/origin/miguel
 # 
 # Author: Miguel Alvarez
 ################################################################################
