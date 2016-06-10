@@ -67,7 +67,7 @@ import_vegtable <- function(db, tv_home=tv.home(), skip_empty_popups=TRUE) {
             popup(VEG, i) <- popups[[i]]
     }
     # Adding tails in remarks
-	remarks <- read.dbf(file.path(tv_home, folder, db, "remarks.dbf"),
+	remarks <- read.dbf(file.path(tv_home, "Data", db, "remarks.dbf"),
 			as.is=TRUE)
 	releves <- remarks$RELEVE_NR
 	remarks <- split(remarks, releves)
