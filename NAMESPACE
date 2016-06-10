@@ -16,7 +16,6 @@ export(
 	vegtable_stat
 )
 
-
 ## Export of classes
 exportClasses(
 	vegtable
