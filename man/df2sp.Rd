@@ -1,5 +1,5 @@
 \name{df2sp}
-\docType{method} % data or function?
+\docType{methods}
 \alias{df2sp}
 \alias{df2sp,data.frame-method}
 \alias{df2sp,vegtable-method}

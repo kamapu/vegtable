@@ -2,6 +2,8 @@
 import(
 	foreign,
 	methods,
+	rgdal,
+	sp,
 	taxlist,
 	vegdata
 )
