@@ -1,7 +1,7 @@
 Package: vegtables
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Encoding: UTF-8
-Date: 2016-04-12
+Date: 2016-06-11
 Title: Handling Vegetation Data Sets
 Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
@@ -11,6 +11,8 @@ Depends:
 Imports:
 	foreign,
 	methods,
+	rgdal,
+	sp,
 	vegdata
 Suggests:
 	devtools,
