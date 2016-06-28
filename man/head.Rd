@@ -4,9 +4,9 @@
 \alias{head,vegtable-method}
 \alias{head<-}
 \alias{head<-,vegtable,data.frame-method}
-\alias{[,vegtable-method}
+\alias{[,vegtable,ANY,ANY,ANY-method}
 \alias{[<-}
-\alias{[<-,vegtable-method}
+\alias{[<-,vegtable,ANY,ANY,ANY-method}
 \alias{$,vegtable-method}
 \alias{$<-}
 \alias{$<-,vegtable-method}

@@ -7,7 +7,7 @@
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-import_vegtable(db, tv_home=tv.home(), folder, skip_empty_popups=TRUE)
+import_vegtable(db, tv_home=tv.home(), skip_empty_popups=TRUE)
 }
 \arguments{
 \item{db}{Name of Turboveg data base as character value.}

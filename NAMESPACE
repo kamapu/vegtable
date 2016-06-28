@@ -2,11 +2,14 @@
 import(
 	foreign,
 	methods,
-	rgdal,
+	plotKML,
 	sp,
 	taxlist,
 	vegdata
 )
+
+## Import of functions
+importFrom("stats", "na.omit")
 
 ## Export of regular function names
 export(
@@ -26,9 +29,9 @@ exportClasses(
 ## Export of methods
 exportMethods(
 	"[", "[<-", "$", "$<-",
-	df2sp,
 	head,"head<-",
 	merge_taxa,
+	obj2kml,
 	popup,"popup<-",
 	summary
 )

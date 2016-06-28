@@ -7,12 +7,12 @@ Author: Miguel Alvarez <malvarez@uni-bonn.de>
 Maintainer: Miguel Alvarez <malvarez@uni-bonn.de>
 Depends:
 	R(>= 3.2.0),
-	rgdal,
-	sp,
 	taxlist
 Imports:
 	foreign,
 	methods,
+	plotKML,
+	sp,
 	vegdata
 Suggests:
 	devtools,
