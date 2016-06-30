@@ -17,7 +17,7 @@ setMethod("obj2kml", signature(obj="data.frame"),
             obj <- reproject(obj)
             # write and show
             kml(obj, shape="http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png",
-                    colour="yellow", size=0.75, file=file)
+                    colour="yellow", size=1, file=file)
             kml_View(file)
         }
 )

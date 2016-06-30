@@ -43,7 +43,9 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
                         stringsAsFactors=FALSE)
                 colnames(cross_margin) <- spp
             }
-            return(do.call(cbind, list(cross_margin, cross)))
+            cross <- do.call(cbind, list(cross_margin, cross))
+            rownames(cross) <- NULL # reseting row names
+            return(cross)
         }
 )
 

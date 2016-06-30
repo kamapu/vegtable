@@ -20,7 +20,9 @@ Also replacement methods are implemented.
 }
 \usage{
 \S4method{head}{vegtable}(x, ...)
+
 \S4method{$}{vegtable}(x, name)
+
 \S4method{[}{vegtable}(x, i, j, ..., drop=FALSE)
 
 head(x) <- value

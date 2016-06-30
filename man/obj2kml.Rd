@@ -30,5 +30,10 @@ Precise this function.
 Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 }
 \examples{
-## Add example for this function
+library(vegtables)
+data(sweadataveg)
+
+## Plots containing Podocarpus observations
+sweadataveg <- subset_by_species(sweadataveg, Traits=GENUS == "Podocarpus")
+\dontrun{obj2kml(sweadataveg, "Podocarpus.kml")}
 }
