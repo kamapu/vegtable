@@ -4,7 +4,7 @@
 \alias{obj2kml,data.frame-method}
 \alias{obj2kml,vegtable-method}
 
-\title{Quick Mapping of Plots}
+\title{Quick Mapping of Plot Observations.}
 \description{
 This function is a wrapper of \code{\link[plotKML]{kml}} producing and
 displaying KML-files.

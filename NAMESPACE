@@ -9,7 +9,7 @@ import(
 )
 
 ## Import of functions
-importFrom("stats", "na.omit")
+importFrom("stats", "aggregate", "na.omit", "terms")
 
 ## Export of regular function names
 export(
@@ -29,6 +29,7 @@ exportClasses(
 ## Export of methods
 exportMethods(
 	"[", "[<-", "$", "$<-",
+	crosstable,
 	head,"head<-",
 	merge_taxa,
 	obj2kml,
