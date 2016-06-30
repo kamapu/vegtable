@@ -10,8 +10,8 @@ setGeneric("crosstable", function(formula, data, ...)
 # Method for data frames
 setMethod("crosstable", signature(formula="formula", data="data.frame"),
         function(formula, data, FUN, na_to_zero=FALSE, ...) {
-            if(!c(as.character(formula)[2], as.character(formula)[2]) %in%
-                    colnames(data))
+            if(!all(c(as.character(formula)[2], as.character(formula)[2]) %in%
+                            colnames(data)))
                 stop("all terms in 'formula' must be a column in 'data'")
             data <- aggregate(formula, data, FUN, ...)
             coverage <- as.character(formula)[2]
@@ -51,7 +51,8 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
 setMethod("crosstable", signature(formula="formula", data="vegtable"),
         function(formula, data, FUN, na_to_zero=FALSE, ...) {
             species <- data@species
-            data <- merge(data@samples, species@taxonNames)
+            data <- merge(merge(data@samples, species@taxonNames),
+                    species@taxonTraits)
             data$AcceptedName <- species@taxonRelations[
                     match(data$TaxonConceptID,
                             species@taxonRelations$TaxonConceptID),

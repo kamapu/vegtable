@@ -56,14 +56,14 @@ subset_by_popup <- function(vegtable, popup, ...) {
     if(!popup %in% names(vegtable@popups))
         stop("The requested 'popup' is not existing in 'vegtable'.")
     # Subset on popup
-    vegtable@popup[[popup]] <- subset(vegtable@popup[[popup]], ...)
-    vegtable@popup[[popup]][,1] <- factor(vegtable@popup[[popup]][,1])
-    popvar <- colnames(vegtable@popup[[popup]])[1]
+    vegtable@popups[[popup]] <- subset(vegtable@popups[[popup]], ...)
+    vegtable@popups[[popup]][,1] <- factor(vegtable@popups[[popup]][,1])
+    popvar <- colnames(vegtable@popups[[popup]])[1]
     # Subset on head
     vegtable@head <- vegtable@head[paste(vegtable@head[,popvar]) %in%
-                    levels(vegtable@popup[[popup]][,popvar]),]
+                    levels(vegtable@popups[[popup]][,popvar]),]
     vegtable@head[,popvar] <- factor(paste(vegtable@head[,popvar]),
-            levels=levels(vegtable@popup[[popup]][,popvar]))
+            levels=levels(vegtable@popups[[popup]][,popvar]))
     # Subset on samples
     vegtable@samples <- vegtable@samples[vegtable@samples$RELEVE_NR %in%
                     vegtable@head$RELEVE_NR,]
