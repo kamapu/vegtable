@@ -10,6 +10,7 @@ import(
 
 ## Import of functions
 importFrom("stats", "aggregate", "na.omit", "terms")
+importFrom("utils", "write.table")
 
 ## Export of regular function names
 export(
@@ -34,5 +35,6 @@ exportMethods(
 	merge_taxa,
 	obj2kml,
 	popup,"popup<-",
-	summary
+	summary,
+	write.juice
 )

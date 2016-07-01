@@ -10,7 +10,8 @@ setGeneric("crosstable", function(formula, data, ...)
 # Method for data frames
 setMethod("crosstable", signature(formula="formula", data="data.frame"),
         function(formula, data, FUN, na_to_zero=FALSE, ...) {
-            if(!all(c(as.character(formula)[2], as.character(formula)[2]) %in%
+            if(!all(c(as.character(formula)[2], attr(terms(formula),
+                                            "term.labels")) %in%
                             colnames(data)))
                 stop("all terms in 'formula' must be a column in 'data'")
             data <- aggregate(formula, data, FUN, ...)

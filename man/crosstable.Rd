@@ -48,7 +48,8 @@ sweadataveg <- sweadataveg[1:20,]
 crosstable(COVER_PERC ~ RELEVE_NR + AcceptedName, sweadataveg, max, na_to_zero=TRUE)
 
 ## In the case that author names and layers are desired
-crosstable(COVER_PERC ~ RELEVE_NR + AcceptedName + AuthorName + LAYER, sweadataveg, max, na_to_zero=TRUE)
+crosstable(COVER_PERC ~ RELEVE_NR + AcceptedName + AuthorName + LAYER,
+	sweadataveg, max, na_to_zero=TRUE)
 
 ## Total cover of families per plot
 crosstable(COVER_PERC ~ RELEVE_NR + FAMILY, sweadataveg, sum, na_to_zero=TRUE)
