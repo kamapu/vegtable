@@ -5,3 +5,5 @@
 ^M:/WorkspaceEclipse/vegtables/R/popup\.R$
 ^tests/extras/buildignore\.R$
 ^tests/extras/example_data\.R$
+^README-figures$
+^README\.md$

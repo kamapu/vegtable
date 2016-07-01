@@ -65,8 +65,15 @@ summary(sweadataveg)
 #> validation for class 'taxlist': TRUE 
 #> 
 #> validation for class 'vegtable': TRUE
+```
 
-# Juniperus-Podocarpus community from Schmitt (1991)
+Among others, the object contains plot observations done in the Aberdare
+National Park (Kenya) by __Schmitt (1991)__.
+We can make a subset including the plots classified by the mentioned author into
+the *Juniperus procera*-*Podocarpus latifolius* community (IDs 780 to 798).
+
+
+```r
 Juniperus <- sweadataveg[paste(780:798),]
 summary(Juniperus)
 #> db.name: Sweadataveg
@@ -86,7 +93,19 @@ summary(Juniperus)
 #> validation for class 'vegtable': TRUE
 ```
 
+Note that the access is done as in a `data.frame` object.
+Herewith the indexes in the square brackets will be referred to the slot `head`
+in the `vegtable` object.
+
+For geo-referenced plots, there is an option for a quick display on
+[Google Earth](https://www.google.com/earth).
+You may then apply following command:
+
+
 ```r
-# map in Google Earth
 obj2kml(Juniperus, "Juniperus.kml")
 ```
+
+Then you may get a map like this:
+
+![figure of kml](README-figures/Juniperus.jpg)
