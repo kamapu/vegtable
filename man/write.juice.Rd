@@ -1,7 +1,7 @@
 \name{write.juice}
 \docType{methods}
 \alias{write.juice}
-\alias{write.juice,vegtable,text,formula-method}
+\alias{write.juice,vegtable,character,formula-method}
 
 \title{Exporting Tables for Juice.}
 \description{
