@@ -8,7 +8,7 @@ setGeneric("write.juice", function(data, file, formula, ...)
             standardGeneric("write.juice"))
 
 # Method for data frames
-setMethod("write.juice", signature(data="vegtable", file="text",
+setMethod("write.juice", signature(data="vegtable", file="character",
                 formula="formula"),
         function(data, file, formula=COVER_PERC ~ RELEVE_NR + AcceptedName +
                         LAYER, head=c("COUNTRY","REFERENCE"),
