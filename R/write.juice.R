@@ -34,7 +34,7 @@ setMethod("write.juice", signature(data="vegtable", file="character",
                     paste(file, "head.txt", sep="_"), quote=FALSE,
                     row.names=FALSE, col.names=FALSE, sep=",")
             write.table(head, paste(file, "head.txt", sep="_"), quote=FALSE,
-                    col.names=FALSE, sep=",", append=TRUE)
+                    col.names=FALSE, sep=",", na="", append=TRUE)
             # table
             data <- crosstable(formula, data, FUN, ...)
             colnames(data)[1:(length(attr(terms(formula),
