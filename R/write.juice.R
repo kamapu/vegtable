@@ -40,7 +40,7 @@ setMethod("write.juice", signature(data="vegtable", file="character",
             colnames(data)[1:(length(attr(terms(formula),
                                                 "term.labels")) - 1)] <- ""
             # write table
-            write.table(rbind(db.name, paste("Number of relevés:", nr.plots),
+            write.table(rbind(db.name, paste("Number of releves:", nr.plots),
                             ""), paste(file, "table.txt", sep="_"), quote=FALSE,
                     row.names=FALSE, col.names=FALSE)
             suppressWarnings(write.table(data, paste(file, "table.txt",
