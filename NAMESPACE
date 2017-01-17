@@ -36,5 +36,5 @@ exportMethods(
 	obj2kml,
 	popup,"popup<-",
 	summary,
-	write.juice
+	write_juice
 )

@@ -1,7 +1,7 @@
-\name{write.juice}
+\name{write_juice}
 \docType{methods}
-\alias{write.juice}
-\alias{write.juice,vegtable,character,formula-method}
+\alias{write_juice}
+\alias{write_juice,vegtable,character,formula-method}
 
 \title{Exporting Tables for Juice.}
 \description{
@@ -9,7 +9,7 @@ This function produce txt files as inport formats for Juice
 (\url{http://www.sci.muni.cz/botany/juice/}).
 }
 \usage{
-\S4method{write.juice}{vegtable,text,formula}(data, file, formula=COVER_PERC ~ RELEVE_NR + AcceptedName + LAYER,
+\S4method{write_juice}{vegtable,character,formula}(data, file, formula=COVER_PERC ~ RELEVE_NR + AcceptedName + LAYER,
 	head=c("COUNTRY","REFERENCE"), coords=c("LONGITUDE","LATITUDE"), FUN, ...)
 }
 \arguments{
@@ -46,6 +46,6 @@ data(sweadataveg)
 ## Only first 20 observations
 sweadataveg <- sweadataveg[1:20,]
 \dontrun{
-write.juice(sweadataveg, "SWEA", FUN=mean)
+write_juice(sweadataveg, "SWEA", FUN=mean)
 }
 }

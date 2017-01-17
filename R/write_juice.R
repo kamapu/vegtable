@@ -4,11 +4,11 @@
 ################################################################################
 
 # Generic function
-setGeneric("write.juice", function(data, file, formula, ...)
-            standardGeneric("write.juice"))
+setGeneric("write_juice", function(data, file, formula, ...)
+            standardGeneric("write_juice"))
 
 # Method for data frames
-setMethod("write.juice", signature(data="vegtable", file="character",
+setMethod("write_juice", signature(data="vegtable", file="character",
                 formula="formula"),
         function(data, file, formula=COVER_PERC ~ RELEVE_NR + AcceptedName +
                         LAYER, head=c("COUNTRY","REFERENCE"),
