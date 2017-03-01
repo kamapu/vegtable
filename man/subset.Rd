@@ -8,7 +8,7 @@
 \title{Subset Functions for 'vegtable' Objects.}
 \description{
 A subset of \code{\link[=vegtable-class]{vegtable}} objects will be done either
-by plots, species or popups.
+by plots, species or relations.
 }
 \usage{
 subset_by_species(vegtable, ...)
@@ -25,7 +25,7 @@ subset_by_popup(vegtable, popup, ...)
 \details{
 This function generate subsets of \code{\link[=vegtable-class]{vegtable}}
 objects through logical operations.
-Such operations can be applied either to the plots, the species or the popups,
+Such operations can be applied either to the plots, the species or the relations,
 which are the main slots in that class.
 
 In \code{subset_by_species}, arguments in \code{...} are passed to
@@ -38,7 +38,7 @@ Superfluous information will be deleted from the slots \code{head} and
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{\code{\link{substitute}}}
 \examples{

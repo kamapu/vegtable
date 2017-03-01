@@ -35,7 +35,7 @@ also include variables from the species list (for example \code{AcceptedName}).
 An object of class \code{\link{data.frame}}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtables)

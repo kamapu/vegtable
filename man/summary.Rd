@@ -23,7 +23,7 @@ variables.
 Additionally an overview on the content of the slot \code{log} will be shown.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 ## A example may require an example data set

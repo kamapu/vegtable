@@ -1,35 +1,33 @@
-# TODO:   Methods to retrieve or replace popup lists
+# TODO:   Methods to retrieve or replace relations
 # 
 # Author: Miguel Alvarez
 ################################################################################
 
 # Generic function and vegtable method -----------------------------------------
-setGeneric("popup",
-        function(vegtable, popup, ...)
-            standardGeneric("popup")
+setGeneric("veg_relation",
+        function(vegtable, relation, ...)
+            standardGeneric("veg_relation")
 )
 
 # Set method for vegtable
-setMethod("popup", signature(vegtable="vegtable", popup="character"),
-        function(vegtable, popup, ...) return(vegtable@popups[[popup]])
+setMethod("veg_relation", signature(vegtable="vegtable", relation="character"),
+        function(vegtable, relation, ...) return(vegtable@relations[[relation]])
 )
 
 # Replacement method -----------------------------------------------------------
-setGeneric("popup<-", function(vegtable, popup, value)
-            standardGeneric("popup<-"))
+setGeneric("veg_relation<-", function(vegtable, relation, value)
+            standardGeneric("veg_relation<-"))
 
 # Definition of method
-setReplaceMethod("popup", signature(vegtable="vegtable", popup="character",
-                value="data.frame"),
-        function(vegtable, popup, value) {
+setReplaceMethod("veg_relation", signature(vegtable="vegtable",
+                relation="character", value="data.frame"),
+        function(vegtable, relation, value) {
             # First the pre-tests
             VAR <- colnames(value)[1]
             if(!VAR %in% colnames(vegtable@head))
-                stop("The first column in 'value' is not present in slot 'head'",
-                        call.=FALSE)
+                stop("The first column in 'value' is not present in slot 'head'")
             if(sum(VAR %in% colnames(vegtable@head)) > 1)
-                stop("The target variable has duplicates in 'head'",
-                        call.=FALSE)
+                stop("The target variable has duplicates in 'head'")
             if(any(duplicated(paste(value[,VAR]))))
                 stop("The new popup contains duplicated levels", call.=FALSE)
             Var1 <- unique(paste(vegtable@head[,VAR]))
@@ -40,6 +38,7 @@ setReplaceMethod("popup", signature(vegtable="vegtable", popup="character",
             vegtable@head[,VAR] <- factor(paste(vegtable@head[,VAR]),
                     levels=paste(value[,VAR]))
             value[,VAR] <- factor(paste(value[,VAR]), levels=paste(value[,VAR]))
-            vegtable@popups[[popup]] <- value
+            vegtable@relations[[relation]] <- value
             return(vegtable)
-        })
+        }
+)

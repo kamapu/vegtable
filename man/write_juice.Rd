@@ -37,7 +37,7 @@ Notice that the vegetation is a semi-colon delimited file, while the head is a
 comma delimited file.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtables)

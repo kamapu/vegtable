@@ -20,7 +20,7 @@ summarising statistics required in the descriptions of databases (see meta data
 in the page of the Global Index for Vegetation-Plot Databases).
 }
 \author{
-GIVD. Adapted by Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+GIVD. Adapted by Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 ## Same example as in 'Africa_veg' data

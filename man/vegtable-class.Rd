@@ -16,7 +16,7 @@ object.
 	\item{head}{A data frame with plots data.}
 	\item{species}{Species list as a \code{\link[=taxlist-class]{taxlist}}
 		object.}
-	\item{popups}{A list including popup lists as data frames.}
+	\item{relations}{A list including popup lists as data frames.}
 	\item{coverconvert}{A list with conversion tables for cover scales.}
 	\item{syntax}{A list with action reports (from import and subset).}
 }
@@ -29,7 +29,7 @@ Deletion done by
 \code{\link{subset}} or "poolssp" will be recorded in the slot \code{log}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link{import_vegtable}}.

@@ -32,7 +32,6 @@ exportMethods(
 	"[", "[<-", "$", "$<-",
 	crosstable,
 	head,"head<-",
-	merge_taxa,
 	obj2kml,
 	popup,"popup<-",
 	summary,

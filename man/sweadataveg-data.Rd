@@ -18,7 +18,7 @@ An object of class \code{\link[=vegtable-class]{vegtable}}.
 \url{http://www.givd.info/ID/AF-00-006}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}), Michael Curran
+Miguel Alvarez (\email{kamapu78@gmail.com}), Michael Curran
 (\email{currmi01@gmail.com}).
 }
 \references{

@@ -27,7 +27,7 @@ displaying KML-files.
 Precise this function.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtables)

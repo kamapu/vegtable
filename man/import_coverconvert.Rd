@@ -22,7 +22,7 @@ A list, where each element is a data frame including the classes of the
 cover scale and the respective percentage cover value (mid-point) as columns.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link{import_vegtable}}, \code{\link{read.dbf}}.

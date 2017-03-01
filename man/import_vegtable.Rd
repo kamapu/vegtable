@@ -1,18 +1,18 @@
-\name{import_vegtable}
-\alias{import_vegtable}
+\name{tv2vegtable}
+\alias{tv2vegtable}
 
-\title{Import Vegetation Data from Turboveg Databases.}
+\title{Import vegetation data from a Turboveg databases.}
 \description{
-\code{import_vegtable} imports vegetation data sets from Turboveg
+\code{tv2vegtable} imports vegetation data sets from Turboveg
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-import_vegtable(db, tv_home=tv.home(), skip_empty_popups=TRUE)
+tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE)
 }
 \arguments{
 \item{db}{Name of Turboveg data base as character value.}
 \item{tv_home}{Turboveg installation path as character value.}
-\item{skip_empty_popups}{Logical value indicating wether empty popups may be
+\item{skip_empty_relations}{Logical value indicating wether empty relations may be
 	excluded from imported database or not.}
 }
 \details{
@@ -43,7 +43,7 @@ the database should be indicated as \code{"folder\\db_name"}.
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
 \code{\link{tvsplist}}, code{\link{import_coverconvert}}, \code{\link{tv.home}}.
@@ -52,7 +52,7 @@ Miguel Alvarez (\email{malvarez@uni-bonn.de}).
 \dontrun{
 ## Example using data 'elbaue' from package vegdata
 library(vegtables)
-Elbaue <- import_vegtable("elbaue", file.path(path.package("vegtables"),
+Elbaue <- tv2vegtable("elbaue", file.path(path.package("vegtables"),
 	"tvdata"))
 print(Elbaue)
 }

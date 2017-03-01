@@ -38,7 +38,7 @@ x[i,j] <- value
 \item{drop}{A logical value passed to \code{\link{Extract}}.}
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 ## Add example for this function

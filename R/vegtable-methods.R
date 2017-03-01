@@ -30,8 +30,8 @@ setMethod("[", signature(x="vegtable"), function(x, i, j, ..., drop=FALSE) {
             attach(.UsageIDs)
             x@species <- subset(x@species, TaxonUsageID %in% UsageIDs)
             detach(.UsageIDs)
-            # Subset on popups
-            x@popups <- x@popups[sapply(sapply(x@popups, "colnames"), "[",
+            # Subset on relations
+            x@relations <- x@relations[sapply(sapply(x@relations, "colnames"), "[",
                             1) %in% colnames(x@head)]
             # Subset on syntax (not yet implemented)
             # Output

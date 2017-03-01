@@ -28,10 +28,10 @@ popup(vegtable, popup) <- value
 \code{\link[=data.frame-class]{data.frame}}.
 In the replacement method, an object of class
 \code{\link[=vegtable-class]{vegtable}} including \code{value} in the slot
-\code{popups}.
+\code{relations}.
 }
 \author{
-Miguel Alvarez (\email{malvarez@uni-bonn.de}).
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 ## Add example for this function
