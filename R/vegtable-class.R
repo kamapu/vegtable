@@ -24,8 +24,8 @@ setClass("vegtable", slots=c(
 				coverconvert=NULL),
 		validity=function(object) {
             # Mandatory names
-            if(!c("ReleveID","TaxonUsageID") %in% colnames(object@samples))
-                return("Columns 'ReleveID' and 'TaxonUsageID' is mandatory in slot 'samples'")
+            if(any(!c("ReleveID","TaxonUsageID") %in% colnames(object@samples)))
+                return("Columns 'ReleveID' and 'TaxonUsageID' are mandatory in slot 'samples'")
             if(!"ReleveID" %in% colnames(object@header))
                 return("Column 'ReleveID' is mandatory in slot 'header'")
             for(i in names(object@relations)) {
@@ -37,7 +37,7 @@ setClass("vegtable", slots=c(
             # Mandatory links
             if(any(!unique(object@samples$ReleveID) %in% object@header$ReleveID))
                 return("Some releve IDs from slot 'samples' are missing in slot 'header'")
-            if(any(!object@samples$TaxonUsageID %in% object@species@taxonNames$TaxonConceptID))
+            if(any(!object@samples$TaxonUsageID %in% object@species@taxonNames$TaxonUsageID))
                 return("Some taxon names are missing in slot 'species'")
             # Other consistency tests
             if(any(duplicated(object@header$ReleveID)))
