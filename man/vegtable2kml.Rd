@@ -1,8 +1,8 @@
-\name{obj2kml}
+\name{vegtable2kml}
 \docType{methods}
-\alias{obj2kml}
-\alias{obj2kml,data.frame-method}
-\alias{obj2kml,vegtable-method}
+\alias{vegtable2kml}
+\alias{vegtable2kml,data.frame-method}
+\alias{vegtable2kml,vegtable-method}
 
 \title{Quick Mapping of Plot Observations.}
 \description{
@@ -10,9 +10,9 @@ This function is a wrapper of \code{\link[plotKML]{kml}} producing and
 displaying KML-files.
 }
 \usage{
-\S4method{obj2kml}{data.frame}(obj, file, coords=~ Longitude + Latitude,
+\S4method{vegtable2kml}{data.frame}(obj, file, coords=~ Longitude + Latitude,
                 srs=CRS("+proj=longlat +datum=WGS84"))
-\S4method{obj2kml}{vegtable}(obj, file, coords=~ LONGITUDE + LATITUDE,
+\S4method{vegtable2kml}{vegtable}(obj, file, coords=~ LONGITUDE + LATITUDE,
                 srs=CRS("+proj=longlat +datum=WGS84"))
 }
 \arguments{
@@ -35,5 +35,5 @@ data(sweadataveg)
 
 ## Plots containing Podocarpus observations
 sweadataveg <- subset_by_species(sweadataveg, Traits=GENUS == "Podocarpus")
-\dontrun{obj2kml(sweadataveg, "Podocarpus.kml")}
+\dontrun{vegtable2kml(sweadataveg, "Podocarpus.kml")}
 }

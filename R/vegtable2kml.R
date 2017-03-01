@@ -4,11 +4,11 @@
 ################################################################################
 
 # Generic function
-setGeneric("obj2kml", function(obj, ...)
-            standardGeneric("obj2kml"))
+setGeneric("vegtable2kml", function(obj, ...)
+            standardGeneric("vegtable2kml"))
 
 # Method for data frames
-setMethod("obj2kml", signature(obj="data.frame"),
+setMethod("vegtable2kml", signature(obj="data.frame"),
         function(obj, file, coords=~ Longitude + Latitude,
                 srs=CRS("+proj=longlat +datum=WGS84")) {
             # to SpatialPointsDataFrame
@@ -23,10 +23,10 @@ setMethod("obj2kml", signature(obj="data.frame"),
 )
 
 # Method for vegtable objects
-setMethod("obj2kml", signature(obj="vegtable"),
+setMethod("vegtable2kml", signature(obj="vegtable"),
         function(obj, file, coords=~ LONGITUDE + LATITUDE,
                 srs=CRS("+proj=longlat +datum=WGS84")) {
             obj <- header(obj)
-            obj2kml(obj, file, coords, srs)
+            vegtable2kml(obj, file, coords, srs)
         }
 )

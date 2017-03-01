@@ -25,7 +25,7 @@ cover scale and the respective percentage cover value (mid-point) as columns.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link{import_vegtable}}, \code{\link{read.dbf}}.
+\code{\link{tv2vegtable}}, \code{\link{read.dbf}}.
 }
 \examples{
 ## Add example for this function

@@ -1,11 +1,11 @@
-\name{relations}
+\name{veg_relation}
 \docType{methods}
-\alias{relations}
-\alias{relations,vegtable,character-method}
-\alias{relations<-}
-\alias{relations<-,vegtable,character,data.frame-method}
+\alias{veg_relation}
+\alias{veg_relation,vegtable,character-method}
+\alias{veg_relation<-}
+\alias{veg_relation<-,vegtable,character,data.frame-method}
 
-\title{Retrieve or Replace Popup Lists}
+\title{Retrieve or replace relations in vegtable objects.}
 \description{
 Popup lists is a concept adopted from \bold{Turboveg} and they correspond to
 tables providing information about categorical variables.
@@ -13,21 +13,20 @@ Such variables will be converted into factors in the slot \code{header} of
 \code{'vegtable'} objects.
 }
 \usage{
-\S4method{relations}{vegtable,character}(vegtable, relations, ...)
-relations(vegtable, relations) <- value
+\S4method{veg_relation}{vegtable,character}(vegtable, veg_relation, ...)
+veg_relation(vegtable, veg_relation) <- value
 }
 \arguments{
 \item{vegtable}{An object of class \code{\link[=vegtable-class]{vegtable}}.}
-\item{relations}{A character value indicating the relations to be retrieved or
+\item{veg_relation}{A character value indicating the veg_relation to be retrieved or
 	replaced.}
-\item{value}{A data frame containing the new relations.}
+\item{value}{A data frame containing the new veg_relation.}
 \item{...}{Further arguments to be passed among methods.}
 }
 \value{
-\code{relations} retrieves and object of class
-\code{\link[=data.frame-class]{data.frame}}.
+\code{veg_relation} retrieves and object of class \code{data.frame}.
 In the replacement method, an object of class
-\code{\link[=vegtable-class]{vegtable}} including \code{value} in the slot
+\code{\linkS4class{vegtable}} including \code{value} in the slot
 \code{relations}.
 }
 \author{

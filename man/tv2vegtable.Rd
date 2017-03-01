@@ -48,7 +48,8 @@ A S4 object of class \code{\linkS4class{vegtable}}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link{tvsplist}}, code{\link{import_coverconvert}}, \code{\link{tv.home}}.
+\code{\link[taxlist]{tv2taxlist}}, code{\link{import_coverconvert}},
+\code{\link[vegdata]{tv.home}}.
 }
 \examples{
 \dontrun{

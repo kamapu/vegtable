@@ -24,7 +24,7 @@ exportMethods(
 	crosstable,
 	df2vegtable,
 	header,"header<-",
-	obj2kml,
+	vegtable2kml,
 	summary,
 	veg_relation,"veg_relation<-",
 	write_juice

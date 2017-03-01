@@ -103,7 +103,7 @@ You may then apply following command:
 
 
 ```r
-obj2kml(Juniperus, "Juniperus.kml")
+vegtable2kml(Juniperus, "Juniperus.kml")
 ```
 
 Then you may get a map like this:
