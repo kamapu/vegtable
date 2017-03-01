@@ -12,7 +12,7 @@ five references providing plots collected in Kenya.
 data(sweadataveg)
 }
 \format{
-An object of class \code{\link[=vegtable-class]{vegtable}}.
+An object of class \code{\linkS4class{vegtable}}.
 }
 \source{
 \url{http://www.givd.info/ID/AF-00-006}.

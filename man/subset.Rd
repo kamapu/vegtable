@@ -9,7 +9,7 @@ A subset of \code{\link[=vegtable-class]{vegtable}} objects will be done either
 by plots, species or relations.
 }
 \usage{
-subset(x, subset, slot="header", ...)
+\S4method{subset}{vegtable}(x, subset, slot="header", ...)
 }
 \arguments{
 \item{x}{a \code{\linkS4class{vegtable}} object for subset.}

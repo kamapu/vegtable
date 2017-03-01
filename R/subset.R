@@ -10,7 +10,8 @@ setMethod("subset", signature(x="vegtable"),
             slot <- grep(slot[1], c("samples","header"), ignore.case=TRUE)
             if(length(slot) == 0)
                 stop("Invalid value for argument 'slot'")
-            slot <- slotNames(x)[slot]
+            ## slot <- slotNames(x)[slot]
+            slot <- c("samples","header")[slot]
             subset <- substitute(subset)
             subset <- eval(subset, slot(x, slot), parent.frame())
             if(slot == "samples") x@samples <- x@samples[subset,]
