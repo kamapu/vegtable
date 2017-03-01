@@ -22,21 +22,21 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
         coverconvert <- import_coverconvert(file.path(tv_home, "popup",
                         "tvscale.dbf"))
     }
-    # Importing head data
-    head <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
+    # Importing header data
+    header <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
             as.is=TRUE)
-    colnames(head)[colnames(head) == "RELEVE_NR"] <- "ReleveID"
+    colnames(header)[colnames(header) == "RELEVE_NR"] <- "ReleveID"
     # Formating dates and some numeric variables
-    head$DATE <- as.Date(head$DATE, format="%Y%m%d")
-    head$ALTITUDE <- as.numeric(head$ALTITUDE)
-    head$INCLINATIO <- as.numeric(head$INCLINATIO)
+    header$DATE <- as.Date(header$DATE, format="%Y%m%d")
+    header$ALTITUDE <- as.numeric(header$ALTITUDE)
+    header$INCLINATIO <- as.numeric(header$INCLINATIO)
     # deleting variables without content
     cat("zero values will be replaced by NAs", "\n")
-    cat("variables without values in head will be deleted", "\n")
-    for(i in colnames(head)) {
-        if(is.numeric(head[,i])) head[,i][head[,i] == 0] <- NA
+    cat("variables without values in header will be deleted", "\n")
+    for(i in colnames(header)) {
+        if(is.numeric(header[,i])) header[,i][header[,i] == 0] <- NA
     }
-    head <- head[,!apply(head, 2, function(x) all(is.na(x)))]
+    header <- header[,!apply(header, 2, function(x) all(is.na(x)))]
     # Importing relations
     if(is.na(description["dictionary"])) {
         relations_path <- file.path(tv_home, "popup")
@@ -67,12 +67,12 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
 			as.is=TRUE)
     remarks <- split(remarks$REMARKS, remarks$RELEVE_NR)
     for(i in as.integer(names(remarks))) {
-        head[head$ReleveID == i, "REMARKS"] <- paste(head[head$ReleveID == i,
+        header[header$ReleveID == i, "REMARKS"] <- paste(header[header$ReleveID == i,
                         "REMARKS"], paste(remarks[[paste(i)]], collapse=" "),
                 collapse=" ")
     }
 	# Transformation of cover percentage
-	coverscale <- head$COVERSCALE[match(samples$ReleveID, head$ReleveID)]
+	coverscale <- header$COVERSCALE[match(samples$ReleveID, header$ReleveID)]
 	cover_trans <- split(samples[,c("ReleveID","COVER_CODE")], coverscale)
 	for(i in names(cover_trans)) {
 		if(i == "00") {
@@ -90,12 +90,12 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
     VEG <- new("vegtable",
             description=description,
             samples=samples,
-            head=head,
+            header=header,
             species=tv2taxlist(description["sp_list"], tv_home),
             coverconvert=coverconvert)
     # Popus to vegtable
     for(i in names(relations)) {
-        if(colnames(relations[[i]])[1] %in% colnames(VEG@head))
+        if(colnames(relations[[i]])[1] %in% colnames(VEG@header))
             veg_relation(VEG, i) <- relations[[i]]
     }
     return(VEG)

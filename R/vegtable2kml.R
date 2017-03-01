@@ -26,7 +26,7 @@ setMethod("obj2kml", signature(obj="data.frame"),
 setMethod("obj2kml", signature(obj="vegtable"),
         function(obj, file, coords=~ LONGITUDE + LATITUDE,
                 srs=CRS("+proj=longlat +datum=WGS84")) {
-            obj <- head(obj)
+            obj <- header(obj)
             obj2kml(obj, file, coords, srs)
         }
 )

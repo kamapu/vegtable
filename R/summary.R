@@ -13,8 +13,8 @@ setMethod(f="summary", signature(object="vegtable"),
             }
             cat("\n")
             # Show dimensions of database
-            cat(dim(object@head)[1], " observations (plots).", sep="", "\n")
-            cat(dim(object@head)[2], " variables with records.", sep="", "\n")
+            cat(dim(object@header)[1], " observations (plots).", sep="", "\n")
+            cat(dim(object@header)[2], " variables with records.", sep="", "\n")
             cat("\n")
             # Show summary of species list
             cat("Summary of species list:", sep="", "\n")

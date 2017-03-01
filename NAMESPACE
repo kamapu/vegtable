@@ -12,15 +12,6 @@ import(
 importFrom("stats", "aggregate", "na.omit", "terms")
 importFrom("utils", "write.table")
 
-## Export of regular function names
-export(
-	import_coverconvert,
-	import_vegtable,
-	subset_by_head,
-	subset_by_popup,
-	subset_by_species,
-	vegtable_stat
-)
 
 ## Export of classes
 exportClasses(
@@ -31,9 +22,20 @@ exportClasses(
 exportMethods(
 	"[", "[<-", "$", "$<-",
 	crosstable,
-	head,"head<-",
+	df2vegtable,
+	header,"header<-",
 	obj2kml,
-	popup,"popup<-",
 	summary,
+	veg_relation,"veg_relation<-",
 	write_juice
+)
+
+## Export of regular function names
+export(
+	import_coverconvert,
+	subset_by_header,
+	subset_by_popup,
+	subset_by_species,
+	tv2vegtable,
+	vegtable_stat
 )

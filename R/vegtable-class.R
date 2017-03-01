@@ -6,7 +6,7 @@
 setClass("vegtable", slots=c(
 				description="character",
 				samples="data.frame",
-				head="data.frame",
+				header="data.frame",
 				species="taxlist",
 				relations="list",
 				coverconvert="ANY"),
@@ -16,7 +16,7 @@ setClass("vegtable", slots=c(
                         ReleveID=integer(),
                         TaxonUsageID=integer()
                 ),
-				head=data.frame(
+				header=data.frame(
                         ReleveID=integer()
                 ),
                 species=new("taxlist"),
@@ -27,8 +27,8 @@ setClass("vegtable", slots=c(
 				return("slot 'description' should be a character vector")
 			if(!is.data.frame(object@samples))
 				return("slot 'samples' should be a data frame")
-			if(!is.data.frame(object@head))
-				return("slot 'head' should be a data frame")
+			if(!is.data.frame(object@header))
+				return("slot 'header' should be a data frame")
 			if(!is.list(object@relations))
 				return("slot 'relations' should be a list")
         }

@@ -8,7 +8,7 @@ vegtable_stat <- function(vegtable) {
 		stop("vegtable must be an object of class 'vegtable'.")
 	}
 	summary(vegtable)
-    vegtable <- vegtable@head
+    vegtable <- vegtable@header
 	# Number of references
 	if(!is.null(vegtable$REFERENCE)) {
 		cat("REFERENCES", "\n")

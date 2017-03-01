@@ -14,28 +14,28 @@ subset_by_species <- function(vegtable, ...) {
         vegtable@samples <- vegtable@samples[vegtable@samples$TaxonUsageID %in%
                         vegtable@species@taxonNames$TaxonUsageID,]
     }
-    # Subset on heads
-    vegtable@head <- vegtable@head[vegtable@head$RELEVE_NR %in%
+    # Subset on headers
+    vegtable@header <- vegtable@header[vegtable@header$RELEVE_NR %in%
                     vegtable@samples$RELEVE_NR,]
-    vegtable@head <- vegtable@head[,!apply(vegtable@head, 2,
+    vegtable@header <- vegtable@header[,!apply(vegtable@header, 2,
                     function(x) all(is.na(x)))]
     # Subset on relations
     vegtable@relations <- vegtable@relations[sapply(sapply(vegtable@relations,
-                            "colnames"), "[", 1) %in% colnames(vegtable@head)]
+                            "colnames"), "[", 1) %in% colnames(vegtable@header)]
     # Subset on syntax (not yet implemented)
     # Output
     return(vegtable)
 }
 
-# subset_by_head ---------------------------------------------------------------
-subset_by_head <- function(vegtable, ...) {
+# subset_by_header ---------------------------------------------------------------
+subset_by_header <- function(vegtable, ...) {
     if(class(vegtable) != "vegtable")
         stop("'vegtable' should be an object of class vegtable.")
-    # First subset head
-    vegtable@head <- subset(vegtable@head, ...)
+    # First subset header
+    vegtable@header <- subset(vegtable@header, ...)
     # Subset on samples
     vegtable@samples <- vegtable@samples[vegtable@samples$RELEVE_NR %in%
-                    vegtable@head$RELEVE_NR,]
+                    vegtable@header$RELEVE_NR,]
     # Subset on species (same procedure as in import_vegtable)
     .UsageIDs <- list(UsageIDs=unique(vegtable@samples$TaxonUsageID))
     attach(.UsageIDs)
@@ -43,7 +43,7 @@ subset_by_head <- function(vegtable, ...) {
     detach(.UsageIDs)
     # Subset on relations
     vegtable@relations <- vegtable@relations[sapply(sapply(vegtable@relations,
-                            "colnames"), "[", 1) %in% colnames(vegtable@head)]
+                            "colnames"), "[", 1) %in% colnames(vegtable@header)]
     # Subset on syntax (not yet implemented)
     # Output
     return(vegtable)
@@ -59,14 +59,14 @@ subset_by_popup <- function(vegtable, popup, ...) {
     vegtable@relations[[popup]] <- subset(vegtable@relations[[popup]], ...)
     vegtable@relations[[popup]][,1] <- factor(vegtable@relations[[popup]][,1])
     popvar <- colnames(vegtable@relations[[popup]])[1]
-    # Subset on head
-    vegtable@head <- vegtable@head[paste(vegtable@head[,popvar]) %in%
+    # Subset on header
+    vegtable@header <- vegtable@header[paste(vegtable@header[,popvar]) %in%
                     levels(vegtable@relations[[popup]][,popvar]),]
-    vegtable@head[,popvar] <- factor(paste(vegtable@head[,popvar]),
+    vegtable@header[,popvar] <- factor(paste(vegtable@header[,popvar]),
             levels=levels(vegtable@relations[[popup]][,popvar]))
     # Subset on samples
     vegtable@samples <- vegtable@samples[vegtable@samples$RELEVE_NR %in%
-                    vegtable@head$RELEVE_NR,]
+                    vegtable@header$RELEVE_NR,]
     # Subset on species (same procedure as in import_vegtable)
     .UsageIDs <- list(UsageIDs=unique(vegtable@samples$TaxonUsageID))
     attach(.UsageIDs)

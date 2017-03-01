@@ -11,29 +11,29 @@ setGeneric("write_juice", function(data, file, formula, ...)
 setMethod("write_juice", signature(data="vegtable", file="character",
                 formula="formula"),
         function(data, file, formula=COVER_PERC ~ RELEVE_NR + AcceptedName +
-                        LAYER, head=c("COUNTRY","REFERENCE"),
+                        LAYER, header=c("COUNTRY","REFERENCE"),
                 coords=c("LONGITUDE","LATITUDE"), FUN, ...) {
             # some attributes
             db.name <- data@description["db.name"]
-            nr.plots <- nrow(data@head)
-            # head
-            head.in <- head
+            nr.plots <- nrow(data@header)
+            # header
+            header.in <- header
             if(attr(terms(formula), "term.labels")[1] != "RELEVE_NR")
                 stop("'RELEVE_NR' is mandatory as first term of formula")
             if(length(coords) == 2) {
-                head <- c(head, coords)
-                head.in <- c(head.in, c("deg_lon","deg_lat"))
+                header <- c(header, coords)
+                header.in <- c(header.in, c("deg_lon","deg_lat"))
             }
-            head <- c("RELEVE_NR", head)
-            if(!all(head %in% colnames(data@head)))
-                stop("some requested heads are not included in 'data'")
-            head <- data@head[,head]
-            rownames(head) <- NULL
-            # write head
-            write.table(t(c("Table number", "Releve number", head.in)),
-                    paste(file, "head.txt", sep="_"), quote=FALSE,
+            header <- c("RELEVE_NR", header)
+            if(!all(header %in% colnames(data@header)))
+                stop("some requested headers are not included in 'data'")
+            header <- data@header[,header]
+            rownames(header) <- NULL
+            # write header
+            write.table(t(c("Table number", "Releve number", header.in)),
+                    paste(file, "header.txt", sep="_"), quote=FALSE,
                     row.names=FALSE, col.names=FALSE, sep=",")
-            write.table(head, paste(file, "head.txt", sep="_"), quote=FALSE,
+            write.table(header, paste(file, "header.txt", sep="_"), quote=FALSE,
                     col.names=FALSE, sep=",", na="", append=TRUE)
             # table
             data <- crosstable(formula, data, FUN, ...)

@@ -9,7 +9,7 @@
 \description{
 Popup lists is a concept adopted from \bold{Turboveg} and they correspond to
 tables providing information about categorical variables.
-Such variables will be converted into factors in the slot \code{head} of
+Such variables will be converted into factors in the slot \code{header} of
 \code{'vegtable'} objects.
 }
 \usage{

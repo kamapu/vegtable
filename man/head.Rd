@@ -1,9 +1,9 @@
-\name{head}
+\name{header}
 \docType{methods}
-\alias{head}
-\alias{head,vegtable-method}
-\alias{head<-}
-\alias{head<-,vegtable,data.frame-method}
+\alias{header}
+\alias{header,vegtable-method}
+\alias{header<-}
+\alias{header<-,vegtable,data.frame-method}
 \alias{[,vegtable-method}
 \alias{[,vegtable,ANY,ANY,ANY-method}
 \alias{[<-}
@@ -12,26 +12,26 @@
 \alias{$<-}
 \alias{$<-,vegtable-method}
 
-\title{Access to and Replacement of Slot head in vegtable Objects.}
+\title{Access to and Replacement of Slot header in vegtable Objects.}
 \description{
-Methods for quick access to slot \code{'head'} of
+Methods for quick access to slot \code{'header'} of
 \code{\link[=vegtable-class]{vegtable}} objects.
 Also replacement methods are implemented.
 }
 \usage{
-\S4method{head}{vegtable}(x, ...)
+\S4method{header}{vegtable}(x, ...)
 
 \S4method{$}{vegtable}(x, name)
 
 \S4method{[}{vegtable}(x, i, j, ..., drop=FALSE)
 
-head(x) <- value
+header(x) <- value
 x$i <- value
 x[i,j] <- value
 }
 \arguments{
 \item{x}{Object of class \code{vegtable}.}
-\item{value}{Data frame to be set as slot \code{'head'}.}
+\item{value}{Data frame to be set as slot \code{'header'}.}
 \item{...}{Further arguments passed to or from other methods.}
 \item{name}{A name to access.}
 \item{i,j}{Indices for access.}

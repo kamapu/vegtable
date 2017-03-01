@@ -94,7 +94,7 @@ summary(Juniperus)
 ```
 
 Note that the access is done as in a `data.frame` object.
-Herewith the indexes in the square brackets will be referred to the slot `head`
+Herewith the indexes in the square brackets will be referred to the slot `header`
 in the `vegtable` object.
 
 For geo-referenced plots, there is an option for a quick display on

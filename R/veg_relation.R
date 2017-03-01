@@ -24,18 +24,18 @@ setReplaceMethod("veg_relation", signature(vegtable="vegtable",
         function(vegtable, relation, value) {
             # First the pre-tests
             VAR <- colnames(value)[1]
-            if(!VAR %in% colnames(vegtable@head))
-                stop("The first column in 'value' is not present in slot 'head'")
-            if(sum(VAR %in% colnames(vegtable@head)) > 1)
-                stop("The target variable has duplicates in 'head'")
+            if(!VAR %in% colnames(vegtable@header))
+                stop("The first column in 'value' is not present in slot 'header'")
+            if(sum(VAR %in% colnames(vegtable@header)) > 1)
+                stop("The target variable has duplicates in 'header'")
             if(any(duplicated(paste(value[,VAR]))))
                 stop("The new popup contains duplicated levels", call.=FALSE)
-            Var1 <- unique(paste(vegtable@head[,VAR]))
+            Var1 <- unique(paste(vegtable@header[,VAR]))
             Var1 <- Var1[!is.na(Var1)]
             Var2 <- paste(value[,VAR])
             all(Var1 %in% Var2)
             # Factorize
-            vegtable@head[,VAR] <- factor(paste(vegtable@head[,VAR]),
+            vegtable@header[,VAR] <- factor(paste(vegtable@header[,VAR]),
                     levels=paste(value[,VAR]))
             value[,VAR] <- factor(paste(value[,VAR]), levels=paste(value[,VAR]))
             vegtable@relations[[relation]] <- value

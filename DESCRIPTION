@@ -25,10 +25,11 @@ License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtables
 BugReports: https://github.com/kamapu/vegtables/issues
 Collate: 'NULLing.R''vegtable-class.R'
-	'summary.R''vegtable_stat.R'
+	'summary.R''vegtable_stat.R''df2vegtable.R'
 	'vegtable-methods.R'
 	'subset.R'
-	'popup.R'
-	'import_coverconvert.R''import_vegtable.R'
-	'crosstable.R''write_juice''vegtable2kml.R'
+	'veg_relation.R'
+	'import_coverconvert.R''tv2vegtable.R'
+	'header.R'
+	'crosstable.R''write_juice.R''vegtable2kml.R'
 	'StartMessage.R'

@@ -2,7 +2,7 @@
 \docType{methods}
 \alias{subset}
 \alias{subset_by_species}
-\alias{subset_by_head}
+\alias{subset_by_header}
 \alias{subset_by_popup}
 
 \title{Subset Functions for 'vegtable' Objects.}
@@ -12,7 +12,7 @@ by plots, species or relations.
 }
 \usage{
 subset_by_species(vegtable, ...)
-subset_by_head(vegtable, ...)
+subset_by_header(vegtable, ...)
 subset_by_popup(vegtable, popup, ...)
 # subset_by_syntax
 }
@@ -31,7 +31,7 @@ which are the main slots in that class.
 In \code{subset_by_species}, arguments in \code{...} are passed to
 \code{\link[=subset,taxlist-method]{subset}} method for objects of class
 \code{\link[=taxlist-class]{taxlist}}.
-Superfluous information will be deleted from the slots \code{head} and
+Superfluous information will be deleted from the slots \code{header} and
 \code{popus} as well.
 }
 \value{

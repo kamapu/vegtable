@@ -14,7 +14,7 @@ import_coverconvert(file, as.is=TRUE)
 \item{as.is}{A logical value passed to \code{\link{read.dbf}}}
 }
 \details{
-This function is used internally by \code{\link{import_vegtable}}.
+This function is used internally by \code{\link{tv2vegtable}}.
 Short and long names of each cover scale will be added as attribute.
 }
 \value{
