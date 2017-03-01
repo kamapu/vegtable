@@ -13,12 +13,12 @@ Such variables will be converted into factors in the slot \code{header} of
 \code{'vegtable'} objects.
 }
 \usage{
-\S4method{veg_relation}{vegtable,character}(vegtable, veg_relation, ...)
-veg_relation(vegtable, veg_relation) <- value
+\S4method{veg_relation}{vegtable,character}(vegtable, relation, ...)
+veg_relation(vegtable, relation) <- value
 }
 \arguments{
-\item{vegtable}{An object of class \code{\link[=vegtable-class]{vegtable}}.}
-\item{veg_relation}{A character value indicating the veg_relation to be retrieved or
+\item{vegtable}{An object of class \code{\linkS4class{vegtable}}.}
+\item{relation}{A character value indicating the veg_relation to be retrieved or
 	replaced.}
 \item{value}{A data frame containing the new veg_relation.}
 \item{...}{Further arguments to be passed among methods.}

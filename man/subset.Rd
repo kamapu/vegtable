@@ -1,9 +1,7 @@
 \name{subset}
 \docType{methods}
 \alias{subset}
-\alias{subset_by_species}
-\alias{subset_by_header}
-\alias{subset_by_popup}
+\alias{subset,vegtable-method}
 
 \title{Subset Functions for 'vegtable' Objects.}
 \description{
@@ -11,16 +9,13 @@ A subset of \code{\link[=vegtable-class]{vegtable}} objects will be done either
 by plots, species or relations.
 }
 \usage{
-subset_by_species(vegtable, ...)
-subset_by_header(vegtable, ...)
-subset_by_popup(vegtable, popup, ...)
-# subset_by_syntax
+subset(x, subset, slot="header", ...)
 }
 \arguments{
-\item{vegtable}{Object of class \code{\link[=vegtable-class]{vegtable}}.}
-\item{popup}{A character vector indicating the popup list used for subset.}
-\item{...}{Further arguments to be passed to or from other methods (see
-	details).}
+\item{x}{a \code{\linkS4class{vegtable}} object for subset.}
+\item{subset}{logical vector or operation for subset.}
+\item{slot}{slot to be applied for subset.}
+\item{...}{further arguments passed from or to other methods.}
 }
 \details{
 This function generate subsets of \code{\link[=vegtable-class]{vegtable}}

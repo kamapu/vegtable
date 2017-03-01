@@ -24,16 +24,9 @@ setMethod("[", signature(x="vegtable"), function(x, i, j, ..., drop=FALSE) {
             if(is.logical(j)) i[is.na(j)] <- FALSE else j <- na.omit(j)
             x@header <- x@header[i,j,drop]
             # Subset on samples
-            x@samples <- x@samples[x@samples$RELEVE_NR %in% x@header$RELEVE_NR,]
+            x@samples <- x@samples[x@samples$ReleveID %in% x@header$ReleveID,]
             # Subset on species (same procedure as in import_vegtable)
-            .UsageIDs <- list(UsageIDs=unique(x@samples$TaxonUsageID))
-            attach(.UsageIDs)
-            x@species <- subset(x@species, TaxonUsageID %in% UsageIDs)
-            detach(.UsageIDs)
-            # Subset on relations
-            x@relations <- x@relations[sapply(sapply(x@relations, "colnames"), "[",
-                            1) %in% colnames(x@header)]
-            # Subset on syntax (not yet implemented)
+            x <- clean(x)
             # Output
             return(x)
         }

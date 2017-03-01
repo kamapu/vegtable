@@ -21,6 +21,7 @@ exportClasses(
 ## Export of methods
 exportMethods(
 	"[", "[<-", "$", "$<-",
+	clean,
 	crosstable,
 	df2vegtable,
 	header,"header<-",
