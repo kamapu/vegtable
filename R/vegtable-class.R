@@ -23,13 +23,24 @@ setClass("vegtable", slots=c(
                 relations=list(),
 				coverconvert=NULL),
 		validity=function(object) {
-			if(!is.character(object@description))
-				return("slot 'description' should be a character vector")
-			if(!is.data.frame(object@samples))
-				return("slot 'samples' should be a data frame")
-			if(!is.data.frame(object@header))
-				return("slot 'header' should be a data frame")
-			if(!is.list(object@relations))
-				return("slot 'relations' should be a list")
+            # Mandatory names
+            if(!c("ReleveID","TaxonUsageID") %in% colnames(object@samples))
+                return("Columns 'ReleveID' and 'TaxonUsageID' is mandatory in slot 'samples'")
+            if(!"ReleveID" %in% colnames(object@header))
+                return("Column 'ReleveID' is mandatory in slot 'header'")
+            for(i in names(object@relations)) {
+                if(!i %in% colnames(object@header))
+                    return(paste0("Relation '", i, "' not included in slot 'header'"))
+                if(!i %in% colnames(object@relations[[i]]))
+                    return(paste0("Column '", i, "' is mandatory in relation '", i, "'"))
+            }
+            # Mandatory links
+            if(any(!unique(object@samples$ReleveID) %in% object@header$ReleveID))
+                return("Some releve IDs from slot 'samples' are missing in slot 'header'")
+            if(any(!object@samples$TaxonUsageID %in% object@species@taxonNames$TaxonConceptID))
+                return("Some taxon names are missing in slot 'species'")
+            # Other consistency tests
+            if(any(duplicated(object@header$ReleveID)))
+                return("Duplicated releve IDs are not allowed in slot 'header'")
         }
 )

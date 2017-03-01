@@ -22,21 +22,26 @@ This function should be applied to optimize the allocated size of a
 \code{\link[=taxlist-class]{taxlist}} object and to assure its validity.
 }
 \value{
-A clean \code{\link[=taxlist-class]{taxlist}} object.
+A clean \code{\linkS4class{taxlist}} object.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-library(taxlist)
-data(Easplist)
 \donttest{
-## Direct manipulation of slot taxonRelations generates an invalid object
-Easplist@taxonRelations <- Easplist@taxonRelations[1:5,]
-summary(Easplist)
-}
+library(vegtable)
+data(sweadataveg)
+
+## Direct manipulation of slot samples generates an invalid object
+sweadataveg@samples <- sweadataveg@samples[1:500,]
+summary(sweadataveg)
+
 ## Now apply cleaning
+sweadataveg <- clean(sweadataveg)
+summary(sweadataveg)
+
 Easplist <- clean(Easplist)
 summary(Easplist)
+}
 }
 \keyword{methods}
