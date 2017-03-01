@@ -2,17 +2,17 @@
 
 
 
-# vegtables
+# vegtable
 
-The aim of `vegtables` is to provide a way for handling databases stored in
+The aim of `vegtable` is to provide a way for handling databases stored in
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg).
 This package incorporates many concepts and some functions included in the
 package [vegdata](https://cran.r-project.org/package=vegdata)
-but the main difference is that `vegtables` implements an `S4` class
+but the main difference is that `vegtable` implements an `S4` class
 (`'vegtable'`) containing all elements of a database in just one object.
-`vegtables` also implement some methods for this kind of objects.
+`vegtable` also implement some methods for this kind of objects.
 
-You may also be aware, that species lists in `vegtables` are handled by the
+You may also be aware, that species lists in `vegtable` are handled by the
 package [taxlist](https://github.com/kamapu/taxlist), thus it will be
 recommendable to start looking at the `taxlist-manual`.
 
@@ -21,11 +21,11 @@ This package has been developed as a tool handling data stored in
 Further development is running in the context of the project
 [GlobE-wetlands](https://www.wetlands-africa.de/).
 
-An important source of inspiration for `vegtables` have been the enthusiastic
+An important source of inspiration for `vegtable` have been the enthusiastic
 discussions during several versions of the
 [Meetings on Vegetation Databases](http://www.hswt.de/person/joerg-ewald/vegetationsdatenbanken.html).
 
-## Updating to the last version of vegtables
+## Updating to the last version of vegtable
 The very first step is to install the package
 [devtools](https://github.com/hadley/devtools) and dependencies.
 Then you just need to execute following commands in your R-session:
@@ -33,17 +33,17 @@ Then you just need to execute following commands in your R-session:
 
 ```r
 library(devtools)
-install_github("kamapu/vegtables")
+install_github("kamapu/vegtable")
 ```
 
 ## Some examples
-The current version of `vegtables` includes an example data, which corresponds
+The current version of `vegtable` includes an example data, which corresponds
 to a subset from [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006).
 This data set contains plot observations done in Kenya imported from 5 sources.
 
 
 ```r
-library(vegtables)
+library(vegtable)
 data(sweadataveg)
 
 # validate and explore

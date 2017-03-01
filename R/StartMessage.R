@@ -4,7 +4,7 @@
 ################################################################################
 
 .onAttach <- function(lib, pkg)  {
-    packageStartupMessage("This is vegtables ",
-            utils::packageDescription("vegtables", field="Version"),
+    packageStartupMessage("This is vegtable ",
+            utils::packageDescription("vegtable", field="Version"),
             appendLF=TRUE)
 }

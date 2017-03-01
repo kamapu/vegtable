@@ -3,7 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-# Access to header "$" method ----------------------------------------------------
+# Access to header by "$"
 setMethod("$", signature(x="vegtable"), function(x, name) {
             return(x@header[[name]])
         }
@@ -15,7 +15,7 @@ setReplaceMethod("$", signature(x="vegtable"), function(x, name, value) {
         }
 )
 
-# Access to header "[" method ----------------------------------------------------
+# Access to header by "["
 setMethod("[", signature(x="vegtable"), function(x, i, j, ..., drop=FALSE) {
             if(missing(i)) i <- TRUE
             if(missing(j)) j <- TRUE

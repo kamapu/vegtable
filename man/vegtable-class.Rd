@@ -34,7 +34,7 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \code{\link{tv2vegtable}}.
 }
 \examples{
-library(vegtables)
+library(vegtable)
 
 showClass("vegtable")
 }

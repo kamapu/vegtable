@@ -15,4 +15,4 @@ sweadataveg <- subset_by_popup(sweadataveg, "tvrefenc", paste(REFERENCE) %in%
                 paste(c(5,6,7,9,12)))
 
 validObject(sweadataveg)
-save(sweadataveg, file="M:/WorkspaceEclipse/vegtables/data/sweadataveg.rda")
+save(sweadataveg, file="M:/WorkspaceEclipse/vegtable/data/sweadataveg.rda")

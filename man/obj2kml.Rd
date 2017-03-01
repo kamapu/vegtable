@@ -30,7 +30,7 @@ Precise this function.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-library(vegtables)
+library(vegtable)
 data(sweadataveg)
 
 ## Plots containing Podocarpus observations

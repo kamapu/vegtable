@@ -47,7 +47,7 @@ Reference of the database:
 \bold{Alvarez et al.} In preparation.
 }
 \examples{
-library(vegtables)
+library(vegtable)
 data(sweadataveg)
 summary(sweadataveg)
 }

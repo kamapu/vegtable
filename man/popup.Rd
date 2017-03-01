@@ -1,9 +1,9 @@
-\name{popup}
+\name{relations}
 \docType{methods}
-\alias{popup}
-\alias{popup,vegtable,character-method}
-\alias{popup<-}
-\alias{popup<-,vegtable,character,data.frame-method}
+\alias{relations}
+\alias{relations,vegtable,character-method}
+\alias{relations<-}
+\alias{relations<-,vegtable,character,data.frame-method}
 
 \title{Retrieve or Replace Popup Lists}
 \description{
@@ -13,18 +13,18 @@ Such variables will be converted into factors in the slot \code{header} of
 \code{'vegtable'} objects.
 }
 \usage{
-\S4method{popup}{vegtable,character}(vegtable, popup, ...)
-popup(vegtable, popup) <- value
+\S4method{relations}{vegtable,character}(vegtable, relations, ...)
+relations(vegtable, relations) <- value
 }
 \arguments{
 \item{vegtable}{An object of class \code{\link[=vegtable-class]{vegtable}}.}
-\item{popup}{A character value indicating the popup to be retrieved or
+\item{relations}{A character value indicating the relations to be retrieved or
 	replaced.}
-\item{value}{A data frame containing the new popup.}
+\item{value}{A data frame containing the new relations.}
 \item{...}{Further arguments to be passed among methods.}
 }
 \value{
-\code{popup} retrieves and object of class
+\code{relations} retrieves and object of class
 \code{\link[=data.frame-class]{data.frame}}.
 In the replacement method, an object of class
 \code{\link[=vegtable-class]{vegtable}} including \code{value} in the slot

@@ -38,7 +38,7 @@ An object of class \code{\link{data.frame}}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-library(vegtables)
+library(vegtable)
 data(sweadataveg)
 
 ## Only first 20 observations

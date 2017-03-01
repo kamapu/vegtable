@@ -53,8 +53,8 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \examples{
 \dontrun{
 ## Example using data 'elbaue' from package vegdata
-library(vegtables)
-Elbaue <- tv2vegtable("elbaue", file.path(path.package("vegtables"),
+library(vegtable)
+Elbaue <- tv2vegtable("elbaue", file.path(path.package("vegtable"),
 	"tvdata"))
 print(Elbaue)
 }
