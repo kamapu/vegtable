@@ -6,9 +6,9 @@
 # Method for 'vegtable' object
 setMethod("clean", signature(object="vegtable"),
         function(object, ...) {
-            # clean slot header
-            object@header <- object@header[object@header$ReleveID %in%
-                            object@samples$ReleveID,]
+            # clean slot samples
+            object@samples <- object@samples[object@samples$ReleveID %in%
+                            object@header$ReleveID,]
             # clean species
             UsageID <- unique(object@samples$TaxonUsageID)
             ConceptID <- unique(object@species@taxonNames[

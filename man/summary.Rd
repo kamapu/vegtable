@@ -9,10 +9,12 @@ Overview of \code{\link[=vegtable-class]{vegtable}} objects will be displayed
 in the R-console.
 }
 \usage{
-\S4method{summary}{vegtable}(object, ...)
+\S4method{summary}{vegtable}(object, units="Kb", ...)
 }
 \arguments{
 \item{object}{object of class \code{\link[=vegtable-class]{vegtable}}.}
+\item{units}{character value indicating the units shown in the object's
+	allocated space.}
 \item{...}{further arguments to be passed to or from other methods.}
 }
 \details{
@@ -26,5 +28,7 @@ Additionally an overview on the content of the slot \code{log} will be shown.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## A example may require an example data set
+library(vegtable)
+data(sweadataveg)
+summary(sweadataveg)
 }

@@ -10,8 +10,7 @@ import(
 
 ## Import of functions
 importFrom("stats", "aggregate", "na.omit", "terms")
-importFrom("utils", "write.table")
-
+importFrom("utils", "object.size", "write.table")
 
 ## Export of classes
 exportClasses(
