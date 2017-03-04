@@ -18,13 +18,13 @@ setMethod("write_juice", signature(data="vegtable", file="character",
             nr.plots <- nrow(data@header)
             # header
             header.in <- header
-            if(attr(terms(formula), "term.labels")[1] != "RELEVE_NR")
-                stop("'RELEVE_NR' is mandatory as first term of formula")
+            if(attr(terms(formula), "term.labels")[1] != "ReleveID")
+                stop("'ReleveID' is mandatory as first term of formula")
             if(length(coords) == 2) {
                 header <- c(header, coords)
                 header.in <- c(header.in, c("deg_lon","deg_lat"))
             }
-            header <- c("RELEVE_NR", header)
+            header <- c("ReleveID", header)
             if(!all(header %in% colnames(data@header)))
                 stop("some requested headers are not included in 'data'")
             header <- data@header[,header]

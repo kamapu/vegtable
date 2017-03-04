@@ -47,21 +47,21 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
                     "TVSCALE.DBF")]
     relations <- list()
     for(i in Files) {
-        relations[[i]] <- read.dbf(file.path(relations_path, i), as.is=TRUE)
+        relations[[tolower(i)]] <- read.dbf(file.path(relations_path, i), as.is=TRUE)
     }
-    names(relations) <- sub(".dbf", "", tolower(names(relations)))
     # some changes are needed in the standard relations
-    colnames(relations$country)[1:2] <- c("COUNTRY","COUNTRY_NAME")
-    colnames(relations$syntaxa)[1:2] <- c("SYNTAXON","SYNTAXON_NAME")
-    colnames(relations$tvauthor)[1] <- c("AUTHOR")
+    colnames(relations$country.dbf)[1:2] <- c("COUNTRY","COUNTRY_NAME")
+    colnames(relations$syntaxa.dbf)[1:2] <- c("SYNTAXON","SYNTAXON_NAME")
+    colnames(relations$tvauthor.dbf)[1] <- c("AUTHOR")
     # Next cases have to be reformatted
-    relations$tvauthor[,1] <- as.integer(relations$tvauthor[,1])
-    relations$tvprojct[,1] <- as.integer(relations$tvprojct[,1])
-    relations$tvrefenc[,1] <- as.integer(relations$tvrefenc[,1])
-    relations$syntaxa[,1] <- as.integer(relations$syntaxa[,1])
+    relations$tvauthor.dbf[,1] <- as.integer(relations$tvauthor.dbf[,1])
+    relations$tvprojct.dbf[,1] <- as.integer(relations$tvprojct.dbf[,1])
+    relations$tvrefenc.dbf[,1] <- as.integer(relations$tvrefenc.dbf[,1])
+    relations$syntaxa.dbf[,1] <- as.integer(relations$syntaxa.dbf[,1])
     # Deleting empty relations
 	if(skip_empty_relations) relations <- relations[sapply(relations, nrow) > 0]
-    
+    # Rename relations as first column
+    names(relations) <- sapply(sapply(relations, colnames), "[", 1)
     # Adding tails in remarks
 	remarks <- read.dbf(file.path(tv_home, "Data", db, "remarks.dbf"),
 			as.is=TRUE)
@@ -93,7 +93,7 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
             header=header,
             species=tv2taxlist(description["sp_list"], tv_home),
             coverconvert=coverconvert)
-    # Popus to vegtable
+    # Relations to vegtable
     for(i in names(relations)) {
         if(colnames(relations[[i]])[1] %in% colnames(VEG@header))
             veg_relation(VEG, i) <- relations[[i]]
