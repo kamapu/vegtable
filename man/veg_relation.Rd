@@ -33,5 +33,9 @@ In the replacement method, an object of class
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example for this function
+library(vegtable)
+data(Kenya_veg)
+
+## overview of references
+veg_relation(Kenya_veg, "REFERENCE")
 }

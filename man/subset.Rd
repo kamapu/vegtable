@@ -38,18 +38,10 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \seealso{\code{\link{substitute}}}
 \examples{
 library(vegtable)
-library(vegan)
-
-## dune as vegtable
-data(dune)
-data(dune.env)
-dune <- data.frame(species=colnames(dune), t(dune), stringsAsFactors=FALSE,
-	check.names=FALSE)
-dune <- df2vegtable(dune, species=1)
-dune.env$ReleveID <- rownames(dune.env)
-header(dune) <- dune.env
+data(dune_veg)
+summary(dune_veg)
 
 ## Select plots used as pastures
-Pastures <- subset(dune, Use == "Pasture")
+Pastures <- subset(dune_veg, Use == "Pasture")
 summary(Pastures)
 }

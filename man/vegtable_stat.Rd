@@ -12,7 +12,7 @@ required by GIVD (Global Index of Vegetation-Plot Databases,
 vegtable_stat(vegtable)
 }
 \arguments{
-\item{vegtable}{an object of class \code{\link[=vegtable-class]{vegtable}}.}
+\item{vegtable}{an object of class \code{\linkS4class{vegtable}}.}
 }
 \details{
 This function is based on a script delivered by GIVD for
@@ -23,5 +23,9 @@ in the page of the Global Index for Vegetation-Plot Databases).
 GIVD. Adapted by Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Same example as in 'Africa_veg' data
+library(vegtable)
+data(Kenya_veg)
+
+## Statistics for GIVD
+vegtable_stat(Kenya_veg)
 }

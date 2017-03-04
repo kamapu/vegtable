@@ -31,22 +31,25 @@ A \code{\linkS4class{vegtable} object}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
+## Creating data set 'dune_veg'
 library(vegtable)
 library(vegan)
 
-## Importing and formatting data dune
+## Load data from vegan
 data(dune)
-dune <- data.frame(species=colnames(dune), t(dune), stringsAsFactors=FALSE,
-	check.names=FALSE)
-
-## Conversion
-dune <- df2vegtable(dune, species=1)
-summary(dune)
-
-## Add environmental variables
 data(dune.env)
-dune.env$ReleveID <- rownames(dune.env)
-header(dune) <- dune.env
-summary(dune)
+
+## Conversion to vegtable
+dune_veg <- data.frame(species=colnames(dune), t(dune), stringsAsFactors=FALSE,
+        check.names=FALSE)
+dune_veg <- df2vegtable(dune_veg, species=1)
+
+summary(dune_veg)
+
+## Adding environmental variables
+dune.env$ReleveID <- as.integer(rownames(dune.env))
+header(dune_veg) <- dune.env
+
+summary(dune_veg)
 }
 \keyword{methods}

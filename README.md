@@ -8,13 +8,13 @@ The aim of `vegtable` is to provide a way for handling databases stored in
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg).
 This package incorporates many concepts and some functions included in the
 package [vegdata](https://cran.r-project.org/package=vegdata)
-but the main difference is that `vegtable` implements an `S4` class
-(`'vegtable'`) containing all elements of a database in just one object.
-`vegtable` also implement some methods for this kind of objects.
+but defining an homonymous `S4` class containing all elements of a database in
+just one object.
+The package `vegtable` also contains several methods for this object class.
 
-You may also be aware, that species lists in `vegtable` are handled by the
-package [taxlist](https://github.com/kamapu/taxlist), thus it will be
-recommendable to start looking at the `taxlist-manual`.
+Species lists in `vegtable` objects are handled by the package
+[taxlist](https://github.com/kamapu/taxlist), thus I will recommend to take a
+look on it.
 
 This package has been developed as a tool handling data stored in
 [SWEA-Dataveg](http://www.givd.info/ID/AF-00-006).
@@ -50,21 +50,22 @@ data(Kenya_veg)
 validObject(Kenya_veg)
 #> [1] TRUE
 summary(Kenya_veg)
-#> db.name: Kenya_veg
-#> sp.list: Easplist
+#> ## Metadata 
+#> db_name: Sweadataveg
+#> sp_list: Easplist
 #> dictionary: Swea
+#> object size: 9898.7 Kb 
+#> validity: TRUE 
 #> 
-#> 1946 observations (plots).
-#> 60 variables with records.
+#> ## Content 
+#> number of plots: 1946 
+#> variables in header: 60 
+#> number of relations: 4 
 #> 
-#> Summary of species list:
-#> 2230 names for 1573 taxa 
-#> 0 (0%) taxa with first name entries
-#> 2 variables for taxon traits 
-#> 1 taxon view(s) 
-#> validation for class 'taxlist': TRUE 
-#> 
-#> validation for class 'vegtable': TRUE
+#> ## Species List 
+#> taxon names: 3083 
+#> taxon concepts: 2426 
+#> validity: TRUE
 ```
 
 Among others, the object contains plot observations done in the Aberdare
@@ -74,28 +75,25 @@ the *Juniperus procera*-*Podocarpus latifolius* community (IDs 780 to 798).
 
 
 ```r
-Juniperus <- Kenya_veg[paste(780:798),]
-summary(Juniperus)
-#> db.name: Kenya_veg
-#> sp.list: Easplist
+JPcomm <- subset(Kenya_veg, ReleveID %in% c(780:798))
+summary(JPcomm)
+#> ## Metadata 
+#> db_name: Sweadataveg
+#> sp_list: Easplist
 #> dictionary: Swea
+#> object size: 220.7 Kb 
+#> validity: TRUE 
 #> 
-#> 19 observations (plots).
-#> 60 variables with records.
+#> ## Content 
+#> number of plots: 19 
+#> variables in header: 60 
+#> number of relations: 4 
 #> 
-#> Summary of species list:
-#> 200 names for 149 taxa 
-#> 0 (0%) taxa with first name entries
-#> 2 variables for taxon traits 
-#> 1 taxon view(s) 
-#> validation for class 'taxlist': TRUE 
-#> 
-#> validation for class 'vegtable': TRUE
+#> ## Species List 
+#> taxon names: 200 
+#> taxon concepts: 149 
+#> validity: TRUE
 ```
-
-Note that the access is done as in a `data.frame` object.
-Herewith the indexes in the square brackets will be referred to the slot `header`
-in the `vegtable` object.
 
 For geo-referenced plots, there is an option for a quick display on
 [Google Earth](https://www.google.com/earth).
@@ -103,7 +101,7 @@ You may then apply following command:
 
 
 ```r
-vegtable2kml(Juniperus, "Juniperus.kml")
+vegtable2kml(JPcomm, "JPcomm.kml")
 ```
 
 Then you may get a map like this:

@@ -18,7 +18,7 @@ vegtable_stat <- function(vegtable) {
 	}
 	# Area statistics
 	if(!is.null(vegtable$SURF_AREA)) {
-		cat("AREA", "\n")
+		cat("## AREA", "\n")
 		area <- vegtable$SURF_AREA
 		cat("Area range (m^2): ", min(area, na.rm=TRUE), " - ", max(area,
 						na.rm=TRUE), sep="", "\n")
@@ -45,7 +45,7 @@ vegtable_stat <- function(vegtable) {
 	}
 	# Time statistics
 	if(!is.null(vegtable$DATE)) {
-		cat("TIME", "\n")
+		cat("## TIME", "\n")
 		years <- format(vegtable$DATE, "%Y")
 		cat("oldest: ", min(years, na.rm=TRUE), " - youngest: ", max(years,
 						na.rm=TRUE), sep="", "\n")
@@ -88,7 +88,7 @@ vegtable_stat <- function(vegtable) {
 	}
 	# Country
 	if(!is.null(vegtable$COUNTRY)) {
-		cat("DISTRIBUTION", "\n")
+		cat("## DISTRIBUTION", "\n")
         countries <- summary(factor(vegtable$COUNTRY), maxsum=1000)
 		for(i in names(countries)) {
 			cat(i, ": ", round(countries[i]/nrow(vegtable)*100), "%", sep="",
@@ -98,7 +98,7 @@ vegtable_stat <- function(vegtable) {
 	}
 	# Performance
 	if(!is.null(vegtable$COVERSCALE)) {
-		cat("PERFORMANCE", "\n")
+		cat("## PERFORMANCE", "\n")
 		covscale <- summary(as.factor(vegtable$COVERSCALE))
 		for(i in names(covscale)) {
 			cat(i, ": ", round(covscale[i]/nrow(vegtable)*100), "%", sep="",

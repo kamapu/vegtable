@@ -34,6 +34,11 @@ library(vegtable)
 data(Kenya_veg)
 
 ## Plots containing Podocarpus observations
-Kenya_veg <- subset_by_species(Kenya_veg, Traits=GENUS == "Podocarpus")
+Kenya_veg@species <- subset(Kenya_veg@species, grepl("Podocarpus", TaxonName),
+	slot="names")
+	
+Kenya_veg <- subset(Kenya_veg, TaxonUsageID \%in\%
+	Kenya_veg@species@taxonNames$TaxonUsageID, slot="samples")
+
 \dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
 }
