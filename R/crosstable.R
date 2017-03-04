@@ -53,15 +53,20 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
 # Method for vegtable objects
 setMethod("crosstable", signature(formula="formula", data="vegtable"),
         function(formula, data, FUN, na_to_zero=FALSE, ...) {
-            species <- data@species
-            data <- merge(merge(data@samples, species@taxonNames),
-                    species@taxonTraits)
-            data$AcceptedName <- species@taxonRelations[
-                    match(data$TaxonConceptID,
-                            species@taxonRelations$TaxonConceptID),
+            data@samples <- merge(data@samples, data@species@taxonNames)
+            if(nrow(data@species@taxonTraits) > 0)
+                for(i in colnames(data@species@taxonTraits)) {
+                    data@samples[,i] <- data@species@taxonTraits[match(
+                                    data@samples$TaxonConceptID,
+                                    data@species@taxonTraits$TaxonConceptID),i]
+                }
+            data@samples$AcceptedName <- data@species@taxonRelations[
+                    match(data@samples$TaxonConceptID,
+                            data@species@taxonRelations$TaxonConceptID),
                     "AcceptedName"]
-            data$AcceptedName <- species@taxonNames[match(data$AcceptedName,
-                            species@taxonNames$TaxonUsageID),"TaxonName"]
-            crosstable(formula, data, FUN, na_to_zero, ...)
+            data@samples$AcceptedName <- data@species@taxonNames[
+                    match(data@samples$AcceptedName,
+                            data@species@taxonNames$TaxonUsageID),"TaxonName"]
+            crosstable(formula, data@samples, FUN, na_to_zero, ...)
         }
 )

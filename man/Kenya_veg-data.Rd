@@ -1,7 +1,7 @@
-\name{sweadataveg-data}
+\name{Kenya_veg-data}
 \docType{data}
-\alias{sweadataveg-data}
-\alias{sweadataveg}
+\alias{Kenya_veg-data}
+\alias{Kenya_veg}
 
 \title{Vegetation-Plots from Kenya.}
 \description{
@@ -9,7 +9,7 @@ A subset of \href{http://www.givd.info/ID/AF-00-006}{SWEA-Dataveg} including
 five references providing plots collected in Kenya.
 }
 \usage{
-data(sweadataveg)
+data(Kenya_veg)
 }
 \format{
 An object of class \code{\linkS4class{vegtable}}.
@@ -48,7 +48,7 @@ Reference of the database:
 }
 \examples{
 library(vegtable)
-data(sweadataveg)
-summary(sweadataveg)
+data(Kenya_veg)
+summary(Kenya_veg)
 }
 \keyword{datasets}

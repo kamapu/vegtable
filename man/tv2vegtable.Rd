@@ -51,12 +51,4 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \code{\link[taxlist]{tv2taxlist}}, code{\link{import_coverconvert}},
 \code{\link[vegdata]{tv.home}}.
 }
-\examples{
-\dontrun{
-## Example using data 'elbaue' from package vegdata
-library(vegtable)
-Elbaue <- tv2vegtable("elbaue", file.path(path.package("vegtable"),
-	"tvdata"))
-print(Elbaue)
-}
-}
+

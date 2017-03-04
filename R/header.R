@@ -23,11 +23,12 @@ setGeneric("header<-", function(x, value)
 # Replacement method
 setReplaceMethod("header", signature(x="vegtable", value="data.frame"),
         function(x, value) {
-            rownames(value) <- paste(value$ReleveID)
-            if(!all(x@samples$RELEVE_NR %in% value$ReleveID))
-                stop("Some plots are missing in 'value'")
-            x@header <- value[value$RELEVE_NR %in% x@samples$ReleveID,]
-            # Popups?
+            if(!"ReleveID" %in% colnames(value))
+                stop("Column 'ReleveID' is mandatory in 'value'")
+            for(i in colnames(value)) {
+                x@header[,i] <- value[match(x@header$ReleveID, value$ReleveID),
+                        i]
+            }
             return(x)
         }
 )

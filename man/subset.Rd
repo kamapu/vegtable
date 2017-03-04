@@ -5,7 +5,7 @@
 
 \title{Subset Functions for 'vegtable' Objects.}
 \description{
-A subset of \code{\link[=vegtable-class]{vegtable}} objects will be done either
+A subset of \code{\linkS4class{vegtable}} objects will be done either
 by plots, species or relations.
 }
 \usage{
@@ -25,9 +25,9 @@ which are the main slots in that class.
 
 In \code{subset_by_species}, arguments in \code{...} are passed to
 \code{\link[=subset,taxlist-method]{subset}} method for objects of class
-\code{\link[=taxlist-class]{taxlist}}.
+\code{\linkS4class{taxlist}}.
 Superfluous information will be deleted from the slots \code{header} and
-\code{popus} as well.
+\code{relations} as well.
 }
 \value{
 A S4 object of class \code{\link[=vegtable-class]{vegtable}}.
@@ -37,5 +37,19 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{\code{\link{substitute}}}
 \examples{
-## Examples are comming soon
+library(vegtable)
+library(vegan)
+
+## dune as vegtable
+data(dune)
+data(dune.env)
+dune <- data.frame(species=colnames(dune), t(dune), stringsAsFactors=FALSE,
+	check.names=FALSE)
+dune <- df2vegtable(dune, species=1)
+dune.env$ReleveID <- rownames(dune.env)
+header(dune) <- dune.env
+
+## Select plots used as pastures
+Pastures <- subset(dune, Use == "Pasture")
+summary(Pastures)
 }

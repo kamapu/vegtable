@@ -27,6 +27,3 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \seealso{
 \code{\link{tv2vegtable}}, \code{\link{read.dbf}}.
 }
-\examples{
-## Add example for this function
-}

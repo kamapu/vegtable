@@ -35,7 +35,8 @@ setMethod("df2vegtable", signature(x="data.frame"),
                                     Layer=Layer,
                                     TaxonUsageID=TaxonUsageID,
                                     Cover=Cover,
-                                    stringsAsFactors=FALSE)[!is.na(Cover),],
+                                    stringsAsFactors=FALSE)[!is.na(Cover) &
+                                            Cover > 0,],
                             header=data.frame(
                                     ReleveID=unique(as.integer(ReleveID))),
                             species=taxlist)

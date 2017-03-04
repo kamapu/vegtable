@@ -41,11 +41,11 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-data(sweadataveg)
+data(Kenya_veg)
 
 ## Only first 20 observations
-sweadataveg <- sweadataveg[1:20,]
+Kenya_veg <- Kenya_veg[1:20,]
 \dontrun{
-write_juice(sweadataveg, "SWEA", FUN=mean)
+write_juice(Kenya_veg, "SWEA", FUN=mean)
 }
 }

@@ -31,9 +31,9 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-data(sweadataveg)
+data(Kenya_veg)
 
 ## Plots containing Podocarpus observations
-sweadataveg <- subset_by_species(sweadataveg, Traits=GENUS == "Podocarpus")
-\dontrun{vegtable2kml(sweadataveg, "Podocarpus.kml")}
+Kenya_veg <- subset_by_species(Kenya_veg, Traits=GENUS == "Podocarpus")
+\dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
 }

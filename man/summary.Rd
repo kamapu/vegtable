@@ -5,7 +5,7 @@
 
 \title{Summary Method for 'vegtable' Objects.}
 \description{
-Overview of \code{\link[=vegtable-class]{vegtable}} objects will be displayed
+Overview of \code{\linkS4class{vegtable}} objects will be displayed
 in the R-console.
 }
 \usage{
@@ -19,7 +19,7 @@ in the R-console.
 }
 \details{
 This function return a quick overview about the amount of data included in the
-respective \code{\link[=vegtable-class]{vegtable}} object.
+respective \code{\linkS4class{vegtable}} object.
 Such information includes number of plots, number of species and number of
 variables.
 Additionally an overview on the content of the slot \code{log} will be shown.
@@ -29,6 +29,6 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-data(sweadataveg)
-summary(sweadataveg)
+data(Kenya_veg)
+summary(Kenya_veg)
 }

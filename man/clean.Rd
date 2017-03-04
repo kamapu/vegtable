@@ -30,15 +30,15 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \examples{
 \donttest{
 library(vegtable)
-data(sweadataveg)
+data(Kenya_veg)
 
 ## Direct manipulation of slot header generates an invalid object
-sweadataveg@header <- sweadataveg@header[1:50,]
-summary(sweadataveg)
+Kenya_veg@header <- Kenya_veg@header[1:50,]
+summary(Kenya_veg)
 
 ## Now apply cleaning
-sweadataveg <- clean(sweadataveg)
-summary(sweadataveg)
+Kenya_veg <- clean(Kenya_veg)
+summary(Kenya_veg)
 }
 }
 \keyword{methods}

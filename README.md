@@ -44,13 +44,13 @@ This data set contains plot observations done in Kenya imported from 5 sources.
 
 ```r
 library(vegtable)
-data(sweadataveg)
+data(Kenya_veg)
 
 # validate and explore
-validObject(sweadataveg)
+validObject(Kenya_veg)
 #> [1] TRUE
-summary(sweadataveg)
-#> db.name: Sweadataveg
+summary(Kenya_veg)
+#> db.name: Kenya_veg
 #> sp.list: Easplist
 #> dictionary: Swea
 #> 
@@ -74,9 +74,9 @@ the *Juniperus procera*-*Podocarpus latifolius* community (IDs 780 to 798).
 
 
 ```r
-Juniperus <- sweadataveg[paste(780:798),]
+Juniperus <- Kenya_veg[paste(780:798),]
 summary(Juniperus)
-#> db.name: Sweadataveg
+#> db.name: Kenya_veg
 #> sp.list: Easplist
 #> dictionary: Swea
 #> 

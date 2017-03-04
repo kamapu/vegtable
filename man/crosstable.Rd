@@ -39,18 +39,16 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-data(sweadataveg)
+data(Kenya_veg)
 
-## Only first 20 observations
-sweadataveg <- sweadataveg[1:20,]
+## Only first 10 plot records
+Kenya_veg <- Kenya_veg[1:20,]
 
 ## Cross table of species versus plots
-crosstable(COVER_PERC ~ RELEVE_NR + AcceptedName, sweadataveg, max, na_to_zero=TRUE)
+crosstable(COVER_PERC ~ ReleveID + AcceptedName, Kenya_veg, max,
+	na_to_zero=TRUE)
 
-## In the case that author names and layers are desired
-crosstable(COVER_PERC ~ RELEVE_NR + AcceptedName + AuthorName + LAYER,
-	sweadataveg, max, na_to_zero=TRUE)
-
-## Total cover of families per plot
-crosstable(COVER_PERC ~ RELEVE_NR + FAMILY, sweadataveg, sum, na_to_zero=TRUE)
+## In the case that also layers are desired
+crosstable(COVER_PERC ~ ReleveID + AcceptedName + LAYER, Kenya_veg, max,
+	na_to_zero=TRUE)
 }

@@ -31,6 +31,22 @@ A \code{\linkS4class{vegtable} object}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add an example
+library(vegtable)
+library(vegan)
+
+## Importing and formatting data dune
+data(dune)
+dune <- data.frame(species=colnames(dune), t(dune), stringsAsFactors=FALSE,
+	check.names=FALSE)
+
+## Conversion
+dune <- df2vegtable(dune, species=1)
+summary(dune)
+
+## Add environmental variables
+data(dune.env)
+dune.env$ReleveID <- rownames(dune.env)
+header(dune) <- dune.env
+summary(dune)
 }
 \keyword{methods}
