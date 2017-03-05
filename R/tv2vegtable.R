@@ -3,7 +3,12 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
+tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
+        output="vegtable") {
+    # Check argument output
+    output <- grep(output[1], c("vegtable","list"), ignore.case=TRUE)
+    if(length(output) == 0)
+        stop("Invalid value for argument 'output'")
     # Empty object
     description <- unlist(c(db, read.dbf(file.path(tv_home, "Data", db,
                                     "tvwin.dbf"), as.is=TRUE)[,c("FLORA",
@@ -87,12 +92,20 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE) {
     samples$CoverPercent <- cover_trans[match(samples$ReleveID,
                     cover_trans$ReleveID),"CoverPercent"]
     # Final object
-    VEG <- new("vegtable",
-            description=description,
-            samples=samples,
-            header=header,
-            species=tv2taxlist(description["sp_list"], tv_home),
-            coverconvert=coverconvert)
+    if(output == 1)
+        VEG <- new("vegtable",
+                description=description,
+                samples=samples,
+                header=header,
+                species=tv2taxlist(description["sp_list"], tv_home),
+                coverconvert=coverconvert)
+    else
+        VEG <- list(
+                description=description,
+                samples=samples,
+                header=header,
+                species=tv2taxlist(description["sp_list"], tv_home),
+                coverconvert=coverconvert)
     # Relations to vegtable
     for(i in names(relations)) {
         if(colnames(relations[[i]])[1] %in% colnames(VEG@header))

@@ -7,13 +7,14 @@
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE)
+tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, output="vegtable")
 }
 \arguments{
 \item{db}{Name of Turboveg data base as character value.}
 \item{tv_home}{Turboveg installation path as character value.}
 \item{skip_empty_relations}{Logical value indicating wether empty relations may be
 	excluded from imported database or not.}
+\item{output}{character value indicating the class of the output.}
 }
 \details{
 Import routine for Turboveg databases into an object of class
