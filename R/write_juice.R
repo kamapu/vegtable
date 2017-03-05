@@ -10,11 +10,11 @@ setGeneric("write_juice", function(data, file, formula, ...)
 # Method for data frames
 setMethod("write_juice", signature(data="vegtable", file="character",
                 formula="formula"),
-        function(data, file, formula=COVER_PERC ~ RELEVE_NR + AcceptedName +
+        function(data, file, formula=CoverPercent ~ ReleveID + AcceptedName +
                         LAYER, header=c("COUNTRY","REFERENCE"),
                 coords=c("LONGITUDE","LATITUDE"), FUN, ...) {
             # some attributes
-            db.name <- data@description["db.name"]
+            db_name <- data@description["db_name"]
             nr.plots <- nrow(data@header)
             # header
             header.in <- header
@@ -37,10 +37,11 @@ setMethod("write_juice", signature(data="vegtable", file="character",
                     col.names=FALSE, sep=",", na="", append=TRUE)
             # table
             data <- crosstable(formula, data, FUN, ...)
+            
             colnames(data)[1:(length(attr(terms(formula),
                                                 "term.labels")) - 1)] <- ""
             # write table
-            write.table(rbind(db.name, paste("Number of releves:", nr.plots),
+            write.table(rbind(db_name, paste("Number of releves:", nr.plots),
                             ""), paste(file, "table.txt", sep="_"), quote=FALSE,
                     row.names=FALSE, col.names=FALSE)
             suppressWarnings(write.table(data, paste(file, "table.txt",

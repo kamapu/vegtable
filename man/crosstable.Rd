@@ -45,10 +45,10 @@ data(Kenya_veg)
 Kenya_veg <- Kenya_veg[1:20,]
 
 ## Cross table of species versus plots
-crosstable(COVER_PERC ~ ReleveID + AcceptedName, Kenya_veg, max,
+crosstable(CoverPercent ~ ReleveID + AcceptedName, Kenya_veg, max,
 	na_to_zero=TRUE)
 
 ## In the case that also layers are desired
-crosstable(COVER_PERC ~ ReleveID + AcceptedName + LAYER, Kenya_veg, max,
+crosstable(CoverPercent ~ ReleveID + AcceptedName + LAYER, Kenya_veg, max,
 	na_to_zero=TRUE)
 }
