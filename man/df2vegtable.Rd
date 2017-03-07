@@ -1,7 +1,8 @@
 \name{df2vegtable}
 \docType{methods}
 \alias{df2vegtable}
-\alias{df2vegtable,data.frame-method}
+\alias{df2vegtable,data.frame,numeric,numeric-method}
+\alias{df2vegtable,data.frame,numeric,missing-method}
 
 \title{Convert a data frame into a vegtable object.}
 \description{

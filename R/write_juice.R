@@ -10,8 +10,7 @@ setGeneric("write_juice", function(data, file, formula, ...)
 # Method for data frames
 setMethod("write_juice", signature(data="vegtable", file="character",
                 formula="formula"),
-        function(data, file, formula=CoverPercent ~ ReleveID + AcceptedName +
-                        LAYER, header=c("COUNTRY","REFERENCE"),
+        function(data, file, formula, header=c("COUNTRY","REFERENCE"),
                 coords=c("LONGITUDE","LATITUDE"), FUN, ...) {
             # some attributes
             db_name <- data@description["db_name"]

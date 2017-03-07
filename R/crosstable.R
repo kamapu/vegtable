@@ -52,21 +52,32 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
 
 # Method for vegtable objects
 setMethod("crosstable", signature(formula="formula", data="vegtable"),
-        function(formula, data, FUN, na_to_zero=FALSE, ...) {
-            data@samples <- merge(data@samples, data@species@taxonNames)
-            if(nrow(data@species@taxonTraits) > 0)
-                for(i in colnames(data@species@taxonTraits)) {
-                    data@samples[,i] <- data@species@taxonTraits[match(
-                                    data@samples$TaxonConceptID,
-                                    data@species@taxonTraits$TaxonConceptID),i]
-                }
+        function(formula, data, FUN, paste_author=FALSE, na_to_zero=FALSE,
+                ...) {
+            if(paste_author)
+                data@species@taxonNames$TaxonName <- with(
+                        data@species@taxonNames, paste(TaxonName, AuthorName))
+            data@samples$TaxonConceptID <- data@species@taxonNames[
+                    match(data@samples$TaxonUsageID,
+                            data@species@taxonNames$TaxonUsageID),
+                    "TaxonConceptID"]
+            data@samples$TaxonName <- data@species@taxonNames[
+                    match(data@samples$TaxonUsageID,
+                            data@species@taxonNames$TaxonUsageID),
+                    "TaxonName"]
             data@samples$AcceptedName <- data@species@taxonRelations[
                     match(data@samples$TaxonConceptID,
                             data@species@taxonRelations$TaxonConceptID),
                     "AcceptedName"]
             data@samples$AcceptedName <- data@species@taxonNames[
                     match(data@samples$AcceptedName,
-                            data@species@taxonNames$TaxonUsageID),"TaxonName"]
-            crosstable(formula, data@samples, FUN, na_to_zero, ...)
+                            data@species@taxonNames$TaxonUsageID),
+                    "TaxonName"]
+            for(i in colnames(data@header))
+                data@samples[,i] <- data@header[match(data@samples$ReleveID,
+                                data@header$ReleveID),i]
+            if(length(attr(terms(formula), "term.labels")) == 1)
+                return(aggregate(formula, data@samples, FUN, ...)) else
+                return(crosstable(formula, data@samples, FUN, na_to_zero, ...))
         }
 )
