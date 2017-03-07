@@ -9,7 +9,7 @@ This function produce txt files as inport formats for Juice
 (\url{http://www.sci.muni.cz/botany/juice/}).
 }
 \usage{
-\S4method{write_juice}{vegtable,character,formula}(data, file, formula=CoverPercent ~ ReleveID + AcceptedName + LAYER,
+\S4method{write_juice}{vegtable,character,formula}(data, file, formula,
 	header=c("COUNTRY","REFERENCE"), coords=c("LONGITUDE","LATITUDE"), FUN, ...)
 }
 \arguments{

@@ -12,15 +12,16 @@ by further statistical packages (e.g. vegan).
 \usage{
 \S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE, ...)
 
-\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE, ...)
+\S4method{crosstable}{formula,vegtable}(formula, data, FUN, paste_author=FALSE, na_to_zero=FALSE, ...)
 }
 \arguments{
 \item{formula}{A formula indicating the variables used in the cross table.}
 \item{data}{Either a data frame or an object of class
-	\code{\link[=vegtable-class]{vegtable}}.}
+	\code{\linkS4class{vegtable}}.}
 \item{FUN}{Funtion used to aggregate values.}
 \item{na_to_zero}{A logical value indicating whether zeros should be inserted
 	into empty cells or not.}
+\item{paste_author}{should the author be pasted to the taxon name.}
 \item{...}{Further arguments passed to the function \code{\link{aggregate}}.}
 }
 \details{
