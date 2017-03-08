@@ -46,10 +46,10 @@ vegtable_stat <- function(vegtable) {
 	# Time statistics
 	if(!is.null(vegtable$DATE)) {
 		cat("## TIME", "\n")
-		years <- format(vegtable$DATE, "%Y")
+		years <- as.numeric(format(vegtable$DATE, "%Y"))
 		cat("oldest: ", min(years, na.rm=TRUE), " - youngest: ", max(years,
 						na.rm=TRUE), sep="", "\n")
-		cat("<=1919: ", round(sum(years >= 1919,
+		cat("<=1919: ", round(sum(years <= 1919,
 								na.rm=TRUE)/nrow(vegtable)*100), "%", sep="",
 				"\n")
 		cat("1920-1929: ", round(sum(years > 1919 & years < 1930,
