@@ -92,24 +92,31 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     samples$CoverPercent <- cover_trans[match(samples$ReleveID,
                     cover_trans$ReleveID),"CoverPercent"]
     # Final object
-    if(output == 1)
+    if(output == 1) {
         VEG <- new("vegtable",
                 description=description,
                 samples=samples,
                 header=header,
                 species=tv2taxlist(description["sp_list"], tv_home),
                 coverconvert=coverconvert)
-    else
+        # Relations to vegtable
+        for(i in names(relations)) {
+            if(colnames(relations[[i]])[1] %in% colnames(VEG@header))
+                veg_relation(VEG, i) <- relations[[i]]
+        }
+    } else {
         VEG <- list(
                 description=description,
                 samples=samples,
                 header=header,
                 species=tv2taxlist(description["sp_list"], tv_home),
+                relations=list(),
                 coverconvert=coverconvert)
-    # Relations to vegtable
-    for(i in names(relations)) {
-        if(colnames(relations[[i]])[1] %in% colnames(VEG@header))
-            veg_relation(VEG, i) <- relations[[i]]
+        # Relations to vegtable
+        for(i in names(relations)) {
+            if(colnames(relations[[i]])[1] %in% colnames(VEG$header))
+                VEG$relations[[i]] <- relations[[i]]
+        }
     }
     return(VEG)
 }
