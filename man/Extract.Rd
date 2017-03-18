@@ -5,8 +5,10 @@
 \alias{[<-}
 \alias{[<-,vegtable,ANY,ANY,ANY-method}
 \alias{$,vegtable-method}
+\alias{$,coverconvert-method}
 \alias{$<-}
 \alias{$<-,vegtable-method}
+\alias{$<-,vegtable,ANY-method}
 
 \title{Select or replace elements in a vegtable object.}
 \description{

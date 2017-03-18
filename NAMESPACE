@@ -14,6 +14,7 @@ importFrom("utils", "object.size", "write.table")
 
 ## Export of classes
 exportClasses(
+	coverconvert,
 	vegtable
 )
 
@@ -23,17 +24,20 @@ exportMethods(
 	clean,
 	crosstable,
 	df2vegtable,
+	dimnames,
+	names,
 	header,"header<-",
 	vegtable2kml,
 	subset,
 	summary,
+	transform,
 	veg_relation,"veg_relation<-",
 	write_juice
 )
 
 ## Export of regular function names
 export(
-	import_coverconvert,
+	tv2coverconvert,
 	tv2vegtable,
 	vegtable_stat
 )

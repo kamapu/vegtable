@@ -9,10 +9,11 @@ Delete entries in slots \code{header} and \code{species} orphaned by
 modifications in slot \code{samples}.
 }
 \usage{
-\S4method{clean}{vegtable}(object, ...)
+\S4method{clean}{vegtable}(object, times=2, ...)
 }
 \arguments{
 \item{object}{a \code{\linkS4class{vegtable}} object.}
+\item{times}{how many times should be the cleaning be repeated.}
 \item{...}{further arguments passed from or to other methods.}
 }
 \details{

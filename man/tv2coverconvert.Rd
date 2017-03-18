@@ -1,5 +1,5 @@
-\name{import_coverconvert}
-\alias{import_coverconvert}
+\name{tv2coverconvert}
+\alias{tv2coverconvert}
 
 \title{Importing conversion tables from Turboveg databases.}
 \description{
@@ -7,7 +7,7 @@ This function reads the content of cover conversion tables stored in Turboveg
 and attempts to reformat them in a more comprehensive structure.
 }
 \usage{
-import_coverconvert(file, as.is=TRUE)
+tv2coverconvert(file, as.is=TRUE)
 }
 \arguments{
 \item{file}{A connection to a dbf-file containing conversion table in Turboveg.}

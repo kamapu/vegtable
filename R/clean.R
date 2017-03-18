@@ -3,38 +3,49 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+# First a general function
+clean_once <- function(object) {
+    # compare samples and header
+    ReleveID <- intersect(object@header$ReleveID,
+            object@samples$ReleveID)
+    object@header <- object@header[object@header$ReleveID %in%
+                    ReleveID,]
+    object@samples <- object@samples[object@samples$ReleveID %in%
+                    ReleveID,]
+    # compare species and samples
+    UsageID <- intersect(object@samples$TaxonUsageID,
+            object@species@taxonNames$TaxonUsageID)
+    ConceptID <- unique(object@species@taxonNames[
+                    object@species@taxonNames$TaxonUsageID %in% UsageID,
+                    "TaxonConceptID"])
+    object@species@taxonRelations <- object@species@taxonRelations[
+            object@species@taxonRelations$TaxonConceptID %in%
+                    ConceptID,]
+    object@species <- clean(object@species)
+    object@samples <- object@samples[
+            object@species@taxonNames$TaxonUsageID %in% UsageID,]
+    # delete header variables without data
+    object@header <- object@header[,!apply(object@header, 2,
+                    function(x) all(is.na(x)))]
+    # delete orphaned relations
+    object@relations <- object@relations[names(object@relations) %in%
+                    colnames(object@header)]
+    # delete orphaned cover conversions
+    object@coverconvert@value <- object@coverconvert@value[
+            names(object@coverconvert@value) %in% colnames(object@samples)]
+    # output
+    return(object)
+}
+
 # Method for 'vegtable' object
 setMethod("clean", signature(object="vegtable"),
-        function(object, ...) {
-            # clean slot species
-            object@species <- clean(object@species)
-            # compare samples and header
-            ReleveID <- intersect(object@header$ReleveID,
-                    object@samples$ReleveID)
-            object@header <- object@header[object@header$ReleveID %in%
-                            ReleveID,]
-            object@samples <- object@samples[object@samples$ReleveID %in%
-                            ReleveID,]
-            # compare species and samples
-            UsageID <- intersect(object@samples$TaxonUsageID,
-                    object@species@taxonNames$TaxonUsageID)
-            ConceptID <- unique(object@species@taxonNames[
-                            object@species@taxonNames$TaxonUsageID %in% UsageID,
-                            "TaxonConceptID"])
-            object@species@taxonRelations <- object@species@taxonRelations[
-                    object@species@taxonRelations$TaxonConceptID %in%
-                            ConceptID,]
-            object@species <- clean(object@species)
-            object@samples <- object@samples[
-                    object@species@taxonNames$TaxonUsageID %in% UsageID,]
-            # compare samples and header AGAIN
-            ReleveID <- intersect(object@header$ReleveID,
-                    object@samples$ReleveID)
-            object@header <- object@header[object@header$ReleveID %in%
-                            ReleveID,]
-            object@samples <- object@samples[object@samples$ReleveID %in%
-                            ReleveID,]
-            # output object
+        function(object, times=2, ...) {
+            count <- 0
+            repeat {
+                count <- count + 1
+                object <- clean_once(object)
+                if(count == times) break
+            }
             return(object)
         }
 )

@@ -7,13 +7,15 @@
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, output="vegtable")
+tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE, output="vegtable")
 }
 \arguments{
-\item{db}{Name of Turboveg data base as character value.}
+\item{db}{name of Turboveg data base as character value.}
 \item{tv_home}{Turboveg installation path as character value.}
-\item{skip_empty_relations}{Logical value indicating wether empty relations may be
-	excluded from imported database or not.}
+\item{skip_empty_relations}{logical value indicating whether empty relations may
+	be excluded from imported database or not.}
+\item{clean}{logical value indicating whether output object should be cleaned or
+	not.}
 \item{output}{character value indicating the class of the output.}
 }
 \details{

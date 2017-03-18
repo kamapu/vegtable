@@ -3,13 +3,14 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-setClass("vegtable", slots=c(
+setClass("vegtable",
+        slots=c(
 				description="character",
 				samples="data.frame",
 				header="data.frame",
 				species="taxlist",
 				relations="list",
-				coverconvert="ANY"),
+				coverconvert="coverconvert"),
 		prototype=list(
                 description=character(),
                 samples=data.frame(
@@ -21,7 +22,7 @@ setClass("vegtable", slots=c(
                 ),
                 species=new("taxlist"),
                 relations=list(),
-				coverconvert=NULL),
+				coverconvert=new("coverconvert")),
 		validity=function(object) {
             # Mandatory names
             if(any(!c("ReleveID","TaxonUsageID") %in% colnames(object@samples)))
