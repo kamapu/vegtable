@@ -9,6 +9,7 @@
 \alias{$<-}
 \alias{$<-,vegtable-method}
 \alias{$<-,vegtable,ANY-method}
+\alias{$<-,coverconvert,list-method}
 
 \title{Select or replace elements in a vegtable object.}
 \description{

@@ -7,7 +7,8 @@
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE, output="vegtable")
+tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE,
+	output="vegtable")
 }
 \arguments{
 \item{db}{name of Turboveg data base as character value.}
@@ -51,7 +52,7 @@ A S4 object of class \code{\linkS4class{vegtable}}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link[taxlist]{tv2taxlist}}, code{\link{import_coverconvert}},
+\code{\link[taxlist]{tv2taxlist}}, code{\link{tv2coverconvert}},
 \code{\link[vegdata]{tv.home}}.
 }
 
