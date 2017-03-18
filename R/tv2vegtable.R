@@ -22,6 +22,27 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     colnames(samples)[grepl("ORIG_NAME", colnames(samples))] <- "ORIG_NAME"
     samples$COVER_CODE[samples$COVER_CODE == "9X"] <- "100"
     samples$COVER_CODE[samples$COVER_CODE == "99"] <- "100"
+    # Importing header data ----------------------------------------------------
+    header <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
+            as.is=TRUE)
+    colnames(header)[colnames(header) == "RELEVE_NR"] <- "ReleveID"
+    # Formating dates and some numeric variables
+    header$DATE <- as.Date(header$DATE, format="%Y%m%d")
+    header$ALTITUDE <- as.numeric(header$ALTITUDE)
+    header$INCLINATIO <- as.numeric(header$INCLINATIO)
+    # replacing zero values with NAs
+    cat("zero values will be replaced by NAs", "\n")
+    for(i in colnames(header)) {
+        if(is.numeric(header[,i])) header[,i][header[,i] == 0] <- NA
+    }
+    remarks <- read.dbf(file.path(tv_home, "Data", db, "remarks.dbf"),
+            as.is=TRUE)
+    remarks <- split(remarks$REMARKS, remarks$RELEVE_NR)
+    for(i in as.integer(names(remarks))) {
+        header[header$ReleveID == i, "REMARKS"] <- paste(header[
+                        header$ReleveID == i, "REMARKS"],
+                paste(remarks[[paste(i)]], collapse=" "), collapse=" ")
+    }
     # Importing coverconvert ---------------------------------------------------
     if(!is.na(description["dictionary"])) {
         cover_home <- file.path(tv_home, "popup", description["dictionary"],
@@ -44,27 +65,6 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     # Get percentage to numeric
     cover_code <- cover_match[cover_match$SCALE_NR == "00","SCALE_CODE"]
     samples[,cover_code] <- as.numeric(samples[,cover_code])
-    # Importing header data ----------------------------------------------------
-    header <- read.dbf(file.path(tv_home, "Data", db, "tvhabita.dbf"),
-            as.is=TRUE)
-    colnames(header)[colnames(header) == "RELEVE_NR"] <- "ReleveID"
-    # Formating dates and some numeric variables
-    header$DATE <- as.Date(header$DATE, format="%Y%m%d")
-    header$ALTITUDE <- as.numeric(header$ALTITUDE)
-    header$INCLINATIO <- as.numeric(header$INCLINATIO)
-    # replacing zero values with NAs
-    cat("zero values will be replaced by NAs", "\n")
-    for(i in colnames(header)) {
-        if(is.numeric(header[,i])) header[,i][header[,i] == 0] <- NA
-    }
-    remarks <- read.dbf(file.path(tv_home, "Data", db, "remarks.dbf"),
-            as.is=TRUE)
-    remarks <- split(remarks$REMARKS, remarks$RELEVE_NR)
-    for(i in as.integer(names(remarks))) {
-        header[header$ReleveID == i, "REMARKS"] <- paste(header[
-                        header$ReleveID == i, "REMARKS"],
-                paste(remarks[[paste(i)]], collapse=" "), collapse=" ")
-    }
     # Importing relations ------------------------------------------------------
     if(is.na(description["dictionary"])) {
         relations_path <- file.path(tv_home, "popup")

@@ -55,5 +55,3 @@ setMethod("transform", signature(x="character", conversion="coverconvert"),
             }
         }
 )
-
-
