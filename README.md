@@ -54,17 +54,17 @@ summary(Kenya_veg)
 #> db_name: Sweadataveg
 #> sp_list: Easplist
 #> dictionary: Swea
-#> object size: 9898.7 Kb 
+#> object size: 11652.9 Kb 
 #> validity: TRUE 
 #> 
 #> ## Content 
 #> number of plots: 1946 
-#> variables in header: 60 
-#> number of relations: 4 
+#> variables in header: 34 
+#> number of relations: 3 
 #> 
 #> ## Species List 
-#> taxon names: 3083 
-#> taxon concepts: 2426 
+#> taxon names: 2304 
+#> taxon concepts: 1573 
 #> validity: TRUE
 ```
 
@@ -81,16 +81,16 @@ summary(JPcomm)
 #> db_name: Sweadataveg
 #> sp_list: Easplist
 #> dictionary: Swea
-#> object size: 220.7 Kb 
+#> object size: 249.5 Kb 
 #> validity: TRUE 
 #> 
 #> ## Content 
 #> number of plots: 19 
-#> variables in header: 60 
-#> number of relations: 4 
+#> variables in header: 17 
+#> number of relations: 3 
 #> 
 #> ## Species List 
-#> taxon names: 200 
+#> taxon names: 210 
 #> taxon concepts: 149 
 #> validity: TRUE
 ```

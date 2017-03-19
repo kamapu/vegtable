@@ -21,6 +21,14 @@ Kenya_veg@samples$br_bl <- factor(paste(Kenya_veg@samples$br_bl),
         levels=levels(braun_blanquet@value$br_bl))
 Kenya_veg <- clean(Kenya_veg)
 
+## Some issues regarding duplicated combinations
+# 54195 to 50523 and 54248 to 54244
+Kenya_veg@samples$TaxonUsageID[Kenya_veg@samples$TaxonUsageID == 54195] <- 50523
+Kenya_veg@samples$TaxonUsageID[Kenya_veg@samples$TaxonUsageID == 54248] <- 54244
+# Delete the usages
+Kenya_veg@species@taxonNames <- Kenya_veg@species@taxonNames[
+        !Kenya_veg@species@taxonNames$TaxonUsageID %in% c(54195,54248),]
+
 validObject(Kenya_veg)
 
 # Eventual solution for non-ASCII strings in species names

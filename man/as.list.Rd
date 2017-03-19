@@ -1,7 +1,6 @@
 \name{as.list}
 \docType{methods}
 \alias{as.list}
-\alias{as.list,taxlist-method}
 \alias{as.list,coverconvert-method}
 \alias{as.list,vegtable-method}
 
