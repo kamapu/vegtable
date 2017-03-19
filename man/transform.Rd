@@ -2,13 +2,15 @@
 \docType{methods}
 \alias{transform}
 \alias{transform,character,coverconvert-method}
+\alias{transform,factor,coverconvert-method}
 
 \title{Convert cover scales to percent cover.}
 \description{
 Description.
 }
 \usage{
-\S4method{transform}{character,coverconvert}(x, conversion, from=NULL, rule="top", zeroto=0.1, ...)
+\S4method{transform}{character,coverconvert}(x, conversion, from=NULL,
+	rule="top", zeroto=0.1, ...)
 }
 \arguments{
 \item{x}{either character or vegtable object.}

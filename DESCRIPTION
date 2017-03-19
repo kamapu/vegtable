@@ -16,7 +16,8 @@ Imports:
 	vegdata
 Suggests:
 	devtools,
-	vegan
+	vegan,
+	vegtable2
 LazyData: true
 Description: Import routine for Turboveg databases, a S4 object class
 	('vegtable'), and methods applied to this class. 'vegtable' has been tested
@@ -25,7 +26,7 @@ License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtable
 BugReports: https://github.com/kamapu/vegtable/issues
 Collate: 'NULLing.R''coverconvert-class.R''vegtable-class.R'
-	'clean.R'
+	'clean.R''as.list.R'
 	'header.R''Extract.R''veg_relation.R'
 	'summary.R''vegtable_stat.R''df2vegtable.R'
 	'subset.R'

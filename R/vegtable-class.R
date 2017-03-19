@@ -36,8 +36,10 @@ setClass("vegtable",
                     return(paste0("Column '", i, "' is mandatory in relation '", i, "'"))
             }
             # Mandatory links
-            if(any(!unique(object@samples$ReleveID) %in% object@header$ReleveID))
+            if(!all(object@samples$ReleveID %in% object@header$ReleveID))
                 return("Some releve IDs from slot 'samples' are missing in slot 'header'")
+            if(!all(object@header$ReleveID %in% object@samples$ReleveID))
+                return("Some releve IDs from slot 'header' are missing in slot 'samples'")
             if(any(!object@samples$TaxonUsageID %in% object@species@taxonNames$TaxonUsageID))
                 return("Some taxon names are missing in slot 'species'")
             # Other consistency tests

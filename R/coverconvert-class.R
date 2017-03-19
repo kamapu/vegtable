@@ -22,11 +22,19 @@ setClass("coverconvert",
                 for(i in names(object@value)) {
                     if(length(object@value[[i]]) !=
                             length(object@conversion[[i]]) - 1)
-                        return(paste0("Invalid length of vectors in scale '", i, "'"))
+                        return(paste0("Invalid length of vectors in scale '", i,
+                                        "'"))
                     if(!is.numeric(object@conversion[[i]]))
-                        return(paste0("Values of 'conversion' in scale '", i, "' have to be numeric"))
-                    if(!is.character(object@value[[i]]))
-                        return(paste0("Values of 'value' in scale '", i, "' have to be numeric"))
+                        return(paste0("Values of 'conversion' in scale '", i,
+                                        "' have to be of class numeric"))
+                    if(!is.factor(object@value[[i]]))
+                        return(paste0("Values of 'value' in scale '", i,
+                                        "' have to be of class factor"))
+                    if(!all(object@conversion[[i]] ==
+                                    object@conversion[[i]][
+                                            order(object@conversion[[i]])]))
+                        return(paste0("Sort values of 'conversion' in scale '",
+                                        i, "' in increasing order"))
                 }
         }
 )

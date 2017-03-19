@@ -22,10 +22,13 @@ clean_once <- function(object) {
             object@species@taxonRelations$TaxonConceptID %in%
                     ConceptID,]
     object@species <- clean(object@species)
-    object@samples <- object@samples[
-            object@species@taxonNames$TaxonUsageID %in% UsageID,]
+    object@samples <- object@samples[object@samples$TaxonUsageID %in%
+                    object@species@taxonNames$TaxonUsageID,]
     # delete header variables without data
     object@header <- object@header[,!apply(object@header, 2,
+                    function(x) all(is.na(x)))]
+    # delete samples variables without data
+    object@samples <- object@samples[,!apply(object@samples, 2,
                     function(x) all(is.na(x)))]
     # delete orphaned relations
     object@relations <- object@relations[names(object@relations) %in%
@@ -33,6 +36,9 @@ clean_once <- function(object) {
     # delete orphaned cover conversions
     object@coverconvert@value <- object@coverconvert@value[
             names(object@coverconvert@value) %in% colnames(object@samples)]
+    object@coverconvert@conversion <- object@coverconvert@conversion[
+            names(object@coverconvert@conversion) %in%
+                    names(object@coverconvert@value)]
     # output
     return(object)
 }

@@ -16,7 +16,7 @@ tv2coverconvert <- function(file, as.is=TRUE) {
         cover1 <- cover1[order(cover2)]
         cover2 <- cover2[order(cover2)]
         names(cover1) <- names(cover2) <- NULL
-        conversion@value[[short_name]] <- cover1
+        conversion@value[[short_name]] <- factor(cover1, levels=cover1)
         conversion@conversion[[short_name]] <- c(0, cover2)
     }
     return(conversion)

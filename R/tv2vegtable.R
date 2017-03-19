@@ -5,10 +5,6 @@
 
 tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
         clean=TRUE, output="vegtable") {
-    # Check argument output
-    output <- grep(output[1], c("vegtable","list"), ignore.case=TRUE)
-    if(length(output) == 0)
-        stop("Invalid value for argument 'output'")
     # Import meta data ---------------------------------------------------------
     description <- unlist(c(db, read.dbf(file.path(tv_home, "Data", db,
                                     "tvwin.dbf"), as.is=TRUE)[,c("FLORA",
@@ -65,6 +61,12 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     # Get percentage to numeric
     cover_code <- cover_match[cover_match$SCALE_NR == "00","SCALE_CODE"]
     samples[,cover_code] <- as.numeric(samples[,cover_code])
+    # Factorize
+    cover_code <- names(coverconvert)[names(coverconvert) != cover_code]
+    for(i in cover_code) {
+        if(i %in% colnames(samples)) samples[,i] <- factor(samples[,i],
+                    levels=levels(coverconvert@value[[i]]))
+    }
     # Importing relations ------------------------------------------------------
     if(is.na(description["dictionary"])) {
         relations_path <- file.path(tv_home, "popup")
@@ -95,33 +97,16 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     relations[["COVERSCALE"]] <- cover_match[cover_match$SCALE_NR != "00",]
     colnames(relations[["COVERSCALE"]])[1] <- "COVERSCALE"
     # Final object
-    if(output == 1) {
-        VEG <- new("vegtable",
-                description=description,
-                samples=samples,
-                header=header,
-                species=tv2taxlist(description["sp_list"], tv_home),
-                coverconvert=coverconvert)
-        # Relations to vegtable
-        for(i in names(relations)) {
-            if(colnames(relations[[i]])[1] %in% colnames(VEG@header))
-                veg_relation(VEG, i) <- relations[[i]]
-        }
-        # clean object
-        if(clean) VEG <- clean(VEG)
-    } else {
-        VEG <- list(
-                description=description,
-                samples=samples,
-                header=header,
-                species=tv2taxlist(description["sp_list"], tv_home),
-                relations=list(),
-                coverconvert=coverconvert)
-        # Relations to vegtable
-        for(i in names(relations)) {
-            if(colnames(relations[[i]])[1] %in% colnames(VEG$header))
-                VEG$relations[[i]] <- relations[[i]]
-        }
+    VEG <- new("vegtable")
+    VEG@description <- description
+    VEG@samples <- samples
+    VEG@header <- header
+    VEG@species <- tv2taxlist(description["sp_list"], tv_home)
+    VEG@coverconvert <- coverconvert
+    for(i in names(relations)) {
+        if(colnames(relations[[i]])[1] %in% colnames(VEG@header))
+            veg_relation(VEG, i) <- relations[[i]]
     }
+    if(clean) VEG <- clean(VEG)
     return(VEG)
 }
