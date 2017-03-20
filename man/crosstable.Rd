@@ -42,8 +42,13 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 library(vegtable)
 data(Kenya_veg)
 
+# Transform cover to percentage
+Kenya_veg <- transform(Kenya_veg, to="CoverPercent", rule="middle")
+
 ## Only first 10 plot records
 Kenya_veg <- Kenya_veg[1:20,]
+
+
 
 ## Cross table of species versus plots
 crosstable(CoverPercent ~ ReleveID + AcceptedName, Kenya_veg, max,

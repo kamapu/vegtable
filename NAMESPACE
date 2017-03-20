@@ -11,6 +11,7 @@ import(
 ## Import of functions
 importFrom("stats", "aggregate", "na.omit", "terms")
 importFrom("utils", "object.size", "write.table")
+importFrom("taxlist", "S4_to_list", "as.list")
 
 ## Export of classes
 exportClasses(

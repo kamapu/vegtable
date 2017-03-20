@@ -29,7 +29,6 @@ Kenya_veg@samples$TaxonUsageID[Kenya_veg@samples$TaxonUsageID == 54248] <- 54244
 Kenya_veg@species@taxonNames <- Kenya_veg@species@taxonNames[
         !Kenya_veg@species@taxonNames$TaxonUsageID %in% c(54195,54248),]
 
-validObject(Kenya_veg)
 
 # Eventual solution for non-ASCII strings in species names
 for(i in c("TaxonName","AuthorName")) {
@@ -44,4 +43,7 @@ for(i in c("TITLE","PUBLISHED")) {
             Kenya_veg@relations$REFERENCE[,i], "latin1", "UTF-8")
 }
 
+# Final object
+Kenya_veg <- clean(Kenya_veg)
+validObject(Kenya_veg)
 save(Kenya_veg, file="M:/WorkspaceEclipse/vegtable/data/Kenya_veg.rda")

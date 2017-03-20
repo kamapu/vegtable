@@ -9,7 +9,9 @@
 Coercion used to explore inconsistencies in S4 objects.
 }
 \usage{
-as.list(x, ...)
+\S4method{as.list}{vegtable}(x, ...)
+
+\S4method{as.list}{coverconvert}(x, ...)
 }
 \arguments{
 \item{x}{an object of class \code{\linkS4class{taxlist}},
@@ -25,9 +27,6 @@ object.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
-}
-\seealso{
-\code{\link{}}
 }
 \examples{
 ## Add example for this function

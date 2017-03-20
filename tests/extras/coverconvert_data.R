@@ -24,6 +24,7 @@ ordin. <- list(
 braun_blanquet <- new("coverconvert")
 braun_blanquet$br_bl <- br_bl
 braun_blanquet$b_bbds <- b_bbds
+braun_blanquet$ordin. <- ordin.
 
 save(braun_blanquet,
         file="M:/WorkspaceEclipse/vegtable/data/braun_blanquet.rda")
