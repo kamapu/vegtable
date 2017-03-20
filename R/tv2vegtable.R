@@ -61,6 +61,9 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     # Get percentage to numeric
     cover_code <- cover_match[cover_match$SCALE_NR == "00","SCALE_CODE"]
     samples[,cover_code] <- as.numeric(samples[,cover_code])
+    for(i in slotNames(coverconvert)) slot(coverconvert, i) <-
+                slot(coverconvert, i)[names(slot(coverconvert, i)) !=
+                                cover_code]
     # Factorize
     cover_code <- names(coverconvert)[names(coverconvert) != cover_code]
     for(i in cover_code) {
