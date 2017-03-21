@@ -4,7 +4,7 @@
 ################################################################################
 
 tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
-        clean=TRUE, output="vegtable") {
+        clean=TRUE) {
     # Import meta data ---------------------------------------------------------
     description <- unlist(c(db, read.dbf(file.path(tv_home, "Data", db,
                                     "tvwin.dbf"), as.is=TRUE)[,c("FLORA",
@@ -60,7 +60,8 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     }
     # Get percentage to numeric
     cover_code <- cover_match[cover_match$SCALE_NR == "00","SCALE_CODE"]
-    samples[,cover_code] <- as.numeric(samples[,cover_code])
+    if(cover_code %in% colnames(samples))
+        samples[,cover_code] <- as.numeric(samples[,cover_code])
     for(i in slotNames(coverconvert)) slot(coverconvert, i) <-
                 slot(coverconvert, i)[names(slot(coverconvert, i)) !=
                                 cover_code]
