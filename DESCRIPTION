@@ -25,7 +25,8 @@ Description: Import routine for Turboveg databases, a S4 object class
 License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtable
 BugReports: https://github.com/kamapu/vegtable/issues
-Collate: 'NULLing.R''coverconvert-class.R''vegtable-class.R'
+Collate:
+	'NULLing.R''coverconvert-class.R''vegtable-class.R'
 	'clean.R''as.list.R'
 	'header.R''Extract.R''veg_relation.R'
 	'summary.R''vegtable_stat.R''df2vegtable.R'
