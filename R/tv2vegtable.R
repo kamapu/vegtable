@@ -98,7 +98,7 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     # Rename relations as first column
     names(relations) <- sapply(sapply(relations, colnames), "[", 1)
     # Insert details of cover scales in relations
-    relations[["COVERSCALE"]] <- cover_match[cover_match$SCALE_NR != "00",]
+    relations[["COVERSCALE"]] <- cover_match
     colnames(relations[["COVERSCALE"]])[1] <- "COVERSCALE"
     # Final object
     VEG <- new("vegtable")
