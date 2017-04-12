@@ -40,21 +40,20 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
+
+## load Kenya_veg and subset to reference 2331 (Bronner 1990)
 data(Kenya_veg)
+Kenya_veg <- subset(Kenya_veg, REFERENCE == 2331, slot="header")
 
-# Transform cover to percentage
-Kenya_veg <- transform(Kenya_veg, to="CoverPercent", rule="middle")
+## transform cover to percentage
+Kenya_veg <- transform(Kenya_veg, to="cover_perc", rule="middle")
 
-## Only first 10 plot records
-Kenya_veg <- Kenya_veg[1:20,]
+## cross table of the first 5 releves
+Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
+        Kenya_veg[1:5,], mean, na_to_zero=TRUE)
+head(Cross)
 
-
-
-## Cross table of species versus plots
-crosstable(CoverPercent ~ ReleveID + AcceptedName, Kenya_veg, max,
-	na_to_zero=TRUE)
-
-## In the case that also layers are desired
-crosstable(CoverPercent ~ ReleveID + AcceptedName + LAYER, Kenya_veg, max,
-	na_to_zero=TRUE)
+## sum of species per plot
+crosstable(AcceptedName ~ ReleveID, Kenya_veg[1:5,],
+        function(x) length(unique(x)))
 }

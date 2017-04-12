@@ -52,31 +52,55 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
 
 # Method for vegtable objects
 setMethod("crosstable", signature(formula="formula", data="vegtable"),
-        function(formula, data, FUN, paste_author=FALSE, na_to_zero=FALSE,
-                ...) {
-            if(paste_author)
-                data@species@taxonNames$TaxonName <- with(
-                        data@species@taxonNames, paste(TaxonName, AuthorName))
+        function(formula, data, FUN, na_to_zero=FALSE, ...) {
+            Terms <- c(as.character(formula)[2], attr(terms(formula),
+                            "term.labels"))
+            data@samples <- data@samples[,colnames(data@samples) %in%
+                            c("ReleveID", "TaxonUsageID", Terms)]
+            # Data from species
             data@samples$TaxonConceptID <- data@species@taxonNames[
                     match(data@samples$TaxonUsageID,
                             data@species@taxonNames$TaxonUsageID),
                     "TaxonConceptID"]
-            data@samples$TaxonName <- data@species@taxonNames[
-                    match(data@samples$TaxonUsageID,
-                            data@species@taxonNames$TaxonUsageID),
-                    "TaxonName"]
-            data@samples$AcceptedName <- data@species@taxonRelations[
-                    match(data@samples$TaxonConceptID,
-                            data@species@taxonRelations$TaxonConceptID),
-                    "AcceptedName"]
-            data@samples$AcceptedName <- data@species@taxonNames[
-                    match(data@samples$AcceptedName,
-                            data@species@taxonNames$TaxonUsageID),
-                    "TaxonName"]
-            for(i in colnames(data@header))
-                data@samples[,i] <- data@header[match(data@samples$ReleveID,
-                                data@header$ReleveID),i]
-            if(length(attr(terms(formula), "term.labels")) == 1)
+            if("TaxonName" %in% Terms & "AcceptedName" %in% Terms)
+                stop("Terms 'TaxonName' and 'AcceptedName' are mutually exclusive in 'formula'")
+            # 1: when usage name requested
+            if("TaxonName" %in% Terms) {
+                data@samples$TaxonName <- data@species@taxonNames[
+                        match(data@samples$TaxonUsageID,
+                                data@species@taxonNames$TaxonUsageID),
+                        "TaxonName"]
+                data@samples$AuthorName <- data@species@taxonNames[
+                        match(data@samples$TaxonUsageID,
+                                data@species@taxonNames$TaxonUsageID),
+                        "AuthorName"]
+            }
+            # 2: when accepted name requested
+            if("AcceptedName" %in% Terms) {
+                data@samples$AcceptedName <- data@species@taxonRelations[
+                        match(data@samples$TaxonConceptID,
+                                data@species@taxonRelations$TaxonConceptID),
+                        "AcceptedName"]
+                data@samples$AuthorName <- data@species@taxonNames[
+                        match(data@samples$AcceptedName,
+                                data@species@taxonNames$TaxonUsageID),
+                        "AuthorName"]
+                data@samples$AcceptedName <- data@species@taxonNames[
+                        match(data@samples$AcceptedName,
+                                data@species@taxonNames$TaxonUsageID),
+                        "TaxonName"]
+            }
+            # Data from header
+            header_names <- colnames(data@header)[colnames(data@header) !=
+                            "ReleveID"]
+            if(any(header_names %in% Terms)) {
+                header_names <- header_names[header_names %in% Terms]
+                for(i in header_names)
+                    data@samples[,i] <- data@header[match(data@samples$ReleveID,
+                                    data@header$ReleveID), i]
+            }
+            # Either aggregate or continue in method data.frame
+            if(length(Terms) == 2)
                 return(aggregate(formula, data@samples, FUN, ...)) else
                 return(crosstable(formula, data@samples, FUN, na_to_zero, ...))
         }
