@@ -12,7 +12,7 @@ by further statistical packages (e.g. vegan).
 \usage{
 \S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE, ...)
 
-\S4method{crosstable}{formula,vegtable}(formula, data, FUN, paste_author=FALSE, na_to_zero=FALSE, ...)
+\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE, ...)
 }
 \arguments{
 \item{formula}{A formula indicating the variables used in the cross table.}
