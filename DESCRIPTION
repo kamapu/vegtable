@@ -1,7 +1,7 @@
 Package: vegtable
-Version: 0.0.0.9010
+Version: 0.0.0.9011
 Encoding: UTF-8
-Date: 2017-03-20
+Date: 2017-06-14
 Title: Handling Vegetation Data Sets
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
@@ -33,5 +33,5 @@ Collate:
 	'subset.R'
 	'coverconvert-methods.R''names.R'
 	'tv2coverconvert.R''tv2vegtable.R'
-	'crosstable.R''write_juice.R''vegtable2kml.R'
+	'crosstable.R''write_juice.R''read_juice.R''vegtable2kml.R'
 	'StartMessage.R'
