@@ -14,8 +14,7 @@ knitr::opts_chunk$set(
 
 # vegtable
 
-[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)]
-(https://travis-ci.org/kamapu/vegtable)
+[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)](https://travis-ci.org/kamapu/vegtable)
 
 The aim of `vegtable` is to provide a way for handling databases stored in
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg).

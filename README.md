@@ -3,7 +3,7 @@
 vegtable
 ========
 
-\[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)\] (<https://travis-ci.org/kamapu/vegtable>)
+[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)](https://travis-ci.org/kamapu/vegtable)
 
 The aim of `vegtable` is to provide a way for handling databases stored in [Turboveg](http://www.synbiosys.alterra.nl/turboveg). This package incorporates many concepts and some functions included in the package [vegdata](https://cran.r-project.org/package=vegdata) but defining an homonymous `S4` class containing all elements of a database in just one object. The package `vegtable` also contains several methods for this object class.
 
