@@ -21,7 +21,6 @@ by further statistical packages (e.g. vegan).
 \item{FUN}{Funtion used to aggregate values.}
 \item{na_to_zero}{A logical value indicating whether zeros should be inserted
 	into empty cells or not.}
-\item{paste_author}{should the author be pasted to the taxon name.}
 \item{...}{Further arguments passed to the function \code{\link{aggregate}}.}
 }
 \details{

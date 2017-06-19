@@ -7,7 +7,7 @@ This function imports vegetation tables exported from Juice
 (\url{http://www.sci.muni.cz/botany/juice}).
 }
 \usage{
-read_juice(file, encoding="LATIN-1", sep=";", ...)
+read_juice(file, encoding="LATIN-1", sep=",", ...)
 }
 \arguments{
 \item{file}{Character value indicating the name of the file exported from

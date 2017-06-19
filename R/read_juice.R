@@ -3,8 +3,8 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-read_juice <- function(file, encoding="LATIN-1", sep=";", ...) {
-    file <- readLines(file, ...)
+read_juice <- function(file, encoding="LATIN-1", sep=",", ...) {
+    file <- readLines(file, encoding=encoding, ...)
     # First prepare the header
     header <- file[(which(file == "Table head:") + 2):length(file)]
     header <- do.call(rbind, strsplit(header, sep))

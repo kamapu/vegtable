@@ -7,8 +7,7 @@
 data bases using the packages \code{foreign} and \code{\link{vegdata}}.
 }
 \usage{
-tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE,
-	output="vegtable")
+tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE)
 }
 \arguments{
 \item{db}{name of Turboveg data base as character value.}
@@ -17,7 +16,6 @@ tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE,
 	be excluded from imported database or not.}
 \item{clean}{logical value indicating whether output object should be cleaned or
 	not.}
-\item{output}{character value indicating the class of the output.}
 }
 \details{
 Import routine for Turboveg databases into an object of class
