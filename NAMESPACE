@@ -40,6 +40,7 @@ exportMethods(
 
 ## Export of regular function names
 export(
+    read_juice,
 	tv2coverconvert,
 	tv2vegtable,
 	vegtable_stat
