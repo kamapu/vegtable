@@ -22,6 +22,11 @@ For a properly import, you may strictly follow the export steps in Juice:
 	\item Menu \code{File -> Export -> Table -> to Spreadsheet Format File}
 	\item Check the option \code{Export covers in \%}
 }
+
+In the \code{header} (see \bold{value}), the first column (\code{juice_nr})
+corresponds to the plot number assigned by \bold{Juice} at import, while the
+column \code{db_nr} is the number originally assigned to the plot (e.g.
+\bold{Turboveg} ID).
 }
 \value{
 A list with two elements:

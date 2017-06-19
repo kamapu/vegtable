@@ -10,7 +10,7 @@ read_juice <- function(file, encoding="LATIN-1", sep=",", ...) {
     header <- do.call(rbind, strsplit(header, sep))
     colnames(header) <- header[1,]
     header <- as.data.frame(header[-1,], stringsAsFactors=FALSE)
-    colnames(header)[1:2] <- c("releve_nr","table_nr")
+    colnames(header)[1:2] <- c("juice_nr","db_nr")
     # Now the cross table
     file <- file[2:(which(file == "Table head:") - 1)]
     file <- file[nchar(file) != 0]
