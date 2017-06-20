@@ -7,7 +7,14 @@ read_juice <- function(file, encoding="LATIN-1", sep=";", ...) {
     file <- readLines(file, encoding=encoding, ...)
     # First prepare the header
     header <- file[(which(file == "Table head:") + 2):length(file)]
-    header <- do.call(rbind, strsplit(header, sep))
+    header <- strsplit(header, sep)
+    # Trick for ending NAs
+    N <- sapply(header, length)
+    if(any(N < max(N))) for(i in 1:length(N)) {
+            if(N[i] < max(N)) header[[i]] <- c(header[[i]],
+                        rep(NA, max(N) - N[i]))
+        }
+    header <- do.call(rbind, header)
     colnames(header) <- header[1,]
     header <- as.data.frame(header[-1,], stringsAsFactors=FALSE)
     colnames(header)[1:2] <- c("juice_nr","db_nr")
