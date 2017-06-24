@@ -34,6 +34,7 @@ exportMethods(
 	subset,
 	summary,
 	transform,
+	used_synonyms,
 	veg_relation,"veg_relation<-",
 	write_juice
 )

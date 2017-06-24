@@ -29,7 +29,7 @@ Collate:
 	'NULLing.R''coverconvert-class.R''vegtable-class.R'
 	'clean.R''as.list.R'
 	'header.R''Extract.R''veg_relation.R'
-	'summary.R''vegtable_stat.R''df2vegtable.R'
+	'summary.R''vegtable_stat.R''df2vegtable.R''used_synonyms.R'
 	'subset.R'
 	'coverconvert-methods.R''names.R'
 	'tv2coverconvert.R''tv2vegtable.R'
