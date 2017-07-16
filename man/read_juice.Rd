@@ -7,13 +7,14 @@ This function imports vegetation tables exported from Juice
 (\url{http://www.sci.muni.cz/botany/juice}).
 }
 \usage{
-read_juice(file, encoding="LATIN-1", sep=";", ...)
+read_juice(file, encoding="LATIN-1", sep=";", na="", ...)
 }
 \arguments{
 \item{file}{Character value indicating the name of the file exported from
 	Juice.}
 \item{encoding}{Argument passed to \code{\link{readLines}}.}
 \item{sep}{Separator used to split rows into columns.}
+\item{na}{Character used as missing value.}
 \item{...}{Further arguments passed to \code{\link{readLines}}.}
 }
 \details{

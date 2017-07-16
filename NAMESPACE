@@ -18,6 +18,7 @@ import(
 ## Export of classes
 exportClasses(
 	coverconvert,
+	shaker,
 	vegtable
 )
 
@@ -28,14 +29,17 @@ exportMethods(
 	crosstable,
 	df2vegtable,
 	dimnames,
+	make_cocktail,
 	names,
 	header,"header<-",
-	vegtable2kml,
+	set_group,
+	set_pseudo,
 	subset,
 	summary,
 	transform,
 	used_synonyms,
 	veg_relation,"veg_relation<-",
+	vegtable2kml,
 	write_juice
 )
 

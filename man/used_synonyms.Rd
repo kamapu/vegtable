@@ -1,7 +1,7 @@
 \name{used_synonyms}
 \docType{methods}
 \alias{used_synonyms}
-\alias{used_synonyms,vegtable-methods}
+\alias{used_synonyms,vegtable-method}
 
 \title{Retrieve Synonyms used in the Data Set.}
 \description{
