@@ -3,8 +3,7 @@
 ^M:/WorkspaceEclipse/vegtable/\.project$
 ^M:/WorkspaceEclipse/vegtable/\.gitignore$
 ^M:/WorkspaceEclipse/vegtable/R/popup\.R$
-^tests/extras/buildignore\.R$
-^tests/extras/example_data\.R$
+^tests$
 ^README-figures$
 ^README\.md$
 ^\.travis.yml$
