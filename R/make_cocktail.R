@@ -51,6 +51,7 @@ setMethod("make_cocktail", signature(shaker="shaker", vegtable="vegtable"),
                             PA_aux$ReleveID
                 }
             }
+            if(!is.null(names(shaker@groups))) names(OUT$groups) <- names(shaker@groups)
             # Check for dominants
             if(nrow(shaker@dominants) > 0) {
                 OUT$dominants <- list()
@@ -72,10 +73,9 @@ setMethod("make_cocktail", signature(shaker="shaker", vegtable="vegtable"),
             for(i in 1:length(shaker@formulas))
                 OUT$units[[i]] <- as.numeric(eval(parse(text=shaker@formulas[[i]]), OUT))
             # Output (head of vegtable)
-            if(is.null(names(shaker@formulas)))
+            if(is.null(names(shaker@formulas))) {
                 names(OUT$units) <- paste0("unit_", 1:length(shaker@formulas))
-            else
-                names(OUT$units) <- names(shaker@formulas)
+            } else names(OUT$units) <- names(shaker@formulas)
             OUT <- as.data.frame(OUT$units, stringsAsFactors=FALSE)
             SYNTAX <- rep(NA, nrow(OUT))
             for(i in colnames(OUT)) {
