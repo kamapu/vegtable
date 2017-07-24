@@ -2,3 +2,6 @@ language: R
 cache: packages
 dist: trusty
 sudo: required
+
+r_github_packages:
+  - cran/plotKML
