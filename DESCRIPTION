@@ -12,6 +12,7 @@ Imports:
 	foreign,
 	methods,
 	plotKML,
+	qdapRegex,
 	sp,
 	vegdata
 Suggests:
@@ -25,8 +26,9 @@ License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtable
 BugReports: https://github.com/kamapu/vegtable/issues
 Collate:
-	'NULLing.R''coverconvert-class.R''vegtable-class.R''shaker-class.R'
-	'clean.R''as.list.R'
+	'NULLing.R''supporting_functions.R'
+	'coverconvert-class.R''vegtable-class.R''shaker-class.R'
+	'clean.R''as.list.R''merge_taxa.R'
 	'header.R''Extract.R''veg_relation.R'
 	'summary.R''vegtable_stat.R''df2vegtable.R''used_synonyms.R'
 	'subset.R'

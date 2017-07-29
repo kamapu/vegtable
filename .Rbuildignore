@@ -7,4 +7,6 @@
 ^tests/extras/example_data\.R$
 ^README-figures$
 ^README\.md$
+^README\.Rmd$
+^README\.html$
 ^\.travis.yml$

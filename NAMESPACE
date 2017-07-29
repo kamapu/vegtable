@@ -1,9 +1,11 @@
 ## Import of functions
-importFrom(stats,aggregate)
-importFrom(stats,na.omit)
-importFrom(stats,terms)
-importFrom(utils,object.size)
-importFrom(utils,write.table)
+importFrom(stats, aggregate)
+importFrom(stats, as.formula)
+importFrom(stats, na.omit)
+importFrom(stats, terms)
+importFrom(utils, object.size)
+importFrom(utils, write.table)
+importFrom(qdapRegex, rm_between)
 
 ## Import of packages
 import(
@@ -30,8 +32,10 @@ exportMethods(
 	df2vegtable,
 	dimnames,
 	make_cocktail,
+	merge_taxa,
 	names,
 	header,"header<-",
+	set_formula,
 	set_group,
 	set_pseudo,
 	subset,

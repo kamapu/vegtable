@@ -13,18 +13,9 @@ setMethod("make_cocktail", signature(shaker="shaker", vegtable="vegtable"),
         function(shaker, vegtable, which, cover, syntax="Syntax", FUN=sum, ...) {
             # Build pseudo-species
             if(length(shaker@pseudos) > 0)
-                for(i in 1:length(shaker@pseudos)) {
-                    vegtable@species@taxonNames[
-                            vegtable@species@taxonNames$TaxonConceptID %in%
-                                    shaker@pseudos[[i]],
-                            "TaxonConceptID"] <- shaker@pseudos[[i]][1]
-                    vegtable@species@taxonRelations <-
-                            vegtable@species@taxonRelations[
-                                    !vegtable@species@taxonRelations$TaxonConceptID %in%
-                                            shaker@pseudos[[i]][-1],]
-                    vegtable@species <- clean(vegtable@species)
-                }
-            # Insert concept IDs in samples
+				for(i in 1:length(shaker@pseudos))
+					vegtable <- merge_taxa(vegtable, shaker@pseudos[[i]])
+			# Insert concept IDs in samples
             vegtable@samples$TaxonConceptID <- vegtable@species@taxonNames[
                     match(vegtable@samples$TaxonUsageID,
                             vegtable@species@taxonNames$TaxonUsageID),
