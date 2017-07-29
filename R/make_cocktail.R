@@ -8,9 +8,10 @@ setGeneric("make_cocktail",
             standardGeneric("make_cocktail")
 )
 
-# Method for 'taxlist' objects
+# Method for 'vegtable' objects
 setMethod("make_cocktail", signature(shaker="shaker", vegtable="vegtable"),
-        function(shaker, vegtable, which, cover, syntax="Syntax", FUN=sum, ...) {
+        function(shaker, vegtable, which, cover, syntax="Syntax", FUN=sum,
+				...) {
             # Build pseudo-species
             if(length(shaker@pseudos) > 0)
 				for(i in 1:length(shaker@pseudos))

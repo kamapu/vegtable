@@ -110,40 +110,48 @@ setMethod("set_formula", signature(shaker="shaker", content="taxlist",
 				content$AuthorName[is.na(content$AuthorName)] <- ""
 				content$TaxonName <- with(content, paste(TaxonName, AuthorName))
 			}
-			dominants <- strsplit(Names[Slots == "species"], " ")
-			# function to merge species names elements
-			dominants <- as.data.frame(do.call(rbind, lapply(dominants,
-									format_F1)), stringsAsFactors=FALSE)
-			colnames(dominants) <- c("TaxonConceptID", "operator", "value")
-			# In case of use of authority
-			content$TaxonName <- iconv(content$TaxonName, enc_cont,
-					"ASCII//TRANSLIT")
-			dominants$TaxonConceptID <- iconv(dominants$TaxonConceptID, enc_gr,
-					"ASCII//TRANSLIT")
-			dominants$TaxonConceptID <- content[match(dominants$TaxonConceptID,
-							content$TaxonName),"TaxonConceptID"]
-			dominants$value <- as.numeric(dominants$value)
-			# paste rows in Names before continuing
-			Names[Slots == "species"] <- formula_new <- apply(dominants, 1,
-					format_F2)
-			# merge slot dominants and extract duplicated
-			formula_old <- apply(shaker@dominants, 1,format_F2)
-			dominants <- do.call(rbind, list(shaker@dominants,
-							dominants[!formula_new %in% formula_old,]))
-			rownames(dominants) <- NULL
-			formula_new <- apply(dominants, 1, format_F2)
-			# reformat formula
-			Names[Slots == "species"] <- paste(match(Names[Slots == "species"],
-							formula_new))
+			if(any(Slots == "species")) {
+				dominants <- strsplit(Names[Slots == "species"], " ")
+				# function to merge species names elements
+				dominants <- as.data.frame(do.call(rbind, lapply(dominants,
+										format_F1)), stringsAsFactors=FALSE)
+				colnames(dominants) <- c("TaxonConceptID", "operator", "value")
+				# In case of use of authority
+				content$TaxonName <- iconv(content$TaxonName, enc_cont,
+						"ASCII//TRANSLIT")
+				dominants$TaxonConceptID <- iconv(dominants$TaxonConceptID,
+						enc_gr, "ASCII//TRANSLIT")
+				dominants$TaxonConceptID <- content[
+						match(dominants$TaxonConceptID, content$TaxonName),
+						"TaxonConceptID"]
+				dominants$value <- as.numeric(dominants$value)
+				# paste rows in Names before continuing
+				Names[Slots == "species"] <- formula_new <- apply(dominants, 1,
+						format_F2)
+				# merge slot dominants and extract duplicated
+				if(nrow(shaker@dominants) > 0) {
+					formula_old <- apply(shaker@dominants, 1, format_F2)
+					dominants <- do.call(rbind, list(shaker@dominants,
+									dominants[!formula_new %in% formula_old,]))
+					rownames(dominants) <- NULL
+					formula_new <- apply(dominants, 1, format_F2)
+				}
+				shaker@dominants <- dominants
+				# reformat formula
+				Names[Slots == "species"] <- paste(match(Names[Slots ==
+												"species"], formula_new))
+			}
+			# reformat formula (continuation)
 			Names[Slots == "groups"] <- paste0(SYM, Names[Slots == "groups"],
 					SYM)
 			# Assemble new formulas
 			Names_old <- paste0(Slots, ":", SYM, Names_old, SYM)
+			Slots[Slots == "species"] <- "dominants"
 			Names <- paste0(Slots, "[[", Names, "]]")
 			for(i in 1:length(Names))
 				formula <- sub(Names_old[i], Names[i], formula)
 			# Insert results in output object
-			shaker@dominants <- dominants
+			
 			if(missing(formula_id))
 				formula_id <- length(shaker@formulas) + 1
 			shaker@formulas[[formula_id]] <- formula
