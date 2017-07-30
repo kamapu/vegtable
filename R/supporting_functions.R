@@ -11,11 +11,39 @@ format_F1 <- function(x) {
 	return(c(paste(x[1:(NR - 2)], collapse=" "), x[(NR - 1):NR]))
 }
 
-# Function merge all elements of a formula into an 'index'
+# Function merging all elements of a formula into an 'index'
 # Blanks will be deleted
 # This function is used to detect duplicated formulas in shaker objects
 format_F2 <- function(x) {
 	x <- paste(x, collapse=" ")
 	x <- gsub(" ", "", x, fixed=TRUE)
 	x
+}
+
+# Function replacing syntax in shaker objects
+# Written for the summary output
+rewrite_formulas <- function(shaker, companion) {
+	EQ <- list()
+	for(i in 1:length(shaker@formulas)) EQ[[i]] <- {
+		x <- shaker@formulas[[i]]
+		if(grepl("\'", x)) SYM <- "\'"
+		if(grepl('\"', x)) SYM <- '\"'
+		x <- gsub("groups[[", "groups:", x, fixed=TRUE)
+		x <- gsub("dominants[[", "species:", x, fixed=TRUE)
+		x <- gsub("]]", "", x, fixed=TRUE)
+		Spp <- as.numeric(unlist(regmatches(x,
+								gregexpr("[[:digit:]]+\\.*[[:digit:]]*", x))))
+		if(length(Spp) > 0){
+			for(j in Spp) {
+				subformula <- shaker@dominants[j,]
+				subformula$TaxonConceptID <- companion[
+						match(subformula$TaxonConceptID,
+								companion$TaxonConceptID),"TaxonName"]
+				subformula <- paste(subformula[1,], collapse=" ")
+				x <- sub(paste(j), paste0(SYM, subformula,SYM), x)
+			}
+		}
+		x
+	}
+	return(EQ)
 }

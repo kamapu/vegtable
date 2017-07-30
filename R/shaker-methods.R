@@ -60,7 +60,7 @@ setMethod("set_pseudo", signature(shaker="shaker", content="taxlist",
 			}
 			content$TaxonName <- iconv(content$TaxonName, enc_cont,
 					"ASCII//TRANSLIT")
-			group <- iconv(group, enc_gr, "ASCII//TRANSLIT")
+			pseudo <- iconv(pseudo, enc_gr, "ASCII//TRANSLIT")
 			if(any(!pseudo %in% content$TaxonName))
                 warning("Some names in 'pseudo' are not in 'content'")
             if(any(duplicated(content$TaxonName)))

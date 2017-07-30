@@ -3,7 +3,8 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-setMethod(f="summary", signature(object="vegtable"),
+# Method for 'vegtable' objects
+setMethod("summary", signature(object="vegtable"),
         function(object, units="Kb", ...) {
             # Show original attributes (metadata)
             cat("## Metadata", "\n")
@@ -29,4 +30,64 @@ setMethod(f="summary", signature(object="vegtable"),
                     "\n")
             cat("validity:", validObject(object@species), sep=" ", "\n")
             cat("\n")
-        })
+        }
+)
+
+# Method for 'shaker' objects
+setMethod("summary", signature(object="shaker"),
+		function(object, companion, authority=FALSE, ...) {
+			if(missing(companion)) {
+				cat("Number of pseudo-species:", length(object@pseudos), "\n")
+				cat("Number of species groups:", length(object@groups), "\n")
+				cat("Number of formulas:", length(object@formulas), "\n")
+			}
+			if(!missing(companion)) {
+				if(class(companion) == "vegtable")
+					companion <- companion@species
+				companion <- accepted_name(companion)
+				if(authority) {
+					companion$AuthorName[is.na(companion$AuthorName)] <- ""
+					companion$TaxonName <- with(companion, paste(TaxonName,
+									AuthorName))
+				}
+				if(length(object@pseudos) > 0) {
+					cat("## Pseudospecies:", "\n")
+					for(i in 1:length(object@pseudos)) {
+						cat("*", paste0("'",
+										companion[match(object@pseudos[[i]][1],
+														companion$TaxonConceptID),
+												"TaxonName"], "'"),
+								"contains:", "\n")
+						for(j in 2:length(object@pseudos[[i]])) {
+							cat("    ", companion[match(object@pseudos[[i]][j],
+													companion$TaxonConceptID),
+											"TaxonName"], "\n")
+						}
+					}
+					cat("\n")
+				}
+				if(length(object@groups) > 0) {
+					cat("## Species groups:", "\n")
+					for(i in 1:length(object@groups)) {
+						cat("*", paste0("'", names(object@groups)[i],
+										"' group:"), "\n")
+						for(j in 1:length(object@groups[[i]])) {
+							cat("    ", companion[match(object@groups[[i]][j],
+													companion$TaxonConceptID),
+											"TaxonName"], "\n")
+						}
+					}
+					cat("\n")
+				}
+				if(length(object@formulas) > 0) {
+					cat("## Formulas:", "\n")
+					EQ <- rewrite_formulas(shaker, companion)
+					for(i in 1:length(object@formulas)) {
+						cat("*", paste0(names(object@formulas)[i], ":"),
+								EQ[[i]], "\n")
+					}
+					cat("\n")
+				}
+			}
+		}
+)

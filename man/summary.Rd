@@ -2,6 +2,7 @@
 \docType{methods}
 \alias{summary}
 \alias{summary,vegtable-method}
+\alias{summary,shaker-method}
 
 \title{Summary Method for 'vegtable' Objects.}
 \description{
@@ -10,11 +11,15 @@ in the R-console.
 }
 \usage{
 \S4method{summary}{vegtable}(object, units="Kb", ...)
+
+\S4method{summary}{shaker}(object, companion, authority=FALSE, ...)
 }
 \arguments{
 \item{object}{object of class \code{\link[=vegtable-class]{vegtable}}.}
 \item{units}{character value indicating the units shown in the object's
 	allocated space.}
+\item{companion}{Describe.}
+\item{authority}{Describe.}
 \item{...}{further arguments to be passed to or from other methods.}
 }
 \details{
