@@ -81,7 +81,7 @@ setMethod("summary", signature(object="shaker"),
 				}
 				if(length(object@formulas) > 0) {
 					cat("## Formulas:", "\n")
-					EQ <- rewrite_formulas(shaker, companion)
+					EQ <- rewrite_formulas(object, companion)
 					for(i in 1:length(object@formulas)) {
 						cat("*", paste0(names(object@formulas)[i], ":"),
 								EQ[[i]], "\n")
