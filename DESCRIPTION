@@ -11,9 +11,10 @@ Depends:
 Imports:
 	foreign,
 	methods,
+	rgdal,
+	sp,
 	plotKML,
 	qdapRegex,
-	sp,
 	vegdata
 Suggests:
 	devtools,
