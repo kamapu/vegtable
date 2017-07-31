@@ -3,6 +3,9 @@ cache: packages
 sudo: required
 dist: trusty
 
+r_github_packages:
+  - kamapu/taxlist
+
 addons:
   apt:
     packages:
