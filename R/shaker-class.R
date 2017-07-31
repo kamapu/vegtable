@@ -17,10 +17,16 @@ setClass("shaker",
                         stringsAsFactors=FALSE),
                 formulas=list()),
         validity=function(object) {
-            # No duplicated values
-            # Mandatory names in 'dominants'
-            if(any(!c("TaxonConceptID","operator","value") %in%
-                            colnames(object@dominants)))
-                return("Columns 'TaxonConceptID', 'operator', and 'value' are mandatory in slot 'dominants'")
-        }
+			if(any(duplicated(do.call(c, object@pseudos))))
+				return("Some pseudo-species are sharing taxon concepts")
+			if(any(duplicated(do.call(c, object@groups))))
+				return("Some species groups are sharing taxon concepts")
+			if(any(!c("TaxonConceptID","operator","value") %in%
+							colnames(object@dominants)))
+				return("Columns 'TaxonConceptID', 'operator', and 'value' are mandatory in slot 'dominants'")
+			if(any(duplicated(apply(object@dominants, 1, format_F2))))
+				return("Some rules in slot 'dominants' are duplicated")
+			if(any(duplicated(do.call(c, object@formulas))))
+				return("Some formulas are duplicated")
+		}
 )
