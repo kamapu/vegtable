@@ -5,3 +5,4 @@
 
 TaxonUsageID <- NULL
 UsageIDs <- NULL
+shaker <- NULL

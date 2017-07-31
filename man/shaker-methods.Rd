@@ -15,24 +15,24 @@
 Properly set of slots in \code{\linkS4class{shaker}} objects.
 }
 \usage{
-\S4method{set_pseudo}{shaker,taxlist,character}(shaker, content, pseudo,
+\S4method{set_pseudo}{shaker,taxlist,character}(shaker, companion, pseudo,
 	pseudo_id, authority=FALSE, enc_cont="latin1", enc_gr="utf8", ...)
 
-\S4method{set_pseudo}{shaker,vegtable,character}(shaker, content, pseudo, ...)
+\S4method{set_pseudo}{shaker,vegtable,character}(shaker, companion, pseudo, ...)
 
-\S4method{set_group}{shaker,taxlist,character}(shaker, content, group, group_id,
+\S4method{set_group}{shaker,taxlist,character}(shaker, companion, group, group_id,
 	authority=FALSE, enc_cont="latin1", enc_gr="utf8", ...)
 
-\S4method{set_group}{shaker,vegtable,character}(shaker, content, group, ...)
+\S4method{set_group}{shaker,vegtable,character}(shaker, companion, group, ...)
 
-\S4method{set_formula}{shaker,taxlist,character}(shaker, content, formula,
+\S4method{set_formula}{shaker,taxlist,character}(shaker, companion, formula,
 	formula_id, authority=FALSE, enc_cont="latin1", enc_gr="utf8", ...)
 
-\S4method{set_formula}{shaker,vegtable,character}(shaker, content, formula, ...)
+\S4method{set_formula}{shaker,vegtable,character}(shaker, companion, formula, ...)
 }
 \arguments{
 \item{shaker}{Describe.}
-\item{content}{Describe.}
+\item{companion}{Describe.}
 \item{group,pseudo}{Describe.}
 \item{formula}{Describe.}
 \item{group_id,pseudo_id,formula_id}{Describe.}

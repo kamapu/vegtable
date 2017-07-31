@@ -5,92 +5,94 @@
 
 # Function setting species groups ----------------------------------------------
 setGeneric("set_group",
-        function(shaker, content, group, ...)
+        function(shaker, companion, group, ...)
             standardGeneric("set_group")
 )
 
 # Method for 'taxlist' objects
-setMethod("set_group", signature(shaker="shaker", content="taxlist",
+setMethod("set_group", signature(shaker="shaker", companion="taxlist",
                 group="character"),
-        function(shaker, content, group, group_id, authority=FALSE,
+        function(shaker, companion, group, group_id, authority=FALSE,
 				enc_cont="latin1", enc_gr="utf8", ...) {
-            content <- accepted_name(content)
+            companion <- accepted_name(companion)
 			if(authority) {
-				content$AuthorName[is.na(content$AuthorName)] <- ""
-				content$TaxonName <- with(content, paste(TaxonName, AuthorName))
+				companion$AuthorName[is.na(companion$AuthorName)] <- ""
+				companion$TaxonName <- with(companion, paste(TaxonName, AuthorName))
 			}
-			content$TaxonName <- iconv(content$TaxonName, enc_cont,
+			companion$TaxonName <- iconv(companion$TaxonName, enc_cont,
 					"ASCII//TRANSLIT")
 			group <- iconv(group, enc_gr, "ASCII//TRANSLIT")
-			if(any(!group %in% content$TaxonName))
-                warning("Some names in 'group' are not in 'content'")
-            if(any(duplicated(content$TaxonName)))
-                warning("Some duplicated names in 'content', only one will be retrieved")
+			if(any(!group %in% companion$TaxonName))
+                stop("Some names in 'group' are not in 'companion'")
+			if(any(duplicated(group)))
+				group <- unique(group)
+            if(any(duplicated(companion$TaxonName)))
+                warning("Some duplicated names in 'companion', only one will be retrieved")
             if(missing(group_id))
                 group_id <- length(shaker@groups) + 1
-            shaker@groups[[group_id]] <- content[charmatch(group,
-                            content$TaxonName),"TaxonConceptID"]
+            shaker@groups[[group_id]] <- companion[charmatch(group,
+                            companion$TaxonName),"TaxonConceptID"]
             return(shaker)
         }
 )
 
 # Method for 'vegtable' objects
-setMethod("set_group", signature(shaker="shaker", content="vegtable",
+setMethod("set_group", signature(shaker="shaker", companion="vegtable",
                 group="character"),
-        function(shaker, content, group, ...) {
-            set_group(shaker, content@species, group, ...)
+        function(shaker, companion, group, ...) {
+            set_group(shaker, companion@species, group, ...)
         }
 )
 
 # Function setting pseudos -----------------------------------------------------
 setGeneric("set_pseudo",
-        function(shaker, content, pseudo, ...)
+        function(shaker, companion, pseudo, ...)
             standardGeneric("set_pseudo")
 )
 
 # Method for 'taxlist' objects
-setMethod("set_pseudo", signature(shaker="shaker", content="taxlist",
+setMethod("set_pseudo", signature(shaker="shaker", companion="taxlist",
                 pseudo="character"),
-        function(shaker, content, pseudo, pseudo_id, authority=FALSE,
+        function(shaker, companion, pseudo, pseudo_id, authority=FALSE,
 				enc_cont="latin1", enc_gr="utf8", ...) {
-            content <- accepted_name(content)
+            companion <- accepted_name(companion)
 			if(authority) {
-				content$AuthorName[is.na(content$AuthorName)] <- ""
-				content$TaxonName <- with(content, paste(TaxonName, AuthorName))
+				companion$AuthorName[is.na(companion$AuthorName)] <- ""
+				companion$TaxonName <- with(companion, paste(TaxonName, AuthorName))
 			}
-			content$TaxonName <- iconv(content$TaxonName, enc_cont,
+			companion$TaxonName <- iconv(companion$TaxonName, enc_cont,
 					"ASCII//TRANSLIT")
 			pseudo <- iconv(pseudo, enc_gr, "ASCII//TRANSLIT")
-			if(any(!pseudo %in% content$TaxonName))
-                warning("Some names in 'pseudo' are not in 'content'")
-            if(any(duplicated(content$TaxonName)))
-                warning("Some duplicated names in 'content', only one will be retrieved")
+			if(any(!pseudo %in% companion$TaxonName))
+                stop("Some names in 'pseudo' are not in 'companion'")
+            if(any(duplicated(companion$TaxonName)))
+                warning("Some duplicated names in 'companion', only one will be retrieved")
             if(missing(pseudo_id))
                 pseudo_id <- length(shaker@pseudos) + 1
-            shaker@pseudos[[pseudo_id]] <- content[charmatch(pseudo,
-                            content$TaxonName),"TaxonConceptID"]
+            shaker@pseudos[[pseudo_id]] <- companion[charmatch(pseudo,
+                            companion$TaxonName),"TaxonConceptID"]
             return(shaker)
         }
 )
 
 # Method for 'vegtable' objects
-setMethod("set_pseudo", signature(shaker="shaker", content="vegtable",
+setMethod("set_pseudo", signature(shaker="shaker", companion="vegtable",
                 pseudo="character"),
-        function(shaker, content, pseudo, ...) {
-            set_pseudo(shaker, content@species, pseudo, ...)
+        function(shaker, companion, pseudo, ...) {
+            set_pseudo(shaker, companion@species, pseudo, ...)
         }
 )
 
 # Function setting formulas ----------------------------------------------------
 setGeneric("set_formula",
-		function(shaker, content, formula, ...)
+		function(shaker, companion, formula, ...)
 			standardGeneric("set_formula")
 )
 
 # Method for 'taxlist' objects
-setMethod("set_formula", signature(shaker="shaker", content="taxlist",
+setMethod("set_formula", signature(shaker="shaker", companion="taxlist",
 				formula="character"),
-		function(shaker, content, formula, formula_id, authority=FALSE,
+		function(shaker, companion, formula, formula_id, authority=FALSE,
 				enc_cont="latin1", enc_gr="utf8", ...) {
 			if(grepl("\'", formula)) SYM <- "\'"
 			if(grepl('\"', formula)) SYM <- '\"'
@@ -103,12 +105,12 @@ setMethod("set_formula", signature(shaker="shaker", content="taxlist",
 			# Check existence of groups in shaker object
 			
 			if(any(!Names[Slots == "groups"] %in% names(shaker@groups)))
-				stop("Some groups mentioned in the formula are not included in 'shaker'")
+				stop("Some groups mentioned in the 'formula' are not included in 'shaker'")
 			# Retrieve
-			content <- accepted_name(content)
+			companion <- accepted_name(companion)
 			if(authority) {
-				content$AuthorName[is.na(content$AuthorName)] <- ""
-				content$TaxonName <- with(content, paste(TaxonName, AuthorName))
+				companion$AuthorName[is.na(companion$AuthorName)] <- ""
+				companion$TaxonName <- with(companion, paste(TaxonName, AuthorName))
 			}
 			if(any(Slots == "species")) {
 				dominants <- strsplit(Names[Slots == "species"], " ")
@@ -117,12 +119,14 @@ setMethod("set_formula", signature(shaker="shaker", content="taxlist",
 										format_F1)), stringsAsFactors=FALSE)
 				colnames(dominants) <- c("TaxonConceptID", "operator", "value")
 				# In case of use of authority
-				content$TaxonName <- iconv(content$TaxonName, enc_cont,
+				companion$TaxonName <- iconv(companion$TaxonName, enc_cont,
 						"ASCII//TRANSLIT")
 				dominants$TaxonConceptID <- iconv(dominants$TaxonConceptID,
 						enc_gr, "ASCII//TRANSLIT")
-				dominants$TaxonConceptID <- content[
-						match(dominants$TaxonConceptID, content$TaxonName),
+				if(any(!dominants$TaxonConceptID %in% companion$TaxonName))
+					stop("Some species in 'formula' are not included in 'companion'")
+				dominants$TaxonConceptID <- companion[
+						match(dominants$TaxonConceptID, companion$TaxonName),
 						"TaxonConceptID"]
 				dominants$value <- as.numeric(dominants$value)
 				# paste rows in Names before continuing
@@ -160,13 +164,9 @@ setMethod("set_formula", signature(shaker="shaker", content="taxlist",
 )
 
 # Method for 'vegtable' objects
-setMethod("set_formula", signature(shaker="shaker", content="vegtable",
+setMethod("set_formula", signature(shaker="shaker", companion="vegtable",
 				formula="character"),
-		function(shaker, content, formula, ...) {
-			set_formula(shaker, content@species, formula, ...)
+		function(shaker, companion, formula, ...) {
+			set_formula(shaker, companion@species, formula, ...)
 		}
 )
-
-# TODO: summary method
-
-# TODO: print method
