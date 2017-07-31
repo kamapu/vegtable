@@ -1,7 +1,10 @@
 language: R
 cache: packages
-dist: trusty
 sudo: required
+dist: trusty
 
-r_github_packages:
-  - cran/plotKML
+addons:
+  apt:
+    packages:
+      - libgdal-dev
+      - libproj-dev
