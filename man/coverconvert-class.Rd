@@ -1,11 +1,11 @@
 \name{coverconvert-class}
 \docType{class}
-\alias{coverconvert-class}
 \alias{coverconvert}
+\alias{coverconvert-class}
 
-\title{Class 'coverconvert'.}
+\title{Cover conversion tables.}
 \description{
-Descriptioin
+Cover conversion tables for 'vegtable' objects.
 }
 \section{slots}{
 \describe{
@@ -15,7 +15,7 @@ Descriptioin
 }
 }
 \details{
-More details.
+Conversion tables are 
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
@@ -25,6 +25,6 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-
 showClass("coverconvert")
 }
+\keyword{classes}

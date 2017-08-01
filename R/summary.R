@@ -3,7 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-# Method for 'vegtable' objects
+# Method for 'vegtable' objects ------------------------------------------------
 setMethod("summary", signature(object="vegtable"),
         function(object, units="Kb", ...) {
             # Show original attributes (metadata)
@@ -33,7 +33,18 @@ setMethod("summary", signature(object="vegtable"),
         }
 )
 
-# Method for 'shaker' objects
+# Now set the method -----------------------------------------------------------
+setMethod("summary", signature(object="coverconvert"),
+		function(object, ...) {
+			cat("## Number of cover scales:", length(object@value), "\n")
+			for(i in names(object@value)) {
+				cat(paste0("* classes in '", i, "':"), "\n")
+				cat("   ", levels(object@value[[i]]), "\n")
+			}
+		}
+)
+
+# Method for 'shaker' objects --------------------------------------------------
 setMethod("summary", signature(object="shaker"),
 		function(object, companion, authority=FALSE, ...) {
 			if(missing(companion)) {

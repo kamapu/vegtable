@@ -23,7 +23,7 @@ df2vegtable(x, species, layer, ...)
 \details{
 This function coerces a data frame containing a vegetation cross table into a
 \code{\linkS4class{vegtable}}.
-The input data frame \code{x} may include information on the layers or not.
+The input data frame \code{'x'} may include information on the layers or not.
 }
 \value{
 A \code{\linkS4class{vegtable} object}.

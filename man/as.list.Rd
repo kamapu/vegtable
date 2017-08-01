@@ -6,7 +6,7 @@
 
 \title{Coerce an S4 object to a list.}
 \description{
-Coercion used to explore inconsistencies in S4 objects.
+Coercion used to explore content in S4 objects.
 }
 \usage{
 \S4method{as.list}{vegtable}(x, ...)
@@ -14,20 +14,33 @@ Coercion used to explore inconsistencies in S4 objects.
 \S4method{as.list}{coverconvert}(x, ...)
 }
 \arguments{
-\item{x}{an object of class \code{\linkS4class{taxlist}},
-	\code{\linkS4class{coverconvert}} or \code{\linkS4class{vegtable}}}
-\item{...}{further arguments passed to or from other methods.}
+\item{x}{an object of class \code{\linkS4class{coverconvert}} or
+	\code{\linkS4class{vegtable}}}.
+\item{...}{further arguments passed from or to other methods.}
 }
 \details{
-Details.
+S4 objects will be coerced to lists, where each slot in the input object becomes
+a member of the output list.
+This way allows to explore content and solve problems when validity checks fail. 
 }
 \value{
-An object of class \code{list}, whose elements correspond to slots from input
-object.
+An object of class \code{list}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example for this function
+## Importing 'Easplist' from taxlist
+library(taxlist)
+data(Easplist)
+
+## Head of slot 'taxonNames'
+class(Easplist)
+head(Easplist@taxonNames)
+
+## The same after coercing to list
+Easplist <- as.list(Easplist)
+class(Easplist)
+head(Easplist$taxonNames)
 }
+\keyword{methods}

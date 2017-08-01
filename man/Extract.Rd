@@ -11,16 +11,19 @@
 \alias{$<-,vegtable,ANY-method}
 \alias{$<-,coverconvert,list-method}
 
-\title{Select or replace elements in a vegtable object.}
+\title{Select or replace elements in objects.}
 \description{
 Methods for quick access to slot \code{'header'} of
-\code{\linkS4class{vegtable}} objects.
+\code{\linkS4class{vegtable}} objects or for access to single cover scales in
+\code{\linkS4class{coverconvert}} objects.
 Also replacement methods are implemented.
 }
 \usage{
 \S4method{$}{vegtable}(x, name)
 
 \S4method{[}{vegtable}(x, i, j, ..., drop=FALSE)
+
+\S4method{$}{coverconvert}(x, name)
 
 x$i <- value
 x[i,j] <- value

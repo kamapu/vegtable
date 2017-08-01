@@ -40,6 +40,10 @@ A list with two elements:
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example for this function
-## For the example a installed file will be required
+library(vegtable)
+
+## Installed Juice version of 'Wetlands_veg'
+Veg <- file.path(path.package("vegtable"), "juice", "Wetlands_juice.txt")
+Veg <- read_juice(Veg)
+names(Veg)
 }

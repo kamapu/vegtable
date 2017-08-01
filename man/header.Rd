@@ -5,9 +5,9 @@
 \alias{header<-}
 \alias{header<-,vegtable,data.frame-method}
 
-\title{Retrieve or replace slot header in vegtable objects.}
+\title{Retrieve or replace slot header in 'vegtable' objects.}
 \description{
-Retrieve or replace the content of slot \code{header} in
+Retrieve or replace the content of slot \code{'header'} in
 \code{\linkS4class{vegtable}} objects.
 }
 \usage{

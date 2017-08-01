@@ -27,22 +27,45 @@ Classification of \code{\linkS4class{vegtable}} objects according to
 \item{...}{Further arguments passed from or to other methods.}
 }
 \details{
-Output included single columns for each vegetation unit to be retrieved.
+Cocktail algorithms are logical functions selecting plots according to either
+presence of species groups (when more than a half of the group occurring in a
+plot) and/or the cover values of single species.
 
-An extra column (named by the argument \code{syntax}) included all vegetation
-units, indicating with \code{'+'} plots classified in more than one vegetation
-unit.
+This function inserts single columns with logical values indicating whether a
+plot is classified in the vegetation unit or not.
+An additional column (argument \code{'syntax'}) compile all vegetation units,
+indicating with a \code{'+'} symbol those plots classified in more than one
+vegetation unit.
 }
 \value{
-A data frame corresponding to the slot \code{header} in \code{vegtable},
+A data frame corresponding to the slot \code{'header'} in \code{'vegtable'},
 including the results of Cocktail classification for the respective plots.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
+\references{
+\bold{Alvarez M (2017).} Classification of aquatic and semi-aquatic vegetation
+in two East African sites: Cocktail definitions and syntaxonomy.
+\emph{Phytocoenologia}.
+
+\emph{Bruelheide H (2000).} A new measure of fidelity and its application to
+defining species groups. \emph{Journal of Vegetation Science} 11: 167-–178.
+
+\bold{Kočí M, Chytrý M, Tichý L (2003).} Formalized reproduction of an
+expert-based phytosociological classification: a case study of subalpine
+tall-forb vegetation. \emph{Journal of Vegetation Science} 14: 601-–610.
+}
 \seealso{
-\code{\linkS4class{shaker}}, \code{\linkS4class{vegtable}}.
+\code{\linkS4class{shaker}}, \code{\linkS4class{vegtable}},
+\code{\link{Wetlands}}.
 }
 \examples{
-## Add example for this function
+library(vegtable)
+
+## Example from Alvarez (2017)
+data(Wetlands)
+
+Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
+summary(as.factor(Wetlands_veg@header$Syntax))
 }

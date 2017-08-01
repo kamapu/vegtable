@@ -17,7 +17,9 @@ Merge taxon concepts form into single ones.
 	(\code{'taxlist'} method).}
 }
 \details{
-Details.
+This method is applied to a function defined in the package
+\code{\link[=taxlist-package]{taxlist}} and only modify the slot
+\code{'species'} in the input \code{'object'}.
 }
 \value{
 An object of class \code{\linkS4class{vegtable}}.
@@ -26,6 +28,16 @@ An object of class \code{\linkS4class{vegtable}}.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Insert example
+library(vegtable)
+data(Kenya_veg)
+
+## Merge Olea capensis into one
+summary(subset(Kenya_veg@species, grepl("Olea capensis", TaxonName),
+	slot="names"), "all")
+Kenya_veg <- merge_taxa(Kenya_veg, c(52041,50432,50235))
+
+## Check Olea capensis again
+summary(subset(Kenya_veg@species, grepl("Olea capensis", TaxonName),
+	slot="names"), "all")
 }
 \keyword{methods}

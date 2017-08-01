@@ -1,0 +1,24 @@
+   1  Table number
+   4  Releve number
+  11  RELEVE_NR
+  15  COUNTRY
+  18  DATE
+  29  ALTITUDE
+  34  COV_TOTAL
+  38  LONGITUDE
+  50  LATITUDE
+  62  EC
+  67  PH_H2O
+  71  PH_KCL
+  75  TOTAL_C
+  81  TOTAL_N
+  86  AVAIL_P
+  92  EXCH_K
+  97  EXCH_CA
+ 103  EXCH_MG
+ 109  EXCH_NA
+ 115  COMM_TYPE
+ 137  REMARKS
+ 252  deg_lon
+ 264  deg_lat
+276  Syntax

@@ -28,15 +28,23 @@ names(x) <- value
 \item{value}{a character vector for replacing names.}
 }
 \details{
-Some detailed explanations.
+These methods provide a quick display of the contents in
+\code{\linkS4class{coverconvert}} and \code{\linkS4class{vegtable}} objects. 
 }
 \value{
-Output values
+Either a vector or a list (in the case of \code{'dimnames'}) with the names of
+variables.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example for this function
+library(vegtable)
+data(Kenya_veg)
+
+## All possibilities shown in 'Usage'
+names(Kenya_veg@coverconvert)
+names(Kenya_veg)
+dimnames(Kenya_veg)
 }
 \keyword{methods}

@@ -4,15 +4,18 @@
 \alias{crosstable,formula,data.frame-method}
 \alias{crosstable,formula,vegtable-method}
 
-\title{Generating Cross Tables from Database Lists.}
+\title{Generating cross tables from database Lists.}
 \description{
 This function is generating cross tables, which are the most common format used
-by further statistical packages (e.g. vegan).
+by statistical packages analysing vegetation data (e.g.
+\code{link[vegan-package]{vegan}}).
 }
 \usage{
-\S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE, ...)
+\S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE,
+	...)
 
-\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE, ...)
+\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE,
+	...)
 }
 \arguments{
 \item{formula}{A formula indicating the variables used in the cross table.}
@@ -28,7 +31,7 @@ The formula may have the form \code{'abundance ~ plot + species + \ldots'}.
 Additional variables used for rows (\code{\ldots}) can be for instance the
 layers.
 
-For objects of class \code{\link[=vegtable-class]{vegtable}}, the formula can
+For objects of class \code{\linkS4class{vegtable}}, the formula can
 also include variables from the species list (for example \code{AcceptedName}).
 }
 \value{
@@ -56,3 +59,4 @@ head(Cross)
 crosstable(AcceptedName ~ ReleveID, Kenya_veg[1:5,],
         function(x) length(unique(x)))
 }
+\keyword{methods}
