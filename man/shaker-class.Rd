@@ -1,9 +1,9 @@
 \name{shaker-class}
 \docType{class}
-\alias{shaker-class}
 \alias{shaker}
+\alias{shaker-class}
 
-\title{Class 'shaker'.}
+\title{Class containing Cocktail algorithms.}
 \description{
 Objects used for collecting Cocktail definitions.
 }
@@ -20,14 +20,16 @@ Objects used for collecting Cocktail definitions.
 }
 \details{
 A \code{shaker} object will be always dependent on a
-\code{\linkS4class{vegtable}} object, thus the creation and manipulation of
-these objects should be referred to the same version of the
-\code{\linkS4class{vegtable}} one.
+\code{\linkS4class{vegtable}} object which is usually called \code{'companion'}.
+Since modifications in the \code{companion} may affect the functionality of
+the \code{'shaker'} object, it will be recommended to create the last during a
+session by a source script instead recycling them from old R images.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
+\code{\link{set_pseudo}}, \code{\link{set_group}}, \code{\link{set_formula}},
 \code{\link{make_cocktail}}.
 }
 \examples{

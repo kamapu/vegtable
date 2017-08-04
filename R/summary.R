@@ -33,13 +33,22 @@ setMethod("summary", signature(object="vegtable"),
         }
 )
 
-# Now set the method -----------------------------------------------------------
+# Method for 'coverconvert' objects --------------------------------------------
 setMethod("summary", signature(object="coverconvert"),
 		function(object, ...) {
 			cat("## Number of cover scales:", length(object@value), "\n")
+			cat("\n")
 			for(i in names(object@value)) {
-				cat(paste0("* classes in '", i, "':"), "\n")
-				cat("   ", levels(object@value[[i]]), "\n")
+				Levels <- paste(object@value[[i]])
+				Range_1 <- paste(object@conversion[[i]])[
+						-length(object@conversion[[i]])]
+				Range_2 <- paste(object@conversion[[i]])[-1]
+				for(j in 1:length(Range_2))
+					if(duplicated(Range_2)[j]) Range_1[j] <- Range_1[j - 1]
+				cat(paste0("* scale '", i, "':"), "\n")
+				print(data.frame(Levels=Levels, Range=paste(Range_1, "-",
+										Range_2), stringsAsFactors=FALSE))
+				cat("\n")
 			}
 		}
 )
@@ -62,7 +71,7 @@ setMethod("summary", signature(object="shaker"),
 									AuthorName))
 				}
 				if(length(object@pseudos) > 0) {
-					cat("## Pseudospecies:", "\n")
+					cat("## Pseudo-species:", "\n")
 					for(i in 1:length(object@pseudos)) {
 						cat("*", paste0("'",
 										companion[match(object@pseudos[[i]][1],

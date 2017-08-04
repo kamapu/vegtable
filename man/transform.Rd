@@ -39,5 +39,22 @@ A vector?
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Add example for this function
+library(vegtable)
+data(Kenya_veg)
+
+## Check the classes in the header
+summary(Kenya_veg@coverconvert)
+
+## Conversion by default 'top' rule
+Kenya_veg <- transform(Kenya_veg, to="percent")
+summary(as.factor(Kenya_veg@samples$percent))
+
+## Conversion by 'middle' rule
+Kenya_veg <- transform(Kenya_veg, to="percent", rule="middle", replace=TRUE)
+summary(as.factor(Kenya_veg@samples$percent))
+
+## Conversion by 'bottom' rule
+Kenya_veg <- transform(Kenya_veg, to="percent", rule="bottom", replace=TRUE)
+summary(as.factor(Kenya_veg@samples$percent))
 }
+\keyword{methods}

@@ -71,12 +71,14 @@ setMethod("transform", signature(x="vegtable", conversion="missing"),
             if(!to %in% colnames(x@samples)) x@samples[,to] <- NA
             if(replace) Selection <- 1:length(x@samples[,to]) else
                 Selection <- which(is.na(x@samples[,to]))
-            for(i in names(x@coverconvert)) {
-                Selection2 <- which(!is.na(x@samples[,i]))
-                Selection2 <- intersect(Selection, Selection2)
-                x@samples[Selection2,to] <- transform(x@samples[Selection2,i],
-                        x@coverconvert, from=i, rule=rule, zeroto=zeroto)
-            }
+            for(i in names(x@coverconvert)) 
+				if(i %in% colnames(x@samples)) {
+					Selection2 <- which(!is.na(x@samples[,i]))
+					Selection2 <- intersect(Selection, Selection2)
+					x@samples[Selection2,to] <- transform(x@samples[Selection2,
+									i], x@coverconvert, from=i, rule=rule,
+							zeroto=zeroto)
+				}
             return(x)
         }
 )

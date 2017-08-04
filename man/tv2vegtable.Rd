@@ -53,4 +53,11 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 \code{\link[taxlist]{tv2taxlist}}, code{\link{tv2coverconvert}},
 \code{\link[vegdata]{tv.home}}.
 }
+\examples{
+library(vegtable)
 
+## Installed Turboveg version of 'Fujiwara et al. (2014)'
+TV_Home <- file.path(path.package("vegtable"), "tv_data")
+Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
+summary(Veg)
+}
