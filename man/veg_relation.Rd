@@ -7,13 +7,15 @@
 
 \title{Retrieve or replace relations in vegtable objects.}
 \description{
-Popup lists is a concept adopted from \bold{Turboveg} and they correspond to
-tables providing information about categorical variables.
-Such variables will be converted into factors in the slot \code{header} of
-\code{'vegtable'} objects.
+Tables providing information about levels of categorical variables in the header
+of a \bold{Turboveg} database are called \code{'popups'} in Turboveg, but
+\code{'relations'} in \code{\link[vegtable]{vegtable}}.
+Such variables will be converted into factors in the slot \code{'header'}
+according to the levels and their sorting in the respective relation.
 }
 \usage{
 \S4method{veg_relation}{vegtable,character}(vegtable, relation, ...)
+
 veg_relation(vegtable, relation) <- value
 }
 \arguments{
@@ -24,10 +26,10 @@ veg_relation(vegtable, relation) <- value
 \item{...}{Further arguments to be passed among methods.}
 }
 \value{
-\code{veg_relation} retrieves and object of class \code{data.frame}.
+\code{veg_relation} retrieves and object of class \code{'data.frame'}.
 In the replacement method, an object of class
-\code{\linkS4class{vegtable}} including \code{value} in the slot
-\code{relations}.
+\code{\linkS4class{vegtable}} including \code{'value'} in the slot
+\code{'relations'}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
@@ -39,3 +41,4 @@ data(Kenya_veg)
 ## overview of references
 veg_relation(Kenya_veg, "REFERENCE")
 }
+\keyword{methods}

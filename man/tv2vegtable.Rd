@@ -4,7 +4,7 @@
 \title{Import vegetation data from a Turboveg databases.}
 \description{
 \code{tv2vegtable} imports vegetation data sets from Turboveg
-data bases using the packages \code{foreign} and \code{\link{vegdata}}.
+data bases.
 }
 \usage{
 tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE)
@@ -21,27 +21,18 @@ tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE)
 Import routine for Turboveg databases into an object of class
 \code{\linkS4class{vegtable}}.
 
-Most of the contents of Turboveg
-databases are included in DBF-files and therefore imported by using the function
-\code{\link{read.dbf}}.
-Those elements
-are basically database (list of samples and headerer data) and popup lists
-(additional descriptions of factors included in header data as well as the cover
-conversion table).
-Empty columns in the header will be deleted in the imported
-object.
-Cover conversion table is split into single conversion tables by cover
-scale, each as a two column \code{data.frame}.
-The use of \code{\link{approxfun}} may be more appropriate for back conversion.
+Most of the contents of Turboveg databases are included in DBF files and
+therefore imported by using the function \code{\link[foreign]{read.dbf}}.
+The automatic setting of database path will be done by the function
+\code{\link[vegdata]{tv.home}} but it can be customised by the argument
+\code{'tv_home'}.
+Empty columns in the header will be deleted in the imported object.
 
-The respective species list will be imported by using the function
-\code{\link[taxlist]{tv2taxlist}} from the package
-\code{\link[=taxlist-package]{taxlist}}.
-Additionally the imported species list will be restricted to 'observed taxa'
-(only species occurring in plots).
-
-In the cases where databases are organized by folders in Turboveg, the name of
-the database should be indicated as \code{"folder\\db_name"}.
+The species list will be imported by using the function
+\code{\link[taxlist]{tv2taxlist}} and therefore formatted as a
+\code{\linkS4class{taxlist}} object.
+Similarly, conversion tables will be handled as
+\code{\linkS4class{coverconvert}} objects.
 }
 \value{
 A S4 object of class \code{\linkS4class{vegtable}}.

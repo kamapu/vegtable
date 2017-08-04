@@ -49,3 +49,4 @@ Kenya_veg <- Kenya_veg[1:20,]
 write_juice(Kenya_veg, "SWEA", FUN=mean)
 }
 }
+\keyword{methods}

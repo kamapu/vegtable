@@ -7,7 +7,10 @@
 # Dollar method ----------------------------------------------------------------
 setMethod("$", signature(x="coverconvert"),
         function(x, name) {
-            list(value=x@value[[name]], conversion=x@conversion[[name]])
+			## list(value=x@value[[name]], conversion=x@conversion[[name]])
+			x@value <- x@value[name]
+			x@conversion <- x@conversion[name]
+			return(x)
         }
 )
 

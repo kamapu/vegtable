@@ -17,8 +17,7 @@ This function provides a quick report about synonyms used in a data set (a
 \item{...}{Further arguments to be passed from or to another methods.}
 }
 \details{
-This function will only retrieve synonyms that are cited in the plot records and
-not any synonym included in the species list of the object.
+This function will only retrieve synonyms that are used in plot records.
 }
 \value{
 A data frame with following columns:
@@ -36,13 +35,14 @@ A data frame with following columns:
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link{}}
+\code{\link{accepted_name}}.
 }
 \examples{
-## Synonyms used in the Kenya_veg
 library(vegtable)
 data(Kenya_veg)
 
+## Synonyms used in the Kenya_veg
 Synonyms <- used_synonyms(Kenya_veg)
 head(Synonyms)
 }
+\keyword{methods}

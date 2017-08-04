@@ -14,8 +14,11 @@ tv2coverconvert(file, as.is=TRUE)
 \item{as.is}{A logical value passed to \code{\link{read.dbf}}}
 }
 \details{
-This function is used internally by \code{\link{tv2vegtable}}.
-Short and long names of each cover scale will be added as attribute.
+This function is used by \code{\link{tv2vegtable}} to import the respective
+conversion table from \bold{Turboveg} databases.
+Note that conversion tables in Turboveg have only stored the middle point for
+each cover class in a scale, thus it will be recommended to rebuild the
+\code{'coverconvert'} slot or use \code{\link{braun_blanquet}}.
 }
 \value{
 A \code{\linkS4class{coverconvert}} object.
@@ -37,4 +40,9 @@ Table <- tv2coverconvert(file.path(TV_Home, "TVSCALE.DBF"))
 Table@value <- Table@value[-1]
 Table@conversion <- Table@conversion[-1]
 summary(Table)
+
+## Compare the Turboveg version with a vegtable version
+data(braun_blanquet)
+summary(Table$br_bl)
+summary(braun_blanquet$br_bl)
 }

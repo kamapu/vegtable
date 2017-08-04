@@ -42,3 +42,4 @@ Kenya_veg <- subset(Kenya_veg, TaxonUsageID \%in\%
 
 \dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
 }
+\keyword{methods}
