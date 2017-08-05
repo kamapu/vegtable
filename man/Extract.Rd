@@ -26,11 +26,12 @@ Also replacement methods are implemented.
 \S4method{$}{coverconvert}(x, name)
 
 x$i <- value
+
 x[i,j] <- value
 }
 \arguments{
 \item{x}{Object of class \code{\linkS4class{vegtable}}.}
-\item{value}{vector with values to be replaced in the respective position of
+\item{value}{Vector with values to be replaced in the respective position of
 	slot \code{header}.}
 \item{...}{Further arguments passed to or from other methods.}
 \item{name}{A name to access.}

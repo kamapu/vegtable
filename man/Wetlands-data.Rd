@@ -5,7 +5,7 @@
 \alias{Wetlands_veg}
 \alias{Wetlands_veg-data}
 
-\title{Vegetation-Plots from Tanzania.}
+\title{Vegetation-plots from Tanzania.}
 \description{
 A subset of \href{http://www.givd.info/ID/AF-00-006}{SWEA-Dataveg} with plots
 sampled in Tanzania.
@@ -15,7 +15,8 @@ data(Wetlands)
 }
 \format{
 An object of class \code{\linkS4class{shaker}} (\code{'Wetlands'}) and the
-respective companion as \code{\linkS4class{vegtable}} object.
+respective companion as \code{\linkS4class{vegtable}} object
+(\code{'Wetlands_veg'}).
 }
 \source{
 \url{http://www.givd.info/ID/AF-00-006}.

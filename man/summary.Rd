@@ -5,10 +5,9 @@
 \alias{summary,coverconvert-method}
 \alias{summary,shaker-method}
 
-\title{Summary Method for 'vegtable' Objects.}
+\title{Summary method for vegtable objects.}
 \description{
-Overview of \code{\linkS4class{vegtable}} objects will be displayed
-in the R-console.
+Display summaries for \code{\linkS4class{vegtable}} objects.
 }
 \usage{
 \S4method{summary}{vegtable}(object, units="Kb", ...)
@@ -20,7 +19,8 @@ in the R-console.
 \arguments{
 \item{object}{Object to be summarized.}
 \item{units}{Units used for object size (passed to \code{\link{format}}).}
-\item{companion}{Companion of \code{\linkS4class{shaker}} objects.}
+\item{companion}{Companion object (either a \code{\linkS4class{taxlist}} or a
+	\code{\linkS4class{vegtable}} object.}
 \item{authority}{Logical value indicating whether authors should be displayed or
 	not.}
 \item{...}{further arguments to be passed to or from other methods.}

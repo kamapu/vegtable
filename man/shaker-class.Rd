@@ -7,23 +7,26 @@
 \description{
 Objects used for collecting Cocktail definitions.
 }
-\section{slots}{
+\section{Slots}{
 \describe{
-\item{pseudos}{list containing IDs of taxa that will be merged into
+\item{pseudos}{List containing IDs of taxa that will be merged into
 	pseudo-species.}
-\item{groups}{list containing IDs of taxa belonging to the same Cocktail group.}
+\item{groups}{List containing IDs of taxa belonging to the same Cocktail group.}
 \item{dominants}{data frame including lists of species used as dominant species
-	in Cocktail algorithms.}
-\item{formulas}{list with formulas that will be used as definitions for
+	in Cocktail algorithms, as well as operators and cover values used in the
+	formulas.}
+\item{formulas}{List with formulas that will be used as definitions for
 	vegetation units.}
 }
 }
 \details{
-A \code{shaker} object will be always dependent on a
-\code{\linkS4class{vegtable}} object which is usually called \code{'companion'}.
+These objects work as \bold{expert systems} for recognition of defined
+vegetation units among plots of a \code{\linkS4class{vegtable}} object.
+A \code{'shaker'} object will be always dependent on a
+\code{\linkS4class{vegtable}} object, which is called \code{'companion'}.
 Since modifications in the \code{companion} may affect the functionality of
 the \code{'shaker'} object, it will be recommended to create the last during a
-session by a source script instead recycling them from old R images.
+session by a source script instead of recycling them from old R images.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
@@ -34,6 +37,5 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-
 showClass("shaker")
 }

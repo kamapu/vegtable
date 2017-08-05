@@ -3,7 +3,7 @@
 \alias{used_synonyms}
 \alias{used_synonyms,vegtable-method}
 
-\title{Retrieve Synonyms used in the Data Set.}
+\title{Retrieve synonyms used in the data set.}
 \description{
 Plots records are rather linked to plant names than plant taxon concepts.
 This function provides a quick report about synonyms used in a data set (a
@@ -26,7 +26,7 @@ A data frame with following columns:
 	\item{Synonym}{The synonym itself.}
 	\item{SynonymAuthor}{Author of synonym.}
 	\item{TaxonConceptID}{ID of the taxon concept.}
-	\item{AcceptedNameID}{Usage ID of the respective accepted name.}
+	\item{AcceptedNameID}{Usage ID of the accepted name.}
 	\item{AcceptedName}{The respective accepted name.}
 	\item{AcceptedNameAuthor}{The author of the accepted name.}
 }

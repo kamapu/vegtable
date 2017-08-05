@@ -1,7 +1,7 @@
 \name{read_juice}
 \alias{read_juice}
 
-\title{Importing Juice Tables.}
+\title{Importing Juice tables.}
 \description{
 This function imports vegetation tables exported from Juice
 (\url{http://www.sci.muni.cz/botany/juice}).
@@ -14,7 +14,7 @@ read_juice(file, encoding="LATIN-1", sep=";", na="", ...)
 	Juice.}
 \item{encoding}{Argument passed to \code{\link{readLines}}.}
 \item{sep}{Separator used to split rows into columns.}
-\item{na}{Character used as missing value.}
+\item{na}{Character used as not available values.}
 \item{...}{Further arguments passed to \code{\link{readLines}}.}
 }
 \details{
@@ -24,7 +24,7 @@ For a properly import, you may strictly follow the export steps in Juice:
 	\item Check the option \code{Export covers in \%}
 }
 
-In the \code{header} (see \bold{value}), the first column (\code{juice_nr})
+In the \code{header} (see \bold{Value}), the first column (\code{juice_nr})
 corresponds to the plot number assigned by \bold{Juice} at import, while the
 column \code{db_nr} is the number originally assigned to the plot (e.g.
 \bold{Turboveg} ID).

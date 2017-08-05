@@ -7,41 +7,44 @@
 data bases.
 }
 \usage{
-tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, clean=TRUE)
+tv2vegtable(db, tv_home=tv.home(), skip_empty_relations=TRUE, skip_scale,
+	clean=TRUE)
 }
 \arguments{
-\item{db}{name of Turboveg data base as character value.}
+\item{db}{Name of Turboveg data base as character value.}
 \item{tv_home}{Turboveg installation path as character value.}
-\item{skip_empty_relations}{logical value indicating whether empty relations may
+\item{skip_empty_relations}{Logical value indicating whether empty relations may
 	be excluded from imported database or not.}
-\item{clean}{logical value indicating whether output object should be cleaned or
+\item{skip_scale}{Character value indicating scales to be excluded in slot
+	\code{'coverconvert'}.}
+\item{clean}{Logical value indicating whether output object should be cleaned or
 	not.}
 }
 \details{
-Import routine for Turboveg databases into an object of class
+Import function for \bold{Turboveg} databases into an object of class
 \code{\linkS4class{vegtable}}.
-
 Most of the contents of Turboveg databases are included in DBF files and
-therefore imported by using the function \code{\link[foreign]{read.dbf}}.
+therefore imported by the function \code{\link[foreign]{read.dbf}}.
 The automatic setting of database path will be done by the function
 \code{\link[vegdata]{tv.home}} but it can be customised by the argument
 \code{'tv_home'}.
-Empty columns in the header will be deleted in the imported object.
 
 The species list will be imported by using the function
 \code{\link[taxlist]{tv2taxlist}} and therefore formatted as a
 \code{\linkS4class{taxlist}} object.
 Similarly, conversion tables will be handled as
 \code{\linkS4class{coverconvert}} objects.
+
+Empty columns in the header will be deleted in the imported object.
 }
 \value{
-A S4 object of class \code{\linkS4class{vegtable}}.
+A \code{\linkS4class{vegtable}} object.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\link[taxlist]{tv2taxlist}}, code{\link{tv2coverconvert}},
+\code{\link[taxlist]{tv2taxlist}}, \code{\link{tv2coverconvert}},
 \code{\link[vegdata]{tv.home}}.
 }
 \examples{

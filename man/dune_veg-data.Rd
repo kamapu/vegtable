@@ -5,7 +5,7 @@
 
 \title{Dutch Dune Meadows.}
 \description{
-Data set from the package \code{vegan}, converted to a
+Data set from the package \code{\link[vegan]{vegan}}, converted to a
 \code{\linkS4class{vegtable}} object.
 }
 \usage{

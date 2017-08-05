@@ -5,23 +5,31 @@
 
 \title{Conversion of Braun-Blanquet codes to cover percentage.}
 \description{
-Data set as \code{\linkS4class{coverconvert}} object.
+Cover values conversion as \code{\linkS4class{coverconvert}} object.
 }
 \usage{
 data(braun_blanquet)
 }
+\details{
+Object of class \code{\linkS4class{coverconvert}} contains conversion tables
+usually from a categorical variable (a cover scale) to a numerical one
+(equivalent percentage cover value).
+cover values are stored as range for each level in the scale (minimum and
+maximum cover value).
+}
 \format{
 An object of class \code{\linkS4class{coverconvert}}.
+}
+\seealso{
+\code{\linkS4class{coverconvert}}, \code{\link{transform}}.
 }
 \examples{
 library(vegtable)
 data(braun_blanquet)
 
-## Add a custom scale
-braun_blanquet$my_scale <- list(
-	value=factor(c("low","medium","high"), levels=c("low","medium","high")),
-	conversion=c(0,50,75,100))
+## Quick displays
+names(braun_blanquet)
 summary(braun_blanquet)
-braun_blanquet$my_scale
+summary(braun_blanquet$b_bbds)
 }
 \keyword{datasets}

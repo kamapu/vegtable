@@ -1,7 +1,7 @@
 Package: vegtable
 Version: 0.1.0
 Encoding: UTF-8
-Date: 2017-07-07
+Date: 2017-08-05
 Title: Handling Vegetation Data Sets
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
@@ -22,7 +22,7 @@ LazyData: true
 Description: Import and handling data from vegetation-plot databases, especially
     data stored in Turboveg (<https://www.synbiosys.alterra.nl/turboveg>).
     Also import/export routines for exchange of data with Juice
-    (<http://www.sci.muni.cz/botany/juice>).
+    (<http://www.sci.muni.cz/botany/juice>) are implemented.
 License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtable
 BugReports: https://github.com/kamapu/vegtable/issues

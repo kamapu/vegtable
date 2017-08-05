@@ -1,4 +1,4 @@
-\name{set_group}
+\name{set_pseudo,set_group,set_formula}
 \docType{methods}
 \alias{set_group}
 \alias{set_group,shaker,taxlist,character-method}
@@ -47,7 +47,7 @@ Building \code{\linkS4class{shaker}} objects for Cocktail classifications.
 \item{...}{Further arguments passes from or to other methods.}
 }
 \details{
-Such functions should be used for constructing or complementing
+These functions are implemented for constructing or complementing
 \code{\linkS4class{shaker}} objects.
 Note that construction of those objects will always require a \code{'companion'}
 object, which is either an object of class \code{\linkS4class{taxlist}} or
@@ -60,7 +60,7 @@ A \code{\linkS4class{shaker}} object.
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \seealso{
-\code{\linkS4class{shaker}}.
+\code{\linkS4class{shaker}}, \code{\link{make_cocktail}}.
 }
 \examples{
 library(vegtable)

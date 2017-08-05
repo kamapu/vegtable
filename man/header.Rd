@@ -16,9 +16,9 @@ Retrieve or replace the content of slot \code{'header'} in
 header(x) <- value
 }
 \arguments{
-\item{x}{object of class \code{\linkS4class{vegtable}}.}
-\item{value}{data frame to be set as slot \code{header}.}
-\item{...}{further arguments passed to or from other methods.}
+\item{x}{Object of class \code{\linkS4class{vegtable}}.}
+\item{value}{Data frame to be set as slot \code{header}.}
+\item{...}{Further arguments passed to or from other methods.}
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

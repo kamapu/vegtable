@@ -3,13 +3,13 @@
 \alias{vegtable-class}
 \alias{vegtable}
 
-\title{Class 'vegtable'.}
+\title{Class vegtable.}
 \description{
 Class holding vegetation-plot data sets.
 Designed to content all information stored in Turboveg-databases in just one
 object.
 }
-\section{slots}{
+\section{Slots}{
 \describe{
 	\item{description}{A named character vector containing metadata.}
 	\item{samples}{A data frame with samples list.}
@@ -34,6 +34,5 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(vegtable)
-
 showClass("vegtable")
 }

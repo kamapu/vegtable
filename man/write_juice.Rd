@@ -29,10 +29,12 @@ Both tables share the file name plus a suffix (\code{table} for the vegetation
 table and \code{header} for the header).
 
 For the import in Juice, you may start with the table following in the menu
-\code{'File -> Import -> Table -> from Spreadsheet File (e.g. EXCEL Table)'}
+\code{'File -> Import
+-> Table -> from Spreadsheet File (e.g. EXCEL Table)'}
 and then follow the wizard.
 You further import the header table following in the menu \code{'File -> Import
--> Header Data -> From Comma Delimited File'}.
+-> Header Data
+-> From Comma Delimited File'}.
 Notice that the vegetation is a semi-colon delimited file, while the header is a
 comma delimited file.
 }

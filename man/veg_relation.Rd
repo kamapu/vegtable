@@ -26,7 +26,7 @@ veg_relation(vegtable, relation) <- value
 \item{...}{Further arguments to be passed among methods.}
 }
 \value{
-\code{veg_relation} retrieves and object of class \code{'data.frame'}.
+This function retrieves and object of class \code{'data.frame'}.
 In the replacement method, an object of class
 \code{\linkS4class{vegtable}} including \code{'value'} in the slot
 \code{'relations'}.

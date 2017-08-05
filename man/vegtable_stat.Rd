@@ -1,18 +1,18 @@
 \name{vegtable_stat}
 \alias{vegtable_stat}
 
-\title{General Statistics from 'vegtable' Data Sets.}
+\title{General statistics from vegtable objects.}
 
 \description{
-This function calculates general statistics of local TURBOVEG databases as
-required by GIVD (Global Index of Vegetation-Plot Databases,
+This function calculates general statistics of local \bold{Turboveg} databases
+as required by GIVD (Global Index of Vegetation-Plot Databases,
 \url{http://botanik3.botanik.uni-greifswald.de/givd/}).
 }
 \usage{
 vegtable_stat(vegtable)
 }
 \arguments{
-\item{vegtable}{an object of class \code{\linkS4class{vegtable}}.}
+\item{vegtable}{An object of class \code{\linkS4class{vegtable}}.}
 }
 \details{
 This function is based on a script delivered by GIVD for

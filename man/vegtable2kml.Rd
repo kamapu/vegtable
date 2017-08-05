@@ -4,14 +4,15 @@
 \alias{vegtable2kml,data.frame-method}
 \alias{vegtable2kml,vegtable-method}
 
-\title{Quick Mapping of Plot Observations.}
+\title{Mapping of plot observations.}
 \description{
 This function is a wrapper of \code{\link[plotKML]{kml}} producing and
-displaying KML-files.
+displaying KML files.
 }
 \usage{
 \S4method{vegtable2kml}{data.frame}(obj, file, coords=~ Longitude + Latitude,
                 srs=CRS("+proj=longlat +datum=WGS84"))
+
 \S4method{vegtable2kml}{vegtable}(obj, file, coords=~ LONGITUDE + LATITUDE,
                 srs=CRS("+proj=longlat +datum=WGS84"))
 }
@@ -24,7 +25,11 @@ displaying KML-files.
 \item{srs}{Spatial reference system as \code{proj4string}.}
 }
 \details{
-Precise this function.
+Georeferenced plots can be quickly displayed in
+\href{https://www.google.com/earth}{Google Earth} using this function.
+}
+\value{
+A KML file, which will be automatically opened in \bold{Google Earth}.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).

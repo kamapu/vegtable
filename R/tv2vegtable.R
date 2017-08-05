@@ -4,7 +4,7 @@
 ################################################################################
 
 tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
-        clean=TRUE) {
+		skip_scale, clean=TRUE) {
     # Import meta data ---------------------------------------------------------
     description <- unlist(c(db, read.dbf(file.path(tv_home, "Data", db,
                                     "tvwin.dbf"), as.is=TRUE)[,c("FLORA",
@@ -45,7 +45,13 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
                 "tvscale.dbf")
     } else cover_home <- file.path(tv_home, "popup", "tvscale.dbf")
     coverconvert <- tv2coverconvert(cover_home)
-    cover_match <- read.dbf(cover_home, as.is=TRUE)[,c("SCALE_NR","SCALE_NAME",
+	if(!missing(skip_scale)) {
+		coverconvert@value <- coverconvert@value[
+				!names(coverconvert@value) %in% skip_scale]
+		coverconvert@conversion <- coverconvert@conversion[
+				!names(coverconvert@conversion) %in% skip_scale]
+	}
+	cover_match <- read.dbf(cover_home, as.is=TRUE)[,c("SCALE_NR","SCALE_NAME",
                     "SCALE_CODE")]
     cover_match$SCALE_CODE <- tolower(sub("/", "_", cover_match$SCALE_CODE,
                     fixed=TRUE))

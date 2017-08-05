@@ -22,8 +22,6 @@ Miguel Alvarez (\email{kamapu78@gmail.com}), Michael Curran
 (\email{currmi01@gmail.com}).
 }
 \references{
-Sources of data:
-
 \bold{Bronner G (1990).} \emph{Vegetation and land use in the Mathews Range area,
 Samburu-District, Kenya}. J. Cramer, Berlin.
 
@@ -41,10 +39,6 @@ Kenya. \emph{Contributii Botanice} 49: 143--178.
 
 \bold{Schmitt K (1991).} \emph{The vegetation of the Aberdare National Park
 Kenya}. Universitätsverlag Wagner, Innsbruck.
-
-Reference of the database:
-
-\bold{Alvarez et al.} In preparation.
 }
 \examples{
 library(vegtable)

@@ -3,10 +3,10 @@
 \alias{make_cocktail}
 \alias{make_cocktail,shaker,vegtable-method}
 
-\title{Produce a Cocktail Classification}
+\title{Produce a Cocktail classification.}
 \description{
 Classification of \code{\linkS4class{vegtable}} objects according to
-\bold{Cocktail} algorithms implemented in a \code{\linkS4class{shaker}} object.
+\bold{Cocktail} algorithms.
 }
 \usage{
 \S4method{make_cocktail}{shaker,vegtable}(shaker, vegtable, which, cover,
@@ -28,17 +28,20 @@ Classification of \code{\linkS4class{vegtable}} objects according to
 }
 \details{
 Cocktail algorithms are logical functions selecting plots according to either
-presence of species groups (when more than a half of the group occurring in a
-plot) and/or the cover values of single species.
+occurrence of species groups and cover values of single species.
+A group will be declared as occurring in a plot when at least a half of its
+members is present in the plot.
 
 This function inserts single columns with logical values indicating whether a
 plot is classified in the vegetation unit or not.
-An additional column (argument \code{'syntax'}) compile all vegetation units,
+An additional column (name provided in argument \code{'syntax'}) compile all
+vegetation units,
 indicating with a \code{'+'} symbol those plots classified in more than one
 vegetation unit.
 }
 \value{
-A data frame corresponding to the slot \code{'header'} in \code{'vegtable'},
+A data frame corresponding to the slot \code{'header'} of input object
+\code{'vegtable'},
 including the results of Cocktail classification for the respective plots.
 }
 \author{
@@ -50,11 +53,11 @@ in two East African sites: Cocktail definitions and syntaxonomy.
 \emph{Phytocoenologia}.
 
 \emph{Bruelheide H (2000).} A new measure of fidelity and its application to
-defining species groups. \emph{Journal of Vegetation Science} 11: 167-–178.
+defining species groups. \emph{Journal of Vegetation Science} 11: 167--178.
 
 \bold{Kočí M, Chytrý M, Tichý L (2003).} Formalized reproduction of an
 expert-based phytosociological classification: a case study of subalpine
-tall-forb vegetation. \emph{Journal of Vegetation Science} 14: 601-–610.
+tall-forb vegetation. \emph{Journal of Vegetation Science} 14: 601--610.
 }
 \seealso{
 \code{\linkS4class{shaker}}, \code{\linkS4class{vegtable}},
