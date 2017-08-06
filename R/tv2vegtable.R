@@ -42,8 +42,8 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     # Importing coverconvert ---------------------------------------------------
     if(!is.na(description["dictionary"])) {
         cover_home <- file.path(tv_home, "popup", description["dictionary"],
-                "TVSCALE.DBF")
-    } else cover_home <- file.path(tv_home, "popup", "TVSCALE.DBF")
+                "tvscale.dbf")
+    } else cover_home <- file.path(tv_home, "popup", "tvscale.dbf")
     coverconvert <- tv2coverconvert(cover_home)
 	if(!missing(skip_scale)) {
 		coverconvert@value <- coverconvert@value[
