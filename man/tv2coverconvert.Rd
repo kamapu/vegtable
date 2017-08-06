@@ -34,7 +34,7 @@ library(vegtable)
 
 ## Installed Turboveg version of 'Fujiwara et al. (2014)'
 TV_Home <- file.path(path.package("vegtable"), "tv_data", "popup", "Swea")
-Table <- tv2coverconvert(file.path(TV_Home, "TVSCALE.DBF"))
+Table <- tv2coverconvert(file.path(TV_Home, "tvscale.dbf"))
 
 ## First scale have to be deleted from conversion table
 Table@value <- Table@value[-1]
