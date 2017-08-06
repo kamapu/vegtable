@@ -60,8 +60,7 @@ setMethod("summary", signature(object="shaker"),
 				cat("Number of pseudo-species:", length(object@pseudos), "\n")
 				cat("Number of species groups:", length(object@groups), "\n")
 				cat("Number of formulas:", length(object@formulas), "\n")
-			}
-			if(!missing(companion)) {
+			} else {
 				if(class(companion) == "vegtable")
 					companion <- companion@species
 				companion <- accepted_name(companion)

@@ -42,8 +42,8 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     # Importing coverconvert ---------------------------------------------------
     if(!is.na(description["dictionary"])) {
         cover_home <- file.path(tv_home, "popup", description["dictionary"],
-                "tvscale.dbf")
-    } else cover_home <- file.path(tv_home, "popup", "tvscale.dbf")
+                "TVSCALE.DBF")
+    } else cover_home <- file.path(tv_home, "popup", "TVSCALE.DBF")
     coverconvert <- tv2coverconvert(cover_home)
 	if(!missing(skip_scale)) {
 		coverconvert@value <- coverconvert@value[
@@ -83,7 +83,7 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     } else relations_path <- file.path(tv_home, "popup",
                 description["dictionary"])
     Files <- list.files(relations_path, pattern=".dbf", ignore.case=TRUE)
-    Files <- Files[!toupper(Files) %in% c("DBASEDIC.DBF","FILES.DBF",
+    Files <- Files[!toupper(Files) %in% c("Dbasedic.dbf","Files.dbf",
                     "TVSCALE.DBF")]
     relations <- list()
     for(i in Files) {

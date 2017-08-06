@@ -21,10 +21,11 @@ format_F2 <- function(x) {
 }
 
 # Function replacing syntax in shaker objects
+# companion is a taxlist object
 # Written for the summary output
 rewrite_formulas <- function(shaker, companion) {
 	EQ <- list()
-	for(i in 1:length(shaker@formulas)) EQ[[i]] <- {
+	for(i in names(shaker@formulas)) EQ[[i]] <- {
 		x <- shaker@formulas[[i]]
 		if(grepl("\'", x)) SYM <- "\'"
 		if(grepl('\"', x)) SYM <- '\"'
@@ -40,7 +41,9 @@ rewrite_formulas <- function(shaker, companion) {
 						match(subformula$TaxonConceptID,
 								companion$TaxonConceptID),"TaxonName"]
 				subformula <- paste(subformula[1,], collapse=" ")
-				x <- sub(paste(j), paste0(SYM, subformula,SYM), x)
+				
+				x <- sub(paste0("species:", j), paste0("species:", SYM,
+								subformula, SYM), x)
 			}
 		}
 		x

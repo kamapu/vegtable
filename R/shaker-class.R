@@ -19,6 +19,8 @@ setClass("shaker",
         validity=function(object) {
 			if(any(duplicated(do.call(c, object@pseudos))))
 				return("Some pseudo-species are sharing taxon concepts")
+			if(is.null(names(object@groups)))
+				return("Members of slot 'groups' have to be named")
 			if(any(duplicated(do.call(c, object@groups))))
 				return("Some species groups are sharing taxon concepts")
 			if(any(!c("TaxonConceptID","operator","value") %in%
@@ -26,6 +28,8 @@ setClass("shaker",
 				return("Columns 'TaxonConceptID', 'operator', and 'value' are mandatory in slot 'dominants'")
 			if(any(duplicated(apply(object@dominants, 1, format_F2))))
 				return("Some rules in slot 'dominants' are duplicated")
+			if(is.null(names(object@formulas)))
+				return("Members of slot 'formulas' have to be named")
 			if(any(duplicated(do.call(c, object@formulas))))
 				return("Some formulas are duplicated")
 		}

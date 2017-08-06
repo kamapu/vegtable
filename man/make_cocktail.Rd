@@ -38,6 +38,8 @@ An additional column (name provided in argument \code{'syntax'}) compile all
 vegetation units,
 indicating with a \code{'+'} symbol those plots classified in more than one
 vegetation unit.
+When only a part of the formulas will be used, it should be specified by the
+argument \code{'which'}.
 }
 \value{
 A data frame corresponding to the slot \code{'header'} of input object
@@ -70,5 +72,11 @@ library(vegtable)
 data(Wetlands)
 
 Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
+summary(as.factor(Wetlands_veg@header$Syntax))
+
+## Same but only for two vegetation units
+data(Wetlands)
+Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg,
+	which=c("HY1","HY2"), cover="percen")
 summary(as.factor(Wetlands_veg@header$Syntax))
 }
