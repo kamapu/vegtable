@@ -83,8 +83,8 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     } else relations_path <- file.path(tv_home, "popup",
                 description["dictionary"])
     Files <- list.files(relations_path, pattern=".dbf", ignore.case=TRUE)
-    Files <- Files[!toupper(Files) %in% c("Dbasedic.dbf","Files.dbf",
-                    "TVSCALE.DBF")]
+    Files <- Files[!toupper(Files) %in% c("dbasedic.dbf","files.dbf",
+                    "tvscale.dbf")]
     relations <- list()
     for(i in Files) {
         relations[[tolower(i)]] <- read.dbf(file.path(relations_path, i),
