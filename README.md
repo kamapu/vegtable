@@ -30,6 +30,19 @@ The current version of `vegtable` includes an example data, which corresponds to
 
 ``` r
 library(vegtable)
+#> Loading required package: taxlist
+#> This is taxlist 0.1.2
+#> 
+#> Attaching package: 'taxlist'
+#> The following object is masked from 'package:base':
+#> 
+#>     levels
+#> This is vegtable 0.1.0
+#> 
+#> Attaching package: 'vegtable'
+#> The following object is masked from 'package:base':
+#> 
+#>     transform
 data(Kenya_veg)
 
 # validate and explore

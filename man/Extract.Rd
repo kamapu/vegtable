@@ -1,8 +1,8 @@
 \name{Extract}
 \docType{methods}
+\alias{[<-}
 \alias{[,vegtable-method}
 \alias{[,vegtable,ANY,ANY,ANY-method}
-\alias{[<-}
 \alias{[<-,vegtable,ANY,ANY,ANY-method}
 \alias{$,vegtable-method}
 \alias{$,coverconvert-method}
@@ -24,15 +24,9 @@ Also replacement methods are implemented.
 \S4method{[}{vegtable}(x, i, j, ..., drop=FALSE)
 
 \S4method{$}{coverconvert}(x, name)
-
-x$i <- value
-
-x[i,j] <- value
 }
 \arguments{
 \item{x}{Object of class \code{\linkS4class{vegtable}}.}
-\item{value}{Vector with values to be replaced in the respective position of
-	slot \code{header}.}
 \item{...}{Further arguments passed to or from other methods.}
 \item{name}{A name to access.}
 \item{i,j}{Indices for access.}

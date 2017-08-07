@@ -19,13 +19,10 @@ Quick access to column names in slot header and names of conversion codes.
 \S4method{names}{vegtable}(x)
 
 \S4method{dimnames}{vegtable}(x)
-
-names(x) <- value
 }
 \arguments{
 \item{x}{An object of class \code{\linkS4class{vegtable}} or
 	\code{\linkS4class{coverconvert}}.}
-\item{value}{A character vector for replacing names.}
 }
 \details{
 These methods provide a quick display of the contents in
