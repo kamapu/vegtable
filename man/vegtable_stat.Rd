@@ -4,7 +4,7 @@
 \title{General statistics from vegtable objects.}
 
 \description{
-This function calculates general statistics of local \bold{Turboveg} databases
+This function calculates general statistics of local \sQuote{Turboveg} databases
 as required by GIVD (Global Index of Vegetation-Plot Databases,
 \url{http://botanik3.botanik.uni-greifswald.de/givd/}).
 }

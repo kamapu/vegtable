@@ -8,8 +8,8 @@
 \title{Retrieve or replace relations in vegtable objects.}
 \description{
 Tables providing information about levels of categorical variables in the header
-of a \bold{Turboveg} database are called \code{'popups'} in Turboveg, but
-\code{'relations'} in \code{\link[vegtable]{vegtable}}.
+of a \sQuote{Turboveg} database are called \code{'popups'} in \sQuote{Turboveg},
+but \code{'relations'} in \code{\link[vegtable]{vegtable}}.
 Such variables will be converted into factors in the slot \code{'header'}
 according to the levels and their sorting in the respective relation.
 }

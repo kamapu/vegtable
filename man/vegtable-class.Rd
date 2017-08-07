@@ -6,8 +6,8 @@
 \title{Class vegtable.}
 \description{
 Class holding vegetation-plot data sets.
-Designed to content all information stored in Turboveg-databases in just one
-object.
+Designed to content all information stored in \sQuote{Turboveg} databases in
+just one object.
 }
 \section{Slots}{
 \describe{

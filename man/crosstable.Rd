@@ -4,7 +4,7 @@
 \alias{crosstable,formula,data.frame-method}
 \alias{crosstable,formula,vegtable-method}
 
-\title{Generating cross tables from database Lists.}
+\title{Generating cross tables from database lists.}
 \description{
 This function is generating cross tables, which are the most common format used
 by statistical packages analysing vegetation data (e.g.

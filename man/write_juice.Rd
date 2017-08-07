@@ -3,9 +3,9 @@
 \alias{write_juice}
 \alias{write_juice,vegtable,character,formula-method}
 
-\title{Exporting Tables for Juice.}
+\title{Exporting Tables for \sQuote{Juice}.}
 \description{
-This function produce txt files as inport formats for Juice
+This function produce txt files as inport formats for \sQuote{Juice}
 (\url{http://www.sci.muni.cz/botany/juice/}).
 }
 \usage{
@@ -23,12 +23,14 @@ This function produce txt files as inport formats for Juice
 \item{...}{Further arguments passed to the function \code{\link{crosstable}}.}
 }
 \details{
-This function produces two output files to be imported into a Juice file: A
-vegetation table produced by \code{\link{crosstable}} and a header table.
+This function produces two output files to be imported into a \sQuote{Juice}
+file:
+A vegetation table produced by \code{\link{crosstable}} and a header table.
 Both tables share the file name plus a suffix (\code{table} for the vegetation
 table and \code{header} for the header).
 
-For the import in Juice, you may start with the table following in the menu
+For the import in \sQuote{Juice}, you may start with the table following in the
+menu
 \code{'File -> Import
 -> Table -> from Spreadsheet File (e.g. EXCEL Table)'}
 and then follow the wizard.

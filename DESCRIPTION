@@ -20,8 +20,8 @@ Suggests:
 	vegan
 LazyData: true
 Description: Import and handling data from vegetation-plot databases, especially
-    data stored in Turboveg (<https://www.synbiosys.alterra.nl/turboveg>).
-    Also import/export routines for exchange of data with Juice
+    data stored in 'Turboveg' (<https://www.synbiosys.alterra.nl/turboveg>).
+    Also import/export routines for exchange of data with 'Juice'
     (<http://www.sci.muni.cz/botany/juice>) are implemented.
 License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtable
