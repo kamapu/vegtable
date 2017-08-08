@@ -3,7 +3,7 @@
 vegtable
 ========
 
-[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)](https://travis-ci.org/kamapu/vegtable)
+[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)](https://travis-ci.org/kamapu/vegtable) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable) [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/vegtable)](http://cran.rstudio.com/web/packages/vegtable/index.html)
 
 The aim of `vegtable` is to provide a way for handling databases stored in [Turboveg](http://www.synbiosys.alterra.nl/turboveg). This package incorporates many concepts and some functions included in the package [vegdata](https://cran.r-project.org/package=vegdata) but defining an homonymous `S4` class containing all elements of a database in just one object. The package `vegtable` also contains several methods for this object class.
 
@@ -30,19 +30,6 @@ The current version of `vegtable` includes an example data, which corresponds to
 
 ``` r
 library(vegtable)
-#> Loading required package: taxlist
-#> This is taxlist 0.1.2
-#> 
-#> Attaching package: 'taxlist'
-#> The following object is masked from 'package:base':
-#> 
-#>     levels
-#> This is vegtable 0.1.0
-#> 
-#> Attaching package: 'vegtable'
-#> The following object is masked from 'package:base':
-#> 
-#>     transform
 data(Kenya_veg)
 
 # validate and explore
