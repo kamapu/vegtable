@@ -13,15 +13,15 @@ clean_once <- function(object) {
     object@samples <- object@samples[object@samples$ReleveID %in%
                     ReleveID,]
     # compare species and samples
-    UsageID <- intersect(object@samples$TaxonUsageID,
-            object@species@taxonNames$TaxonUsageID)
-    ConceptID <- unique(object@species@taxonNames[
-                    object@species@taxonNames$TaxonUsageID %in% UsageID,
-                    "TaxonConceptID"])
-    object@species@taxonRelations <- object@species@taxonRelations[
-            object@species@taxonRelations$TaxonConceptID %in%
-                    ConceptID,]
-    object@species <- clean(object@species)
+	## UsageID <- intersect(object@samples$TaxonUsageID,
+	##         object@species@taxonNames$TaxonUsageID)
+	## ConceptID <- unique(object@species@taxonNames[
+	##                 object@species@taxonNames$TaxonUsageID %in% UsageID,
+	##                 "TaxonConceptID"])
+	## object@species@taxonRelations <- object@species@taxonRelations[
+	##         object@species@taxonRelations$TaxonConceptID %in%
+	##                 ConceptID,]
+	## object@species <- clean(object@species)
     object@samples <- object@samples[object@samples$TaxonUsageID %in%
                     object@species@taxonNames$TaxonUsageID,]
     # delete header variables without data
