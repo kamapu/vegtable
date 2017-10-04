@@ -90,6 +90,16 @@ setMethod("crosstable", signature(formula="formula", data="vegtable"),
                                 data@species@taxonNames$TaxonUsageID),
                         "TaxonName"]
             }
+			# Data from traits (only for Accepted Name or TaxonConceptID)
+			traits_names <- colnames(data@species@taxonTraits)[
+					colnames(data@species@taxonTraits) != "TaxonConceptID"]
+			if(any(Terms %in% traits_names)) {
+				traits_names <- traits_names[traits_names %in% Terms]
+				for(i in traits_names)
+					data@samples[,i] <- data@species@taxonTraits[
+							match(data@samples$TaxonConceptID,
+									data@species@taxonTraits$TaxonConceptID),i]
+			}
             # Data from header
             header_names <- colnames(data@header)[colnames(data@header) !=
                             "ReleveID"]

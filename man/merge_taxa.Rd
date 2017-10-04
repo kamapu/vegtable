@@ -1,18 +1,23 @@
 \name{merge_taxa}
 \docType{methods}
 \alias{merge_taxa}
-\alias{merge_taxa,vegtable,numeric-method}
+\alias{merge_taxa,vegtable,numeric,missing-method}
+\alias{merge_taxa,vegtable,missing,character-method}
 
 \title{Merge concepts.}
 \description{
 Merge taxon concepts form into single ones.
 }
 \usage{
-\S4method{merge_taxa}{vegtable,numeric}(object, concepts, ...)
+\S4method{merge_taxa}{vegtable,numeric,missing}(object, concepts, level, ...)
+
+\S4method{merge_taxa}{vegtable,missing,character}(object, concepts, level, ...)
 }
 \arguments{
 \item{object}{Object of class \code{\linkS4class{vegtable}}.}
 \item{concepts}{Numeric (integer) vector including taxon concepts to be merged.}
+\item{level}{Character value indicating the level to which the taxa have to be
+	merged.}
 \item{...}{Further arguments passed to \code{\link[taxlist]{merge_taxa}}
 	(\code{'taxlist'} method).}
 }

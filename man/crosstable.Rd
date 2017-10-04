@@ -35,8 +35,8 @@ Additional variables used for rows (\code{\ldots}) can be for instance the
 layers.
 
 For objects of class \code{\linkS4class{vegtable}}, the formula can
-also include variables from the species list (for example \code{'AcceptedName'}
-or \code{'AuthorName'}).
+also include variables from the species list (for example \code{'AcceptedName'},
+\code{'AuthorName'}) or even taxon traits.
 }
 \value{
 An object of class \code{\link{data.frame}}.

@@ -1,6 +1,7 @@
 taxlist 0.1.1 (in Preparation)
   * subset function also working as taxlist::subset
   * function clean does not touch slot 'species'
+  * function 'crosstable' access also to taxon traits
 
 taxlist 0.1.0 (Release date: 2017-08-08)
   * First delivery in CRAN
