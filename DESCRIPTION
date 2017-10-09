@@ -35,7 +35,7 @@ Collate:
 	'subset.R'
 	'coverconvert-methods.R''names.R'
 	'tv2coverconvert.R''tv2vegtable.R'
-	'crosstable.R''write_juice.R''read_juice.R''vegtable2kml.R'
+	'crosstable.R''aggregate.R''write_juice.R''read_juice.R''vegtable2kml.R'
 	'shaker-methods.R''make_cocktail.R'
 	'summary.R'
 	'StartMessage.R'
