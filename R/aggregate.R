@@ -5,7 +5,7 @@
 
 # Method for vegtable objects
 setMethod("aggregate", signature(x="formula"),
-		function(x, data, FUN, ...) {
+		function(x, data, FUN, use_nas=TRUE, ...) {
 			if(class(data) != "vegtable")
 				return(stats::aggregate(x, data, FUN, ...)) else {
 				Terms <- c(as.character(x)[2], attr(terms(x),
@@ -63,6 +63,14 @@ setMethod("aggregate", signature(x="formula"),
 					for(i in header_names)
 						data@samples[,i] <- data@header[match(data@samples$ReleveID,
 										data@header$ReleveID), i]
+				}
+				if(use_nas) {
+					for(i in Terms[-1]) {
+						if(is.factor(data@samples[,i]))
+							data@samples[,i] <- paste(data@samples[,i])
+						if(is.character(data@samples[,i]))
+							data@samples[is.na(data@samples[,i]),i] <- ""
+					}
 				}
 				return(stats::aggregate(x, data@samples, FUN, ...)) 
 			}

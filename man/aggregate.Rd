@@ -9,13 +9,15 @@ This function aggregates information contained in \code{\linkS4class{vegtable}}
 objects to a summarizing data frame.
 }
 \usage{
-\S4method{aggregate}{formula}(x, data, FUN, ...)
+\S4method{aggregate}{formula}(x, data, FUN, use_nas=TRUE, ...)
 }
 \arguments{
 \item{x}{A formula indicating the variables used for the summary.}
 \item{data}{Either a data frame or an object of class
 	\code{\linkS4class{vegtable}}.}
 \item{FUN}{Function used to aggregate values.}
+\item{use_nas}{Logical value indicating whether NA's should be included in
+	categorical variables or not.}
 \item{...}{Further arguments passed to the function
 	\code{\link[stats]{aggregate}}.}
 }

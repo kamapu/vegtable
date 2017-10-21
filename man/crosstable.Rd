@@ -12,10 +12,10 @@ by statistical packages analysing vegetation data (e.g.
 }
 \usage{
 \S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE,
-	...)
+	use_nas=TRUE, ...)
 
 \S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE,
-	...)
+	use_nas=TRUE, ...)
 }
 \arguments{
 \item{formula}{A formula indicating the variables used in the cross table.}
@@ -24,6 +24,8 @@ by statistical packages analysing vegetation data (e.g.
 \item{FUN}{Function used to aggregate values.}
 \item{na_to_zero}{A logical value indicating whether zeros should be inserted
 	into empty cells or not.}
+\item{use_nas}{Logical value indicating whether NAs should be considered as
+	levels for categorical variables or not.}
 \item{...}{Further arguments passed to the function \code{\link{aggregate}}.}
 }
 \details{
@@ -58,9 +60,5 @@ Kenya_veg <- transform(Kenya_veg, to="cover_perc", rule="middle")
 Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
         Kenya_veg[1:5,], mean, na_to_zero=TRUE)
 head(Cross)
-
-## sum of species per plot
-crosstable(AcceptedName ~ ReleveID, Kenya_veg[1:5,],
-        function(x) length(unique(x)))
 }
 \keyword{methods}

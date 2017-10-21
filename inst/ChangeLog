@@ -1,8 +1,9 @@
 vegtable 0.1.1 (in Preparation)
-  * subset function also working as taxlist::subset
+  * subset function also working as 'taxlist::subset'
   * function clean does not touch slot 'species'
   * function 'crosstable' access also to taxon traits
   * a method for function 'aggregate'
+  * new argument 'use_nas' for function 'crosstable'
 
 vegtable 0.1.0 (Release date: 2017-08-08)
   * First delivery in CRAN

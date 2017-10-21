@@ -24,7 +24,7 @@ setMethod("summary", signature(object="vegtable"),
             cat("number of relations:", length(object@relations), sep=" ", "\n")
             cat("\n")
             # Content of species list
-            cat("## Species List", "\n")
+            cat("## Taxonomic List", "\n")
             cat("taxon names:", nrow(object@species@taxonNames), sep=" ", "\n")
             cat("taxon concepts:", nrow(object@species@taxonRelations), sep=" ",
                     "\n")
