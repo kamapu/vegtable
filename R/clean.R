@@ -25,8 +25,8 @@ clean_once <- function(object) {
     object@relations <- object@relations[names(object@relations) %in%
                     colnames(object@header)]
 	# delete orphaned layers
-	object@layers <- object@relations[names(object@relations) %in%
-					colnames(object@header)]
+	object@layers <- object@layers[names(object@layers) %in%
+					colnames(object@samples)]
     # delete orphaned cover conversions
     object@coverconvert@value <- object@coverconvert@value[
             names(object@coverconvert@value) %in% colnames(object@samples)]
