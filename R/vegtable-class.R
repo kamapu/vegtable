@@ -7,6 +7,7 @@ setClass("vegtable",
         slots=c(
 				description="character",
 				samples="data.frame",
+				layers="list",
 				header="data.frame",
 				species="taxlist",
 				relations="list",
@@ -15,8 +16,10 @@ setClass("vegtable",
                 description=character(),
                 samples=data.frame(
                         ReleveID=integer(),
+						LayerID=integer(),
                         TaxonUsageID=integer()
                 ),
+				layers=list(),
 				header=data.frame(
                         ReleveID=integer()
                 ),
@@ -27,7 +30,13 @@ setClass("vegtable",
             # Mandatory names
             if(any(!c("ReleveID","TaxonUsageID") %in% colnames(object@samples)))
                 return("Columns 'ReleveID' and 'TaxonUsageID' are mandatory in slot 'samples'")
-            if(!"ReleveID" %in% colnames(object@header))
+			for(i in names(object@layers)) {
+				if(!i %in% colnames(object@samples))
+					return(paste0("Layers of '", i, "' not included in slot 'samples'"))
+				if(!i %in% colnames(object@layers[[i]]))
+					return(paste0("Column '", i, "' is mandatory in layer table '", i, "'"))
+			}
+			if(!"ReleveID" %in% colnames(object@header))
                 return("Column 'ReleveID' is mandatory in slot 'header'")
             for(i in names(object@relations)) {
                 if(!i %in% colnames(object@header))

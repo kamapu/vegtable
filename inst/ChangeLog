@@ -4,6 +4,7 @@ vegtable 0.1.1 (in Preparation)
   * function 'crosstable' access also to taxon traits
   * a method for function 'aggregate'
   * new argument 'use_nas' for function 'crosstable'
+  * slot 'layers' added to 'vegtable' objects
 
 vegtable 0.1.0 (Release date: 2017-08-08)
   * First delivery in CRAN

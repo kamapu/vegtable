@@ -16,6 +16,7 @@ just one object.
 	\item{header}{A data frame with plots data.}
 	\item{species}{Species list as a \code{\linkS4class{taxlist}}
 		object.}
+	\item{layers}{A list including strata within samples as data frames.}
 	\item{relations}{A list including popup lists as data frames.}
 	\item{coverconvert}{A scale conversion object of class
 		\code{\linkS4class{coverconvert}}.}

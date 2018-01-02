@@ -5,24 +5,15 @@
 
 # First a general function
 clean_once <- function(object) {
-    # compare samples and header
+    # compare samples and header (delete non shared ReleveID's)
     ReleveID <- intersect(object@header$ReleveID,
             object@samples$ReleveID)
     object@header <- object@header[object@header$ReleveID %in%
                     ReleveID,]
     object@samples <- object@samples[object@samples$ReleveID %in%
                     ReleveID,]
-    # compare species and samples
-	## UsageID <- intersect(object@samples$TaxonUsageID,
-	##         object@species@taxonNames$TaxonUsageID)
-	## ConceptID <- unique(object@species@taxonNames[
-	##                 object@species@taxonNames$TaxonUsageID %in% UsageID,
-	##                 "TaxonConceptID"])
-	## object@species@taxonRelations <- object@species@taxonRelations[
-	##         object@species@taxonRelations$TaxonConceptID %in%
-	##                 ConceptID,]
-	## object@species <- clean(object@species)
-    object@samples <- object@samples[object@samples$TaxonUsageID %in%
+    # compare species and samples (delete observations not included in species list)
+	object@samples <- object@samples[object@samples$TaxonUsageID %in%
                     object@species@taxonNames$TaxonUsageID,]
     # delete header variables without data
     object@header <- object@header[,!apply(object@header, 2,
@@ -33,6 +24,9 @@ clean_once <- function(object) {
     # delete orphaned relations
     object@relations <- object@relations[names(object@relations) %in%
                     colnames(object@header)]
+	# delete orphaned layers
+	object@layers <- object@relations[names(object@relations) %in%
+					colnames(object@header)]
     # delete orphaned cover conversions
     object@coverconvert@value <- object@coverconvert@value[
             names(object@coverconvert@value) %in% colnames(object@samples)]
