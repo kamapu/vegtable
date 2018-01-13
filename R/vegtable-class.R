@@ -61,7 +61,7 @@ setClass("vegtable",
 				if(!all(unique(object@samples[,i]) %in% object@layers[[i]][,i]))
 					return(paste0("Some values of'", i,
 									"' in slot 'samples' are missing in slot 'layers'"))
-				Layers <- with(object@samples, unique(cbind(ReleveID, get(i))))
+				Layers <- unique(object@samples[,c("ReleveID", i)])
 				if(any(duplicated(Layers[,i])))
 					return(paste0("Some values in layer '", i,
 									"' occur in more than one plot"))
