@@ -56,5 +56,15 @@ setClass("vegtable",
             # Other consistency tests
             if(any(duplicated(object@header$ReleveID)))
                 return("Duplicated releve IDs are not allowed in slot 'header'")
+			# Tests for layers
+			for(i in names(object@layers)) {
+				if(!all(unique(object@samples[,i]) %in% object@layers[[i]][,i]))
+					return(paste0("Some values of'", i,
+									"' in slot 'samples' are missing in slot 'layers'"))
+				Layers <- with(object@samples, unique(cbind(ReleveID, get(i))))
+				if(any(duplicated(Layers[,i])))
+					return(paste0("Some values in layer '", i,
+									"' occur in more than one plot"))
+			}
         }
 )
