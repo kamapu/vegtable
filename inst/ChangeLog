@@ -1,4 +1,4 @@
-vegtable 0.1.1 (in Preparation)
+vegtable 0.1.1 (Release date: 2018-02-08)
   * subset function also working as 'taxlist::subset'
   * function clean does not touch slot 'species'
   * function 'crosstable' access also to taxon traits
