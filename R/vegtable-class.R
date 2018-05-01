@@ -16,8 +16,7 @@ setClass("vegtable",
                 description=character(),
                 samples=data.frame(
                         ReleveID=integer(),
-						LayerID=integer(),
-                        TaxonUsageID=integer()
+						TaxonUsageID=integer()
                 ),
 				layers=list(),
 				header=data.frame(
@@ -58,13 +57,9 @@ setClass("vegtable",
                 return("Duplicated releve IDs are not allowed in slot 'header'")
 			# Tests for layers
 			for(i in names(object@layers)) {
-				if(!all(unique(object@samples[,i]) %in% object@layers[[i]][,i]))
+				if(any(!object@samples[!is.na(object@samples[,i]), i] %in% object@layers[[i]][,i]))
 					return(paste0("Some values of'", i,
 									"' in slot 'samples' are missing in slot 'layers'"))
-				Layers <- unique(object@samples[,c("ReleveID", i)])
-				if(any(duplicated(Layers[,i])))
-					return(paste0("Some values in layer '", i,
-									"' occur in more than one plot"))
 			}
         }
 )
