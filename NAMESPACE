@@ -33,6 +33,7 @@ exportMethods(
 	df2vegtable,
 	dimnames,
 	make_cocktail,
+	match_names,
 	merge_taxa,
 	names,
 	header,"header<-",
