@@ -37,6 +37,7 @@ exportMethods(
 	merge_taxa,
 	names,
 	header,"header<-",
+	layers2samples,
 	set_formula,
 	set_group,
 	set_pseudo,

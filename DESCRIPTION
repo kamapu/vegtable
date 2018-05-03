@@ -36,6 +36,7 @@ Collate:
 	'coverconvert-methods.R''names.R'
 	'tv2coverconvert.R''tv2vegtable.R'
 	'crosstable.R''aggregate.R''write_juice.R''read_juice.R''vegtable2kml.R'
+	'layers2samples.R'
 	'shaker-methods.R''make_cocktail.R'
 	'summary.R''match_names.R'
 	'StartMessage.R'

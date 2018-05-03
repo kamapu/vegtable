@@ -5,11 +5,13 @@ vegtable 0.1.2
 
 * File **inst/ChangeLog** replaced by **NEWS.md**.
 * Method `match_names` for `vegtable` objects.
+* New function `layers2samples`.
 
 ### Improvements
 * No column `LayerID` in prototype for `vegtable` objects.
 * `NA` values are allowed for layers in slot `samples`.
 * Layers are not any more restricted to single plots.
+* Orphaned entries in slot `layers` will be deleted by function `clean`.
 
 vegtable 0.1.1
 ==============

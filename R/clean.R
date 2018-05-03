@@ -12,7 +12,11 @@ clean_once <- function(object) {
                     ReleveID,]
     object@samples <- object@samples[object@samples$ReleveID %in%
                     ReleveID,]
-    # compare species and samples (delete observations not included in species list)
+	# delete layer entries missing in samples
+	for(i in names(object@layers))
+		object@layers[[i]] <- object@layers[[i]][object@layers[[i]][,i] %in%
+						object@samples[,i]]
+	# compare species and samples (delete observations not included in species list)
 	object@samples <- object@samples[object@samples$TaxonUsageID %in%
                     object@species@taxonNames$TaxonUsageID,]
     # delete header variables without data
