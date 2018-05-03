@@ -1,14 +1,3 @@
-language: R
+language: r
 cache: packages
-sudo: required
-dist: trusty
-warnings_are_errors: false
-
-r_github_packages:
-  - kamapu/taxlist
-
-addons:
-  apt:
-    packages:
-      - libgdal-dev
-      - libproj-dev
+sudo: true
