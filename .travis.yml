@@ -1,3 +1,5 @@
 language: r
 cache: packages
 sudo: true
+install: 
+  - R -e 'install.packages("plotKML")'
