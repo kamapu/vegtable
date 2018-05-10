@@ -1,5 +1,8 @@
 language: r
 cache: packages
 sudo: true
-install: 
-  - R -e 'install.packages("plotKML")'
+addons:
+  apt:
+    packages:
+      - libgdal-dev
+      - libproj-dev
