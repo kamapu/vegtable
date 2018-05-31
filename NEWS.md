@@ -12,6 +12,7 @@ vegtable 0.1.2
 * `NA` values are allowed for layers in slot `samples`.
 * Layers are not any more restricted to single plots.
 * Orphaned entries in slot `layers` will be deleted by function `clean`.
+* Argument `match_header` included in funtion `veg_relation`.
 
 vegtable 0.1.1
 ==============

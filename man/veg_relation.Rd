@@ -14,7 +14,8 @@ Such variables will be converted into factors in the slot \code{'header'}
 according to the levels and their sorting in the respective relation.
 }
 \usage{
-\S4method{veg_relation}{vegtable,character}(vegtable, relation, ...)
+\S4method{veg_relation}{vegtable,character}(vegtable, relation,
+	match_header=FALSE, ...)
 
 veg_relation(vegtable, relation) <- value
 }
@@ -22,6 +23,8 @@ veg_relation(vegtable, relation) <- value
 \item{vegtable}{An object of class \code{\linkS4class{vegtable}}.}
 \item{relation}{A character value indicating the veg_relation to be retrieved or
 	replaced.}
+\item{match_header}{A logical vector, whether only levels occurring in slot
+	\code{'header'} should be considered or all.}
 \item{value}{A data frame containing the new veg_relation.}
 \item{...}{Further arguments to be passed among methods.}
 }

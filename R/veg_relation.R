@@ -11,7 +11,12 @@ setGeneric("veg_relation",
 
 # Set method for vegtable
 setMethod("veg_relation", signature(vegtable="vegtable", relation="character"),
-        function(vegtable, relation, ...) return(vegtable@relations[[relation]])
+        function(vegtable, relation, match_header=FALSE, ...)
+			if(match_header)
+				return(vegtable@relations[[relation]][
+								vegtable@relations[[relation]][,relation] %in%
+										vegtable@header[,relation],]) else 
+				return(vegtable@relations[[relation]])
 )
 
 # Replacement method -----------------------------------------------------------

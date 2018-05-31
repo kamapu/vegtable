@@ -24,9 +24,8 @@ setMethod("df2vegtable", signature(x="data.frame", species="numeric",
             ReleveID <- list()
             for(i in colnames(Cover)) ReleveID[[i]] <- rep(i, nrow(Cover))
             ReleveID <- do.call(c, ReleveID)
-            
-            TaxonUsageID <- taxlist@taxonNames$TaxonUsageID[match(paste(x[,
-                                            species]),
+			TaxonUsageID <- taxlist@taxonNames$TaxonUsageID[match(paste(x[,
+											species]),
                             taxlist@taxonNames$TaxonName)]
             TaxonUsageID <- rep(TaxonUsageID, ncol(Cover))
             Layer <- rep(Layer, ncol(Cover))
