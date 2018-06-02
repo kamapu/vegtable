@@ -3,6 +3,7 @@
 \alias{crosstable}
 \alias{crosstable,formula,data.frame-method}
 \alias{crosstable,formula,vegtable-method}
+\alias{cross2db}
 
 \title{Generating cross tables from database lists.}
 \description{
@@ -16,6 +17,8 @@ by statistical packages analysing vegetation data (e.g.
 
 \S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE,
 	use_nas=TRUE, ...)
+	
+cross2db(object, layers=FALSE, na_strings)
 }
 \arguments{
 \item{formula}{A formula indicating the variables used in the cross table.}
@@ -27,6 +30,10 @@ by statistical packages analysing vegetation data (e.g.
 \item{use_nas}{Logical value indicating whether NAs should be considered as
 	levels for categorical variables or not.}
 \item{...}{Further arguments passed to the function \code{\link{aggregate}}.}
+\item{object}{A data frame including a cross table.}
+\item{layers}{Logical value, whether the cross table includes a layer column or
+	not.}
+\item{na_strings}{Character vector indicating no records in the cross table.}
 }
 \details{
 Most applications and displays of vegetation data use preferentially the cross

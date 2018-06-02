@@ -9,7 +9,18 @@ setGeneric("set_group",
             standardGeneric("set_group")
 )
 
-# Method for 'taxlist' objects
+# Some auxiliary functions -----------------------------------------------------
+
+# Function merging names in splitted formulas
+# Assumes the two last elements are 'operator' and 'value'
+# Previous elements are then part of the species name
+format_F1 <- function(x) {
+	NR <- length(x)
+	return(c(paste(x[1:(NR - 2)], collapse=" "), x[(NR - 1):NR]))
+}
+
+
+# Method for 'taxlist' objects -------------------------------------------------
 setMethod("set_group", signature(shaker="shaker", companion="taxlist",
                 group="character"),
         function(shaker, companion, group, group_id, authority=FALSE,

@@ -6,6 +6,7 @@ importFrom(stats, terms)
 importFrom(utils, object.size)
 importFrom(utils, write.table)
 importFrom(qdapRegex, rm_between)
+importFrom(stringi, stri_split_fixed)
 
 ## Import of packages
 import(
@@ -27,6 +28,7 @@ exportClasses(
 ## Export of methods
 exportMethods(
 	"[", "[<-", "$", "$<-",
+	add_releves,
 	aggregate,
 	clean,
 	crosstable,
@@ -52,6 +54,7 @@ exportMethods(
 
 ## Export of regular function names
 export(
+	cross2db,
     read_juice,
 	tv2coverconvert,
 	tv2vegtable,

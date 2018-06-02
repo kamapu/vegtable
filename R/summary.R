@@ -54,6 +54,38 @@ setMethod("summary", signature(object="coverconvert"),
 )
 
 # Method for 'shaker' objects --------------------------------------------------
+
+# Function replacing syntax in shaker objects
+# companion is a taxlist object
+# Written for the summary output
+rewrite_formulas <- function(shaker, companion) {
+	EQ <- list()
+	for(i in names(shaker@formulas)) EQ[[i]] <- {
+			x <- shaker@formulas[[i]]
+			if(grepl("\'", x)) SYM <- "\'"
+			if(grepl('\"', x)) SYM <- '\"'
+			x <- gsub("groups[[", "groups:", x, fixed=TRUE)
+			x <- gsub("dominants[[", "species:", x, fixed=TRUE)
+			x <- gsub("]]", "", x, fixed=TRUE)
+			Spp <- as.numeric(unlist(regmatches(x,
+									gregexpr("[[:digit:]]+\\.*[[:digit:]]*", x))))
+			if(length(Spp) > 0){
+				for(j in Spp) {
+					subformula <- shaker@dominants[j,]
+					subformula$TaxonConceptID <- companion[
+							match(subformula$TaxonConceptID,
+									companion$TaxonConceptID),"TaxonName"]
+					subformula <- paste(subformula[1,], collapse=" ")
+					
+					x <- sub(paste0("species:", j), paste0("species:", SYM,
+									subformula, SYM), x)
+				}
+			}
+			x
+		}
+	return(EQ)
+}
+
 setMethod("summary", signature(object="shaker"),
 		function(object, companion, authority=FALSE, ...) {
 			if(missing(companion)) {

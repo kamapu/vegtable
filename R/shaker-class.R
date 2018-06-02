@@ -3,6 +3,15 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+# Function merging all elements of a formula into an 'index'
+# Blanks will be deleted
+# This function is used to detect duplicated formulas in shaker objects
+format_F2 <- function(x) {
+	x <- paste(x, collapse=" ")
+	x <- gsub(" ", "", x, fixed=TRUE)
+	x
+}
+
 setClass("shaker",
         slots=c(
                 pseudos="list",
