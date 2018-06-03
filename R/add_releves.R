@@ -73,7 +73,7 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 					stop("Some plots in 'header' are not included in 'releves'.")
 				if(!all(colnames(header) %in% colnames(vegtable@header)))
 					stop("Some variables in 'header' are not yet included in 'vegtable'.")
-				for(i in colnames(header)) {
+				for(i in colnames(header)[-1]) {
 					if(is.factor(vegtable@header[,i]))
 						header[,i] <- factor(paste(header[,i]),
 								levels(vegtable@header[,i])) else
@@ -89,7 +89,7 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 			message(paste0("Imported relev\u00e9s: ", nrow(header),
 							" (", min(header$ReleveID), " to ",
 							max(header$ReleveID),")"))
-			message(paste("Imported header variables:", ncol(header)))
+			message(paste("Imported header variables:", ncol(header) - 1))
 			for(i in colnames(vegtable@header))
 				if(!i %in% colnames(header)) header[,i] <- NA
 			vegtable@header <- do.call(rbind, list(vegtable@header,

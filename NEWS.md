@@ -5,7 +5,8 @@ vegtable 0.1.2
 
 * File **inst/ChangeLog** replaced by **NEWS.md**.
 * Method `match_names` for `vegtable` objects.
-* New function `layers2samples`.
+* New method `layers2samples`.
+* New method `add_releves`, adding releves from data frames into `vegtable` objects.
 
 ### Improvements
 * No column `LayerID` in prototype for `vegtable` objects.
