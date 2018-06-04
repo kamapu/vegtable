@@ -42,25 +42,28 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 								vegtable@layers[[layers_var]][,layers_var]))
 					stop("Values of 'layers_var' missing in 'vegtable'")
 			}
-			# Step 4: Reformat abundance
-			if(any(!abundance %in% colnames(vegtable@samples)))
-				stop("Some values of 'abundance' are not yet included in 'vegtable'.")
-			if(length(abundance) == 2) {
-				cover <- stri_split_fixed(releves[,ncol(releves)], split_string)
-				cover <- lapply(cover, function(x) {
-							if(length(x) < 2) x <- c(x, NA)
-							return(x)
-						})
-				cover <- do.call(rbind, cover)
-				releves[,ncol(releves)] <- cover[,1]
-				releves[,ncol(releves) + 1] <- cover[,2]
-				colnames(releves)[ncol(releves) - c(1,0)] <- abundance
-			} else colnames(releves)[ncol(releves)] <- abundance
-			for(i in abundance) {
-				if(is.factor(vegtable@samples[,i]))
-					releves[,i] <- factor(paste(releves[,i]),
-							levels(vegtable@samples[,i])) else
-					class(releves[,i]) <- class(vegtable@samples[,i])
+			# Step 4: Reformat abundance (only for cross tables)
+			if(format == 1) {
+				if(any(!abundance %in% colnames(vegtable@samples)))
+					stop("Some values of 'abundance' are not yet included in 'vegtable'.")
+				if(length(abundance) == 2) {
+					cover <- stri_split_fixed(releves[,ncol(releves)],
+							split_string)
+					cover <- lapply(cover, function(x) {
+								if(length(x) < 2) x <- c(x, NA)
+								return(x)
+							})
+					cover <- do.call(rbind, cover)
+					releves[,ncol(releves)] <- cover[,1]
+					releves[,ncol(releves) + 1] <- cover[,2]
+					colnames(releves)[ncol(releves) - c(1,0)] <- abundance
+				} else colnames(releves)[ncol(releves)] <- abundance
+				for(i in abundance) {
+					if(is.factor(vegtable@samples[,i]))
+						releves[,i] <- factor(paste(releves[,i]),
+								levels(vegtable@samples[,i])) else
+						class(releves[,i]) <- class(vegtable@samples[,i])
+				}
 			}
 			# Step 5: Format header
 			if(!missing(header)) {
