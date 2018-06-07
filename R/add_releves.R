@@ -18,12 +18,13 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 			format <- pmatch(tolower(format), c("crosstable","databaselist"))
 			if(!format %in% c(1:2))
 				stop("Non valid value for 'format'.")
-			if(format == 1)
+			if(format == 1) {
 				releves <- cross2db(releves, layers, ...)
-			colnames(releves)[1:2] <- c("ReleveID", "TaxonUsageID")
+				colnames(releves)[1:2] <- c("ReleveID", "TaxonUsageID")
+			}
 			message(paste("Imported records:", nrow(releves)))
 			# Step 1: Recognize species
-			if(!usage_ids)
+			if(!usage_ids & format == 1)
 				releves$TaxonUsageID <- match_names(releves$TaxonUsageID,
 						vegtable)$TaxonUsageID
 			message(paste("Matched taxon usage names:",
