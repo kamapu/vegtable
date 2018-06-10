@@ -42,6 +42,8 @@ setClass("vegtable",
                     return(paste0("Relation '", i, "' not included in slot 'header'"))
                 if(!i %in% colnames(object@relations[[i]]))
                     return(paste0("Column '", i, "' is mandatory in relation '", i, "'"))
+				if(any(!object@header[,i] %in% object@relations[[i]][,i]))
+					return(paste0("Some values of '", i, "' in header do not macht the values in slot relations."))
             }
             # Mandatory links
             if(!all(object@samples$ReleveID %in% object@header$ReleveID))

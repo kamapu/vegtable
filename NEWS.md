@@ -15,6 +15,7 @@ vegtable 0.1.2
 * Orphaned entries in slot `layers` will be deleted by function `clean`.
 * Argument `match_header` included in function `veg_relation`.
 * Validity check is not accepting `NA` values in `TaxonUsageID` at slot `samples`.
+* Validity check tests also the values of relations matching header with the respective relation.
 
 vegtable 0.1.1
 ==============
