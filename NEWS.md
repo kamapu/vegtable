@@ -1,19 +1,25 @@
+vegtable 0.1.3
+==============
+
+### Improvements
+* A method for `numeric` values in function `transform()`.
+
 vegtable 0.1.2
 ==============
 
 ### New Features
 
 * File **inst/ChangeLog** replaced by **NEWS.md**.
-* Method `match_names` for `vegtable` objects.
-* New method `layers2samples`.
-* New method `add_releves`, adding releves from data frames into `vegtable` objects.
+* Method `match_names()` for `vegtable` objects.
+* New method `layers2samples()`.
+* New method `add_releves()`, adding releves from data frames into `vegtable` objects.
 
 ### Improvements
 * No column `LayerID` in prototype for `vegtable` objects.
 * `NA` values are allowed for layers in slot `samples`.
 * Layers are not any more restricted to single plots.
-* Orphaned entries in slot `layers` will be deleted by function `clean`.
-* Argument `match_header` included in function `veg_relation`.
+* Orphaned entries in slot `layers` will be deleted by function `clean()`.
+* Argument `match_header` included in function `veg_relation()`.
 * Validity check is not accepting `NA` values in `TaxonUsageID` at slot `samples`.
 * Validity check tests also the values of relations matching header with the respective relation.
 

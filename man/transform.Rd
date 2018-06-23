@@ -3,6 +3,7 @@
 \alias{transform}
 \alias{transform,character,coverconvert-method}
 \alias{transform,factor,coverconvert-method}
+\alias{transform,numeric,coverconvert-method}
 \alias{transform,vegtable,missing-method}
 
 \title{Convert cover scales to percent cover.}
