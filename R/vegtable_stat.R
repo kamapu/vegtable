@@ -12,7 +12,7 @@ vegtable_stat <- function(vegtable) {
 	# Number of references
 	if(!is.null(vegtable$REFERENCE)) {
 		cat("REFERENCES", "\n")
-		cat("Primary references: ", length(levels(factor(vegtable$REFERENCE))),
+		cat("Primary references: ", length(base::levels(factor(vegtable$REFERENCE))),
                 sep="", "\n")
 		cat("\n")
 	}

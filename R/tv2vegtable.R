@@ -75,7 +75,7 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     cover_code <- names(coverconvert)[names(coverconvert) != cover_code]
     for(i in cover_code) {
         if(i %in% colnames(samples)) samples[,i] <- factor(samples[,i],
-                    levels=levels(coverconvert@value[[i]]))
+                    levels=base::levels(coverconvert@value[[i]]))
     }
     # Importing relations ------------------------------------------------------
     if(is.na(description["dictionary"])) {
