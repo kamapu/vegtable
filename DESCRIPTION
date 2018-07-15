@@ -1,10 +1,9 @@
 Package: vegtable
-Version: 0.1.3
+Version: 0.1.4
 Encoding: UTF-8
-Date: 2018-06-23
 Title: Handling Vegetation Data Sets
-Author: Miguel Alvarez <kamapu78@gmail.com>
-Maintainer: Miguel Alvarez <kamapu78@gmail.com>
+Authors@R:
+	person("Miguel", "Alvarez", email="kamapu78@gmail.com", role=c("aut", "cre"))
 Depends:
 	R(>= 3.0.0),
 	taxlist

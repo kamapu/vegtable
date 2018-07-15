@@ -1,7 +1,15 @@
+vegtable 0.1.4
+==============
+
+### New Features
+
+* New data set `aspect_conv`.
+
 vegtable 0.1.3
 ==============
 
 ### Improvements
+
 * A method for `numeric` values in function `transform()`.
 
 vegtable 0.1.2
