@@ -15,7 +15,7 @@ cross2db <- function(object, layers=FALSE, na_strings) {
 					return(releve)
 				}, cov=Cover, spec=species, lay=LAY)
 	} else {
-		Cover <- object[,-1]
+		Cover <- object[,-1,drop=FALSE]
 		object <- lapply(split(1:ncol(Cover), 1:ncol(Cover)),
 				function(x, cov, spec) {
 					releve <- data.frame(plot=colnames(cov)[x], species=spec,

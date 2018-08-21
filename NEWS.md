@@ -5,6 +5,10 @@ vegtable 0.1.4
 
 * New data set `aspect_conv`.
 
+### Bugs
+
+* Function `cross2db` was not working properly for tables with only one column
+
 vegtable 0.1.3
 ==============
 
