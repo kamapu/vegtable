@@ -6,7 +6,7 @@
 \description{
 This function calculates general statistics of local \sQuote{Turboveg} databases
 as required by GIVD (Global Index of Vegetation-Plot Databases,
-\url{http://botanik3.botanik.uni-greifswald.de/givd/}).
+\url{https://www.givd.info}).
 }
 \usage{
 vegtable_stat(vegtable)

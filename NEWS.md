@@ -4,6 +4,12 @@ vegtable 0.1.4
 ### New Features
 
 * New data set `aspect_conv`.
+* New function `taxa2samples()` for changing record names by their respective accepted names.
+* Function `count_taxa()` implemented for `vegtable` objects.
+
+### Improvements
+
+* Updated data set `Kenya_veg` Including hierarchical ranks.
 
 ### Bugs
 

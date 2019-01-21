@@ -40,4 +40,5 @@ Collate:
 	'layers2samples.R'
 	'shaker-methods.R''make_cocktail.R'
 	'summary.R''match_names.R'
+	'taxa2samples.R''count_taxa.R'
 	'StartMessage.R'
