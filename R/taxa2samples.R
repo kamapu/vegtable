@@ -22,9 +22,10 @@ setMethod("taxa2samples", signature(object="vegtable"),
 						as.integer(Level)[match(concepts, TaxonConceptID)])
 				x <- which(levels(object@species) == merge_to) - 1
 				for(i in 1:x) {
-					concepts[concept_levels == i] <-
+					concepts[concept_levels == i & !is.na(concept_levels)] <-
 							with(object@species@taxonRelations,
-									Parent[match(concepts[concept_levels == i],
+									Parent[match(concepts[concept_levels == i &
+																	!is.na(concept_levels)],
 													TaxonConceptID)])
 					concept_levels <- with(object@species@taxonRelations,
 							as.integer(Level)[match(concepts, TaxonConceptID)])

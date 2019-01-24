@@ -61,5 +61,5 @@ setMethod("count_taxa", signature(object="formula"),
 			if(all(is.na(data@samples$TaxonUsageID)))
 				stop("No records for requested taxon rank.") else
 				return(aggregate(object, data, function(x) length(unique(x)), ...))
-			}
+		}
 )

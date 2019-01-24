@@ -1,3 +1,10 @@
+vegtable 0.1.5
+==============
+
+### Bugs
+
+* Function `taxa2samples()` was not properly working when `taxlist` had taxon concepts without level information.
+
 vegtable 0.1.4
 ==============
 
