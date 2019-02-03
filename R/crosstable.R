@@ -9,7 +9,8 @@ setGeneric("crosstable", function(formula, data, ...)
 
 # Method for data frames
 setMethod("crosstable", signature(formula="formula", data="data.frame"),
-        function(formula, data, FUN, na_to_zero=FALSE, use_nas=TRUE, ...) {
+        function(formula, data, FUN, na_to_zero=FALSE, use_nas=TRUE,
+				as_matrix=FALSE, ...) {
             if(!all(c(as.character(formula)[2], attr(terms(formula),
                                             "term.labels")) %in%
                             colnames(data)))
@@ -54,8 +55,10 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
                         stringsAsFactors=FALSE)
                 colnames(cross_margin) <- spp
             }
-            cross <- do.call(cbind, list(cross_margin, cross))
-            rownames(cross) <- NULL # reseting row names
+			if(!as_matrix) {
+				cross <- do.call(cbind, list(cross_margin, cross))
+				rownames(cross) <- NULL # reseting row names
+			}
             return(cross)
         }
 )

@@ -13,7 +13,7 @@ by statistical packages analysing vegetation data (e.g.
 }
 \usage{
 \S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE,
-	use_nas=TRUE, ...)
+	use_nas=TRUE, as_matrix=FALSE, ...)
 
 \S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE,
 	use_nas=TRUE, ...)
@@ -29,6 +29,8 @@ cross2db(object, layers=FALSE, na_strings)
 	into empty cells or not.}
 \item{use_nas}{Logical value indicating whether NAs should be considered as
 	levels for categorical variables or not.}
+\item{as_matrix}{A logical value, whether output should be done as matrix or
+	data frame.}
 \item{...}{Further arguments passed to the function \code{\link{aggregate}}.}
 \item{object}{A data frame including a cross table.}
 \item{layers}{Logical value, whether the cross table includes a layer column or
