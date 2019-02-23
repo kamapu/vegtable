@@ -4,6 +4,7 @@ vegtable 0.1.5
 ### Improvements
 
 * New argument `add_traits` in function `taxa2samples()`.
+* Output of `count_taxa()`, formula-method, indicates the counted rank in the output.
 
 ### Bugs
 
