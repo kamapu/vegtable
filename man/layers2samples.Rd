@@ -13,6 +13,7 @@ in order to use it by \code{\link[vegtable]{subset}},
 \usage{
 \S4method{layers2samples}{vegtable,character,character}(object, layer,
 	variable, ...)
+
 \S4method{layers2samples}{vegtable,character,missing}(object, layer,
 	variable, ...)
 }
