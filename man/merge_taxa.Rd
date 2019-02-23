@@ -16,13 +16,15 @@ samples.
 
 \S4method{merge_taxa}{vegtable,missing,character}(object, concepts, level, ...)
 
-\S4method{taxa2samples}{vegtable}(object, merge_to, ...)
+\S4method{taxa2samples}{vegtable}(object, merge_to, add_traits, ...)
 }
 \arguments{
 \item{object}{Object of class \code{\linkS4class{vegtable}}.}
 \item{concepts}{Numeric (integer) vector including taxon concepts to be merged.}
 \item{level,merge_to}{Character value indicating the level to which the taxa
 	have to be	merged.}
+\item{add_traits}{A character vector indicating variables in the slot
+	'taxonTraits' to be added in slot 'samples'.}
 \item{...}{Further arguments passed to \code{\link[taxlist]{merge_taxa}}
 	(\code{'taxlist'} method).}
 }
@@ -35,6 +37,8 @@ The use of \code{'taxa2samples'} with \code{'merge_to'} argument will produce a
 similar result as using \code{'merge_taxa'} with \code{'level'} argument, but
 \code{'taxa2samples'} will replace the records in slot samples by the respective
 accepted names without any modification in slot species.
+Additionally taxon concept IDs will be addes as columns in samples and taxon
+traits if indicated in argument \code{add_traits}.
 }
 \value{
 An object of class \code{\linkS4class{vegtable}}.

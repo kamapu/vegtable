@@ -1,6 +1,10 @@
 vegtable 0.1.5
 ==============
 
+### Improvements
+
+* New argument `add_traits` in function `taxa2samples()`.
+
 ### Bugs
 
 * Function `taxa2samples()` was not properly working when `taxlist` had taxon concepts without level information.
