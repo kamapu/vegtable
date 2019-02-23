@@ -39,10 +39,11 @@ setMethod("count_taxa", signature(object="vegtable"),
 setMethod("count_taxa", signature(object="formula"),
 		function(object, data, include_lower=FALSE, ...) {
 			nr_response <- attr(terms(object), "response")
+			name_response <- as.character(object)[2]
 			if(nr_response > 1)
 				stop("More than one response in formula are not allowed.")
 			if(nr_response == 1 & include_lower)
-				data <- taxa2samples(data, as.character(object)[2]) else
+				data <- taxa2samples(data, name_response) else
 				data <- taxa2samples(data)
 			if(nr_response == 1) {
 				concepts <- with(data@species@taxonNames,
@@ -51,15 +52,17 @@ setMethod("count_taxa", signature(object="formula"),
 				concept_levels <- with(data@species@taxonRelations,
 						as.integer(Level)[match(concepts, TaxonConceptID)])
 				data@samples$TaxonUsageID[!concept_levels ==
-								which(levels(data@species) ==
-												as.character(object)[2])] <-
+								which(levels(data@species) == name_response)] <-
 						NA
 			}
 			object <- as.formula(paste("TaxonUsageID ~",
 							paste(attr(terms(object), "term.labels"),
 									collapse=" + ")))
 			if(all(is.na(data@samples$TaxonUsageID)))
-				stop("No records for requested taxon rank.") else
-				return(aggregate(object, data, function(x) length(unique(x)), ...))
+				stop("No records for requested taxon rank.")
+			data <- aggregate(object, data, function(x) length(unique(x)), ...)
+			colnames(data)[colnames(data) == "TaxonUsageID"] <-
+					paste(name_response, "count", sep="_")
+			return(data)
 		}
 )
