@@ -9,17 +9,18 @@ This function produce txt files as inport formats for \sQuote{Juice}
 (\url{http://www.sci.muni.cz/botany/juice/}).
 }
 \usage{
-\S4method{write_juice}{vegtable,character,formula}(data, file, formula,
-	header=c("COUNTRY","REFERENCE"), coords=c("LONGITUDE","LATITUDE"), FUN, ...)
+\S4method{write_juice}{vegtable,character,formula}(data, file, db_name="Plot Observations",
+	formula, FUN, header, coords, ...)
 }
 \arguments{
 \item{data}{An object of class \code{\link[=vegtable-class]{vegtable}}.}
 \item{file}{Character value indicating the name of output files (without file
 	extension).}
+\item{db_name}{Name for data set displayed in inport wizard.}
 \item{formula}{A formula passed to \code{\link{crosstable}}.}
+\item{FUN}{Funtion passed to \code{\link{crosstable}}.}
 \item{header}{Variables of header to be exported.}
 \item{coords}{Names of coordinate variables in header of \code{'data'}.}
-\item{FUN}{Funtion passed to \code{\link{crosstable}}.}
 \item{...}{Further arguments passed to the function \code{\link{crosstable}}.}
 }
 \details{
