@@ -41,6 +41,7 @@ exportMethods(
 	names,
 	header,"header<-",
 	layers2samples,
+	relation2header,
 	set_formula,
 	set_group,
 	set_pseudo,

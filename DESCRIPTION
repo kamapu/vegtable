@@ -31,7 +31,7 @@ Collate:
 	'NULLing.R'
 	'coverconvert-class.R''vegtable-class.R''shaker-class.R'
 	'cross2db.R''clean.R''as.list.R''merge_taxa.R''add_releves.R'
-	'header.R''Extract.R''veg_relation.R'
+	'header.R''Extract.R''veg_relation.R''relation2header.R'
 	'vegtable_stat.R''df2vegtable.R''used_synonyms.R'
 	'subset.R'
 	'coverconvert-methods.R''names.R'
