@@ -10,7 +10,7 @@ setGeneric("write_juice", function(data, file, formula, ...)
 # Method for data frames
 setMethod("write_juice", signature(data="vegtable", file="character",
                 formula="formula"),
-        function(data, file, db_name="Plot Observations", formula, FUN,
+        function(data, file, formula, FUN, db_name="Plot Observations",
 				header, coords, ...) {
             # some attributes
             nr.plots <- nrow(data@header)

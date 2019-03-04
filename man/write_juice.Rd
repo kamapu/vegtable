@@ -9,8 +9,8 @@ This function produce txt files as inport formats for \sQuote{Juice}
 (\url{http://www.sci.muni.cz/botany/juice/}).
 }
 \usage{
-\S4method{write_juice}{vegtable,character,formula}(data, file, db_name="Plot Observations",
-	formula, FUN, header, coords, ...)
+\S4method{write_juice}{vegtable,character,formula}(data, file, formula, FUN,
+	db_name="Plot Observations",header, coords, ...)
 }
 \arguments{
 \item{data}{An object of class \code{\link[=vegtable-class]{vegtable}}.}
