@@ -3,6 +3,7 @@ importFrom(stats, aggregate)
 importFrom(stats, as.formula)
 importFrom(stats, na.omit)
 importFrom(stats, terms)
+importFrom(stats, update)
 importFrom(utils, object.size)
 importFrom(utils, write.table)
 importFrom(qdapRegex, rm_between)
@@ -48,6 +49,8 @@ exportMethods(
 	subset,
 	summary,
 	taxa2samples,
+	trait_proportion,
+	trait_stats,
 	transform,
 	used_synonyms,
 	veg_relation,"veg_relation<-",

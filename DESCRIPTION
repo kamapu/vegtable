@@ -41,4 +41,5 @@ Collate:
 	'shaker-methods.R''make_cocktail.R'
 	'summary.R''match_names.R'
 	'taxa2samples.R''count_taxa.R'
+	'trait_proportion.R''trait_stats.R'
 	'StartMessage.R'

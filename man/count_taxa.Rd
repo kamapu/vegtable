@@ -12,7 +12,8 @@ vectors containing taxon names.
 \usage{
 \S4method{count_taxa}{vegtable}(object, level, include_lower=FALSE, ...)
 
-\S4method{count_taxa}{formula}(object, data, include_lower=FALSE, ...)
+\S4method{count_taxa}{formula}(object, data, include_lower=FALSE,
+    suffix="_count", in_header=FALSE, ...)
 }
 \arguments{
 \item{object}{An object of class \code{\linkS4class{vegtable}} or a formula.}
@@ -20,6 +21,11 @@ vectors containing taxon names.
 \item{level}{Character value indicating the taxonomic rank of counted taxa.}
 \item{include_lower}{Logical value, whether lower taxonomic ranks should be
 	included at the requested level.}
+\item{suffix}{Character value used as suffix on the calculated variable.}
+\item{in_header}{Logical value, whether the result should be included in the
+    slot header of the input \code{\linkS4class{vegtable}} object or not.
+    A warning message is provided if the calculation is not done for every plot
+    observation.}
 \item{...}{further arguments passed among methods.}
 }
 \details{

@@ -37,7 +37,9 @@ setMethod("count_taxa", signature(object="vegtable"),
 # formula method
 # Method for vegtable objects
 setMethod("count_taxa", signature(object="formula"),
-		function(object, data, include_lower=FALSE, ...) {
+		function(object, data, include_lower=FALSE, suffix="_count",
+				in_header=FALSE, ...) {
+			data_in <- data
 			nr_response <- attr(terms(object), "response")
 			name_response <- as.character(object)[2]
 			if(nr_response > 1)
@@ -61,8 +63,15 @@ setMethod("count_taxa", signature(object="formula"),
 			if(all(is.na(data@samples$TaxonUsageID)))
 				stop("No records for requested taxon rank.")
 			data <- aggregate(object, data, function(x) length(unique(x)), ...)
+			if(name_response == "ReleveID") name_response <- "taxa"
 			colnames(data)[colnames(data) == "TaxonUsageID"] <-
-					paste(name_response, "count", sep="_")
-			return(data)
+					paste0(name_response, suffix)
+			if(colnames(data)[1] != "ReleveID" & in_header)
+				warning("'ReleveID' is not included as factor in formula")
+			if(colnames(data)[1] == "ReleveID" & in_header) {
+				data_in@header[,colnames(data)[2]] <- with(data_in@header,
+						data[match(ReleveID, data$ReleveID),2])
+				return(data_in)
+			} else return(data)
 		}
 )

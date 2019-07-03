@@ -54,7 +54,7 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 in two East African sites: Cocktail definitions and syntaxonomy.
 \emph{Phytocoenologia}.
 
-\emph{Bruelheide H (2000).} A new measure of fidelity and its application to
+\bold{Bruelheide H (2000).} A new measure of fidelity and its application to
 defining species groups. \emph{Journal of Vegetation Science} 11: 167--178.
 
 \bold{Kočí M, Chytrý M, Tichý L (2003).} Formalized reproduction of an
