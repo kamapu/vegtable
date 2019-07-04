@@ -54,9 +54,6 @@ setMethod("trait_proportion", signature(trait="character", object="vegtable"),
 				object@samples[,head_var] <- with(object@header,
 						replace_x(object@samples$ReleveID, ReleveID,
 								get(head_var))) else head_var <- "ReleveID"
-			if(!missing(trait_level))
-				object@samples[!object@samples[,trait] %in% trait_level,
-						trait] <- NA
 			object@samples <- object@samples[!is.na(object@samples[,trait]),]
 			# Aggregate to taxon
 			object@samples$Level <- with(object@species@taxonRelations,
@@ -92,13 +89,13 @@ setMethod("trait_proportion", signature(trait="character", object="vegtable"),
 				object <- object[,c(colnames(object)[1], paste0(trait_level,
 										suffix))]
 			# Finally the output
+			names(object)[1] <- head_var
 			if(in_header) {
 				for(i in colnames(object)[-1])
 					object_in@header[,i] <- object[match(object_in$ReleveID,
 									object$ReleveID), i]
 				return(object_in)
 			} else {
-				names(object)[1] <- head_var
 				return(object)
 			}
 		}
