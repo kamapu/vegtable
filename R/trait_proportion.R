@@ -6,7 +6,7 @@
 # Set generic function
 setGeneric("trait_proportion",
 		function(trait, object, ...)
-			standardGeneric("traits_proportion")
+			standardGeneric("trait_proportion")
 )
 
 # Method for character
