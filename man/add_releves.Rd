@@ -9,9 +9,8 @@ Addition of plot observations into existing data sets may implicate merging data
 frames with \code{\linkS4class{vegtable}} objects.
 }
 \usage{
-\S4method{add_releves}{vegtable,data.frame}(vegtable, releves, header,
-	abundance, split_string, usage_ids=FALSE, layers=FALSE, layers_var,
-	format="crosstable", ...)
+\S4method{add_releves}{vegtable,data.frame}(vegtable, releves, header, abundance, split_string, usage_ids=FALSE,
+	layers=FALSE, layers_var, format="crosstable", ...)
 }
 \arguments{
 \item{vegtable}{An object of class \code{\linkS4class{vegtable}}.}

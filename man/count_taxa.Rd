@@ -12,8 +12,8 @@ vectors containing taxon names.
 \usage{
 \S4method{count_taxa}{vegtable}(object, level, include_lower=FALSE, ...)
 
-\S4method{count_taxa}{formula}(object, data, include_lower=FALSE,
-    suffix="_count", in_header=FALSE, ...)
+\S4method{count_taxa}{formula}(object, data, include_lower=FALSE, suffix="_count", in_header=FALSE,
+	...)
 }
 \arguments{
 \item{object}{An object of class \code{\linkS4class{vegtable}} or a formula.}

@@ -15,7 +15,8 @@ setMethod("trait_proportion", signature(trait="character", object="vegtable"),
 				include_nas=TRUE, weight, suffix="_prop", in_header=FALSE,
 				...) {
 			object_in <- object
-			object@species <- tax2traits(object@species, get_names=TRUE)
+			if(!missing(taxon_level) | !missing(merge_to))
+				object@species <- tax2traits(object@species, get_names=TRUE)
 			# Cross-check
 			if(!trait %in% colnames(object@species@taxonTraits))
 				stop("Value of argument 'trait' is not a taxon trait in the input object.")
@@ -100,6 +101,15 @@ setMethod("trait_proportion", signature(trait="character", object="vegtable"),
 			}
 		}
 )
+
+###
+object <- Wetlands_veg
+object@header <- make_cocktail(Wetlands, object, cover="percen")
+include_nas=FALSE
+suffix="_prop"
+in_header=TRUE
+trait="lf_behn_2018"
+
 
 # Method for formula
 setMethod("trait_proportion", signature(trait="formula", object="vegtable"),

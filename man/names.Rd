@@ -1,4 +1,4 @@
-\name{names}
+\name{names,dimnames}
 \docType{methods}
 \alias{names}
 \alias{names,vegtable-method}

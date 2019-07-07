@@ -11,11 +11,9 @@ in order to use it by \code{\link[vegtable]{subset}},
 \code{\link[vegtable]{aggregate}} or \code{\link[vegtable]{crosstable}} methods.
 }
 \usage{
-\S4method{layers2samples}{vegtable,character,character}(object, layer,
-	variable, ...)
+\S4method{layers2samples}{vegtable,character,character}(object, layer, variable, ...)
 
-\S4method{layers2samples}{vegtable,character,missing}(object, layer,
-	variable, ...)
+\S4method{layers2samples}{vegtable,character,missing}(object, layer, variable, ...)
 }
 \arguments{
 \item{object}{An object of class \code{\linkS4class{vegtable}}.}

@@ -1,5 +1,7 @@
-\name{set_pseudo,set_group,set_formula}
+\name{make_cocktail,set_pseudo,set_group,set_formula}
 \docType{methods}
+\alias{make_cocktail}
+\alias{make_cocktail,shaker,vegtable-method}
 \alias{set_group}
 \alias{set_group,shaker,taxlist,character-method}
 \alias{set_group,shaker,vegtable,character-method}
@@ -10,29 +12,43 @@
 \alias{set_formula,shaker,taxlist,character-method}
 \alias{set_formula,shaker,vegtable,character-method}
 
-\title{Set slots in shaker objects.}
+\title{Produce a Cocktail classification.}
 \description{
-Building \code{\linkS4class{shaker}} objects for Cocktail classifications.
+Classification of \code{\linkS4class{vegtable}} objects according to
+\bold{Cocktail} algorithms.
 }
 \usage{
-\S4method{set_pseudo}{shaker,taxlist,character}(shaker, companion, pseudo,
-	pseudo_id, authority=FALSE, enc_cont="latin1", enc_gr="utf8", ...)
+\S4method{make_cocktail}{shaker,vegtable}(shaker, vegtable, which, cover, syntax="Syntax", FUN=sum, ...)
+
+\S4method{set_pseudo}{shaker,taxlist,character}(shaker, companion, pseudo, pseudo_id, authority=FALSE,
+	enc_cont="latin1", enc_gr="utf8", ...)
 
 \S4method{set_pseudo}{shaker,vegtable,character}(shaker, companion, pseudo, ...)
 
-\S4method{set_group}{shaker,taxlist,character}(shaker, companion, group,
-	group_id, authority=FALSE, enc_cont="latin1", enc_gr="utf8", ...)
+\S4method{set_group}{shaker,taxlist,character}(shaker, companion, group, group_id, authority=FALSE, enc_cont="latin1",
+	enc_gr="utf8", ...)
 
 \S4method{set_group}{shaker,vegtable,character}(shaker, companion, group, ...)
 
-\S4method{set_formula}{shaker,taxlist,character}(shaker, companion, formula,
-	formula_id, authority=FALSE, enc_cont="latin1", enc_gr="utf8", ...)
+\S4method{set_formula}{shaker,taxlist,character}(shaker, companion, formula, formula_id, authority=FALSE,
+	enc_cont="latin1", enc_gr="utf8", ...)
 
-\S4method{set_formula}{shaker,vegtable,character}(shaker, companion, formula,
-	...)
+\S4method{set_formula}{shaker,vegtable,character}(shaker, companion, formula, ...)
 }
 \arguments{
 \item{shaker}{Object of class \code{\linkS4class{shaker}} to be modified.}
+
+\item{shaker}{An object of class \code{\linkS4class{shaker}} containing the
+	respective cocktail definitions.}
+\item{vegtable}{An object of class \code{\linkS4class{vegtable}} containing the
+	vegetation observations to be classified.}
+\item{which}{Integer or character indicating the definition to be applied for
+	classification.}
+\item{cover}{Name of the cover variable in \code{vegtable}.}
+\item{syntax}{Character value indicating the name of the retrieved variable
+	including the final classification of plots.}
+\item{FUN}{Function used for merging multiple occurrence of species in a single
+	plot.}
 \item{companion}{Either a \code{\linkS4class{taxlist}} or a
 	\code{\linkS4class{vegtable}} object.}
 \item{pseudo,group}{Character vector with names of taxa included in a
@@ -47,6 +63,20 @@ Building \code{\linkS4class{shaker}} objects for Cocktail classifications.
 \item{...}{Further arguments passes from or to other methods.}
 }
 \details{
+Cocktail algorithms are logical functions selecting plots according to either
+occurrence of species groups and cover values of single species.
+A group will be declared as occurring in a plot when at least a half of its
+members is present in the plot.
+
+This function inserts single columns with logical values indicating whether a
+plot is classified in the vegetation unit or not.
+An additional column (name provided in argument \code{'syntax'}) compile all
+vegetation units,
+indicating with a \code{'+'} symbol those plots classified in more than one
+vegetation unit.
+When only a part of the formulas will be used, it should be specified by the
+argument \code{'which'}.
+
 These functions are implemented for constructing or complementing
 \code{\linkS4class{shaker}} objects.
 Note that construction of those objects will always require a \code{'companion'}
@@ -54,17 +84,45 @@ object, which is either an object of class \code{\linkS4class{taxlist}} or
 \code{\linkS4class{vegtable}}.
 }
 \value{
+A data frame corresponding to the slot \code{'header'} of input object
+\code{'vegtable'},
+including the results of Cocktail classification for the respective plots.
+
 A \code{\linkS4class{shaker}} object.
 }
 \author{
 Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
+\references{
+\bold{Alvarez M (2017).} Classification of aquatic and semi-aquatic vegetation
+in two East African sites: Cocktail definitions and syntaxonomy.
+\emph{Phytocoenologia}.
+
+\bold{Bruelheide H (2000).} A new measure of fidelity and its application to
+defining species groups. \emph{Journal of Vegetation Science} 11: 167--178.
+
+\bold{Kočí M, Chytrý M, Tichý L (2003).} Formalized reproduction of an
+expert-based phytosociological classification: a case study of subalpine
+tall-forb vegetation. \emph{Journal of Vegetation Science} 14: 601--610.
+}
 \seealso{
-\code{\linkS4class{shaker}}, \code{\link{make_cocktail}}.
+\code{\linkS4class{shaker}}, \code{\linkS4class{vegtable}},
+\code{\link{Wetlands}}.
 }
 \examples{
 library(vegtable)
+
+## Example from Alvarez (2017)
 data(Wetlands)
+
+Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
+summary(as.factor(Wetlands_veg@header$Syntax))
+
+## Same but only for two vegetation units
+data(Wetlands)
+Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg,
+	which=c("HY1","HY2"), cover="percen")
+summary(as.factor(Wetlands_veg@header$Syntax))
 
 ## Construct the 'shaker' object anew
 Wetlands <- new("shaker")

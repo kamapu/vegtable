@@ -1,4 +1,4 @@
-\name{merge_taxa}
+\name{merge_taxa,taxa2samples}
 \docType{methods}
 \alias{merge_taxa}
 \alias{merge_taxa,vegtable,numeric,missing-method}

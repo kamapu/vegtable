@@ -8,8 +8,7 @@
 Produce subsets of \code{\linkS4class{vegtable}} objects.
 }
 \usage{
-\S4method{subset}{vegtable}(x, subset, slot="header", keep_children=FALSE,
-	keep_parents=FALSE, ...)
+\S4method{subset}{vegtable}(x, subset, slot="header", keep_children=FALSE, keep_parents=FALSE, ...)
 }
 \arguments{
 \item{x}{A \code{\linkS4class{vegtable}} object for subset.}

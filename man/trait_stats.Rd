@@ -1,4 +1,4 @@
-\name{trait_stats}
+\name{trait_stats,trait_proportion}
 \docType{methods}
 \alias{trait_stats}
 \alias{trait_stats,character,vegtable-method}
@@ -16,15 +16,12 @@ either number of taxa or weighted values (by abundance, for instance).
 \S4method{trait_stats}{character,vegtable}(trait, object, FUN, head_var,
 	taxon_level, merge_to, weight, suffix="_stats", in_header=FALSE, ...)
 
-\S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix="_stats",
-	in_header=FALSE, ...)
+\S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix="_stats", in_header=FALSE, ...)
 
-\S4method{trait_proportion}{character,vegtable}(trait, object, head_var,
-	trait_level, taxon_level, merge_to, include_nas=TRUE, weight,
-	suffix="_prop", in_header=FALSE, ...)
+\S4method{trait_proportion}{character,vegtable}(trait, object, head_var, trait_level, taxon_level, merge_to,
+	include_nas=TRUE, weight, suffix="_prop", in_header=FALSE, ...)
 
-\S4method{trait_proportion}{formula,vegtable}(trait, object, in_header=FALSE,
-	...)
+\S4method{trait_proportion}{formula,vegtable}(trait, object, in_header=FALSE, ...)
 }
 \arguments{
 \item{trait}{Either a character value or a formula.}
@@ -61,6 +58,11 @@ A data frame with the proportions of traits levels or an object of class
 Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
-## Coming soon.
+library(vegtable)
+
+Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
+Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg, trait_level="Cyperaceae",
+	weight="percen", include_nas=FALSE, in_header=TRUE)
+boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col="grey")
 }
 \keyword{methods}

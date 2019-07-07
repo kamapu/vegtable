@@ -11,13 +11,11 @@
 Convert values of a categorical cover scale to percentage values.
 }
 \usage{
-\S4method{transform}{character,coverconvert}(x, conversion, from=NULL,
-	rule="top", zeroto=0.1, ...)
+\S4method{transform}{character,coverconvert}(x, conversion, from=NULL, rule="top", zeroto=0.1, ...)
 
 \S4method{transform}{factor,coverconvert}(x, conversion, ...)
 
-\S4method{transform}{vegtable,missing}(x, to, replace=FALSE, rule="top",
-	zeroto=0.1, ...)
+\S4method{transform}{vegtable,missing}(x, to, replace=FALSE, rule="top", zeroto=0.1, ...)
 }
 \arguments{
 \item{x}{Either a factor or character vector, or a \code{\linkS4class{vegtable}}

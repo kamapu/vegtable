@@ -1,4 +1,4 @@
-\name{crosstable}
+\name{crosstable,cross2db}
 \docType{methods}
 \alias{crosstable}
 \alias{crosstable,formula,data.frame-method}
@@ -12,11 +12,10 @@ by statistical packages analysing vegetation data (e.g.
 \code{\link[vegan]{vegan}}).
 }
 \usage{
-\S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE,
-	use_nas=TRUE, as_matrix=FALSE, ...)
+\S4method{crosstable}{formula,data.frame}(formula, data, FUN, na_to_zero=FALSE, use_nas=TRUE, as_matrix=FALSE,
+	...)
 
-\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE,
-	use_nas=TRUE, ...)
+\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero=FALSE, use_nas=TRUE, ...)
 	
 cross2db(object, layers=FALSE, na_strings)
 }

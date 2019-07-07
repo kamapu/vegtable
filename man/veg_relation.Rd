@@ -1,4 +1,4 @@
-\name{veg_relation}
+\name{veg_relation,relation2header}
 \docType{methods}
 \alias{veg_relation}
 \alias{veg_relation,vegtable,character-method}
@@ -17,8 +17,7 @@ Such variables will be converted into factors in the slot \code{'header'}
 according to the levels and their sorting in the respective relation.
 }
 \usage{
-\S4method{veg_relation}{vegtable,character}(vegtable, relation,
-	match_header=FALSE, ...)
+\S4method{veg_relation}{vegtable,character}(vegtable, relation, match_header=FALSE, ...)
 
 ## Replacement method
 veg_relation(vegtable, relation) <- value
