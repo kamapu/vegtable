@@ -88,6 +88,7 @@ Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 ## Cocktail classification of plots
+data(Wetlands)
 Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
 
 ## Calculation of proportion of Cyperaceae species in the plot
