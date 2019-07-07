@@ -1,4 +1,4 @@
-\name{trait_stats,trait_proportion}
+\name{trait_stats, trait_proportion}
 \docType{methods}
 \alias{trait_stats}
 \alias{trait_stats,character,vegtable-method}
@@ -7,14 +7,37 @@
 \alias{trait_proportion,character,vegtable-method}
 \alias{trait_proportion,formula,vegtable-method}
 
-\title{Statistics for Taxon Traits}
+\title{Statistics and proportion for taxon traits}
 \description{
-Calculation of proportions of traits on plots or other groups, considering
-either number of taxa or weighted values (by abundance, for instance).
+Calculation of statistics and proportions of taxon traits for plot observations
+or groups of observations, considering data relationships,
+taxonomic ranks and the handling of not available values.
+
+The function \code{\link[=trait_stats]{trait_stats()}} calculates statistics for
+numeric variables, while the function \cr
+\code{\link[=trait_proportion]{trait_proportion()}} may be used for categorical
+variables.
+In the first case, a column with the name of the variable and a suffix will be
+generated, while in the second case, one additional column per selected trait
+level will be calculated.
+
+Both mentioned functions offer the alternative weighted and unweighted
+calculations (e.g. calculations weighted by the abundance of species).
+In the particular case of \code{\link[=trait_stats]{trait_stats()}}, customized
+functions have to be defined as \code{'foo(x, w, ...)'}, where \code{'w'} is the
+weight.
+
+With the arguments \code{'taxon_level'} and \code{'merge_to'} the used taxonomic
+ranks can be defined, where the first one indicates which ranks have to be
+considered in the calculations and the second one determine the aggregation of
+taxa from a lower level to a parental one.
+
+Formula methods allow for the calculation of multiple variables at once.
+The formulas have to be written as \code{'trait_1 + ... + trait_n ~ head_var'}.
 }
 \usage{
-\S4method{trait_stats}{character,vegtable}(trait, object, FUN, head_var,
-	taxon_level, merge_to, weight, suffix="_stats", in_header=FALSE, ...)
+\S4method{trait_stats}{character,vegtable}(trait, object, FUN, head_var, taxon_level, merge_to, weight,
+	suffix="_stats", in_header=FALSE, ...)
 
 \S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix="_stats", in_header=FALSE, ...)
 
@@ -24,45 +47,53 @@ either number of taxa or weighted values (by abundance, for instance).
 \S4method{trait_proportion}{formula,vegtable}(trait, object, in_header=FALSE, ...)
 }
 \arguments{
-\item{trait}{Either a character value or a formula.}
-\item{object}{An object of class \code{\linkS4class{vegtable}}.}
-\item{FUN}{A function usually defined as 'foo(x, ...)' or as 'foo(x, w, ...)'
-	for weighted statistics.}
-\item{head_var}{Variable from the slot 'header' used as unit for the calculation
-	of proportions.}
+\item{trait}{Either a character value indicating the name of trait variable or
+	a formula including both arguments, \code{'trait'} and \code{'head_var'}.}
+\item{object}{A \code{\linkS4class{vegtable}} object.}
+\item{FUN}{A function usually defined as \code{'foo(x, ...)'} or as
+	\code{'foo(x, w, ...)'} for weighted statistics.}
+\item{head_var}{Character value, the name of the variable at slot header to be
+	used as aggregation level for the calculation of statistics or proportions.
+	If not provided, the function will use \bold{ReleveID} by default.}
 \item{trait_level}{Character vector indicating a selection of levels from a
 	trait, in the case that some levels should be ignored in the output.
-	Only applied to the 'character' method.}
+	Trait levels that are skipped at output will be still used for the
+	calculation of proportions. This argument gets only applied for the
+	character method.}
 \item{taxon_level}{Character value indicating a selected taxonomic rank for the
 	output.}
 \item{merge_to}{Character value indicating the taxonomic rank for aggregation of
-	taxa.}
+	taxa. All ranks lower than the one indicated here will be assigned to the
+	respective parents at the required taxonomic rank.}
 \item{include_nas}{Logical value indicating whether NAs should be considered for
 	the calculation of proportions or not.}
-\item{weight}{Character value, the name of the variable in slot 'samples' used
-	as weight for the proportions. Usually the numeric abundance.}
-\item{suffix}{A suffix added to the levels of the trait at the output.}
+\item{weight}{Character value indicating the name of the variable at slot
+	\bold{samples} used as weight for the proportions. Usually the numeric
+	abundance.}
+\item{suffix}{A suffix added to the name of the trait variable or to the levels
+	of categorical trait variables. I is meant to avoid homonymous variables
+	within the same object.}
 \item{in_header}{Logical value indicating whether the output should be inserted
-	in the slot 'header' of the input object or provided as data frame.}
-\item{...}{Further arguments passed among methods. In the case of the 'formula'
-	method, arguments are passed to the 'character' method.}
-}
-\details{
-To be added.
+	in the slot \bold{header} or provided as data frame.}
+\item{...}{Further arguments passed among methods. In the case of the formula
+	method, arguments are passed to the character method.}
 }
 \value{
-A data frame with the proportions of traits levels or an object of class
-\code{\linkS4class{vegtable}} including the proportions in the slot 'header'.
+A data frame with the proportions of traits levels or statistics for the trait
+variable, or an object of class \code{\linkS4class{vegtable}} including those
+results at the slot \bold{header}.
 }
 \author{
 Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
-library(vegtable)
-
+## Cocktail classification of plots
 Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
+
+## Calculation of proportion of Cyperaceae species in the plot
 Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg, trait_level="Cyperaceae",
 	weight="percen", include_nas=FALSE, in_header=TRUE)
+
+## Display of proportions per plant community
 boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col="grey")
 }
-\keyword{methods}
