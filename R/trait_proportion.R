@@ -102,15 +102,6 @@ setMethod("trait_proportion", signature(trait="character", object="vegtable"),
 		}
 )
 
-###
-object <- Wetlands_veg
-object@header <- make_cocktail(Wetlands, object, cover="percen")
-include_nas=FALSE
-suffix="_prop"
-in_header=TRUE
-trait="lf_behn_2018"
-
-
 # Method for formula
 setMethod("trait_proportion", signature(trait="formula", object="vegtable"),
 		function(trait, object, in_header=FALSE, ...) {
