@@ -36,8 +36,6 @@ Classification of \code{\linkS4class{vegtable}} objects according to
 \S4method{set_formula}{shaker,vegtable,character}(shaker, companion, formula, ...)
 }
 \arguments{
-\item{shaker}{Object of class \code{\linkS4class{shaker}} to be modified.}
-
 \item{shaker}{An object of class \code{\linkS4class{shaker}} containing the
 	respective cocktail definitions.}
 \item{vegtable}{An object of class \code{\linkS4class{vegtable}} containing the

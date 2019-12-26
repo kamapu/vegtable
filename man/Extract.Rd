@@ -2,6 +2,7 @@
 \docType{methods}
 \alias{[<-}
 \alias{[,vegtable-method}
+\alias{[,vegtable,ANY,ANY-method}
 \alias{[,vegtable,ANY,ANY,ANY-method}
 \alias{[<-,vegtable,ANY,ANY,ANY-method}
 \alias{$,vegtable-method}
