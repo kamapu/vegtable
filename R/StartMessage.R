@@ -1,8 +1,4 @@
-# TODO:   Message displayed on start (modified from vegdata)
-# 
-# Author: Miguel Alvarez
-################################################################################
-
+# Start message
 .onAttach <- function(lib, pkg)  {
     packageStartupMessage("This is vegtable ",
             utils::packageDescription("vegtable", field="Version"),

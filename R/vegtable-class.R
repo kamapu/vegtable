@@ -1,8 +1,34 @@
-# TODO:   Set S4 object class "VegTable"
-# 
-# Author: Miguel Alvarez
-################################################################################
-
+#' @name vegtable-class
+#' @aliases vegtable
+#' 
+#' @title Class vegtable.
+#' 
+#' @description 
+#' Class holding vegetation-plot data sets.
+#' Designed to content all information stored in **Turboveg** databases in
+#' just one object.
+#' 
+#' This class was designed to include information of relevés, header data and
+#' species in just one object. Objects can be created by calls of the form
+#' `new("vegtable", ...)`.
+#' 
+#' @slot description A named character vector containing metadata.
+#' @slot samples A data frame with samples list.
+#' @slot header A data frame with plots data.
+#' @slot species Species list as a [taxlist-class] object.
+#' @slot layers A list including strata within samples as data frames.
+#' @slot relations A list including popup lists as data frames.
+#' @slot coverconvert A scale conversion object of class [coverconvert-class].
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @seealso [tv2vegtable()]
+#' 
+#' @examples
+#' showClass("vegtable")
+#' 
+#' @exportClass vegtable
+#' 
 setClass("vegtable",
         slots=c(
 				description="character",

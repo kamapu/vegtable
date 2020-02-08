@@ -1,10 +1,51 @@
-# TODO:   Methods for objects of class vegtable
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Method for taxlist
-setMethod("count_taxa", signature(object="vegtable"),
+#' @name count_taxa
+#' @aliases count_taxa,vegtable,missing-method
+#' 
+#' @title Count taxa included in vegtable objects
+#' 
+#' @description 
+#' Counting number of taxa within [taxlist-class] objects or character vectors
+#' containing taxon names.
+#' 
+#' This function provides a quick calculation of taxa in [vegtable-class]
+#' objects, considering only records in slot samples.
+#' Such records can be also merged from lower ranks.
+#' 
+#' For the formula method, units without any requested taxa will not appear in
+#' the output data frame. If no taxa at all is occurring at the requested level
+#' in any unit, an error message will be retrieved.
+#' 
+#' @param object An object of class [vegtable-class] or a formula.
+#' @param data An object of class [vegtable-class].
+#' @param level Character value indicating the taxonomic rank of counted taxa.
+#' @param include_lower Logical value, whether lower taxonomic ranks should be
+#'     included at the requested level.
+#' @param suffix Character value used as suffix on the calculated variable.
+#' @param in_header Logical value, whether the result should be included in the
+#'     slot header of the input [vegtable-class] object or not.
+#'     A warning message is provided if the calculation is not done for every
+#'     plot observation.
+#' @param ... further arguments passed among methods.
+#' 
+#' @return
+#' An data frame with the number of taxa from requested level at requested
+#' units for the formula method, or just an integer value.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @examples
+#' ## Different alternatives
+#' count_taxa(Kenya_veg)
+#' head(count_taxa(~ ReleveID, Kenya_veg))
+#' head(count_taxa(species ~ ReleveID, Kenya_veg))
+#' head(count_taxa(species ~ ReleveID, Kenya_veg, TRUE))
+#' head(count_taxa(family ~ ReleveID, Kenya_veg, TRUE))
+#' 
+#' @rdname count_taxa
+#' 
+#' @exportMethod count_taxa
+#' 
+setMethod("count_taxa", signature(object="vegtable", data="missing"),
 		function(object, level, include_lower=FALSE, ...) {
 			concepts <- with(object@species@taxonNames,
 					TaxonConceptID[match(object@samples$TaxonUsageID,
@@ -34,9 +75,10 @@ setMethod("count_taxa", signature(object="vegtable"),
 		}
 )
 
-# formula method
-# Method for vegtable objects
-setMethod("count_taxa", signature(object="formula"),
+#' @rdname count_taxa
+#' 
+#' @aliases count_taxa,formula,vegtable-method
+setMethod("count_taxa", signature(object="formula", data="vegtable"),
 		function(object, data, include_lower=FALSE, suffix="_count",
 				in_header=FALSE, ...) {
 			data_in <- data

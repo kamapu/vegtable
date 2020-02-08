@@ -1,13 +1,61 @@
-# TODO:   Function and methods to produce cross tables
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name crosstable
+#' 
+#' @title Generating cross tables from database lists
+#' 
+#' @description 
+#' This function is generating cross tables, which are the most common format
+#' used by statistical packages analysing vegetation data (e.g. [vegan::vegan]).
+#' 
+#' Most applications and displays of vegetation data use preferentially the
+#' cross table format. For convenience, the formula has the form
+#' `abundance ~ plot + species + \ldots{}`.
+#' Additional variables used for rows (`\ldots{}`) can be for instance the
+#' layers.
+#' 
+#' For objects of class [vegtable-class], the formula can also include
+#' variables from the species list (for example `AcceptedName`, `AuthorName`)
+#' or even taxon traits.
+#' 
+#' @param formula A formula indicating the variables used in the cross table.
+#' @param data Either a data frame or an object of class [vegtable-class].
+#' @param FUN Function used to aggregate values.
+#' @param na_to_zero A logical value indicating whether zeros should be
+#'     inserted into empty cells or not.
+#' @param use_nas Logical value indicating whether NAs should be considered as
+#'     levels for categorical variables or not.
+#' @param as_matrix A logical value, whether output should be done as matrix or
+#'     data frame.
+#' @param ... Further arguments passed to the function [stats::aggregate()].
+#' @param object A data frame including a cross table.
+#' @param layers Logical value, whether the cross table includes a layer column
+#'     or not.
+#' @param na_strings Character vector indicating no records in the cross table.
+#' 
+#' @return An object of class [data.frame].
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @examples
+#' Kenya_veg <- subset(Kenya_veg, REFERENCE == 2331, slot="header")
+#' 
+#' ## transform cover to percentage
+#' Kenya_veg <- transform(Kenya_veg, to="cover_perc", rule="middle")
+#' 
+#' ## cross table of the first 5 plots
+#' Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
+#'         Kenya_veg[1:5,], mean, na_to_zero=TRUE)
+#' head(Cross)
+#'
+#' @rdname crosstable
+#' 
+#' @exportMethod crosstable
+#' 
 setGeneric("crosstable", function(formula, data, ...)
             standardGeneric("crosstable"))
 
-# Method for data frames
+#' @rdname crosstable
+#' 
+#' @aliases crosstable,formula,data.frame-method
 setMethod("crosstable", signature(formula="formula", data="data.frame"),
         function(formula, data, FUN, na_to_zero=FALSE, use_nas=TRUE,
 				as_matrix=FALSE, ...) {
@@ -63,7 +111,9 @@ setMethod("crosstable", signature(formula="formula", data="data.frame"),
         }
 )
 
-# Method for vegtable objects
+#' @rdname crosstable
+#' 
+#' @aliases crosstable,formula,vegtable-method
 setMethod("crosstable", signature(formula="formula", data="vegtable"),
         function(formula, data, FUN, na_to_zero=FALSE, use_nas=TRUE, ...) {
             Terms <- c(as.character(formula)[2], attr(terms(formula),
@@ -127,3 +177,34 @@ setMethod("crosstable", signature(formula="formula", data="vegtable"),
 							...))
         }
 )
+
+#' @rdname crosstable
+#' 
+#' @aliases cross2db
+#' 
+#' @export 
+cross2db <- function(object, layers=FALSE, na_strings) {
+	species <- object[,1]
+	if(layers) {
+		LAY <- object[,2]
+		Cover <- object[,-1:-2]
+		object <- lapply(split(1:ncol(Cover), 1:ncol(Cover)),
+				function(x, cov, spec, lay) {
+					releve <- data.frame(plot=colnames(cov)[x], species=spec,
+							layers=lay, cover=cov[,x], stringsAsFactors=FALSE)
+					return(releve)
+				}, cov=Cover, spec=species, lay=LAY)
+	} else {
+		Cover <- object[,-1,drop=FALSE]
+		object <- lapply(split(1:ncol(Cover), 1:ncol(Cover)),
+				function(x, cov, spec) {
+					releve <- data.frame(plot=colnames(cov)[x], species=spec,
+							cover=cov[,x], stringsAsFactors=FALSE)
+					return(releve)
+				}, cov=Cover, spec=species)
+	}
+	object <- do.call(rbind, object)
+	if(!missing(na_strings))
+		object$cover[paste(object$cover) %in% na_strings] <- NA
+	return(object[!is.na(object$cover),])
+}

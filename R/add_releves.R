@@ -1,15 +1,49 @@
-# TODO:   Add releves from a data frame into a vegtable object
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name add_releves
+#' 
+#' @title Merge relevés from data frames into vegtable objects
+#' 
+#' @description 
+#' Addition of plot observations into existing data sets may implicate merging
+#' data frames with [vegtable-class] objects.
+#' 
+#' Since this function will only update slots **samples** and **header**,
+#' consistency with slots **layers**, **relations** and **species** have to be
+#' checked and accordingly updated in advance.
+#' 
+#' @param vegtable An object of class [vegtable-class].
+#' @param releves A data frame including plot observations to be added into
+#'     `vegtable`.
+#' @param header A data frame (optional) including header information for plots.
+#' @param abundance A character value (or vector of length 2) indicating the
+#'     names of abundance variable in `vegtable`.
+#' @param split_string Character value used to split mixed abundance codes.
+#' @param usage_ids Logical value indicating whether species are as taxon usage
+#'     ids (integers) or names in `releves`.
+#' @param layers Logical value indicating whether layers are included in
+#'     `releves` or not.
+#' @param layers_var Name of the layer variable in `vegtable`.
+#' @param format Character value indicating input format of `releves`  (whether
+#'     `crosstable` or `databaselist`).
+#' @param ... Further arguments passed to function [cross2db()] (i.e.
+#'     `na_strings`).
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @seealso [cross2db()]
+#' 
+#' @rdname add_releves
+#' 
+#' @exportMethod add_releves
+#' 
 setGeneric("add_releves",
 		function(vegtable, releves, ...)
 			standardGeneric("add_releves")
 )
 
-# Method for vegtable and data frame
+#' @rdname add_releves
+#' 
+#' @aliases add_releves,vegtable,data.frame-method
+#' 
 setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 		function(vegtable, releves, header, abundance, split_string,
 				usage_ids=FALSE, layers=FALSE, layers_var, format="crosstable",
