@@ -1,9 +1,40 @@
-# TODO:   Summary methods for vegtable objects
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Method for 'vegtable' objects ------------------------------------------------
+#' @name summary
+#' 
+#' @title Summary method for vegtable objects
+#' 
+#' @description 
+#' Display summaries for [vegtable-class] objects.
+#' 
+#' Those methods are implemented for objects of the classes [vegtable-class],
+#' [coverconvert-class] and [shaker-class].
+#' 
+#' The method for class `vegtable` retrieves the metadata, the size of
+#' the object, its validity and additional statistics on the content of input
+#' object.
+#' 
+#' For objects of class [shaker-class], the function `summary()` will either
+#' retrieve general statistics when `companion` is missing, or a more detailed
+#' display when accompained by a [taxlist-class] or [vegtable-class] object.
+#' 
+#' @param object Object to be summarized.
+#' @param units Units used for object size (passed to [format()]).
+#' @param companion Companion object (either a [taxlist-class] or a
+#'     [vegtable-class] object.
+#' @param authority Logical value indicating whether authors should be
+#'     displayed or not.
+#' @param ... further arguments to be passed to or from other methods.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @examples
+#' ## Summary for 'vegtable' objects
+#' summary(Wetlands_veg)
+#' 
+#' @rdname summary
+#' @aliases summary,vegtable-method
+#' 
+#' @exportMethod summary
+#' 
 setMethod("summary", signature(object="vegtable"),
         function(object, units="Kb", ...) {
             # Show original attributes (metadata)
@@ -33,7 +64,13 @@ setMethod("summary", signature(object="vegtable"),
         }
 )
 
-# Method for 'coverconvert' objects --------------------------------------------
+#' @rdname summary
+#' @aliases summary,coverconvert-method
+#' 
+#' @examples
+#' ## Summary for 'coverconvert' objects
+#' summary(braun_blanquet)
+#' 
 setMethod("summary", signature(object="coverconvert"),
 		function(object, ...) {
 			cat("## Number of cover scales:", length(object@value), "\n")
@@ -53,11 +90,17 @@ setMethod("summary", signature(object="coverconvert"),
 		}
 )
 
-# Method for 'shaker' objects --------------------------------------------------
-
-# Function replacing syntax in shaker objects
-# companion is a taxlist object
-# Written for the summary output
+#' Re-writing formulas for print output
+#' 
+#' Mediating between syntax and print format.
+#' 
+#' @param shaker A [shaker-class] object.
+#' @param companion A companion data set which is either missing or a
+#'     [vegtable-class] object.
+#' 
+#' @return A formated output text.
+#' 
+#' @keywords internal
 rewrite_formulas <- function(shaker, companion) {
 	EQ <- list()
 	for(i in names(shaker@formulas)) EQ[[i]] <- {
@@ -68,7 +111,8 @@ rewrite_formulas <- function(shaker, companion) {
 			x <- gsub("dominants[[", "species:", x, fixed=TRUE)
 			x <- gsub("]]", "", x, fixed=TRUE)
 			Spp <- as.numeric(unlist(regmatches(x,
-									gregexpr("[[:digit:]]+\\.*[[:digit:]]*", x))))
+									gregexpr("[[:digit:]]+\\.*[[:digit:]]*",
+											x))))
 			if(length(Spp) > 0){
 				for(j in Spp) {
 					subformula <- shaker@dominants[j,]
@@ -86,6 +130,13 @@ rewrite_formulas <- function(shaker, companion) {
 	return(EQ)
 }
 
+#' @rdname summary
+#' @aliases summary,shaker-method
+#' 
+#' @examples
+#' ## Summary for 'shaker' objects (alone and with companion)
+#' summary(Wetlands, Wetlands_veg)
+#' 
 setMethod("summary", signature(object="shaker"),
 		function(object, companion, authority=FALSE, ...) {
 			if(missing(companion)) {
@@ -106,7 +157,7 @@ setMethod("summary", signature(object="shaker"),
 					for(i in 1:length(object@pseudos)) {
 						cat("*", paste0("'",
 										companion[match(object@pseudos[[i]][1],
-														companion$TaxonConceptID),
+													companion$TaxonConceptID),
 												"TaxonName"], "'"),
 								"contains:", "\n")
 						for(j in 2:length(object@pseudos[[i]])) {

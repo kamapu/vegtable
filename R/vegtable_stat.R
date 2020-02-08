@@ -1,8 +1,26 @@
-# TODO:   Statistical report of vegetation data bases.
-# 
-# Author: Miguel Alvarez
-################################################################################
-
+#' @name vegtable_stat
+#' 
+#' @title General statistics from vegtable objects
+#' 
+#' @description 
+#' This function calculates general statistics of local **Turboveg**
+#' databases as required by GIVD (Global Index of Vegetation-Plot Databases,
+#' \url{https://www.givd.info}).
+#' 
+#' This function is based on a script delivered by GIVD for summarising
+#' statistics required in the descriptions of databases (see meta data in the
+#' page of the Global Index for Vegetation-Plot Databases).
+#' 
+#' @param vegtable An object of class [vegtable-class].
+#' 
+#' @author GIVD. Adapted by Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @examples
+#' ## Statistics for GIVD
+#' vegtable_stat(Kenya_veg)
+#' 
+#' @export 
+#' 
 vegtable_stat <- function(vegtable) {
 	if(class(vegtable) != "vegtable") {
 		stop("vegtable must be an object of class 'vegtable'.")

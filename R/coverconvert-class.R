@@ -1,9 +1,35 @@
-# TODO:   Defining a new class for conversion tables
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Definition of the class
+#' @name coverconvert
+#' @aliases coverconvert-class
+#' 
+#' @title Cover conversion tables
+#' 
+#' @description 
+#' Cover conversion tables for [vegtable-class] objects.
+#' 
+#' This class implements conversions from different cover scales in percentage
+#' cover. For transformations to percentage cover, the function [transform()]
+#' should be than used.
+#' 
+#' @slot value List containing the levels of each scale.
+#' @slot conversion List with the respective start and end cut levels for the
+#' scale levels.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @seealso [tv2coverconvert()] [braun_blanquet].
+#' 
+#' @examples
+#' showClass("coverconvert")
+#' 
+#' ## Add a custom scale
+#' Scale <- new("coverconvert")
+#' Scale$my_scale <- list(
+#' 	 value=factor(c("low","medium","high"), levels=c("low","medium","high")),
+#' 	 conversion=c(0,50,75,100))
+#' summary(Scale)
+#' 
+#' @exportClass coverconvert
+#' 
 setClass("coverconvert",
         slots=c(
                 value="list",

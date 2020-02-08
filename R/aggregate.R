@@ -1,9 +1,29 @@
-# TODO:   A method to aggregate 'vegtable' objects into data frames
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Method for vegtable objects
+#' @name aggregate
+#' @aliases aggregate,formula-method
+#' 
+#' @title Aggregating information into a data frame
+#' 
+#' @description 
+#' This function aggregates information contained in [vegtable-class] objects
+#' to a summarizing data frame.
+#' 
+#' This function works in a similar way as [crosstable()].
+#' 
+#' @param x A formula indicating the variables used for the summary.
+#' @param data Either a data frame or an object of class [vegtable-class].
+#' @param FUN Function used to aggregate values.
+#' @param use_nas Logical value indicating whether NA's should be included in
+#'     categorical variables or not.
+#' @param ... Further arguments passed to the function [stats::aggregate()].
+#' 
+#' @return An object of class [data.frame].
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @seealso [stats::aggregate()]
+#' 
+#' @exportMethod aggregate
+#' 
 setMethod("aggregate", signature(x="formula"),
 		function(x, data, FUN, use_nas=TRUE, ...) {
 			if(class(data) != "vegtable")

@@ -1,15 +1,59 @@
-# TODO:   Convert data frames into vegtable objects
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Generic function
+#' @name df2vegtable
+#'
+#' @title Convert a data frame into a vegtable object.
+#' 
+#' @description 
+#' Conversion of a data frame containing a cross table of abundance or cover of
+#' species in single plots.
+#' 
+#' This function coerces a data frame containing a vegetation cross table into
+#' a [vegtable-class] object. The input data frame `x` may include information
+#' on the layers or not.
+#' 
+#' @param x A data frame formatted for a taxlist object.
+#' @param species Numeric or integer indicating the position of the column with
+#'     species names.
+#' @param layer Numeric or integer indicating the position of the column with
+#'     layers.
+#' @param ... Further arguments passed from or to other methods.
+#' 
+#' @return A [vegtable-class] object.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @examples
+#' ## Creating data set 'dune_veg'
+#' library(vegan)
+#' 
+#' ## Load data from vegan
+#' data(dune)
+#' data(dune.env)
+#' 
+#' ## Conversion to vegtable
+#' dune_veg <- data.frame(species=colnames(dune), t(dune),
+#'     stringsAsFactors=FALSE, check.names=FALSE)
+#' dune_veg <- df2vegtable(dune_veg, species=1)
+#' 
+#' summary(dune_veg)
+#' 
+#' ## Adding environmental variables
+#' dune.env$ReleveID <- as.integer(rownames(dune.env))
+#' header(dune_veg) <- dune.env
+#' 
+#' summary(dune_veg)
+#' 
+#' @rdname df2vegtable
+#' 
+#' @exportMethod df2vegtable
+#' 
 setGeneric("df2vegtable",
         function(x, species, layer, ...)
             standardGeneric("df2vegtable")
 )
 
-# Set method for data frame
+#' @rdname df2vegtable
+#' 
+#' @aliases df2vegtable,data.frame,numeric,numeric-method
 setMethod("df2vegtable", signature(x="data.frame", species="numeric",
                 layer="numeric"),
         function(x, species, layer, ...) {
@@ -37,6 +81,7 @@ setMethod("df2vegtable", signature(x="data.frame", species="numeric",
                                     TaxonUsageID=TaxonUsageID,
                                     Cover=Cover,
                                     stringsAsFactors=FALSE),
+
                             header=data.frame(
                                     ReleveID=unique(as.integer(ReleveID))),
                             species=taxlist)
@@ -46,7 +91,9 @@ setMethod("df2vegtable", signature(x="data.frame", species="numeric",
         }
 )
 
-# If layer missing
+#' @rdname df2vegtable
+#' 
+#' @aliases df2vegtable,data.frame,numeric,missing-method
 setMethod("df2vegtable", signature(x="data.frame", species="numeric",
                 layer="missing"),
         function(x, species, ...) {

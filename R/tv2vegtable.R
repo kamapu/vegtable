@@ -1,8 +1,58 @@
-# TODO:   Import vegetation dataset into a "VegTable" object
-# 
-# Author: Miguel Alvarez
-################################################################################
-
+#' @name tv2vegtable
+#' 
+#' @title Import of vegetation data from Turboveg databases
+#' 
+#' @description 
+#' Import function for **Turboveg** databases into an object of class
+#' [vegtable-class].
+#' Most of the contents of **Turboveg** databases are included in DBF files and
+#' therefore imported by the function [foreign::read.dbf()].
+#' The automatic setting of database path will be done by the function
+#' [vegdata::tv.home()] but it can be customised by the argument `tv_home`.
+#' 
+#' The species list will be imported by using the function
+#' [taxlist::tv2taxlist()] and therefore formatted as a [taxlist-class] object.
+#' Similarly, conversion tables will be handled as [coverconvert-class] objects.
+#' 
+#' Empty columns in the header will be deleted in the imported object.
+#' 
+#' The function `tv2coverconvert()` reads the content of cover conversion
+#' tables stored in **Turboveg** and attempts to reformat them in a more
+#' comprehensive structure.
+#' 
+#' This function is used by `tv2vegtable()` to import the respective
+#' conversion table from **Turboveg** databases.
+#' Note that conversion tables in **Turboveg** have only stored the middle
+#' point for each cover class in a scale, thus it will be recommended to
+#' rebuild the `coverconvert` slot or use [braun_blanquet].
+#' 
+#' @param db Name of **Turboveg** data base as character value.
+#' @param tv_home **Turboveg** installation path as character value.
+#' @param skip_empty_relations Logical value indicating whether empty relations
+#'     may be excluded from imported database or not.
+#' @param skip_scale Character value indicating scales to be excluded in slot
+#'     `coverconvert`.
+#' @param clean Logical value indicating whether output object should be
+#'     cleaned or not.
+#' 
+#' @return
+#' A [vegtable-class] object in the case of `tv2vegtable()`.
+#' A [coverconvert-class] object in the case of `tv2coverconvert()`.
+#' 
+#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' 
+#' @seealso [taxlist::tv2taxlist()] [foreign::read.dbf()] [vegdata::tv.home()]
+#' 
+#' @examples
+#' ## Installed 'Turboveg' version of 'Fujiwara et al. (2014)'
+#' TV_Home <- file.path(path.package("vegtable"), "tv_data")
+#' Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
+#' summary(Veg)
+#' 
+#' @rdname tv2vegtable
+#' 
+#' @export 
+#' 
 tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
 		skip_scale, clean=TRUE) {
     # Import meta data ---------------------------------------------------------
@@ -119,4 +169,47 @@ tv2vegtable <- function(db, tv_home=tv.home(), skip_empty_relations=TRUE,
     }
     if(clean) VEG <- clean(VEG)
     return(VEG)
+}
+
+#' @rdname tv2vegtable
+#' @aliases tv2coverconvert
+#' 
+#' @param file A connection to a DBF file containing conversion table in
+#'     **Turboveg**.
+#' @param as.is A logical value passed to [read.dbf()].
+#' 
+#' @examples
+#' ## Installed 'Turboveg' version of "Fujiwara et al. (2014)"
+#' TV_Home <- file.path(path.package("vegtable"), "tv_data", "popup", "Swea")
+#' Table <- tv2coverconvert(file.path(TV_Home, "tvscale.dbf"))
+#' 
+#' ## First scale have to be deleted from conversion table
+#' Table@@value <- Table@@value[-1]
+#' Table@@conversion <- Table@@conversion[-1]
+#' summary(Table)
+#' 
+#' ## Compare the 'Turboveg' version with a vegtable version
+#' data(braun_blanquet)
+#' summary(Table$br_bl)
+#' summary(braun_blanquet$br_bl)
+#' 
+#' @export 
+#' 
+tv2coverconvert <- function(file, as.is=TRUE) {
+	file <- read.dbf(file, as.is)
+	file <- split(file, file$SCALE_NR)
+	conversion <- new("coverconvert")
+	for(i in names(file)) {
+		short_name <- tolower(sub("/", "_", file[[i]]$SCALE_CODE, fixed=TRUE))
+		cover1 <- t(file[[i]][,seq(4, dim(file[[i]])[2], 2)])[,1]
+		cover2 <- t(file[[i]][,seq(5, dim(file[[i]])[2], 2)])[,1]
+		cover2 <- cover2[!is.na(cover1)]
+		cover1 <- cover1[!is.na(cover1)]
+		cover1 <- cover1[order(cover2)]
+		cover2 <- cover2[order(cover2)]
+		names(cover1) <- names(cover2) <- NULL
+		conversion@value[[short_name]] <- factor(cover1, levels=cover1)
+		conversion@conversion[[short_name]] <- c(0, cover2)
+	}
+	return(conversion)
 }
