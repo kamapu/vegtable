@@ -70,6 +70,8 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 									"provided as database list."))
 				releves$TaxonUsageID <- match_names(releves$TaxonName,
 						vegtable)$TaxonUsageID
+				# delete column TaxonName
+				releves <- releves[,colnames(releves) != "TaxonName"]
 			}
 			message(paste("Matched taxon usage names:",
 							length(unique(releves$TaxonUsageID))))
@@ -156,10 +158,13 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 				vegtable@header <- do.call(rbind, list(vegtable@header,
 								header[,colnames(vegtable@header)])) else
 				vegtable@header <- header
-			for(i in colnames(vegtable@samples))
-				if(!i %in% colnames(releves)) releves[,i] <- NA
-			vegtable@samples <- do.call(rbind, list(vegtable@samples,
-							releves[,colnames(vegtable@samples)]))
+			# in empty object add releves directly
+			if(nrow(vegtable@samples) > 0) {
+				for(i in colnames(vegtable@samples))
+					if(!i %in% colnames(releves)) releves[,i] <- NA
+				vegtable@samples <- do.call(rbind, list(vegtable@samples,
+								releves[,colnames(vegtable@samples)]))
+			} else vegtable@samples <- releves
 			message("DONE")
 			return(vegtable)
 		}
