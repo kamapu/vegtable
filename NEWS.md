@@ -1,3 +1,16 @@
+vegtable 0.1.6
+==============
+
+### New Features
+
+### Improvements
+
+* Documentation implemented in `roxygen2`.
+
+### Bug Fixes
+
+* Function `count_taxa()` adapted to the package `taxlist`.
+
 vegtable 0.1.5
 ==============
 

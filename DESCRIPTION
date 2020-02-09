@@ -1,5 +1,5 @@
 Package: vegtable
-Version: 0.1.5
+Version: 0.1.6
 Encoding: UTF-8
 Title: Handling Vegetation Data Sets
 Authors@R:
@@ -18,28 +18,52 @@ Imports:
 	vegdata
 Suggests:
 	devtools,
+	roxygen2,
+	rmarkdown,
 	vegan
-LazyData: true
 Description: Import and handling data from vegetation-plot databases, especially
     data stored in 'Turboveg' (<https://www.synbiosys.alterra.nl/turboveg>).
     Also import/export routines for exchange of data with 'Juice'
     (<http://www.sci.muni.cz/botany/juice>) are implemented.
+LazyData: true
+Roxygen: list(markdown = TRUE)
 License: GPL (>= 2)
 URL: https://github.com/kamapu/vegtable
 BugReports: https://github.com/kamapu/vegtable/issues
 Collate:
+	'imports.R'
 	'NULLing.R'
-	'coverconvert-class.R''vegtable-class.R''shaker-class.R'
-	'cross2db.R''clean.R''as.list.R''merge_taxa.R''add_releves.R'
-	'header.R''Extract.R''veg_relation.R''relation2header.R'
-	'vegtable_stat.R''df2vegtable.R''used_synonyms.R'
+	'coverconvert-class.R'
+	'vegtable-class.R'
+	'shaker-class.R'
+	'transform.R'
+	'clean.R'
+	'as.list.R'
+	'merge_taxa.R'
+	'add_releves.R'
+	'header.R'
+	'Extract.R'
+	'veg_relation.R'
+	'vegtable_stat.R'
+	'df2vegtable.R'
+	'used_synonyms.R'
 	'subset.R'
-	'coverconvert-methods.R''names.R'
-	'tv2coverconvert.R''tv2vegtable.R'
-	'crosstable.R''aggregate.R''write_juice.R''read_juice.R''vegtable2kml.R'
+	'names.R'
+	'tv2vegtable.R'
+	'crosstable.R'
+	'aggregate.R'
+	'write_juice.R'
+	'vegtable2kml.R'
 	'layers2samples.R'
-	'shaker-methods.R''make_cocktail.R'
-	'summary.R''match_names.R'
-	'taxa2samples.R''count_taxa.R'
-	'trait_proportion.R''trait_stats.R'
+	'make_cocktail.R'
+	'summary.R'
+	'match_names.R'
+	'count_taxa.R'
+	'trait_stats.R'
+	'aspect_con-data.R'
+	'braun_blanquet-data.R'
+	'dune_veg-data.R'
+	'Kenya_veg-data.R'
+	'Wetlands-data.R'
 	'StartMessage.R'
+RoxygenNote: 7.0.2
