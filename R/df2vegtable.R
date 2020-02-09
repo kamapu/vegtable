@@ -61,7 +61,7 @@ setMethod("df2vegtable", signature(x="data.frame", species="numeric",
             taxlist <- new("taxlist")
             taxlist <- add_concept(taxlist, TaxonName=unique(paste(x[,
                                             species])))
-            # Some tests previous to run the function
+			# Some tests previous to run the function
             Cover <- x[,-c(species,layer)]
             for(i in 1:ncol(Cover)) Cover[,i] <- paste(Cover[,i])
             Layer <- as.factor(x[,layer])
@@ -87,7 +87,7 @@ setMethod("df2vegtable", signature(x="data.frame", species="numeric",
                             species=taxlist)
             x@samples <-x@samples[!is.na(Cover),]
             x@samples <-x@samples[Cover != "NA",]
-            return(x)
+			return(x)
         }
 )
 

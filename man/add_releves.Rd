@@ -17,6 +17,7 @@ add_releves(vegtable, releves, ...)
   layers = FALSE,
   layers_var,
   format = "crosstable",
+  preserve_ids = FALSE,
   ...
 )
 }
@@ -44,8 +45,12 @@ ids (integers) or names in \code{releves}.}
 
 \item{layers_var}{Name of the layer variable in \code{vegtable}.}
 
-\item{format}{Character value indicating input format of \code{releves}  (whether
-\code{crosstable} or \code{databaselist}).}
+\item{format}{Character value indicating input format of \code{releves} (either
+\code{"crosstable"} or \code{"databaselist"}).}
+
+\item{preserve_ids}{A logical value, whether IDs in input data set should
+used as \code{ReleveID} or not. Those IDs have to be integers and if one
+of those already exists in \code{vegtable}, an error will be retrieved.}
 }
 \description{
 Addition of plot observations into existing data sets may implicate merging
