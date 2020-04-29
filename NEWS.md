@@ -1,8 +1,6 @@
 vegtable 0.1.6
 ==============
 
-### New Features
-
 ### Improvements
 
 * Documentation implemented in `roxygen2`.

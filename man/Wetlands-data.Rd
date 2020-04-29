@@ -6,8 +6,10 @@
 \alias{Wetlands}
 \alias{Wetlands_veg}
 \title{Vegetation-plots from Tanzania}
-\format{An object of class \linkS4class{shaker} (\code{Wetlands}) and the respective companion
-as \linkS4class{vegtable} object (\code{Wetlands_veg}).}
+\format{
+An object of class \linkS4class{shaker} (\code{Wetlands}) and the respective companion
+as \linkS4class{vegtable} object (\code{Wetlands_veg}).
+}
 \source{
 \url{http://www.givd.info/ID/AF-00-006}.
 }
