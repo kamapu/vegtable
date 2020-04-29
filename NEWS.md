@@ -1,6 +1,7 @@
 vegtable 0.1.6
 ==============
 
+<<<<<<< HEAD
 ### New Features
 
 ### Improvements
@@ -10,6 +11,16 @@ vegtable 0.1.6
 ### Bug Fixes
 
 * Function `count_taxa()` adapted to the package `taxlist`.
+=======
+### Improvements
+
+* Documentation implemented in `roxygen2`.
+* New argument `preserve_ids` in function `add_releves()`.
+
+### Bug Fixes
+
+* Function `count_taxa()` adapted to the current package `taxlist`.
+>>>>>>> refs/remotes/origin/miguel
 
 vegtable 0.1.5
 ==============

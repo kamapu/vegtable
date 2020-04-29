@@ -95,7 +95,6 @@ setMethod("trait_stats", signature(trait="character", object="vegtable"),
 				suffix="_stats", in_header=FALSE, ...) {
 			object_in <- object
 			object@species <- tax2traits(object@species, get_names=TRUE)
-			
 			# Cross-check
 			if(!trait %in% colnames(object@species@taxonTraits))
 				stop("Value of argument 'trait' is not a taxon trait in the input object.")
@@ -115,7 +114,6 @@ setMethod("trait_stats", signature(trait="character", object="vegtable"),
 			if(missing(merge_to))
 				object <- taxa2samples(object, add_traits=trait) else
 				object <- taxa2samples(object, merge_to, trait)
-			
 			# Transfer head variable to samples
 			if(!missing(head_var))
 				object@samples[,head_var] <- with(object@header,

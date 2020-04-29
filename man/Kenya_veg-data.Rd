@@ -5,7 +5,13 @@
 \alias{Kenya_veg-data}
 \alias{Kenya_veg}
 \title{Vegetation-plots from Kenya}
+<<<<<<< HEAD
 \format{An object of class \linkS4class{vegtable}.}
+=======
+\format{
+An object of class \linkS4class{vegtable}.
+}
+>>>>>>> refs/remotes/origin/miguel
 \source{
 \url{http://www.givd.info/ID/AF-00-006}
 }

@@ -22,8 +22,16 @@
 #' @param layers Logical value indicating whether layers are included in
 #'     `releves` or not.
 #' @param layers_var Name of the layer variable in `vegtable`.
+<<<<<<< HEAD
 #' @param format Character value indicating input format of `releves`  (whether
 #'     `crosstable` or `databaselist`).
+=======
+#' @param format Character value indicating input format of `releves` (either
+#'     `"crosstable"` or `"databaselist"`).
+#' @param preserve_ids A logical value, whether IDs in input data set should
+#'     used as `ReleveID` or not. Those IDs have to be integers and if one
+#'     of those already exists in `vegtable`, an error will be retrieved.
+>>>>>>> refs/remotes/origin/miguel
 #' @param ... Further arguments passed to function [cross2db()] (i.e.
 #'     `na_strings`).
 #' 
@@ -47,7 +55,7 @@ setGeneric("add_releves",
 setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 		function(vegtable, releves, header, abundance, split_string,
 				usage_ids=FALSE, layers=FALSE, layers_var, format="crosstable",
-				...) {
+				preserve_ids=FALSE, ...) {
 			# Step 1: Make database list, if necessary
 			format <- pmatch(tolower(format), c("crosstable","databaselist"))
 			if(!format %in% c(1:2))
@@ -61,6 +69,15 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 			if(!usage_ids & format == 1)
 				releves$TaxonUsageID <- match_names(releves$TaxonUsageID,
 						vegtable)$TaxonUsageID
+			if(!usage_ids & format == 2) {
+				if(!"TaxonName" %in% colnames(releves))
+					stop(paste("Colum 'TaxonName' is mandatory in 'releves'",
+									"provided as database list."))
+				releves$TaxonUsageID <- match_names(releves$TaxonName,
+						vegtable)$TaxonUsageID
+				# delete column TaxonName
+				releves <- releves[,colnames(releves) != "TaxonName"]
+			}
 			message(paste("Matched taxon usage names:",
 							length(unique(releves$TaxonUsageID))))
 			# Step 3: Check layers, if necessary
@@ -80,7 +97,8 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 			# Step 4: Reformat abundance (only for cross tables)
 			if(format == 1) {
 				if(any(!abundance %in% colnames(vegtable@samples)))
-					stop("Some values of 'abundance' are not yet included in 'vegtable'.")
+					stop(paste("Some values of 'abundance' are not yet",
+									"included in 'vegtable'."))
 				if(length(abundance) == 2) {
 					cover <- stri_split_fixed(releves[,ncol(releves)],
 							split_string)
@@ -106,11 +124,14 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 				if(any(duplicated(header$ReleveID)))
 					stop("Duplicated plot names are not allowed.")
 				if(!all(releves$ReleveID %in% header$ReleveID))
-					stop("Some plots in 'releves' are not included in 'header'.")
+					stop(paste("Some plots in 'releves' are not included in",
+									"'header'."))
 				if(!all(header$ReleveID %in% releves$ReleveID))
-					stop("Some plots in 'header' are not included in 'releves'.")
+					stop(paste("Some plots in 'header' are not included in",
+									"'releves'."))
 				if(!all(colnames(header) %in% colnames(vegtable@header)))
-					stop("Some variables in 'header' are not yet included in 'vegtable'.")
+					stop(paste("Some variables in 'header' are not yet",
+									"included in 'vegtable'."))
 				for(i in colnames(header)[-1]) {
 					if(is.factor(vegtable@header[,i]))
 						header[,i] <- factor(paste(header[,i]),
@@ -120,22 +141,35 @@ setMethod("add_releves", signature(vegtable="vegtable", releves="data.frame"),
 			} else header <- data.frame(ReleveID=unique(releves$ReleveID),
 						stringsAsFactors=FALSE)
 			# Step 6: Assembly vegtable
-			old_ReleveID <- header$ReleveID
-			header$ReleveID <- max(vegtable$ReleveID) + 1:nrow(header)
-			releves$ReleveID <- header$ReleveID[match(releves$ReleveID,
-							old_ReleveID)]
+			if(!preserve_ids) {
+				old_ReleveID <- header$ReleveID
+				if(nrow(vegtable@header) > 0)
+					header$ReleveID <- max(vegtable$ReleveID) + 1:nrow(header) else
+					header$ReleveID <- 1:nrow(header)
+				releves$ReleveID <- header$ReleveID[match(releves$ReleveID,
+								old_ReleveID)]
+			} else {
+				if(any(header$ReleveID %in% vegtable$ReleveID))
+					stop(paste("Some IDs in 'releves' already exist in",
+									"'vegtable' and cannot be preserved"))
+			}
 			message(paste0("Imported relev\u00e9s: ", nrow(header),
 							" (", min(header$ReleveID), " to ",
 							max(header$ReleveID),")"))
 			message(paste("Imported header variables:", ncol(header) - 1))
 			for(i in colnames(vegtable@header))
 				if(!i %in% colnames(header)) header[,i] <- NA
-			vegtable@header <- do.call(rbind, list(vegtable@header,
-							header[,colnames(vegtable@header)]))
-			for(i in colnames(vegtable@samples))
-				if(!i %in% colnames(releves)) releves[,i] <- NA
-			vegtable@samples <- do.call(rbind, list(vegtable@samples,
-							releves[,colnames(vegtable@samples)]))
+			if(nrow(vegtable@header) > 0)
+				vegtable@header <- do.call(rbind, list(vegtable@header,
+								header[,colnames(vegtable@header)])) else
+				vegtable@header <- header
+			# in empty object add releves directly
+			if(nrow(vegtable@samples) > 0) {
+				for(i in colnames(vegtable@samples))
+					if(!i %in% colnames(releves)) releves[,i] <- NA
+				vegtable@samples <- do.call(rbind, list(vegtable@samples,
+								releves[,colnames(vegtable@samples)]))
+			} else vegtable@samples <- releves
 			message("DONE")
 			return(vegtable)
 		}

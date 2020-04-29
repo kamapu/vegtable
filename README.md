@@ -53,6 +53,7 @@ contains plot observations done in Kenya imported from 5 sources.
 
 ``` r
 library(vegtable)
+<<<<<<< HEAD
 #> Registered S3 method overwritten by 'xts':
 #>   method     from
 #>   as.zoo.xts zoo
@@ -62,6 +63,8 @@ library(vegtable)
 #> The following object is masked from 'package:base':
 #> 
 #>     transform
+=======
+>>>>>>> refs/remotes/origin/miguel
 data(Kenya_veg)
 
 # validate and explore

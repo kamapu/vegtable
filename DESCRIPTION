@@ -66,4 +66,8 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'StartMessage.R'
+<<<<<<< HEAD
 RoxygenNote: 7.0.2
+=======
+RoxygenNote: 7.1.0
+>>>>>>> refs/remotes/origin/miguel
