@@ -7,7 +7,7 @@
 #' files.
 #' 
 #' Georeferenced plots can be quickly displayed in
-#' \url{https://www.google.com/earthGoogle Earth} using this function.
+#' [Google Earth](https://www.google.com/intl/en_us/earth/) using this function.
 #' 
 #' @param obj Input object containing coordinate values.
 #' @param file Character value with the name of output file (including file
