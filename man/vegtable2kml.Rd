@@ -43,7 +43,7 @@ This function is a wrapper of \code{\link[plotKML:kml]{plotKML::kml()}} producin
 files.
 
 Georeferenced plots can be quickly displayed in
-\url{https://www.google.com/earthGoogle Earth} using this function.
+\href{https://www.google.com/intl/en_us/earth/}{Google Earth} using this function.
 }
 \examples{
 ## Plots containing Podocarpus observations
