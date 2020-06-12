@@ -400,7 +400,8 @@ setMethod("make_cocktail", signature(shaker="shaker", vegtable="vegtable"),
 			for(i in which)
 				OUT$units[[i]] <-
 						as.numeric(eval(parse(text=shaker@formulas[[i]]), OUT))
-			OUT <- as.data.frame(OUT$units, stringsAsFactors=FALSE)
+			OUT <- as.data.frame(OUT$units, stringsAsFactors=FALSE,
+					check.names=FALSE)
             SYNTAX <- rep(NA, nrow(OUT))
             for(i in colnames(OUT)) {
                 vegtable@header[,i] <- OUT[,i]
