@@ -16,6 +16,38 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+<<<<<<< HEAD
+			<name>de.walware.docmlet.tex.builders.Tex</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.statet.docmlet.resourceProjects.WikitextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.statet.r.resourceProjects.RBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.statet.docmlet.resourceProjects.TexBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>de.walware.statet.base.StatetNature</nature>
+		<nature>de.walware.statet.r.RNature</nature>
+		<nature>de.walware.statet.r.RPkgNature</nature>
+		<nature>de.walware.docmlet.wikitext.natures.Wikitext</nature>
+		<nature>de.walware.docmlet.tex.natures.Tex</nature>
+		<nature>org.eclipse.statet.ide.resourceProjects.Statet</nature>
+		<nature>org.eclipse.statet.r.resourceProjects.R</nature>
+		<nature>org.eclipse.statet.docmlet.resourceProjects.Wikitext</nature>
+		<nature>org.eclipse.statet.docmlet.resourceProjects.Tex</nature>
+=======
 			<name>org.eclipse.statet.docmlet.resourceProjects.WikitextBuilder</name>
 			<arguments>
 			</arguments>
@@ -34,5 +66,6 @@
 		<nature>org.eclipse.statet.ide.resourceProjects.Statet</nature>
 		<nature>org.eclipse.statet.r.resourceProjects.R</nature>
 		<nature>org.eclipse.statet.docmlet.resourceProjects.Wikitext</nature>
+>>>>>>> refs/remotes/origin/miguel
 	</natures>
 </projectDescription>

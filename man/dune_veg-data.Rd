@@ -8,9 +8,13 @@
 
 Data set from the package \link[vegan:vegan]{vegan::vegan}, converted to a \linkS4class{vegtable}
 object.}
+<<<<<<< HEAD
+\format{An object of class \code{\linkS4class{vegtable}}.}
+=======
 \format{
 An object of class \code{\linkS4class{vegtable}}.
 }
+>>>>>>> refs/remotes/origin/miguel
 \source{
 Original data were imported from \link[vegan:dune]{vegan::dune}.
 }

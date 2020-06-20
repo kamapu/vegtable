@@ -5,9 +5,13 @@
 \alias{aspect_conv-data}
 \alias{aspect_conv}
 \title{Conversion of aspect classes to azimuth}
+<<<<<<< HEAD
+\format{A numeric vector of values in degrees for the symbols used as names.}
+=======
 \format{
 A numeric vector of values in degrees for the symbols used as names.
 }
+>>>>>>> refs/remotes/origin/miguel
 \usage{
 aspect_conv
 }

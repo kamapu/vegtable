@@ -22,11 +22,16 @@
 #' @param layers Logical value indicating whether layers are included in
 #'     `releves` or not.
 #' @param layers_var Name of the layer variable in `vegtable`.
+<<<<<<< HEAD
+#' @param format Character value indicating input format of `releves`  (whether
+#'     `crosstable` or `databaselist`).
+=======
 #' @param format Character value indicating input format of `releves` (either
 #'     `"crosstable"` or `"databaselist"`).
 #' @param preserve_ids A logical value, whether IDs in input data set should
 #'     used as `ReleveID` or not. Those IDs have to be integers and if one
 #'     of those already exists in `vegtable`, an error will be retrieved.
+>>>>>>> refs/remotes/origin/miguel
 #' @param ... Further arguments passed to function [cross2db()] (i.e.
 #'     `na_strings`).
 #' 

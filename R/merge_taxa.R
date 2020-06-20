@@ -6,8 +6,13 @@
 #' Merge taxon concepts form into single ones or insert accepted names to slot
 #' samples.
 #' 
+<<<<<<< HEAD
+#' This method is applied to a function defined in the package [taxlist] and
+#' only modify the slot `species` in the input `object`.
+=======
 #' This method is applied to a function defined in the package [taxlist-package]
 #' and only modify the slot `species` in the input `object`.
+>>>>>>> refs/remotes/origin/miguel
 #' 
 #' The use of `taxa2samples()` with `merge_to` argument will produce a similar
 #' result as using `merge_taxa` with `level` argument, but `taxa2samples()`
