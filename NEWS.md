@@ -1,3 +1,11 @@
+vegtable 0.1.7
+==============
+
+## Improvements
+
+* In function `make_cocktail()`, names of syntaxa are allowed to start with numerical values.
+
+
 vegtable 0.1.6
 ==============
 
