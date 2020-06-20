@@ -13,13 +13,9 @@ usually from a categorical variable (a cover scale) to a numerical one
 (equivalent percentage cover value).
 Cover values are stored as range for each level in the scale (minimum and
 maximum cover value).}
-<<<<<<< HEAD
-\format{An object of class \code{\linkS4class{coverconvert}}.}
-=======
 \format{
 An object of class \code{\linkS4class{coverconvert}}.
 }
->>>>>>> refs/remotes/origin/miguel
 \usage{
 braun_blanquet
 }

@@ -17,37 +17,6 @@ add_releves(vegtable, releves, ...)
   layers = FALSE,
   layers_var,
   format = "crosstable",
-<<<<<<< HEAD
-  ...
-)
-}
-\arguments{
-\item{vegtable}{An object of class \linkS4class{vegtable}.}
-
-\item{releves}{A data frame including plot observations to be added into
-\code{vegtable}.}
-
-\item{...}{Further arguments passed to function \code{\link[=cross2db]{cross2db()}} (i.e.
-\code{na_strings}).}
-
-\item{header}{A data frame (optional) including header information for plots.}
-
-\item{abundance}{A character value (or vector of length 2) indicating the
-names of abundance variable in \code{vegtable}.}
-
-\item{split_string}{Character value used to split mixed abundance codes.}
-
-\item{usage_ids}{Logical value indicating whether species are as taxon usage
-ids (integers) or names in \code{releves}.}
-
-\item{layers}{Logical value indicating whether layers are included in
-\code{releves} or not.}
-
-\item{layers_var}{Name of the layer variable in \code{vegtable}.}
-
-\item{format}{Character value indicating input format of \code{releves}  (whether
-\code{crosstable} or \code{databaselist}).}
-=======
   preserve_ids = FALSE,
   ...
 )
@@ -82,7 +51,6 @@ ids (integers) or names in \code{releves}.}
 \item{preserve_ids}{A logical value, whether IDs in input data set should
 used as \code{ReleveID} or not. Those IDs have to be integers and if one
 of those already exists in \code{vegtable}, an error will be retrieved.}
->>>>>>> refs/remotes/origin/miguel
 }
 \description{
 Addition of plot observations into existing data sets may implicate merging

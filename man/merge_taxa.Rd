@@ -38,13 +38,8 @@ An object of class \linkS4class{vegtable}.
 Merge taxon concepts form into single ones or insert accepted names to slot
 samples.
 
-<<<<<<< HEAD
-This method is applied to a function defined in the package \link{taxlist} and
-only modify the slot \code{species} in the input \code{object}.
-=======
 This method is applied to a function defined in the package \link{taxlist-package}
 and only modify the slot \code{species} in the input \code{object}.
->>>>>>> refs/remotes/origin/miguel
 
 The use of \code{taxa2samples()} with \code{merge_to} argument will produce a similar
 result as using \code{merge_taxa} with \code{level} argument, but \code{taxa2samples()}
