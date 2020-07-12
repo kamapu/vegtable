@@ -16,6 +16,7 @@ write_juice(data, file, formula, ...)
   db_name = "Plot Observations",
   header,
   coords,
+  sep = ",",
   ...
 )
 
@@ -41,9 +42,9 @@ function \code{\link[=crosstable]{crosstable()}}, \code{read_juice()} passes tho
 
 \item{coords}{Names of coordinate variables in header of \code{data}.}
 
-\item{encoding}{Argument passed to \code{\link{readLines}}.}
-
 \item{sep}{Separator used to split rows into columns.}
+
+\item{encoding}{Argument passed to \code{\link{readLines}}.}
 
 \item{na}{Character used as not available values.}
 }

@@ -4,7 +4,12 @@ vegtable 0.1.7
 ## Improvements
 
 * In function `make_cocktail()`, names of syntaxa are allowed to start with numerical values.
+* Function `write_juice()` includes a messages when working and with some
+metadata for cross-check when importing in Juice.
 
+## Bug Fixes
+
+* Files written by `write_juice` in Linux are now readable in Windows.
 
 vegtable 0.1.6
 ==============

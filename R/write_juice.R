@@ -11,22 +11,21 @@
 #' Both tables share the file name plus a suffix (`table` for the
 #' vegetation table and `header` for the header).
 #' 
-#' For the import in **Juice**, you may start with the table following in
-#' the menu `File -> Import -> Table -> from Spreadsheet File (e.g. EXCEL
-#' Table)` and then follow the wizard. You further import the header table
-#' following in the menu `File -> Import -> Header Data -> From Comma
-#' Delimited File`.
-#' Notice that the vegetation is a semi-colon delimited file, while the header
-#' is a comma delimited file.
+#' For the import in **Juice**, you go to the menu
+#' `File -> Import -> Table -> from Spreadsheet File (e.g. EXCEL Table)` and
+#' then follow the wizard.
+#' Do not forget to select the proper settings in the wizard: 1) 'Character
+#' delimiting columns: Comma' (for default argument values). 2) 'Use the second
+#' column as layer information: Unchecked'. 3) 'Cover values: Percentage
+#' Values'.
 #' 
-#' For a properly import, you may strictly follow the export steps in **Juice**:
-#' 1) In menu `File -> Export -> Table -> to Spreadsheet Format File` and
-#' 2) check the option `Export covers in %`.
+#' To further import the header table you need to go to the menu
+#' `File -> Import -> Header Data -> From Comma Delimited File`.
 #' 
-#' In the `header` (see **Value**), the first column (`juice_nr`)
+#' In the `header` (see **Value**), the first column (`Table number`)
 #' corresponds to the plot number assigned by **Juice** at import, while
-#' the column `db_nr` is the number originally assigned to the plot (e.g.
-#' **Turboveg** ID).
+#' the column (`Releve number`) is the number originally assigned to the plot
+#' (e.g. **Turboveg** ID).
 #' 
 #' @param data An object of class [vegtable-class].
 #' @param file Character value indicating the name of output files (without
@@ -36,6 +35,7 @@
 #' @param FUN Funtion passed to [crosstable()].
 #' @param header Variables of header to be exported.
 #' @param coords Names of coordinate variables in header of `data`.
+#' @param sep A symbol used to separate columns in the output object.
 #' @param ... Further arguments. While `write_juice()` passes them to the
 #'     function [crosstable()], `read_juice()` passes those arguments to
 #'     [readLines()].
@@ -67,7 +67,7 @@ setGeneric("write_juice", function(data, file, formula, ...)
 setMethod("write_juice", signature(data="vegtable", file="character",
                 formula="formula"),
         function(data, file, formula, FUN, db_name="Plot Observations",
-				header, coords, ...) {
+				header, coords, sep=",", ...) {
             # some attributes
             nr.plots <- nrow(data@header)
             # header
@@ -85,24 +85,49 @@ setMethod("write_juice", signature(data="vegtable", file="character",
                 stop("some requested headers are not included in 'data'")
             header <- data@header[,header]
             rownames(header) <- NULL
-            # write header
-            write.table(t(c("Table number", "Releve number", header.in)),
-                    paste(file, "header.txt", sep="_"), quote=FALSE,
-                    row.names=FALSE, col.names=FALSE, sep=",")
-            write.table(header, paste(file, "header.txt", sep="_"), quote=FALSE,
-                    col.names=FALSE, sep=",", na="", append=TRUE)
-            # table
-            data <- crosstable(formula, data, FUN, ...)
-            
-            colnames(data)[1:(length(attr(terms(formula),
-                                                "term.labels")) - 1)] <- ""
-            # write table
-            write.table(rbind(db_name, paste("Number of releves:", nr.plots),
-                            ""), paste(file, "table.txt", sep="_"), quote=FALSE,
-                    row.names=FALSE, col.names=FALSE)
-            suppressWarnings(write.table(data, paste(file, "table.txt",
-                                    sep="_"), quote=FALSE, row.names=FALSE,
-                            na="", sep=";", append=TRUE))
+			# Convert header to character
+			header <- cbind(1:nrow(header), header)
+			for(i in colnames(header)) {
+				header[,i] <- paste(header[,i])
+				header[header[,i] == "NA",i] <- ""
+			}
+			colnames(header)[1:2] <- c("Table number", "Releve number")
+			# Write header lines
+			Lines_h <- character(nrow(header))
+			message("Processing header data...")
+			for(i in 1:nrow(header))
+				Lines_h[i] <- paste(header[i,], collapse=sep)
+			Lines_h <- c(paste(colnames(header), collapse=sep), Lines_h)
+			# Convert data table
+			data <- crosstable(formula, data, FUN, ...)
+			for(i in colnames(data)) {
+				data[,i] <- paste(data[,i])
+				data[data[,i] == "NA",i] <- ""
+			}
+			colnames(data)[1:(length(attr(terms(formula),
+												"term.labels")) - 1)] <- ""
+			# Write table lines
+			nr_spp <- nrow(data)
+			Lines_t <- character(nr_spp)
+			message("Processing vegetation table...")
+			for(i in 1:nr_spp)
+				Lines_t[i] <- paste(data[i,], collapse=sep)
+			Lines_t <- c(paste(colnames(data), collapse=sep), Lines_t)
+			Lines_t <- c(db_name, paste("Number of releves:", nr.plots,
+							collapse=" "), "", Lines_t)
+			# Write table file
+			con <- file(paste(file, "table.txt", sep="_"), "wb")
+			writeBin(charToRaw(paste0(Lines_t, collapse="\r\n")), con,
+					endian="little")
+			close(con)	
+			# Write header file
+			con <- file(paste(file, "header.txt", sep="_"), "wb")
+			writeBin(charToRaw(paste0(Lines_h, collapse="\r\n")), con,
+					endian="little")
+			close(con)
+			message(paste0("DONE!\n\nData set name: ", db_name,
+							"\nNumber of observations: ", nr.plots,
+							"\nRecorded species: ", nr_spp))
         }
 )
 

@@ -9,3 +9,4 @@
 ^README\.Rmd$
 ^TODO\.md$
 ^data-raw$
+^build$
