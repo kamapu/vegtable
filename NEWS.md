@@ -6,6 +6,9 @@ vegtable 0.1.7
 * In function `make_cocktail()`, names of syntaxa are allowed to start with numerical values.
 * Function `write_juice()` includes a messages when working and with some
 metadata for cross-check when importing in Juice.
+* New arguments in function `taxa2samples()` setting the levels to be included
+in output object (`include_levels`) and to remove taxa without levels
+(`na.rm`).
 
 ## Bug Fixes
 

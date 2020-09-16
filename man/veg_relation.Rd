@@ -51,7 +51,7 @@ In the replacement method, an object of class \linkS4class{vegtable}, including
 \description{
 Tables providing information about levels of categorical variables in the
 header of a \strong{Turboveg} database are called \code{popups} in \strong{Turboveg},
-but \code{relations} in \link[vegtable:vegtable]{vegtable::vegtable}.
+but \code{relations} in \link{vegtable}.
 Such variables will be converted into factors in the slot \code{header} according
 to the levels and their sorting in the respective relation.
 }
