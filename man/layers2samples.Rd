@@ -27,8 +27,8 @@ An object of class \linkS4class{vegtable} with variables added to samples.
 }
 \description{
 Slot layers may include additional information that should be moved to
-samples in order to use it by \code{\link[vegtable:subset]{vegtable::subset()}}, \code{\link[vegtable:aggregate]{vegtable::aggregate()}}
-or \code{\link[vegtable:crosstable]{vegtable::crosstable()}} methods.
+samples in order to use it by \code{\link[=subset]{subset()}}, \code{\link[=aggregate]{aggregate()}}
+or \code{\link[=crosstable]{crosstable()}} methods.
 
 If names of variables are not provided, all variables from the respective
 layer table will be inserted in slot \code{samples}.

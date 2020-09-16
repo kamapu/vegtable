@@ -53,7 +53,7 @@ An object of class \link{data.frame}.
 }
 \description{
 This function is generating cross tables, which are the most common format
-used by statistical packages analysing vegetation data (e.g. \link[vegan:vegan]{vegan::vegan}).
+used by statistical packages analysing vegetation data (e.g. \link[vegan:vegan-package]{vegan::vegan}).
 
 Most applications and displays of vegetation data use preferentially the
 cross table format. For convenience, the formula has the form

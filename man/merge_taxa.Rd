@@ -15,7 +15,7 @@
 
 taxa2samples(object, ...)
 
-\S4method{taxa2samples}{vegtable}(object, merge_to, add_traits, ...)
+\S4method{taxa2samples}{vegtable}(object, merge_to, include_levels, na.rm = FALSE, add_traits, ...)
 }
 \arguments{
 \item{object}{Object of class \linkS4class{vegtable}.}
@@ -27,6 +27,12 @@ merged.}
 have to be merged.}
 
 \item{...}{Further arguments passed to \code{\link[taxlist:merge_taxa]{taxlist::merge_taxa()}}.}
+
+\item{include_levels}{Character vector indicating the levels to be considered
+in the output object. It can be used to exclude some taxonomic ranks.}
+
+\item{na.rm}{Logical value. Apply to records with missing information on
+taxonomic rank (i.e. for undetermined specimens).}
 
 \item{add_traits}{A character vector indicating variables in the slot
 \code{taxonTraits} to be added in slot \code{samples}.}
