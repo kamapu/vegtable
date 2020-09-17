@@ -14,6 +14,7 @@ metadata for cross-check when importing in Juice.
 * New arguments in function `taxa2samples()` setting the levels to be included
 in output object (`include_levels`) and to remove taxa without levels
 (`na.rm`).
+* Application of `subset()` extended to content in slot **relations**.
 
 ## Bug Fixes
 
