@@ -21,9 +21,9 @@
 
 \item{slot}{Slot to be applied for subset.}
 
-\item{keep_children}{Argument passed to \code{\link[taxlist:subset]{taxlist::subset()}}.}
+\item{keep_children}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_children()}}.}
 
-\item{keep_parents}{Argument passed to \code{\link[taxlist:subset]{taxlist::subset()}}.}
+\item{keep_parents}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_parents()}}.}
 
 \item{...}{Further arguments passed from or to other methods.}
 }

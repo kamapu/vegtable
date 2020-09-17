@@ -1,6 +1,11 @@
 vegtable 0.1.7
 ==============
 
+## New Features
+
+* New function `used_concepts()` to extract taxon concepts that are occurring
+in the plot observations.
+
 ## Improvements
 
 * In function `make_cocktail()`, names of syntaxa are allowed to start with numerical values.

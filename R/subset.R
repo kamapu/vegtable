@@ -17,8 +17,8 @@
 #' @param x A [vegtable-class] object for subset.
 #' @param subset Logical vector or operation for subset.
 #' @param slot Slot to be applied for subset.
-#' @param keep_children Argument passed to [taxlist::subset()].
-#' @param keep_parents Argument passed to [taxlist::subset()].
+#' @param keep_children Argument passed to [taxlist::get_children()].
+#' @param keep_parents Argument passed to [taxlist::get_parents()].
 #' @param ... Further arguments passed from or to other methods.
 #' 
 #' @return A S4 object of class [vegtable-class].

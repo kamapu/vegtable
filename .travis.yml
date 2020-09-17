@@ -1,17 +1,24 @@
 language: R
 cache: packages
-sudo: required
-dist: trusty
-warnings_are_errors: false
+
 r_github_packages:
   - kamapu/taxlist
+
 r_packages:
   - rgdal
   - rgeos
   - sp
   - plotKML
+
 addons:
   apt:
     packages:
       - libgdal-dev
       - libproj-dev
+
+r:
+  - oldrel
+  - release
+  - devel
+
+r_check_args: "--as-cran"
