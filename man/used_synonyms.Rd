@@ -3,35 +3,56 @@
 \name{used_synonyms}
 \alias{used_synonyms}
 \alias{used_synonyms,vegtable-method}
-\title{Retrieve synonyms used in the data set}
+\alias{used_concepts}
+\alias{used_concepts,vegtable-method}
+\title{Retrieve synonyms or taxon concepts used in a data set}
 \usage{
 used_synonyms(x, ...)
 
 \S4method{used_synonyms}{vegtable}(x, ...)
+
+used_concepts(x, ...)
+
+\S4method{used_concepts}{vegtable}(x, keep_children = FALSE, keep_parents = FALSE, ...)
 }
 \arguments{
 \item{x}{A \linkS4class{vegtable} object.}
 
 \item{...}{Further arguments to be passed from or to another methods.}
+
+\item{keep_children}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_children()}}.}
+
+\item{keep_parents}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_parents()}}.}
 }
 \value{
-A data frame with following columns:
+The function \code{used_synonyms()} returns a data frame including following
+variables:
 \describe{
-\item{SynonymsID}{Usage ID of synonyms.}
+\item{SynonymID}{ID of the taxon usage name applied as synonym.}
 \item{Synonym}{The synonym itself.}
 \item{SynonymAuthor}{Author of synonym.}
-\item{TaxonConceptID}{ID of the taxon concept.}
-\item{AcceptedNameID}{Usage ID of the accepted name.}
+\item{TaxonConceptID}{ID of the respective taxon concept.}
+\item{AcceptedNameID}{ID of the taxon usage name set as accepted name of
+the taxon concept.}
 \item{AcceptedName}{The respective accepted name.}
 \item{AcceptedNameAuthor}{The author of the accepted name.}
 }
+
+The function \code{used_concepts()} returns a \linkS4class{taxlist} object including
+only taxa occurring in the plot observations of the input \linkS4class{vegtable}
+object.
 }
 \description{
 Plots records are rather linked to plant names than plant taxon concepts.
-This function provides a quick report about synonyms used in a data set (a
-\linkS4class{vegtable} object) and their respective accepted name.
+The function \code{used_synonyms()} provides a quick report about synonyms used in
+a data set (a \linkS4class{vegtable} object) and their respective accepted names.
 
-This function will only retrieve synonyms that are used in plot records.
+Additionally, not all taxon concepts included in the taxonomic list (slot
+\strong{species}) may be recorded in the plot observations.
+In that case the function \code{used_concepts()} will optimize the size of the
+taxonomic list by discarding taxa that are not "in use".
+Alternatively parents or children of these taxa may be included in the output
+data set.
 }
 \examples{
 ## Synonyms used in the Kenya_veg

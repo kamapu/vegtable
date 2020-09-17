@@ -11,19 +11,27 @@
   slot = "header",
   keep_children = FALSE,
   keep_parents = FALSE,
+  relation,
   ...
 )
 }
 \arguments{
 \item{x}{A \linkS4class{vegtable} object for subset.}
 
-\item{subset}{Logical vector or operation for subset.}
+\item{subset}{Logical expression for subset.}
 
-\item{slot}{Slot to be applied for subset.}
+\item{slot}{Character value indicating the slot used as reference for subset.
+At the moment only the values "taxonNames", "taxonRelations",
+"taxonTraits", "header", "samples", and "relations" are accepted.
+The three first values will be applied to the respective slots in the
+contained \linkS4class{taxlist} object (slot \strong{species}).}
 
-\item{keep_children}{Argument passed to \code{\link[taxlist:subset]{taxlist::subset()}}.}
+\item{keep_children}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_children()}}.}
 
-\item{keep_parents}{Argument passed to \code{\link[taxlist:subset]{taxlist::subset()}}.}
+\item{keep_parents}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_parents()}}.}
+
+\item{relation}{Character value indicating the relation (slot \strong{relations})
+to be used as reference for subset.}
 
 \item{...}{Further arguments passed from or to other methods.}
 }
