@@ -38,11 +38,14 @@ clean_once <- function(object) {
 	object@samples <- object@samples[object@samples$TaxonUsageID %in%
                     object@species@taxonNames$TaxonUsageID,]
     # delete header variables without data
-    object@header <- object@header[,!apply(object@header, 2,
-                    function(x) all(is.na(x)))]
-    # delete samples variables without data
-    object@samples <- object@samples[,!apply(object@samples, 2,
-                    function(x) all(is.na(x)))]
+    object@header <- object@header[ ,(colnames(object@header) == "ReleveID") |
+					(!apply(object@header, 2, function(x) all(is.na(x)))),
+			drop=FALSE]
+	# delete samples variables without data
+    object@samples <- object@samples[ ,(colnames(object@samples) %in%
+						c("ReleveID", "TaxonUsageID")) |
+					(!apply(object@samples, 2, function(x) all(is.na(x)))),
+			drop=FALSE]
     # delete orphaned relations
     object@relations <- object@relations[names(object@relations) %in%
                     colnames(object@header)]

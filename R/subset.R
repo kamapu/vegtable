@@ -94,7 +94,7 @@ setMethod("subset", signature(x="vegtable"),
 			}
 			# in relations
 			if(slot == p_slots[6] & !missing(relation)) {
-				if(relation %in% names(x@relations))
+				if(!relation %in% names(x@relations))
 					stop(paste0("\"", relation, "\" is not a relation in x."))
 				subset <- eval(subset, x@relations[[relation]], parent.frame())
 				x@relations[[relation]] <- x@relations[[relation]][subset, ]

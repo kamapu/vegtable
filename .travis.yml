@@ -22,3 +22,5 @@ r:
   - devel
 
 r_check_args: "--as-cran"
+
+warnings_are_errors: false
