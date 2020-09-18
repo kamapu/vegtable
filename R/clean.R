@@ -27,14 +27,15 @@ clean_once <- function(object) {
     ReleveID <- intersect(object@header$ReleveID,
             object@samples$ReleveID)
     object@header <- object@header[object@header$ReleveID %in%
-                    ReleveID,]
+                    ReleveID, ,drop=FALSE]
     object@samples <- object@samples[object@samples$ReleveID %in%
-                    ReleveID,]
+                    ReleveID, ,drop=FALSE]
 	# delete layer entries missing in samples
 	for(i in names(object@layers))
 		object@layers[[i]] <- object@layers[[i]][object@layers[[i]][,i] %in%
 						object@samples[,i],]
-	# compare species and samples (delete observations not included in species list)
+	# compare species and samples (delete observations
+	# not included in species list)
 	object@samples <- object@samples[object@samples$TaxonUsageID %in%
                     object@species@taxonNames$TaxonUsageID,]
     # delete header variables without data

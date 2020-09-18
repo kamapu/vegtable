@@ -18,7 +18,8 @@ in output object (`include_levels`) and to remove taxa without levels
 
 ## Bug Fixes
 
-* Files written by `write_juice` in Linux are now readable in Windows.
+* Files written by `write_juice()` in Linux are now readable in Windows.
+* In `clean()` objects with no entries resulted in invalid objects.
 
 vegtable 0.1.6
 ==============
