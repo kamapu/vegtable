@@ -60,6 +60,7 @@ Collate:
 	'match_names.R'
 	'count_taxa.R'
 	'trait_stats.R'
+	'update_det.R'
 	'aspect_con-data.R'
 	'braun_blanquet-data.R'
 	'dune_veg-data.R'
