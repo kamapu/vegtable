@@ -39,15 +39,16 @@ setMethod("update_det", signature(x="vegtable", specimens="character"),
 				if(!"TaxonUsageID" %in% colnames(x@layers[[i]]))
 					stop(paste0("At \"", i, "\", column 'TaxonUsageID' is ",
 									"mandatory in list of specimens."))
-				if(any(!x@layers[[i]]$TaxonUsageID %in%
-								x@species@taxonRelations$TaxonUsageID))
+				specimens_tab <- x@layers[[i]][x@layers[[i]][ ,i] %in%
+								x@samples[ ,i], ]
+				if(any(!specimens_tab$TaxonUsageID %in%
+								x@species@taxonNames$TaxonUsageID))
 					stop(paste0("At \"", i, "\", some taxon usage names ",
 									"are not included in slot 'species'."))
 				x@samples$TaxonUsageID <- replace_idx(x@samples$TaxonUsageID,
-						x@samples[ ,i], x@layers[[i]][ ,i],
-						x@layers[[i]]$TaxonUsageID)
+						x@samples[ ,i], specimens_tab[ ,i],
+						specimens_tab$TaxonUsageID)
 			}
-			
 			# In the case that taxa2samples was applied before
 			if("TaxonConceptID" %in% colnames(x@samples))
 				warning("You may like to repeat 'taxa2samples()' on 'x'.")
