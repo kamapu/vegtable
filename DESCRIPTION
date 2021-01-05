@@ -17,9 +17,9 @@ Imports:
 	stringi,
 	vegdata
 Suggests:
-	devtools,
-	roxygen2,
 	rmarkdown,
+	roxygen2,
+	testthat,
 	vegan
 Description: Import and handling data from vegetation-plot databases, especially
     data stored in 'Turboveg' (<https://www.synbiosys.alterra.nl/turboveg>).
@@ -67,4 +67,5 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'StartMessage.R'
+VignetteBuilder: knitr
 RoxygenNote: 7.1.1

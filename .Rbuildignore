@@ -4,9 +4,9 @@
 ^\.gitignore$
 ^\.project$
 ^\.travis.yml$
-^README-figures$
 ^README\.md$
 ^README\.Rmd$
 ^TODO\.md$
 ^data-raw$
-^build$
+^build-pkg$
+^tests$
