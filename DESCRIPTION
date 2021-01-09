@@ -11,6 +11,7 @@ Depends:
 Imports:
 	foreign,
 	methods,
+	knitr,
 	plotKML,
 	qdapRegex,
 	sp,
@@ -66,6 +67,5 @@ Collate:
 	'dune_veg-data.R'
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
-	'StartMessage.R'
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000

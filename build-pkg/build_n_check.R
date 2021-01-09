@@ -29,10 +29,10 @@ test()
 source("data-raw/Easplist/Easplist.R")
 
 # Purl vignette R-code
-purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
+#purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 
 # Check application of good practices
-gp()
+#gp()
 
 # Codemetar
 # write_codemeta()
