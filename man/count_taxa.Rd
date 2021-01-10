@@ -4,6 +4,8 @@
 \alias{count_taxa}
 \alias{count_taxa,vegtable,missing-method}
 \alias{count_taxa,formula,vegtable-method}
+\alias{count_taxa<-}
+\alias{count_taxa<-,vegtable,formula-method}
 \title{Count taxa included in vegtable objects}
 \usage{
 \S4method{count_taxa}{vegtable,missing}(object, level, include_lower = FALSE, ...)
@@ -16,6 +18,10 @@
   in_header = FALSE,
   ...
 )
+
+count_taxa(data, ...) <- value
+
+\S4method{count_taxa}{vegtable,formula}(data, ...) <- value
 }
 \arguments{
 \item{object}{An object of class \linkS4class{vegtable} or a formula.}
@@ -35,6 +41,8 @@ included at the requested level.}
 slot header of the input \linkS4class{vegtable} object or not.
 A warning message is provided if the calculation is not done for every
 plot observation.}
+
+\item{value}{A formula passed to parameter 'object' by the replace method.}
 }
 \value{
 An data frame with the number of taxa from requested level at requested

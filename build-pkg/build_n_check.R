@@ -23,7 +23,7 @@ document()
 report()
 
 # Carry out the tests
-test()
+#test()
 
 # Write data set
 source("data-raw/Easplist/Easplist.R")
