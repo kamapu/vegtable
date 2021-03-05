@@ -4,24 +4,30 @@ output:
     html_preview: false
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(
   collapse=TRUE,
   comment="#>",
-  fig.path="README-"
+  fig.path="man/figures/"
 )
 ```
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- Use snippet 'render_markdown' for it -->
+
 # vegtable
 
-[![DOI](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
-[![Travis Build Status](https://travis-ci.org/kamapu/vegtable.svg?branch=master)](https://travis-ci.org/kamapu/vegtable)
+<!-- badges: start -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
+[![Rdoc](http://www.rdocumentation.org/badges/version/vegtable)](http://www.rdocumentation.org/packages/vegtable)
+[![DOI](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
+<br>
+[![R-CMD-check](https://github.com/kamapu/vegtable/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/vegtable/actions)
+[![codecov](https://codecov.io/gh/kamapu/vegtable/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/vegtable)
+<br>
 [![CRAN_downloads](http://cranlogs.r-pkg.org/badges/vegtable)](https://cran.r-project.org/package=vegtable)
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/vegtable)](https://cran.r-project.org/package=vegtable)
-
+<!-- badges: end -->
 
 The aim of `vegtable` is to provide a way for handling databases stored in
 [Turboveg](http://www.synbiosys.alterra.nl/turboveg). This package incorporates

@@ -11,15 +11,16 @@ Depends:
 Imports:
 	foreign,
 	methods,
+	knitr,
 	plotKML,
 	qdapRegex,
 	sp,
 	stringi,
 	vegdata
 Suggests:
-	devtools,
-	roxygen2,
 	rmarkdown,
+	roxygen2,
+	testthat,
 	vegan
 Description: Import and handling data from vegetation-plot databases, especially
     data stored in 'Turboveg' (<https://www.synbiosys.alterra.nl/turboveg>).
@@ -66,5 +67,5 @@ Collate:
 	'dune_veg-data.R'
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
-	'StartMessage.R'
-RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1.9000

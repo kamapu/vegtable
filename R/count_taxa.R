@@ -16,6 +16,7 @@
 #' in any unit, an error message will be retrieved.
 #' 
 #' @param object An object of class [vegtable-class] or a formula.
+#' @param value A formula passed to parameter 'object' by the replace method.
 #' @param data An object of class [vegtable-class].
 #' @param level Character value indicating the taxonomic rank of counted taxa.
 #' @param include_lower Logical value, whether lower taxonomic ranks should be
@@ -52,18 +53,24 @@ setMethod("count_taxa", signature(object="vegtable", data="missing"),
 									TaxonUsageID)])
 			if(!missing(level))
 				if(!level %in% levels(object@species))
-					stop("Value of argument 'level' is not a level in 'object'.")
+					stop(paste("Value of argument 'level' is not a level",
+									"in 'object'."))
 			if(!missing(level) & include_lower) {
 				concept_levels <- with(object@species@taxonRelations,
 						as.integer(Level)[match(concepts, TaxonConceptID)])
 				x <- which(levels(object@species) == level) - 1
 				for(i in 1:x) {
-					concepts[concept_levels == i] <-
-							with(object@species@taxonRelations,
-									Parent[match(concepts[concept_levels == i],
-													TaxonConceptID)])
-					concept_levels <- with(object@species@taxonRelations,
-							as.integer(Level)[match(concepts, TaxonConceptID)])
+					# added condition for missing levels
+					if(i %in% concept_levels) {
+						concepts[concept_levels == i] <-
+								with(object@species@taxonRelations,
+										Parent[match(concepts[concept_levels ==
+																		i],
+														TaxonConceptID)])
+						concept_levels <- with(object@species@taxonRelations,
+								as.integer(Level)[match(concepts,
+												TaxonConceptID)])
+					}
 				}
 			}
 			if(!missing(level)) {
@@ -78,9 +85,9 @@ setMethod("count_taxa", signature(object="vegtable", data="missing"),
 #' @rdname count_taxa
 #' 
 #' @aliases count_taxa,formula,vegtable-method
-setMethod("count_taxa", signature(object="formula", data="vegtable"),
-		function(object, data, include_lower=FALSE, suffix="_count",
-				in_header=FALSE, ...) {
+setMethod("count_taxa", signature(object = "formula", data = "vegtable"),
+		function(object, data, include_lower = FALSE, suffix = "_count",
+				in_header = FALSE, ...) {
 			data_in <- data
 			nr_response <- attr(terms(object), "response")
 			name_response <- as.character(object)[2]
@@ -117,3 +124,22 @@ setMethod("count_taxa", signature(object="formula", data="vegtable"),
 			} else return(data)
 		}
 )
+
+#' @rdname count_taxa
+#' 
+#' @aliases count_taxa<-
+#' 
+#' @exportMethod count_taxa<-
+#' 
+setGeneric("count_taxa<-", function(data, ..., value)
+			standardGeneric("count_taxa<-"))
+
+#' @rdname count_taxa
+#' 
+#' @aliases count_taxa<-,vegtable,formula-method
+#' 
+setReplaceMethod("count_taxa", signature(data = "vegtable", value = "formula"),
+		function(data, ..., value) {
+			return(count_taxa(object = value, data = data, in_header = TRUE,
+							...))
+		})

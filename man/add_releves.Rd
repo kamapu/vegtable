@@ -3,6 +3,8 @@
 \name{add_releves}
 \alias{add_releves}
 \alias{add_releves,vegtable,data.frame-method}
+\alias{add_releves<-}
+\alias{add_releves<-,vegtable,data.frame-method}
 \title{Merge relevés from data frames into vegtable objects}
 \usage{
 add_releves(vegtable, releves, ...)
@@ -20,6 +22,10 @@ add_releves(vegtable, releves, ...)
   preserve_ids = FALSE,
   ...
 )
+
+add_releves(vegtable, ...) <- value
+
+\S4method{add_releves}{vegtable,data.frame}(vegtable, ...) <- value
 }
 \arguments{
 \item{vegtable}{An object of class \linkS4class{vegtable}.}
@@ -51,6 +57,9 @@ ids (integers) or names in \code{releves}.}
 \item{preserve_ids}{A logical value, whether IDs in input data set should
 used as \code{ReleveID} or not. Those IDs have to be integers and if one
 of those already exists in \code{vegtable}, an error will be retrieved.}
+
+\item{value}{A data frame containing new plot observations. I is passed to
+parameter 'releves' by the replace method.}
 }
 \description{
 Addition of plot observations into existing data sets may implicate merging
