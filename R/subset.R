@@ -66,15 +66,15 @@
 #' 
 #' @exportMethod subset
 #' 
-setMethod("subset", signature(x="vegtable"),
-        function(x, subset, slot="header", keep_children=FALSE,
-				keep_parents=FALSE, relation, ...) {
+setMethod("subset", signature(x = "vegtable"),
+        function(x, subset, slot = "header", keep_children = FALSE,
+				keep_parents = FALSE, relation, ...) {
 			p_slots <- c("taxonNames", "taxonRelations", "taxonTraits",
 					"header", "samples", "relations")
 			if(!slot %in% p_slots)
 				stop(paste0("Only following values are allowed for argument ",
 								"'slot':\n\"", paste0(p_slots,
-										collapse="\" \""), "\"."))
+										collapse = "\" \""), "\"."))
 			subset <- substitute(subset)
 			# For subsets by taxonomic list
 			if(slot %in% p_slots[1:3]) {

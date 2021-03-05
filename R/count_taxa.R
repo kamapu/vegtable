@@ -60,12 +60,17 @@ setMethod("count_taxa", signature(object="vegtable", data="missing"),
 						as.integer(Level)[match(concepts, TaxonConceptID)])
 				x <- which(levels(object@species) == level) - 1
 				for(i in 1:x) {
-					concepts[concept_levels == i] <-
-							with(object@species@taxonRelations,
-									Parent[match(concepts[concept_levels == i],
-													TaxonConceptID)])
-					concept_levels <- with(object@species@taxonRelations,
-							as.integer(Level)[match(concepts, TaxonConceptID)])
+					# added condition for missing levels
+					if(i %in% concept_levels) {
+						concepts[concept_levels == i] <-
+								with(object@species@taxonRelations,
+										Parent[match(concepts[concept_levels ==
+																		i],
+														TaxonConceptID)])
+						concept_levels <- with(object@species@taxonRelations,
+								as.integer(Level)[match(concepts,
+												TaxonConceptID)])
+					}
 				}
 			}
 			if(!missing(level)) {

@@ -20,6 +20,7 @@ in output object (`include_levels`) and to remove taxa without levels
 
 * Files written by `write_juice()` in Linux are now readable in Windows.
 * In `clean()` objects with no entries resulted in invalid objects.
+* Bug in `count_taxa()` for aggregating ranks with missing records for lower taxa
 
 vegtable 0.1.6
 ==============
