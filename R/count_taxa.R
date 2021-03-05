@@ -46,8 +46,8 @@
 #' 
 #' @exportMethod count_taxa
 #' 
-setMethod("count_taxa", signature(object="vegtable", data="missing"),
-		function(object, level, include_lower=FALSE, ...) {
+setMethod("count_taxa", signature(object = "vegtable", data = "missing"),
+		function(object, level, include_lower = FALSE, ...) {
 			concepts <- with(object@species@taxonNames,
 					TaxonConceptID[match(object@samples$TaxonUsageID,
 									TaxonUsageID)])
@@ -58,19 +58,17 @@ setMethod("count_taxa", signature(object="vegtable", data="missing"),
 			if(!missing(level) & include_lower) {
 				concept_levels <- with(object@species@taxonRelations,
 						as.integer(Level)[match(concepts, TaxonConceptID)])
+				# Skip NA's from taxon levels
+				concepts <- concepts[!is.na(concept_levels)]
+				concept_levels <- concept_levels[!is.na(concept_levels)]
 				x <- which(levels(object@species) == level) - 1
 				for(i in 1:x) {
-					# added condition for missing levels
-					if(i %in% concept_levels) {
-						concepts[concept_levels == i] <-
-								with(object@species@taxonRelations,
-										Parent[match(concepts[concept_levels ==
-																		i],
-														TaxonConceptID)])
-						concept_levels <- with(object@species@taxonRelations,
-								as.integer(Level)[match(concepts,
-												TaxonConceptID)])
-					}
+					concepts[concept_levels == i] <-
+							with(object@species@taxonRelations,
+									Parent[match(concepts[concept_levels == i],
+													TaxonConceptID)])
+					concept_levels <- with(object@species@taxonRelations,
+							as.integer(Level)[match(concepts, TaxonConceptID)])
 				}
 			}
 			if(!missing(level)) {
