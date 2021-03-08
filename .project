@@ -2,6 +2,7 @@
 <projectDescription>
 	<name>vegtable</name>
 	<comment>
+		R package for handling vegetation-plot databases.
 	</comment>
 	<projects>
 	</projects>
@@ -20,6 +21,7 @@
 	<natures>
 		<nature>org.eclipse.statet.ide.resourceProjects.Statet</nature>
 		<nature>org.eclipse.statet.r.resourceProjects.R</nature>
+		<nature>org.eclipse.statet.r.resourceProjects.RPkg</nature>
 		<nature>org.eclipse.statet.docmlet.resourceProjects.Wikitext</nature>
 	</natures>
 </projectDescription>
