@@ -15,6 +15,8 @@ metadata for cross-check when importing in Juice.
 in output object (`include_levels`) and to remove taxa without levels
 (`na.rm`).
 * Application of `subset()` extended to content in slot **relations**.
+* Function `vegtable2kml()` was deprecated to resolve dependencies on GIS
+  packages associated to package `plotKML`.
 
 ## Bug Fixes
 
