@@ -2,25 +2,9 @@
 % Please edit documentation in R/vegtable2kml.R
 \name{vegtable2kml}
 \alias{vegtable2kml}
-\alias{vegtable2kml,data.frame-method}
-\alias{vegtable2kml,vegtable-method}
 \title{Mapping of plot observations}
 \usage{
 vegtable2kml(obj, ...)
-
-\S4method{vegtable2kml}{data.frame}(
-  obj,
-  file,
-  coords = ~Longitude + Latitude,
-  srs = CRS("+proj=longlat +datum=WGS84")
-)
-
-\S4method{vegtable2kml}{vegtable}(
-  obj,
-  file,
-  coords = ~LONGITUDE + LATITUDE,
-  srs = CRS("+proj=longlat +datum=WGS84")
-)
 }
 \arguments{
 \item{obj}{Input object containing coordinate values.}
@@ -56,6 +40,10 @@ Kenya_veg <- subset(Kenya_veg, TaxonUsageID \%in\%
 \dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
 
 }
+\seealso{
+\link{vegtable-deprecated}
+}
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
 }
+\keyword{internal}

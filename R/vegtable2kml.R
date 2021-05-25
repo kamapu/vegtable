@@ -1,5 +1,3 @@
-#' @name vegtable2kml
-#' 
 #' @title Mapping of plot observations
 #' 
 #' @description 
@@ -32,41 +30,17 @@
 #' 
 #' \dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
 #' 
-#' @rdname vegtable2kml
+#' @name vegtable2kml
+#' @seealso [vegtable-deprecated]
 #' 
-#' @exportMethod vegtable2kml
+#' @keywords internal
 #' 
-setGeneric("vegtable2kml", function(obj, ...)
-            standardGeneric("vegtable2kml"))
+NULL
 
 #' @rdname vegtable2kml
+#' @export 
 #' 
-#' @aliases vegtable2kml,data.frame-method
-#' 
-setMethod("vegtable2kml", signature(obj="data.frame"),
-        function(obj, file, coords=~ Longitude + Latitude,
-                srs=CRS("+proj=longlat +datum=WGS84")) {
-            # to SpatialPointsDataFrame
-            coordinates(obj) <- coords
-            proj4string(obj) <- srs
-            obj <- reproject(obj)
-            # write and show
-            kml(obj, shape=paste0("http://maps.google.com/mapfiles/kml/",
-							"shapes/placemark_circle.png"),
-                    colour="yellow", size=1, file=file)
-            kml_View(file)
-        }
-)
-
-#' @rdname vegtable2kml
-#' 
-#' @aliases vegtable2kml,vegtable-method
-#' 
-setMethod("vegtable2kml", signature(obj="vegtable"),
-        function(obj, file, coords=~ LONGITUDE + LATITUDE,
-                srs=CRS("+proj=longlat +datum=WGS84")) {
-            obj <- header(obj)
-			rownames(obj) <- paste(obj$ReleveID)
-            vegtable2kml(obj, file, coords, srs)
-        }
-)
+vegtable2kml <- function(obj, ...) {
+        .Deprecated(msg = paste("This function is deprecated.",
+        "Visit the package's site for alternative mapping methods."))
+}

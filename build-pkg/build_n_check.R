@@ -38,6 +38,7 @@ source("data-raw/Easplist/Easplist.R")
 # write_codemeta()
 
 # Build package
+document()
 pkg_loc <- build(path="build-pkg")
 
 # Test the package

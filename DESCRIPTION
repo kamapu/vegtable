@@ -12,7 +12,6 @@ Imports:
 	foreign,
 	methods,
 	knitr,
-	plotKML,
 	qdapRegex,
 	sp,
 	stringi,
@@ -67,5 +66,6 @@ Collate:
 	'dune_veg-data.R'
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
+	'vegtable-deprecated.R'
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1.9000

@@ -12,6 +12,7 @@
 \alias{[,vegtable,ANY,ANY-method}
 \alias{[}
 \alias{[,vegtable,ANY,ANY,ANY-method}
+\alias{[,vegtable-method}
 \alias{[<-,vegtable,ANY,ANY,ANY-method}
 \alias{[<-}
 \alias{[<-,vegtable-method}
