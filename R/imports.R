@@ -6,6 +6,5 @@
 #' @importFrom qdapRegex rm_between
 #' @importFrom stringi stri_split_fixed
 #' @importFrom sp CRS coordinates coordinates<- proj4string<-
-#' @importFrom plotKML reproject kml kml_View
 #' @import taxlist
 NULL

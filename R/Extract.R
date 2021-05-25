@@ -74,7 +74,7 @@ setReplaceMethod("$", signature(x="coverconvert", value="list"),
 
 #' @rdname Extract
 #' 
-#' @aliases [ [,vegtable,ANY,ANY,ANY-method
+#' @aliases [ [,vegtable,ANY,ANY,ANY-method [,vegtable-method
 #' 
 #' @exportMethod [
 #' 
