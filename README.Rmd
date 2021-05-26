@@ -90,7 +90,7 @@ produce a map of the distribution of your plots by using the package `leaflet`.
 library(leaflet)
 leaflet(JPcomm@header) %>%
 		addTiles() %>%
-		addCircleMarkers(lng = ~longitude, lat = ~latitude, color = "red",
+		addCircleMarkers(lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
 				opacity = 0.3, radius = 1)
 ```
 
