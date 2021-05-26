@@ -93,3 +93,12 @@ leaflet(JPcomm@header) %>%
 		addCircleMarkers(lng = ~longitude, lat = ~latitude, color = "red",
 				opacity = 0.3, radius = 1)
 ```
+
+## Further readings
+
+- [Basics on the work with vegetation-plots in
+  vegtable](https://kamapu.github.io/posts/2020-11-20-vegtablepress2/)
+- [Introduction to the package
+  vegtable](https://kamapu.github.io/posts/2020-10-29-vegtableintro/)
+- [vegtable: An R object for vegetation-plot data
+  sets](https://kamapu.github.io/posts/2020-10-29-vegtablepress/)
