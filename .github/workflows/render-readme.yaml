@@ -20,7 +20,7 @@ jobs:
       
       # Install packages needed
       - name: install required packages
-        run: Rscript -e 'install.packages(c("devtools", "plotKML", "qdapRegex", "sp", "stringi", "vegdata"))'
+        run: Rscript -e 'install.packages(c("devtools", "plotKML", "qdapRegex", "sp", "stringi", "vegdata", "leaflet"), dependencies = TRUE)'
       
       # Install packages needed from GitHub
       - name: install from GitHub

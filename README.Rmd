@@ -82,3 +82,14 @@ procera*-*Podocarpus latifolius* community (IDs 780 to 798).
 JPcomm <- subset(Kenya_veg, ReleveID %in% c(780:798))
 summary(JPcomm)
 ```
+
+If you have geo-referenced plot observations, you can use the coordinates to
+produce a map of the distribution of your plots by using the package `leaflet`.
+
+```{r}
+library(leaflet)
+leaflet(JPcomm@header) %>%
+		addTiles() %>%
+		addCircleMarkers(lng = ~longitude, lat = ~latitude, color = "red",
+				opacity = 0.3, radius = 1)
+```
