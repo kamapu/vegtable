@@ -7,6 +7,7 @@
 ^README\.Rmd$
 ^TODO\.md$
 ^data-raw$
+^data-model$
 ^build-pkg$
 ^tests$
 ^\.github$
