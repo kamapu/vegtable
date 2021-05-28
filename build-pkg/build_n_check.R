@@ -38,12 +38,13 @@ source("data-raw/Easplist/Easplist.R")
 # write_codemeta()
 
 # Build package
+library(devtools)
 document()
 pkg_loc <- build(path="build-pkg")
 
 # Test the package
 ## Sys.setenv(LANG="en_US.iso88591")
-Sys.setlocale("LC_ALL", "en_US.iso88591")
+## Sys.setlocale("LC_ALL", "en_US.iso88591")
 Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
 check_built(path=pkg_loc)
 
@@ -53,7 +54,7 @@ check_built(path=pkg_loc)
 ## install()
 
 # Render readme-file.
-render("README.Rmd")
+## render("README.Rmd")
 
 # Check on Win-builder
 browseURL("https://win-builder.r-project.org/")

@@ -5,6 +5,7 @@ vegtable 0.1.7
 
 * New function `used_concepts()` to extract taxon concepts that are occurring
 in the plot observations.
+* New function `cover_trans()` in replacement of `transform()`
 
 ## Improvements
 
@@ -17,12 +18,16 @@ in output object (`include_levels`) and to remove taxa without levels
 * Application of `subset()` extended to content in slot **relations**.
 * Function `vegtable2kml()` was deprecated to resolve dependencies on GIS
   packages associated to package `plotKML`.
+* Function `transform()` deprecated.
+* Validity checks allow plots in slot **header** without records in **samples**.
+* Function `summary()` also providing number of plots with records.
 
 ## Bug Fixes
 
 * Files written by `write_juice()` in Linux are now readable in Windows.
 * In `clean()` objects with no entries resulted in invalid objects.
-* Bug in `count_taxa()` for aggregating ranks with missing records for lower taxa
+* Bug in `count_taxa()` for aggregating ranks with missing records for lower
+  taxa.
 
 vegtable 0.1.6
 ==============

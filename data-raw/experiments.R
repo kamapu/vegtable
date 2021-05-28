@@ -4,13 +4,24 @@
 ################################################################################
 
 library(devtools)
-install()
+install_github("kamapu/vegtable")
 
 library(vegtable)
 
+## Test object without samples
+KE1 <- KE2 <- Kenya_veg
+summary(KE2)
 
+# first 500 plots without records
+KE1@samples <- KE1@samples[!KE1@samples$ReleveID %in%
+				KE1@header$ReleveID[1:500], ]
+summary(KE1)
 
-## Subset by taxon name
+# No records at all
+KE2@samples <- KE2@samples[0, ]
+summary(KE2)
+
+## Subset by taxon name --------------------------------------------------------
 Kenya_sub <- subset(x=Kenya_veg, subset=TaxonName == "Tagetes",
 		slot="taxonNames", keep_children=TRUE, keep_parents=TRUE)
 summary(Kenya_sub)
