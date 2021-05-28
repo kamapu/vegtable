@@ -9,7 +9,7 @@
 Cover conversion tables for \linkS4class{vegtable} objects.
 
 This class implements conversions from different cover scales in percentage
-cover. For transformations to percentage cover, the function \code{\link[=transform]{transform()}}
+cover. For transformations to percentage cover, the function \code{\link[=cover_trans]{cover_trans()}}
 should be than used.
 }
 \section{Slots}{

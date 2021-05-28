@@ -17,6 +17,7 @@ in output object (`include_levels`) and to remove taxa without levels
 * Application of `subset()` extended to content in slot **relations**.
 * Function `vegtable2kml()` was deprecated to resolve dependencies on GIS
   packages associated to package `plotKML`.
+* Function `transform()` replaced by `cover_trans()`.
 
 ## Bug Fixes
 

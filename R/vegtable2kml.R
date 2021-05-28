@@ -31,6 +31,9 @@
 #' \dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
 #' 
 #' @name vegtable2kml
+#' 
+#' @rdname vegtable2kml
+#' 
 #' @seealso [vegtable-deprecated]
 #' 
 #' @keywords internal

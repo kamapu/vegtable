@@ -14,7 +14,7 @@
 #' 
 #' @format An object of class \code{\linkS4class{coverconvert}}.
 #' 
-#' @seealso [coverconvert-class] [transform()]
+#' @seealso [coverconvert-class] [cover_trans()]
 #' 
 #' @examples
 #' names(braun_blanquet)
