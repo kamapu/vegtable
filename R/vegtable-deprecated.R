@@ -5,6 +5,8 @@
 #'   \itemize{
 #'     \item \code{\link{vegtable2kml}}: This function is deprecated, and will
 #'       be removed in the next version of this package.
+#'     \item \code{\link{transform}}: This function is deprecated, and will
+#'       be removed in the next version of this package.
 #'   }
 #' @name vegtable-deprecated
 #' @rdname vegtable-deprecated

@@ -73,7 +73,7 @@ Kenya_sub <- subset(x=Kenya_veg, subset=ALTITUDE <= 1000, slot="header")
 summary(Kenya_sub)
 
 ## Subset by samples (after converting coverage)
-Kenya_veg <- transform(x=Kenya_veg, to="cover_percentage", rule="middle")
+Kenya_veg <- cover_trans(x=Kenya_veg, to="cover_percentage", rule="middle")
 Kenya_sub <- subset(x=Kenya_veg, subset=cover_percentage >= 50, slot="samples")
 summary(Kenya_sub)
 

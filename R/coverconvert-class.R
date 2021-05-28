@@ -7,7 +7,7 @@
 #' Cover conversion tables for [vegtable-class] objects.
 #' 
 #' This class implements conversions from different cover scales in percentage
-#' cover. For transformations to percentage cover, the function [transform()]
+#' cover. For transformations to percentage cover, the function [cover_trans()]
 #' should be than used.
 #' 
 #' @slot value List containing the levels of each scale.

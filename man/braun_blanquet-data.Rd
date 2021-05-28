@@ -36,6 +36,6 @@ summary(braun_blanquet)
 summary(braun_blanquet$b_bbds)
 }
 \seealso{
-\linkS4class{coverconvert} \code{\link[=transform]{transform()}}
+\linkS4class{coverconvert} \code{\link[=cover_trans]{cover_trans()}}
 }
 \keyword{datasets}

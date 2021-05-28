@@ -69,7 +69,7 @@ or even taxon traits.
 Kenya_veg <- subset(Kenya_veg, REFERENCE == 2331, slot="header")
 
 ## transform cover to percentage
-Kenya_veg <- transform(Kenya_veg, to="cover_perc", rule="middle")
+Kenya_veg <- cover_trans(Kenya_veg, to="cover_perc", rule="middle")
 
 ## cross table of the first 5 plots
 Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
