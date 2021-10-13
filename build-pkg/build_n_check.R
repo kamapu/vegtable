@@ -63,7 +63,7 @@ browseURL("https://win-builder.r-project.org/")
 
 
 # build manual
-build_manual(path="build-pkg")
+build_manual(path = "build-pkg")
 
 # Render package-site
 # pkgdown::build_home()

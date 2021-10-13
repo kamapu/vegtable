@@ -5,6 +5,12 @@
 \alias{summary,vegtable-method}
 \alias{summary,coverconvert-method}
 \alias{summary,shaker-method}
+\alias{show,vegtable-method}
+\alias{print,vegtable-method}
+\alias{show,coverconvert-method}
+\alias{print,coverconvert-method}
+\alias{show,shaker-method}
+\alias{print,shaker-method}
 \title{Summary method for vegtable objects}
 \usage{
 \S4method{summary}{vegtable}(object, units = "Kb", ...)
@@ -12,9 +18,21 @@
 \S4method{summary}{coverconvert}(object, ...)
 
 \S4method{summary}{shaker}(object, companion, authority = FALSE, ...)
+
+\S4method{show}{vegtable}(object)
+
+\S4method{print}{vegtable}(x, ...)
+
+\S4method{show}{coverconvert}(object)
+
+\S4method{print}{coverconvert}(x, ...)
+
+\S4method{show}{shaker}(object)
+
+\S4method{print}{shaker}(x, ...)
 }
 \arguments{
-\item{object}{Object to be summarized.}
+\item{object, x}{Object to be summarized.}
 
 \item{units}{Units used for object size (passed to \code{\link[=format]{format()}}).}
 
