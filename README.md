@@ -77,7 +77,7 @@ summary(Kenya_veg)
 #>    db_name: Sweadataveg
 #>    sp_list: Easplist
 #>    dictionary: Swea
-#>    object size: 9500.8 Kb 
+#>    object size: 9501 Kb 
 #>    validity: TRUE 
 #> 
 #> ## Content 
@@ -104,7 +104,7 @@ summary(JPcomm)
 #>    db_name: Sweadataveg
 #>    sp_list: Easplist
 #>    dictionary: Swea
-#>    object size: 717.2 Kb 
+#>    object size: 717.4 Kb 
 #>    validity: TRUE 
 #> 
 #> ## Content 
@@ -131,8 +131,8 @@ leaflet(JPcomm@header) %>%
                 opacity = 0.3, radius = 1)
 ```
 
-<div id="htmlwidget-1af13110061091bf1d3b" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1af13110061091bf1d3b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[-0.21783606,-0.228685,-0.21965095,-0.21874659,-0.1835005,-0.21874232,-0.2160302,-0.22145907,-0.20879751,-0.20066322,-0.20970267,-0.20518737,-0.22235895,-0.20608739,-0.20608767,-0.16993217,-0.15185806,-0.18981772,-0.15276177],[36.52849996,36.54196582,36.57159667,36.56890322,36.61649612,36.54286533,36.54017222,36.57339212,36.53029708,36.53478754,36.53837753,36.56531387,36.5491497,36.54017378,36.54196948,36.54377023,36.57699314,36.54286972,36.5751973],1,null,null,{"interactive":true,"className":"","stroke":true,"color":"red","weight":5,"opacity":0.3,"fill":true,"fillColor":"red","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-0.228685,-0.15185806],"lng":[36.52849996,36.61649612]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-789f5e4c1c2347772c22" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-789f5e4c1c2347772c22">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[-0.21783606,-0.228685,-0.21965095,-0.21874659,-0.1835005,-0.21874232,-0.2160302,-0.22145907,-0.20879751,-0.20066322,-0.20970267,-0.20518737,-0.22235895,-0.20608739,-0.20608767,-0.16993217,-0.15185806,-0.18981772,-0.15276177],[36.52849996,36.54196582,36.57159667,36.56890322,36.61649612,36.54286533,36.54017222,36.57339212,36.53029708,36.53478754,36.53837753,36.56531387,36.5491497,36.54017378,36.54196948,36.54377023,36.57699314,36.54286972,36.5751973],1,null,null,{"interactive":true,"className":"","stroke":true,"color":"red","weight":5,"opacity":0.3,"fill":true,"fillColor":"red","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-0.228685,-0.15185806],"lng":[36.52849996,36.61649612]}},"evals":[],"jsHooks":[]}</script>
 
 ## Further readings
 
