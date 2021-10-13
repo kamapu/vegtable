@@ -16,7 +16,7 @@
 #' retrieve general statistics when `companion` is missing, or a more detailed
 #' display when accompained by a [taxlist-class] or [vegtable-class] object.
 #' 
-#' @param object Object to be summarized.
+#' @param object,x Object to be summarized.
 #' @param units Units used for object size (passed to [format()]).
 #' @param companion Companion object (either a [taxlist-class] or a
 #'     [vegtable-class] object.
@@ -35,36 +35,36 @@
 #' 
 #' @exportMethod summary
 #' 
-setMethod("summary", signature(object="vegtable"),
-        function(object, units="Kb", ...) {
+setMethod("summary", signature(object = "vegtable"),
+        function(object, units = "Kb", ...) {
             # Show original attributes (metadata)
             cat("## Metadata", "\n")
             if(length(object@description) > 0) {
                 for(i in names(object@description)) {
-                    cat("   ", i, ": ", object@description[i], sep="", "\n")
+                    cat("   ", i, ": ", object@description[i], sep = "", "\n")
                 }
             }
-            cat("   object size:", format(object.size(object), units=units),
-                    sep=" ", "\n")
+            cat("   object size:", format(object.size(object), units = units),
+                    sep = " ", "\n")
             cat("   validity:", validObject(object), "\n")
             cat("\n")
             # Content of some slots
             cat("## Content", "\n")
-            cat("   number of plots:", nrow(object@header), sep=" ", "\n")
+            cat("   number of plots:", nrow(object@header), sep = " ", "\n")
 			cat("   plots with records:",
-					length(unique(object@samples$ReleveID)), sep=" ", "\n")
-			cat("   variables in header:", ncol(object@header), sep=" ", "\n")
-            cat("   number of relations:", length(object@relations), sep=" ",
+					length(unique(object@samples$ReleveID)), sep = " ", "\n")
+			cat("   variables in header:", ncol(object@header), sep = " ", "\n")
+            cat("   number of relations:", length(object@relations), sep = " ",
 					"\n")
             cat("\n")
             # Content of species list
             cat("## Taxonomic List", "\n")
-            cat("   taxon names:", nrow(object@species@taxonNames), sep=" ",
+            cat("   taxon names:", nrow(object@species@taxonNames), sep = " ",
 					"\n")
             cat("   taxon concepts:", nrow(object@species@taxonRelations),
-					sep=" ",
+					sep = " ",
                     "\n")
-            cat("   validity:", validObject(object@species), sep=" ", "\n")
+            cat("   validity:", validObject(object@species), sep = " ", "\n")
             cat("\n")
         }
 )
@@ -76,7 +76,7 @@ setMethod("summary", signature(object="vegtable"),
 #' ## Summary for 'coverconvert' objects
 #' summary(braun_blanquet)
 #' 
-setMethod("summary", signature(object="coverconvert"),
+setMethod("summary", signature(object = "coverconvert"),
 		function(object, ...) {
 			cat("## Number of cover scales:", length(object@value), "\n")
 			cat("\n")
@@ -88,8 +88,8 @@ setMethod("summary", signature(object="coverconvert"),
 				for(j in 1:length(Range_2))
 					if(duplicated(Range_2)[j]) Range_1[j] <- Range_1[j - 1]
 				cat(paste0("* scale '", i, "':"), "\n")
-				print(data.frame(Levels=Levels, Range=paste(Range_1, "-",
-										Range_2), stringsAsFactors=FALSE))
+				print(data.frame(Levels = Levels, Range = paste(Range_1, "-",
+										Range_2), stringsAsFactors = FALSE))
 				cat("\n")
 			}
 		}
@@ -112,9 +112,9 @@ rewrite_formulas <- function(shaker, companion) {
 			x <- shaker@formulas[[i]]
 			if(grepl("\'", x)) SYM <- "\'"
 			if(grepl('\"', x)) SYM <- '\"'
-			x <- gsub("groups[[", "groups:", x, fixed=TRUE)
-			x <- gsub("dominants[[", "species:", x, fixed=TRUE)
-			x <- gsub("]]", "", x, fixed=TRUE)
+			x <- gsub("groups[[", "groups:", x, fixed = TRUE)
+			x <- gsub("dominants[[", "species:", x, fixed = TRUE)
+			x <- gsub("]]", "", x, fixed = TRUE)
 			Spp <- as.numeric(unlist(regmatches(x,
 									gregexpr("[[:digit:]]+\\.*[[:digit:]]*",
 											x))))
@@ -124,7 +124,7 @@ rewrite_formulas <- function(shaker, companion) {
 					subformula$TaxonConceptID <- companion[
 							match(subformula$TaxonConceptID,
 									companion$TaxonConceptID),"TaxonName"]
-					subformula <- paste(subformula[1,], collapse=" ")
+					subformula <- paste(subformula[1,], collapse = " ")
 					
 					x <- sub(paste0("species:", j), paste0("species:", SYM,
 									subformula, SYM), x)
@@ -142,8 +142,8 @@ rewrite_formulas <- function(shaker, companion) {
 #' ## Summary for 'shaker' objects (alone and with companion)
 #' summary(Wetlands, Wetlands_veg)
 #' 
-setMethod("summary", signature(object="shaker"),
-		function(object, companion, authority=FALSE, ...) {
+setMethod("summary", signature(object = "shaker"),
+		function(object, companion, authority = FALSE, ...) {
 			if(missing(companion)) {
 				cat("Number of pseudo-species:", length(object@pseudos), "\n")
 				cat("Number of species groups:", length(object@groups), "\n")
@@ -197,4 +197,70 @@ setMethod("summary", signature(object="shaker"),
 				}
 			}
 		}
+)
+
+################################################################################
+
+#' @rdname summary
+#' 
+#' @aliases show,vegtable-method
+#' 
+#' @exportMethod show
+setMethod("show", signature(object = "vegtable"),
+    function(object) {
+      summary(object)
+    }
+)
+
+#' @rdname summary
+#' 
+#' @aliases print,vegtable-method
+setMethod("print", signature(x = "vegtable"),
+    function(x, ...) {
+      summary(x, ...)
+    }
+)
+
+################################################################################
+
+#' @rdname summary
+#' 
+#' @aliases show,coverconvert-method
+#' 
+#' @exportMethod show
+setMethod("show", signature(object = "coverconvert"),
+    function(object) {
+      summary(object)
+    }
+)
+
+#' @rdname summary
+#' 
+#' @aliases print,coverconvert-method
+setMethod("print", signature(x = "coverconvert"),
+    function(x, ...) {
+      summary(x, ...)
+    }
+)
+
+################################################################################
+
+#' @rdname summary
+#' 
+#' @aliases show,shaker-method
+#' 
+#' @exportMethod show
+setMethod("show", signature(object = "shaker"),
+    function(object) {
+      summary(object)
+    }
+)
+
+#' @rdname summary
+#' 
+#' @aliases print,shaker-method
+setMethod("print", signature(x = "shaker"),
+    function(x, ...) {
+      summary(x, ...)
+    }
 )

@@ -30,6 +30,9 @@ species in just one object. Objects can be created by calls of the form
 \item{\code{relations}}{A list including popup lists as data frames.}
 
 \item{\code{coverconvert}}{A scale conversion object of class \linkS4class{coverconvert}.}
+
+\item{\code{syntax}}{A list including syntaxonomic lists either as data frames or as
+\linkS4class{taxlist} objects.}
 }}
 
 \examples{
@@ -38,7 +41,4 @@ showClass("vegtable")
 }
 \seealso{
 \code{\link[=tv2vegtable]{tv2vegtable()}}
-}
-\author{
-Miguel Alvarez \email{kamapu78@gmail.com}
 }

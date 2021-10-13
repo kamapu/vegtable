@@ -6,6 +6,9 @@ vegtable 0.1.7
 * New function `used_concepts()` to extract taxon concepts that are occurring
 in the plot observations.
 * New function `cover_trans()` in replacement of `transform()`
+* New slot `syntax` in `vegtable` objects.
+* `show()` and `print()` methods for objects `vegtable`, `coverconvert`,
+  and `shaker`.
 
 ## Improvements
 
@@ -18,13 +21,9 @@ in output object (`include_levels`) and to remove taxa without levels
 * Application of `subset()` extended to content in slot **relations**.
 * Function `vegtable2kml()` was deprecated to resolve dependencies on GIS
   packages associated to package `plotKML`.
-<<<<<<< HEAD
-* Function `transform()` deprecated.
 * Validity checks allow plots in slot **header** without records in **samples**.
 * Function `summary()` also providing number of plots with records.
-=======
-* Function `transform()` replaced by `cover_trans()`.
->>>>>>> branch 'master' of git@github.com:kamapu/vegtable.git
+* Function `transform()` deprecated and replaced by `cover_trans()`.
 
 ## Bug Fixes
 
