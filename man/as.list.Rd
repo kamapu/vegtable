@@ -34,7 +34,6 @@ head(Easplist@taxonNames)
 Easplist <- as.list(Easplist)
 class(Easplist)
 head(Easplist$taxonNames)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

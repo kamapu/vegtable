@@ -27,7 +27,6 @@ Retrieve or replace the content of slot \code{header} in \linkS4class{vegtable} 
 }
 \examples{
 head(header(Kenya_veg))
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

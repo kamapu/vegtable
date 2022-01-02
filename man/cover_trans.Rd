@@ -62,17 +62,16 @@ indicated in the argument \code{to}.
 summary(Kenya_veg@coverconvert)
 
 ## Conversion by default 'top' rule
-Kenya_veg <- cover_trans(Kenya_veg, to="percent")
+Kenya_veg <- cover_trans(Kenya_veg, to = "percent")
 summary(as.factor(Kenya_veg@samples$percent))
 
 ## Conversion by 'middle' rule
-Kenya_veg <- cover_trans(Kenya_veg, to="percent", rule="middle", replace=TRUE)
+Kenya_veg <- cover_trans(Kenya_veg, to = "percent", rule = "middle", replace = TRUE)
 summary(as.factor(Kenya_veg@samples$percent))
 
 ## Conversion by 'bottom' rule
-Kenya_veg <- cover_trans(Kenya_veg, to="percent", rule="bottom", replace=TRUE)
+Kenya_veg <- cover_trans(Kenya_veg, to = "percent", rule = "bottom", replace = TRUE)
 summary(as.factor(Kenya_veg@samples$percent))
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

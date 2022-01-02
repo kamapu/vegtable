@@ -37,7 +37,6 @@ species in just one object. Objects can be created by calls of the form
 
 \examples{
 showClass("vegtable")
-
 }
 \seealso{
 \code{\link[=tv2vegtable]{tv2vegtable()}}

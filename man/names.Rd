@@ -40,7 +40,6 @@ These methods provide a quick display of the contents in
 names(Kenya_veg@coverconvert)
 names(Kenya_veg)
 dimnames(Kenya_veg)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}.

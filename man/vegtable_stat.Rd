@@ -21,7 +21,6 @@ page of the Global Index for Vegetation-Plot Databases).
 \examples{
 ## Statistics for GIVD
 vegtable_stat(Kenya_veg)
-
 }
 \author{
 GIVD. Adapted by Miguel Alvarez \email{kamapu78@gmail.com}

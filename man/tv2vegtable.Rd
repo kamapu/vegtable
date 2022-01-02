@@ -67,7 +67,6 @@ rebuild the \code{coverconvert} slot or use \link{braun_blanquet}.
 TV_Home <- file.path(path.package("vegtable"), "tv_data")
 Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
 summary(Veg)
-
 ## Installed 'Turboveg' version of "Fujiwara et al. (2014)"
 TV_Home <- file.path(path.package("vegtable"), "tv_data", "popup", "Swea")
 Table <- tv2coverconvert(file.path(TV_Home, "tvscale.dbf"))
@@ -81,7 +80,6 @@ summary(Table)
 data(braun_blanquet)
 summary(Table$br_bl)
 summary(braun_blanquet$br_bl)
-
 }
 \seealso{
 \code{\link[taxlist:tv2taxlist]{taxlist::tv2taxlist()}} \code{\link[foreign:read.dbf]{foreign::read.dbf()}} \code{\link[vegdata:vegdata-internal]{vegdata::tv.home()}}

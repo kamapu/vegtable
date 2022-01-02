@@ -66,16 +66,17 @@ variables from the species list (for example \code{AcceptedName}, \code{AuthorNa
 or even taxon traits.
 }
 \examples{
-Kenya_veg <- subset(Kenya_veg, REFERENCE == 2331, slot="header")
+Kenya_veg <- subset(Kenya_veg, REFERENCE == 2331, slot = "header")
 
 ## transform cover to percentage
-Kenya_veg <- cover_trans(Kenya_veg, to="cover_perc", rule="middle")
+Kenya_veg <- cover_trans(Kenya_veg, to = "cover_perc", rule = "middle")
 
 ## cross table of the first 5 plots
 Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
-        Kenya_veg[1:5,], mean, na_to_zero=TRUE)
+  Kenya_veg[1:5, ], mean,
+  na_to_zero = TRUE
+)
 head(Cross)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

@@ -61,13 +61,10 @@ display when accompained by a \linkS4class{taxlist} or \linkS4class{vegtable} ob
 \examples{
 ## Summary for 'vegtable' objects
 summary(Wetlands_veg)
-
 ## Summary for 'coverconvert' objects
 summary(braun_blanquet)
-
 ## Summary for 'shaker' objects (alone and with companion)
 summary(Wetlands, Wetlands_veg)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
