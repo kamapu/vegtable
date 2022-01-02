@@ -9,5 +9,5 @@
 ^data-raw$
 ^data-model$
 ^build-pkg$
-^laboratory$
+^lab$
 ^\.github$

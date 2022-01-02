@@ -54,7 +54,7 @@ plot (\code{cross_table}), and a data frame with header data (\code{header}).
 }
 \description{
 This function produce txt files as inport formats for \strong{Juice}
-(\url{http://www.sci.muni.cz/botany/juice/}).
+(\url{https://www.sci.muni.cz/botany/juice/}).
 
 This function produces two output files to be imported into a \strong{Juice}
 file: A vegetation table produced by \code{\link[=crosstable]{crosstable()}} and a header table.
@@ -79,9 +79,9 @@ the column (\verb{Releve number}) is the number originally assigned to the plot
 }
 \examples{
 ## Only first 20 observations
-Kenya_veg <- Kenya_veg[1:20,]
+Kenya_veg <- Kenya_veg[1:20, ]
 \dontrun{
-write_juice(Kenya_veg, "SWEA", FUN=mean)
+write_juice(Kenya_veg, "SWEA", FUN = mean)
 }
 
 ## Installed 'Juice' version of 'Wetlands_veg'
@@ -89,7 +89,6 @@ Veg <- file.path(path.package("vegtable"), "juice", "Wetlands_juice.txt")
 Veg <- read_juice(Veg)
 
 summary(Veg)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
