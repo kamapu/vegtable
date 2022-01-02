@@ -120,15 +120,16 @@ formulas have to be written as \code{trait_1 + ... + trait_n ~ head_var}.
 }
 \examples{
 ## Cocktail classification of plots
-Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover="percen")
+Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
 
 ## Calculation of proportion of Cyperaceae species in the plot
-Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg, trait_level="Cyperaceae",
-	weight="percen", include_nas=FALSE, in_header=TRUE)
+Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,
+  trait_level = "Cyperaceae",
+  weight = "percen", include_nas = FALSE, in_header = TRUE
+)
 
 ## Display of proportions per plant community
-boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col="grey")
-
+boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col = "grey")
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

@@ -23,7 +23,6 @@ sampled in Tanzania.
 \examples{
 summary(Wetlands)
 summary(Wetlands_veg)
-
 }
 \references{
 \bold{Alvarez M (2017).} Classification of aquatic and

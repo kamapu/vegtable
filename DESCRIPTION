@@ -22,9 +22,9 @@ Suggests:
 	testthat,
 	vegan
 Description: Import and handling data from vegetation-plot databases, especially
-    data stored in 'Turboveg' (<https://www.synbiosys.alterra.nl/turboveg>).
+    data stored in 'Turboveg 2' (<https://www.synbiosys.alterra.nl/turboveg/>).
     Also import/export routines for exchange of data with 'Juice'
-    (<http://www.sci.muni.cz/botany/juice>) are implemented.
+    (<https://www.sci.muni.cz/botany/juice/>) are implemented.
 LazyData: true
 Roxygen: list(markdown = TRUE)
 License: GPL (>= 2)
@@ -68,5 +68,4 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'vegtable-deprecated.R'
-VignetteBuilder: knitr
 RoxygenNote: 7.1.2

@@ -51,37 +51,44 @@ references to the subset of species list.
 }
 \examples{
 ## Subset by taxon name
-Kenya_sub <- subset(x=Kenya_veg, subset=TaxonName == "Tagetes",
-		slot="taxonNames", keep_children=TRUE, keep_parents=TRUE)
+Kenya_sub <- subset(
+  x = Kenya_veg, subset = TaxonName == "Tagetes",
+  slot = "taxonNames", keep_children = TRUE, keep_parents = TRUE
+)
 summary(Kenya_sub)
 summary(Kenya_sub@species)
 
 ## Subset by taxon relations
-Kenya_sub <- subset(x=Kenya_veg, subset=Level == "species",
-slot="taxonRelations")
+Kenya_sub <- subset(
+  x = Kenya_veg, subset = Level == "species",
+  slot = "taxonRelations"
+)
 summary(Kenya_sub)
 summary(Kenya_sub@species)
 
 ## Subset by taxon traits
-Kenya_sub <- subset(x=Kenya_veg, subset=lf_behn_2018 == "obligate_annual",
-slot="taxonTraits")
+Kenya_sub <- subset(
+  x = Kenya_veg, subset = lf_behn_2018 == "obligate_annual",
+  slot = "taxonTraits"
+)
 summary(Kenya_sub)
 summary(Kenya_sub@species)
 
 ## Subset by header
-Kenya_sub <- subset(x=Kenya_veg, subset=ALTITUDE <= 1000, slot="header")
+Kenya_sub <- subset(x = Kenya_veg, subset = ALTITUDE <= 1000, slot = "header")
 summary(Kenya_sub)
 
 ## Subset by samples (after converting coverage)
-Kenya_veg <- cover_trans(x=Kenya_veg, to="cover_percentage", rule="middle")
-Kenya_sub <- subset(x=Kenya_veg, subset=cover_percentage >= 50, slot="samples")
+Kenya_veg <- cover_trans(x = Kenya_veg, to = "cover_percentage", rule = "middle")
+Kenya_sub <- subset(x = Kenya_veg, subset = cover_percentage >= 50, slot = "samples")
 summary(Kenya_sub)
 
 ## Subset by relations
-Kenya_sub <- subset(x=Kenya_veg, subset=as.integer(YEAR) >= 2000,
-slot="relations", relation="REFERENCE")
+Kenya_sub <- subset(
+  x = Kenya_veg, subset = as.integer(YEAR) >= 2000,
+  slot = "relations", relation = "REFERENCE"
+)
 summary(Kenya_sub)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

@@ -23,8 +23,7 @@ coordinate values.}
 A KML file, which will be automatically opened in \strong{Google Earth}.
 }
 \description{
-This function is a wrapper of \code{\link[plotKML:kml]{plotKML::kml()}} producing and displaying KML
-files.
+This function is producing and displaying KML files.
 
 Georeferenced plots can be quickly displayed in
 \href{https://www.google.com/intl/en_us/earth/}{Google Earth} using this function.
@@ -32,12 +31,14 @@ Georeferenced plots can be quickly displayed in
 \examples{
 ## Plots containing Podocarpus observations
 Kenya_veg@species <- subset(Kenya_veg@species, grepl("Podocarpus", TaxonName),
-	   slot="names")
-	
-Kenya_veg <- subset(Kenya_veg, TaxonUsageID \%in\%
-	   Kenya_veg@species@taxonNames$TaxonUsageID, slot="samples")
+  slot = "names"
+)
 
-\dontrun{vegtable2kml(Kenya_veg, "Podocarpus.kml")}
+Kenya_veg <- subset(Kenya_veg, TaxonUsageID \%in\%
+  Kenya_veg@species@taxonNames$TaxonUsageID, slot = "samples")
+\dontrun{
+vegtable2kml(Kenya_veg, "Podocarpus.kml")
+}
 
 }
 \seealso{

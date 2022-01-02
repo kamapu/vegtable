@@ -35,7 +35,6 @@ vegetation units.}
 
 \examples{
 showClass("shaker")
-
 }
 \seealso{
 \code{\link[=make_cocktail]{make_cocktail()}} \code{\link[=set_pseudo]{set_pseudo()}} \code{\link[=set_group]{set_group()}} \code{\link[=set_formula]{set_formula()}}

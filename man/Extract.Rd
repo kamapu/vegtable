@@ -55,8 +55,7 @@ summary(Kenya_veg$COUNTRY)
 summary(droplevels(Kenya_veg$COUNTRY))
 
 ## First 5 samples
-summary(Kenya_veg[1:5,])
-
+summary(Kenya_veg[1:5, ])
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

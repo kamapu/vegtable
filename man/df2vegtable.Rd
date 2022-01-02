@@ -43,9 +43,11 @@ data(dune)
 data(dune.env)
 
 ## Conversion to vegtable
-dune_veg <- data.frame(species=colnames(dune), t(dune),
-    stringsAsFactors=FALSE, check.names=FALSE)
-dune_veg <- df2vegtable(dune_veg, species=1)
+dune_veg <- data.frame(
+  species = colnames(dune), t(dune),
+  stringsAsFactors = FALSE, check.names = FALSE
+)
+dune_veg <- df2vegtable(dune_veg, species = 1)
 
 summary(dune_veg)
 
@@ -54,7 +56,6 @@ dune.env$ReleveID <- as.integer(rownames(dune.env))
 header(dune_veg) <- dune.env
 
 summary(dune_veg)
-
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

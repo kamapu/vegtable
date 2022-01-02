@@ -3,6 +3,20 @@
 # Author: Miguel Alvarez
 ################################################################################
 
+library(devtools)
+library(styler)
+
+# re-style scripts
+style_pkg()
+
+# write documentation
+document()
+
+# Build and check package
+pkg_loc <- build(path = "build-pkg", args = "--resave-data")
+check_built(path = pkg_loc)
+
+
 # See at
 ## browseURL(paste0("https://www.marinedatascience.co/blog/2020/01/09/",
 ##                 "checklist-for-r-package-re-submissions-on-cran/"))
@@ -40,13 +54,13 @@ source("data-raw/Easplist/Easplist.R")
 # Build package
 library(devtools)
 document()
-pkg_loc <- build(path="build-pkg")
+pkg_loc <- build(path = "build-pkg", args = "--resave-data")
 
 # Test the package
 ## Sys.setenv(LANG="en_US.iso88591")
 ## Sys.setlocale("LC_ALL", "en_US.iso88591")
-Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
-check_built(path=pkg_loc)
+## Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
+check_built(path = pkg_loc)
 
 # After check ------------------------------------------------------------------
 

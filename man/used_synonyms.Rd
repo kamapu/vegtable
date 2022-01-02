@@ -58,7 +58,6 @@ data set.
 ## Synonyms used in the Kenya_veg
 Synonyms <- used_synonyms(Kenya_veg)
 head(Synonyms)
-
 }
 \seealso{
 \code{\link[=accepted_name]{accepted_name()}}
