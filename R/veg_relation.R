@@ -149,6 +149,21 @@ setMethod(
 
 #' @rdname veg_relation
 #'
+#' @aliases relation2header,vegtable,lib_df-method
+#'
+setMethod(
+  "relation2header", signature(
+    vegtable = "vegtable",
+    relation = "lib_df"
+  ),
+  function(vegtable, relation, ...) {
+    relation <- as.data.frame(relation)
+    relation2header(vegtable, relation, ...)
+  }
+)
+
+#' @rdname veg_relation
+#'
 #' @aliases relation2header,vegtable,character-method
 #'
 setMethod(

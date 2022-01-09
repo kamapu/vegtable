@@ -6,6 +6,16 @@
 library(devtools)
 library(styler)
 
+# Clean session
+rm(list = ls())
+
+# Clean folder
+unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
+unlink(file.path("build-pkg", list.files("build-pkg", ".pdf")))
+
+# Write data
+## source("data-raw/create-data.R")
+
 # re-style scripts
 style_pkg()
 

@@ -1,3 +1,11 @@
+vegtable 0.1.8
+==============
+
+## Improvements
+
+* Slot **relations** may deal with any element that canbe coerced to
+`data.frame`.
+
 vegtable 0.1.7
 ==============
 

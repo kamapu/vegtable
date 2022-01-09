@@ -83,10 +83,11 @@ setClass("vegtable",
           "' not included in slot 'header'"
         ))
       }
-      if (!i %in% colnames(object@relations[[i]])) {
+      if (!i %in% colnames(as.data.frame(object@relations[[i]]))) {
         return(paste0("Column '", i, "' is mandatory in relation '", i, "'"))
       }
-      if (any(!object@header[, i] %in% object@relations[[i]][, i] &
+      if (any(!object@header[, i] %in%
+        as.data.frame(object@relations[[i]])[, i] &
         !is.na(object@header[, i]))) {
         return(paste0(
           "Some values of '", i,

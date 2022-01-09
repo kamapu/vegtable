@@ -7,6 +7,7 @@
 \alias{veg_relation<-,vegtable,character,data.frame-method}
 \alias{relation2header}
 \alias{relation2header,vegtable,data.frame-method}
+\alias{relation2header,vegtable,lib_df-method}
 \alias{relation2header,vegtable,character-method}
 \title{Retrieve or replace relations in vegtable objects}
 \usage{
@@ -21,6 +22,8 @@ veg_relation(vegtable, relation) <- value
 relation2header(vegtable, relation, ...)
 
 \S4method{relation2header}{vegtable,data.frame}(vegtable, relation, by, vars, ...)
+
+\S4method{relation2header}{vegtable,lib_df}(vegtable, relation, ...)
 
 \S4method{relation2header}{vegtable,character}(vegtable, relation, ...)
 }
