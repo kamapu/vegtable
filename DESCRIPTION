@@ -9,15 +9,15 @@ Depends:
 	R(>= 3.5.0),
 	taxlist
 Imports:
-    biblio,
-	foreign,
+    foreign,
 	methods,
-	knitr,
 	qdapRegex,
 	sp,
 	stringi,
 	vegdata
 Suggests:
+	biblio,
+	knitr,
 	rmarkdown,
 	sf,
 	testthat,

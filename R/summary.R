@@ -172,7 +172,7 @@ setMethod(
       cat("Number of species groups:", length(object@groups), "\n")
       cat("Number of formulas:", length(object@formulas), "\n")
     } else {
-      if (class(companion) == "vegtable") {
+      if (is(companion, "vegtable")) {
         companion <- companion@species
       }
       companion <- accepted_name(companion)

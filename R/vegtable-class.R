@@ -86,7 +86,7 @@ setClass("vegtable",
       if (!i %in% colnames(as.data.frame(object@relations[[i]]))) {
         return(paste0("Column '", i, "' is mandatory in relation '", i, "'"))
       }
-      if (any(!object@header[[i]] %in% object@relations[[i]][[[i]]] &
+      if (any(!object@header[[i]] %in% object@relations[[i]][[i]] &
         !is.na(object@header[[i]]))) {
         return(paste0(
           "Some values of '", i,
@@ -124,16 +124,17 @@ setClass("vegtable",
     }
     # Validation for syntaxonomy ---------------------------------------------
     if (length(object@syntax) > 0) {
-      if (!all(sapply(object@syntax, class) == "taxlist"))
+      if (!all(sapply(object@syntax, class) == "taxlist")) {
         return("Only 'taxlist' objects are allowed in slot 'syntax'.")
+      }
       for (i in names(object@syntax)) {
         noNA <- object@header[[paste("syntax", i, sep = "_")]]
         noNA <- noNA[!is.na(noNA)]
         if (!all(noNA %in% object@syntax[[i]]@taxonNames$TaxonUsageID)) {
           return(paste0(
-                  "Not all values of 'syntax_", i,
-                  "' contained in the respective syntaxonomy."
-              ))
+            "Not all values of 'syntax_", i,
+            "' contained in the respective syntaxonomy."
+          ))
         }
       }
     }

@@ -44,7 +44,7 @@ Import function for \strong{Turboveg} databases into an object of class
 Most of the contents of \strong{Turboveg} databases are included in DBF files and
 therefore imported by the function \code{\link[foreign:read.dbf]{foreign::read.dbf()}}.
 The automatic setting of database path will be done by the function
-\code{\link[vegdata:vegdata-internal]{vegdata::tv.home()}} but it can be customised by the argument \code{tv_home}.
+\code{\link[vegdata:tv.home]{vegdata::tv.home()}} but it can be customised by the argument \code{tv_home}.
 
 The species list will be imported by using the function
 \code{\link[taxlist:tv2taxlist]{taxlist::tv2taxlist()}} and therefore formatted as a \linkS4class{taxlist} object.
@@ -82,7 +82,7 @@ summary(Table$br_bl)
 summary(braun_blanquet$br_bl)
 }
 \seealso{
-\code{\link[taxlist:tv2taxlist]{taxlist::tv2taxlist()}} \code{\link[foreign:read.dbf]{foreign::read.dbf()}} \code{\link[vegdata:vegdata-internal]{vegdata::tv.home()}}
+\code{\link[taxlist:tv2taxlist]{taxlist::tv2taxlist()}} \code{\link[foreign:read.dbf]{foreign::read.dbf()}} \code{\link[vegdata:tv.home]{vegdata::tv.home()}}
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

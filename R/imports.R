@@ -1,5 +1,5 @@
 #' @importFrom stats aggregate as.formula na.omit terms update
-#' @importFrom methods new slot slot<- slotNames validObject
+#' @importFrom methods is new slot slot<- slotNames validObject
 #' @importFrom foreign read.dbf
 #' @importFrom utils object.size write.table
 #' @importFrom vegdata tv.home
