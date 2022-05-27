@@ -1,10 +1,13 @@
 vegtable 0.1.8
 ==============
 
+## New Features
+
 ## Improvements
 
 * Slot **relations** may deal with any element that canbe coerced to
 `data.frame`.
+* All elements in slot **syntax** have to be of class `taxlist`
 
 vegtable 0.1.7
 ==============

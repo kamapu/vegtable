@@ -86,9 +86,8 @@ setClass("vegtable",
       if (!i %in% colnames(as.data.frame(object@relations[[i]]))) {
         return(paste0("Column '", i, "' is mandatory in relation '", i, "'"))
       }
-      if (any(!object@header[, i] %in%
-        as.data.frame(object@relations[[i]])[, i] &
-        !is.na(object@header[, i]))) {
+      if (any(!object@header[[i]] %in% object@relations[[i]][[[i]]] &
+        !is.na(object@header[[i]]))) {
         return(paste0(
           "Some values of '", i,
           "' in header do not macht the values in slot relations."
@@ -125,28 +124,16 @@ setClass("vegtable",
     }
     # Validation for syntaxonomy ---------------------------------------------
     if (length(object@syntax) > 0) {
+      if (!all(sapply(object@syntax, class) == "taxlist"))
+        return("Only 'taxlist' objects are allowed in slot 'syntax'.")
       for (i in names(object@syntax)) {
-        if (paste("syntax", i, sep = "_") %in% colnames(object@header) &
-          class(object@syntax[[i]]) == "data.frame") {
-          noNA <- object@header[[paste("syntax", i, sep = "_")]]
-          noNA <- noNA[!is.na(noNA)]
-          if (!all(noNA %in% object@syntax[[i]][[i]])) {
-            return(paste0(
-              "Not all values of 'syntax_", i,
-              "' contained in the respective syntaxonomy."
-            ))
-          }
-        }
-        if (paste("syntax", i, sep = "_") %in% colnames(object@header) &
-          class(object@syntax[[i]]) == "taxlist") {
-          noNA <- object@header[[paste("syntax", i, sep = "_")]]
-          noNA <- noNA[!is.na(noNA)]
-          if (!all(noNA %in% object@syntax[[i]]@taxonNames$TaxonUsageID)) {
-            return(paste0(
-              "Not all values of 'syntax_", i,
-              "' contained in the respective syntaxonomy."
-            ))
-          }
+        noNA <- object@header[[paste("syntax", i, sep = "_")]]
+        noNA <- noNA[!is.na(noNA)]
+        if (!all(noNA %in% object@syntax[[i]]@taxonNames$TaxonUsageID)) {
+          return(paste0(
+                  "Not all values of 'syntax_", i,
+                  "' contained in the respective syntaxonomy."
+              ))
         }
       }
     }
