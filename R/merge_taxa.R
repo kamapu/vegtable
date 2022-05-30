@@ -129,7 +129,7 @@ setMethod(
           as.integer(object@samples$Level) == i &
             !is.na(object@samples$Level)
         ])
-        if (length(concept) > 1) {
+        if (length(concept) > 0) {
           concept_parent <- object@species@taxonRelations$
             Parent[match(concept, object@species@
           taxonRelations$
@@ -169,8 +169,8 @@ setMethod(
         ))
       }
       object@samples <- object@samples[
-        paste(object@samples$Level) %in% include_levels |
-          is.na(object@samples$Level),
+        paste(object@samples$Level) %in% include_levels &
+          !is.na(object@samples$Level),
       ]
     }
     # Add traits?

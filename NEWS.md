@@ -3,6 +3,9 @@ vegtable 0.1.8
 
 ## New Features
 
+* New function `diversity()` and functions calculating diversity indices:
+  `shannon()`, `evenness()`, `dominance()`, `simpson()`, and `richness()`.
+
 ## Improvements
 
 * Slot **relations** may deal with any element that canbe coerced to
