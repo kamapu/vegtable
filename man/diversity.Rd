@@ -84,8 +84,17 @@ Calculation of diversity statistics at the plot level allowing for customized
 functions defined as \code{foo(x, ...)}, where \code{x} is the vector of abundance
 values.
 
-Some common functions are provided here.
-
 This function calls \code{\link[=taxa2samples]{taxa2samples()}} to derive taxa from taxon usage names in
-slot \strong{samples}.
+slot \strong{samples} and multiple records of species in a single plot will be
+merged by \code{\link[stats:aggregate]{stats::aggregate()}}.
+
+The functions \code{shannon()}, \code{evenness()}, and \code{dominance()} calculate the
+diversity index of Shannon, the evenness, and the dominance, respectively.
+Dominance is the complementary value to evenness (i.e. \code{1 - evenness}).
+
+The function \code{simpson()} calculates the Simpson's index using the alternative
+for vegetation plot observations.
+
+The function \code{richness()} counts the number of taxa per plot and can be used
+as alternative to \code{\link[=count_taxa]{count_taxa()}}.
 }

@@ -12,6 +12,11 @@ vegtable 0.1.8
 `data.frame`.
 * All elements in slot **syntax** have to be of class `taxlist`
 
+## Bug Fixes
+
+* An issue was solved for function `taxa2samples()` when setting an argument in
+  the parameter `'merge_to'`, which was not properly working in all cases.
+
 vegtable 0.1.7
 ==============
 

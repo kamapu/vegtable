@@ -8,10 +8,19 @@
 #' functions defined as `foo(x, ...)`, where `x` is the vector of abundance
 #' values.
 #'
-#' Some common functions are provided here.
-#'
 #' This function calls [taxa2samples()] to derive taxa from taxon usage names in
-#' slot **samples**.
+#' slot **samples** and multiple records of species in a single plot will be
+#' merged by [stats::aggregate()].
+#'
+#' The functions `shannon()`, `evenness()`, and `dominance()` calculate the
+#' diversity index of Shannon, the evenness, and the dominance, respectively.
+#' Dominance is the complementary value to evenness (i.e. `1 - evenness`).
+#'
+#' The function `simpson()` calculates the Simpson's index using the alternative
+#' for vegetation plot observations.
+#'
+#' The function `richness()` counts the number of taxa per plot and can be used
+#' as alternative to [vegtable::count_taxa()].
 #'
 #' @param x A numeric vector containing the abundance of single species.
 #' @param na.rm A logical value indicating whether NA values should be removed
@@ -37,16 +46,16 @@
 #'     input object.
 #' @param ... Further arguments passed to `'FUN'` by [stats::aggregate()] in
 #'     function `'diversity()'`.
-#' 
-#' @return 
+#'
+#' @return
 #' Functions `shannon()`, `evenness()`, `dominance()`, `simpson()`, and
 #' `richness()` return a numeric value (the calculated index).
-#' 
+#'
 #' Funtion `diversity()` produce either a data frame with calculated values per
 #' plot observation (option `'in_header = FALSE'`) or a [vegtable-class] object
 #' with the calculated values inserted in the slot **header**
 #' (option `'in_header = TRUE'`).
-#' 
+#'
 #' @aliases shannon
 #' @export
 shannon <- function(x, na.rm = TRUE, ...) {
@@ -99,6 +108,12 @@ diversity <- function(object, ...) {
 diversity.vegtable <- function(object, weight, FUN = shannon, aggr_fun = mean,
                                arg_fun = list(), var_name, in_header = FALSE,
                                ...) {
+  if (!weight %in% names(object@samples)) {
+    stop(paste0(
+      "The argument in 'weight' ('", weight,
+      "') is not a column in slot 'samples'."
+    ))
+  }
   OUT <- do.call(taxa2samples, c(list(object = object), arg_fun))@samples
   OUT <- aggregate(as.formula(paste(weight, "TaxonConceptID + ReleveID",
     sep = " ~ "
