@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
-[![Rdoc](http://www.rdocumentation.org/badges/version/vegtable)](http://www.rdocumentation.org/packages/vegtable)
 [![DOI](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
 <br>
 [![R-CMD-check](https://github.com/kamapu/vegtable/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/vegtable/actions)
@@ -87,13 +86,14 @@ summary(JPcomm)
 If you have geo-referenced plot observations, you can use the coordinates to
 produce a map of the distribution of your plots by using the package `leaflet`.
 
-```{r}
+```{r eval = FALSE}
 library(leaflet)
 leaflet(JPcomm@header) %>%
 		addTiles() %>%
 		addCircleMarkers(lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
 				opacity = 0.3, radius = 1)
 ```
+
 
 ## Further readings
 

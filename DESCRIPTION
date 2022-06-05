@@ -29,7 +29,8 @@ Description: Import and handling data from vegetation-plot databases, especially
 LazyData: true
 Roxygen: list(markdown = TRUE)
 License: GPL (>= 2)
-URL: https://github.com/kamapu/vegtable
+URL: https://github.com/kamapu/vegtable,
+    http://kamapu.github.io/vegtable/
 BugReports: https://github.com/kamapu/vegtable/issues
 Collate:
 	'imports.R'
