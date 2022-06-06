@@ -98,8 +98,8 @@ leaflet(JPcomm@header) %>%
 ## Further readings
 
 - [Basics on the work with vegetation-plots in
-  vegtable](https://kamapu.github.io/posts/2020-11-20-vegtablepress2/)
+  vegtable](https://kamapu.github.io/posts/vegtable-press-2/)
 - [Introduction to the package
-  vegtable](https://kamapu.github.io/posts/2020-10-29-vegtableintro/)
+  vegtable](https://kamapu.github.io/posts/vegtable-intro/)
 - [vegtable: An R object for vegetation-plot data
   sets](https://kamapu.github.io/posts/2020-10-29-vegtablepress/)
