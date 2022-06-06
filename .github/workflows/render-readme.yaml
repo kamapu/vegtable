@@ -25,8 +25,6 @@ jobs:
       # Install packages needed from GitHub
       - name: install from GitHub
         run: Rscript -e 'remotes::install_github(c("ropensci/taxlist","kamapu/vegtable"))'
-      	env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       
       # Render README.md using rmarkdown
       - name: render README
