@@ -1,18 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
 
 # vegtable
 
 <!-- badges: start -->
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
 [![DOI](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
 <br>
 [![R-CMD-check](https://github.com/kamapu/vegtable/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/vegtable/actions)
 [![codecov](https://codecov.io/gh/kamapu/vegtable/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/vegtable)
 <br>
-[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/vegtable)](https://cran.r-project.org/package=vegtable)
+[![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/vegtable)](https://cran.r-project.org/package=vegtable)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/vegtable)](https://cran.r-project.org/package=vegtable)
 <!-- badges: end -->
@@ -59,6 +60,17 @@ contains plot observations done in Kenya imported from 5 sources.
 
 ``` r
 library(vegtable)
+#> Loading required package: taxlist
+#> 
+#> Attaching package: 'taxlist'
+#> The following objects are masked from 'package:base':
+#> 
+#>     levels, print
+#> 
+#> Attaching package: 'vegtable'
+#> The following object is masked from 'package:base':
+#> 
+#>     transform
 data(Kenya_veg)
 
 # validate and explore
@@ -125,9 +137,9 @@ leaflet(JPcomm@header) %>%
 
 ## Further readings
 
--   [Basics on the work with vegetation-plots in
+  - [Basics on the work with vegetation-plots in
     vegtable](https://kamapu.github.io/posts/vegtable-press-2/)
--   [Introduction to the package
+  - [Introduction to the package
     vegtable](https://kamapu.github.io/posts/vegtable-intro/)
--   [vegtable: An R object for vegetation-plot data
+  - [vegtable: An R object for vegetation-plot data
     sets](https://kamapu.github.io/posts/2020-10-29-vegtablepress/)
