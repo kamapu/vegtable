@@ -1,5 +1,5 @@
-#' @name diverstiy
-#' @rdname diversity
+#' @name veg_diverstiy
+#' @rdname veg_diversity
 #'
 #' @title Calculation of statistics at plot level
 #'
@@ -45,13 +45,13 @@
 #'     If `'in_header = TRUE'`, you may assign the result of the function to the
 #'     input object.
 #' @param ... Further arguments passed to `'FUN'` by [stats::aggregate()] in
-#'     function `'diversity()'`.
+#'     function `'veg_diversity()'`.
 #'
 #' @return
 #' Functions `shannon()`, `evenness()`, `dominance()`, `simpson()`, and
 #' `richness()` return a numeric value (the calculated index).
 #'
-#' Funtion `diversity()` produce either a data frame with calculated values per
+#' Funtion `veg_diversity()` produce either a data frame with calculated values per
 #' plot observation (option `'in_header = FALSE'`) or a [vegtable-class] object
 #' with the calculated values inserted in the slot **header**
 #' (option `'in_header = TRUE'`).
@@ -65,21 +65,21 @@ shannon <- function(x, na.rm = TRUE, ...) {
 }
 
 #' @aliases evenness
-#' @rdname diversity
+#' @rdname veg_diversity
 #' @export
 evenness <- function(x, ...) {
   return(shannon(x, ...) / log(length(x)))
 }
 
 #' @aliases dominance
-#' @rdname diversity
+#' @rdname veg_diversity
 #' @export
 dominance <- function(x, ...) {
   return(1 - evenness(x, ...))
 }
 
 #' @aliases simpson
-#' @rdname diversity
+#' @rdname veg_diversity
 #' @export
 simpson <- function(x, na.rm = TRUE, ...) {
   if (na.rm) x <- x[!is.na(x)]
@@ -88,26 +88,26 @@ simpson <- function(x, na.rm = TRUE, ...) {
 }
 
 #' @aliases richness
-#' @rdname diversity
+#' @rdname veg_diversity
 #' @export
 richness <- function(x, na.rm = TRUE, ...) {
   if (na.rm) x <- x[!is.na(x)]
   return(length(x))
 }
 
-#' @rdname diversity
+#' @rdname veg_diversity
 #' @export
-diversity <- function(object, ...) {
-  UseMethod("diversity", object)
+veg_diversity <- function(object, ...) {
+  UseMethod("veg_diversity", object)
 }
 
-#' @rdname diversity
-#' @aliases diversity,vegtable-method
-#' @method diversity vegtable
+#' @rdname veg_diversity
+#' @aliases veg_diversity,vegtable-method
+#' @method veg_diversity vegtable
 #' @export
-diversity.vegtable <- function(object, weight, FUN = shannon, aggr_fun = mean,
-                               arg_fun = list(), var_name, in_header = FALSE,
-                               ...) {
+veg_diversity.vegtable <- function(object, weight, FUN = shannon, aggr_fun = mean,
+                                   arg_fun = list(), var_name, in_header = FALSE,
+                                   ...) {
   if (!weight %in% names(object@samples)) {
     stop(paste0(
       "The argument in 'weight' ('", weight,
