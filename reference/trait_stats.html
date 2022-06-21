@@ -147,51 +147,76 @@ formulas have to be written as <code>trait_1 + ... + trait_n ~ head_var</code>.<
     <dl><dt>trait</dt>
 <dd><p>Either a character value indicating the name of trait variable
 or a formula including both arguments, <code>trait</code> and <code>head_var</code>.</p></dd>
+
+
 <dt>object</dt>
 <dd><p>A <a href="vegtable-class.html">vegtable</a> object.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further arguments passed among methods. In the case of the
 formula method, arguments are passed to the character method.</p></dd>
+
+
 <dt>FUN</dt>
 <dd><p>A function usually defined as <code>foo(x, ...)</code> or as
 <code>foo(x, w, ...)</code> for weighted statistics.</p></dd>
+
+
 <dt>head_var</dt>
 <dd><p>Character value, the name of the variable at slot header to
 be used as aggregation level for the calculation of statistics or
 proportions.
 If not provided, the function will use <strong>ReleveID</strong> by default.</p></dd>
+
+
 <dt>taxon_level</dt>
 <dd><p>Character value indicating a selected taxonomic rank for
 the output.</p></dd>
+
+
 <dt>merge_to</dt>
 <dd><p>Character value indicating the taxonomic rank for
 aggregation of taxa.
 All ranks lower than the one indicated here will be assigned to the
 respective parents at the required taxonomic rank.</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>Character value indicating the name of the variable at slot
 <strong>samples</strong> used as weight for the proportions. Usually the numeric
 abundance.</p></dd>
+
+
 <dt>suffix</dt>
 <dd><p>A suffix added to the name of the trait variable or to the
 levels of categorical trait variables. I is meant to avoid homonymous
 variables within the same object.</p></dd>
+
+
 <dt>in_header</dt>
 <dd><p>Logical value indicating whether the output should be
 inserted in the slot <b>header</b> or provided as data frame.</p></dd>
+
+
 <dt>trait_level</dt>
 <dd><p>Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.
 Trait levels that are skipped at output will be still used for the
 calculation of proportions.
 This argument gets only applied for the character method.</p></dd>
+
+
 <dt>include_nas</dt>
 <dd><p>Logical value indicating whether NAs should be considered
 for the calculation of proportions or not.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data frame with the proportions of traits levels or statistics for
+    
+
+<p>A data frame with the proportions of traits levels or statistics for
 the trait variable, or an object of class <a href="vegtable-class.html">vegtable</a> including those
 results at the slot <code>header</code>.</p>
     </div>
@@ -225,7 +250,7 @@ results at the slot <code>header</code>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

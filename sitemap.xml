@@ -58,9 +58,6 @@
     <loc>http://kamapu.github.io/vegtable/reference/df2vegtable.html</loc>
   </url>
   <url>
-    <loc>http://kamapu.github.io/vegtable/reference/diversity.html</loc>
-  </url>
-  <url>
     <loc>http://kamapu.github.io/vegtable/reference/dune_veg-data.html</loc>
   </url>
   <url>
@@ -113,6 +110,9 @@
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/used_synonyms.html</loc>
+  </url>
+  <url>
+    <loc>http://kamapu.github.io/vegtable/reference/veg_diversity.html</loc>
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/veg_relation.html</loc>
