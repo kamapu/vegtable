@@ -104,7 +104,7 @@ setMethod(
 setMethod(
   "count_taxa", signature(object = "formula", data = "vegtable"),
   function(object, data, include_lower = FALSE, suffix = "_count",
-           in_header = FALSE, ...) {
+           in_header = TRUE, ...) {
     data_in <- data
     nr_response <- attr(terms(object), "response")
     name_response <- as.character(object)[2]

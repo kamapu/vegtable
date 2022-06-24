@@ -96,7 +96,7 @@ setGeneric(
 setMethod(
   "trait_stats", signature(trait = "character", object = "vegtable"),
   function(trait, object, FUN, head_var, taxon_level, merge_to, weight,
-           suffix = "_stats", in_header = FALSE, ...) {
+           suffix = "_stats", in_header = TRUE, ...) {
     object_in <- object
     object@species <- tax2traits(object@species, get_names = TRUE)
     # Cross-check
@@ -194,7 +194,7 @@ setMethod(
 #'
 setMethod(
   "trait_stats", signature(trait = "formula", object = "vegtable"),
-  function(trait, object, weight, suffix = "_stats", in_header = FALSE, ...) {
+  function(trait, object, weight, suffix = "_stats", in_header = TRUE, ...) {
     head_var <- all.vars(update(trait, 0 ~ .))
     trait <- all.vars(update(trait, . ~ 0))
     OUT <- list()
@@ -258,7 +258,7 @@ setGeneric(
 setMethod(
   "trait_proportion", signature(trait = "character", object = "vegtable"),
   function(trait, object, head_var, trait_level, taxon_level, merge_to,
-           include_nas = TRUE, weight, suffix = "_prop", in_header = FALSE,
+           include_nas = TRUE, weight, suffix = "_prop", in_header = TRUE,
            ...) {
     object_in <- object
     if (!missing(taxon_level) | !missing(merge_to)) {

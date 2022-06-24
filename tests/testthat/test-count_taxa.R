@@ -14,13 +14,13 @@ test_that("counting taxa is working", {
   )
   expect_is(
     count_taxa(object = species ~ ReleveID, data = Kenya_veg),
-    "data.frame"
+    "vegtable"
   )
   expect_is(
     count_taxa(
       object = species ~ ReleveID, data = Kenya_veg,
-      in_header = TRUE
+      in_header = FALSE
     ),
-    "vegtable"
+    "data.frame"
   )
 })

@@ -51,9 +51,9 @@
 #' Functions `shannon()`, `evenness()`, `dominance()`, `simpson()`, and
 #' `richness()` return a numeric value (the calculated index).
 #'
-#' Funtion `veg_diversity()` produce either a data frame with calculated values per
-#' plot observation (option `'in_header = FALSE'`) or a [vegtable-class] object
-#' with the calculated values inserted in the slot **header**
+#' Funtion `veg_diversity()` produce either a data frame with calculated values
+#' per plot observation (option `'in_header = FALSE'`) or a [vegtable-class]
+#' object with the calculated values inserted in the slot **header**
 #' (option `'in_header = TRUE'`).
 #'
 #' @aliases shannon
@@ -105,8 +105,8 @@ veg_diversity <- function(object, ...) {
 #' @aliases veg_diversity,vegtable-method
 #' @method veg_diversity vegtable
 #' @export
-veg_diversity.vegtable <- function(object, weight, FUN = shannon, aggr_fun = mean,
-                                   arg_fun = list(), var_name, in_header = FALSE,
+veg_diversity.vegtable <- function(object, weight, FUN = shannon,
+                                   aggr_fun = mean, arg_fun = list(), var_name, in_header = TRUE,
                                    ...) {
   if (!weight %in% names(object@samples)) {
     stop(paste0(

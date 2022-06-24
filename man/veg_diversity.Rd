@@ -31,7 +31,7 @@ veg_diversity(object, ...)
   aggr_fun = mean,
   arg_fun = list(),
   var_name,
-  in_header = FALSE,
+  in_header = TRUE,
   ...
 )
 }
@@ -74,9 +74,9 @@ input object.}
 Functions \code{shannon()}, \code{evenness()}, \code{dominance()}, \code{simpson()}, and
 \code{richness()} return a numeric value (the calculated index).
 
-Funtion \code{veg_diversity()} produce either a data frame with calculated values per
-plot observation (option \code{'in_header = FALSE'}) or a \linkS4class{vegtable} object
-with the calculated values inserted in the slot \strong{header}
+Funtion \code{veg_diversity()} produce either a data frame with calculated values
+per plot observation (option \code{'in_header = FALSE'}) or a \linkS4class{vegtable}
+object with the calculated values inserted in the slot \strong{header}
 (option \code{'in_header = TRUE'}).
 }
 \description{

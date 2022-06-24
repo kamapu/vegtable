@@ -20,11 +20,11 @@ trait_stats(trait, object, ...)
   merge_to,
   weight,
   suffix = "_stats",
-  in_header = FALSE,
+  in_header = TRUE,
   ...
 )
 
-\S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix = "_stats", in_header = FALSE, ...)
+\S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix = "_stats", in_header = TRUE, ...)
 
 trait_proportion(trait, object, ...)
 
@@ -38,7 +38,7 @@ trait_proportion(trait, object, ...)
   include_nas = TRUE,
   weight,
   suffix = "_prop",
-  in_header = FALSE,
+  in_header = TRUE,
   ...
 )
 

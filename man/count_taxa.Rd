@@ -15,7 +15,7 @@
   data,
   include_lower = FALSE,
   suffix = "_count",
-  in_header = FALSE,
+  in_header = TRUE,
   ...
 )
 

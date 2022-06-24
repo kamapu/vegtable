@@ -9,8 +9,10 @@ vegtable 0.1.8
 ## Improvements
 
 * Slot **relations** may deal with any element that canbe coerced to
-`data.frame`.
+  `data.frame`.
 * All elements in slot **syntax** have to be of class `taxlist`
+* Parameter `in_header` defined in several functions is set as
+  `in_header = TRUE`. 
 
 ## Bug Fixes
 

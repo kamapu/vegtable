@@ -23,24 +23,21 @@ test_that("add_releves is working", {
   expect_is(
     add_releves(
       vegtable = Bussmann2002,
-      releves = cross_table, abundance = "b_bbds",
-      layers = TRUE, layers_var = "LAYER"
+      releves = cross_table, abundance = "b_bbds"
     ),
     "vegtable"
   )
   expect_is(
     add_releves(
       vegtable = Bussmann2002, releves = db_list,
-      abundance = "b_bbds", layers = TRUE,
-      layers_var = "LAYER", format = "databaselist"
+      abundance = "b_bbds", format = "databaselist"
     ),
     "vegtable"
   )
   expect_is(
     add_releves(
       vegtable = Bussmann2002, releves = db_list,
-      abundance = "b_bbds", layers = TRUE,
-      layers_var = "LAYER", format = "databaselist"
+      abundance = "b_bbds", format = "databaselist"
     ),
     "vegtable"
   )
