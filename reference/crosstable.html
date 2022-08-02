@@ -8,7 +8,7 @@ Additional variables used for rows (\ldots{}) can be for instance the
 layers.
 For objects of class vegtable, the formula can also include
 variables from the species list (for example AcceptedName, AuthorName)
-or even taxon traits."><title>Generating cross tables from database lists — crosstable • vegtable</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Generating cross tables from database lists — crosstable"><meta property="og:description" content="This function is generating cross tables, which are the most common format
+or even taxon traits."><title>Generating cross tables from database lists — crosstable • vegtable</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Generating cross tables from database lists — crosstable"><meta property="og:description" content="This function is generating cross tables, which are the most common format
 used by statistical packages analysing vegetation data (e.g. vegan::vegan).
 Most applications and displays of vegetation data use preferentially the
 cross table format. For convenience, the formula has the form
@@ -78,23 +78,23 @@ or even taxon traits.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">crosstable</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for formula,data.frame</span>
-<span class="fu">crosstable</span><span class="op">(</span>
-  <span class="va">formula</span>,
-  <span class="va">data</span>,
-  <span class="va">FUN</span>,
-  na_to_zero <span class="op">=</span> <span class="cn">FALSE</span>,
-  use_nas <span class="op">=</span> <span class="cn">TRUE</span>,
-  as_matrix <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S4 method for formula,vegtable</span>
-<span class="fu">crosstable</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">FUN</span>, na_to_zero <span class="op">=</span> <span class="cn">FALSE</span>, use_nas <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">cross2db</span><span class="op">(</span><span class="va">object</span>, layers <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">na_strings</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crosstable</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for formula,data.frame</span></span>
+<span><span class="fu">crosstable</span><span class="op">(</span></span>
+<span>  <span class="va">formula</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">FUN</span>,</span>
+<span>  na_to_zero <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  use_nas <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  as_matrix <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for formula,vegtable</span></span>
+<span><span class="fu">crosstable</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">FUN</span>, na_to_zero <span class="op">=</span> <span class="cn">FALSE</span>, use_nas <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cross2db</span><span class="op">(</span><span class="va">object</span>, layers <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">na_strings</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -156,17 +156,17 @@ or not.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">Kenya_veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, <span class="va">REFERENCE</span> <span class="op">==</span> <span class="fl">2331</span>, slot <span class="op">=</span> <span class="st">"header"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## transform cover to percentage</span></span>
-<span class="r-in"><span class="va">Kenya_veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="cover_trans.html">cover_trans</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, to <span class="op">=</span> <span class="st">"cover_perc"</span>, rule <span class="op">=</span> <span class="st">"middle"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## cross table of the first 5 plots</span></span>
-<span class="r-in"><span class="va">Cross</span> <span class="op">&lt;-</span> <span class="fu">crosstable</span><span class="op">(</span><span class="va">cover_perc</span> <span class="op">~</span> <span class="va">ReleveID</span> <span class="op">+</span> <span class="va">AcceptedName</span> <span class="op">+</span> <span class="va">AuthorName</span>,</span>
-<span class="r-in">  <span class="va">Kenya_veg</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, <span class="va">mean</span>,</span>
-<span class="r-in">  na_to_zero <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Cross</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">Kenya_veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="subset.html">subset</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, <span class="va">REFERENCE</span> <span class="op">==</span> <span class="fl">2331</span>, slot <span class="op">=</span> <span class="st">"header"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## transform cover to percentage</span></span></span>
+<span class="r-in"><span><span class="va">Kenya_veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="cover_trans.html">cover_trans</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, to <span class="op">=</span> <span class="st">"cover_perc"</span>, rule <span class="op">=</span> <span class="st">"middle"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## cross table of the first 5 plots</span></span></span>
+<span class="r-in"><span><span class="va">Cross</span> <span class="op">&lt;-</span> <span class="fu">crosstable</span><span class="op">(</span><span class="va">cover_perc</span> <span class="op">~</span> <span class="va">ReleveID</span> <span class="op">+</span> <span class="va">AcceptedName</span> <span class="op">+</span> <span class="va">AuthorName</span>,</span></span>
+<span class="r-in"><span>  <span class="va">Kenya_veg</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>, <span class="va">mean</span>,</span></span>
+<span class="r-in"><span>  na_to_zero <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">Cross</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               AcceptedName                AuthorName 1940 1937 1938 1939 1941</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      Commiphora africana          (A. Rich.) Engl.  0.5    0    0    0  0.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     Eragrostis macilenta         (A. Rich.) Steud.  3.0    3    3    3  0.0</span>
@@ -185,7 +185,7 @@ or not.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer></div>
