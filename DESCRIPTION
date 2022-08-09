@@ -55,7 +55,7 @@ Collate:
 	'names.R'
 	'tv2vegtable.R'
 	'crosstable.R'
-	'aggregate.R'
+	'veg_aggregate.R'
 	'write_juice.R'
 	'vegtable2kml.R'
 	'layers2samples.R'

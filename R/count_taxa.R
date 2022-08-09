@@ -37,9 +37,9 @@
 #' @examples
 #' ## Different alternatives
 #' count_taxa(Kenya_veg)
-#' head(count_taxa(~ReleveID, Kenya_veg))
-#' head(count_taxa(species ~ ReleveID, Kenya_veg))
-#' head(count_taxa(species ~ ReleveID, Kenya_veg, TRUE))
+#' head(count_taxa(~ReleveID, Kenya_veg, in_header = FALSE))
+#' head(count_taxa(species ~ ReleveID, Kenya_veg, in_header = FALSE))
+#' head(count_taxa(species ~ ReleveID, Kenya_veg, TRUE, in_header = FALSE))
 #' head(count_taxa(family ~ ReleveID, Kenya_veg, TRUE))
 #'
 #' @rdname count_taxa
@@ -113,25 +113,9 @@ setMethod(
       stop("More than one response in formula are not allowed.")
     }
     if (nr_response == 1 & include_lower) {
-      data <- taxa2samples(data, name_response)
+      data <- taxa2samples(data, name_response, add_relations = TRUE)
     } else {
-      data <- taxa2samples(data)
-    }
-    if (nr_response == 1) {
-      concepts <- with(
-        data@species@taxonNames,
-        TaxonConceptID[match(
-          data@samples$TaxonUsageID,
-          TaxonUsageID
-        )]
-      )
-      concept_levels <- with(
-        data@species@taxonRelations,
-        as.integer(Level)[match(concepts, TaxonConceptID)]
-      )
-      data@samples$TaxonUsageID[!concept_levels ==
-        which(levels(data@species) == name_response)] <-
-        NA
+      data <- taxa2samples(data, add_relations = TRUE)
     }
     object <- as.formula(paste(
       "TaxonUsageID ~",
@@ -142,7 +126,7 @@ setMethod(
     if (all(is.na(data@samples$TaxonUsageID))) {
       stop("No records for requested taxon rank.")
     }
-    data <- aggregate(object, data, function(x) length(unique(x)), ...)
+    data <- veg_aggregate(object, data, function(x) length(unique(x)), ...)
     if (name_response == "ReleveID") name_response <- "taxa"
     colnames(data)[colnames(data) == "TaxonUsageID"] <-
       paste0(name_response, suffix)
