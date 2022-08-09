@@ -24,12 +24,12 @@
 #' @return An object of class [vegtable-class].
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
-#' 
+#'
 #' @examples
 #' ## Effect of taxa2samples by counting taxa
 #' Kenya_veg <- taxa2samples(Kenya_veg, merge_to = "genus")
-#' head(Kenya_veg@@samples)
-#' 
+#' head(Kenya_veg@samples)
+#'
 #' @rdname taxa2samples
 #'
 #' @aliases taxa2samples
@@ -42,7 +42,7 @@ taxa2samples <- function(object, ...) {
 #' @rdname taxa2samples
 #' @aliases taxa2samples,vegtable-method
 #' @method taxa2samples vegtable
-#' @export 
+#' @export
 taxa2samples.vegtable <- function(object, merge_to, include_levels,
                                   add_relations = FALSE, add_traits = FALSE,
                                   ...) {

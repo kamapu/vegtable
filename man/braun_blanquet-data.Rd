@@ -4,15 +4,7 @@
 \name{braun_blanquet-data}
 \alias{braun_blanquet-data}
 \alias{braun_blanquet}
-\title{Conversion of Braun-Blanquet codes to cover percentage
-
-Cover values conversion as \linkS4class{coverconvert} object.
-
-Object of class \linkS4class{coverconvert} contains conversion tables
-usually from a categorical variable (a cover scale) to a numerical one
-(equivalent percentage cover value).
-Cover values are stored as range for each level in the scale (minimum and
-maximum cover value).}
+\title{Conversion of Braun-Blanquet codes to cover percentage}
 \format{
 An object of class \code{\linkS4class{coverconvert}}.
 }
@@ -20,8 +12,6 @@ An object of class \code{\linkS4class{coverconvert}}.
 braun_blanquet
 }
 \description{
-Conversion of Braun-Blanquet codes to cover percentage
-
 Cover values conversion as \linkS4class{coverconvert} object.
 
 Object of class \linkS4class{coverconvert} contains conversion tables

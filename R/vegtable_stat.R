@@ -21,7 +21,7 @@
 #' @export
 #'
 vegtable_stat <- function(vegtable) {
-  if (class(vegtable) != "vegtable") {
+  if (!is(vegtable, "vegtable")) {
     stop("vegtable must be an object of class 'vegtable'.")
   }
   summary(vegtable)

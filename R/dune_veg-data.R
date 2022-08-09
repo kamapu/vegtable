@@ -4,6 +4,7 @@
 #'
 #' @title Dutch dune meadows as vegtable
 #'
+#' @description
 #' Data set from the package [vegan::vegan], converted to a [vegtable-class]
 #' object.
 #'

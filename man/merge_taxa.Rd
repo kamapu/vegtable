@@ -5,17 +5,11 @@
 \alias{merge_taxa,vegtable,numeric,missing-method}
 \alias{merge_taxa,vegtable,missing,character-method}
 \alias{merge_taxa,vegtable,missing,missing-method}
-\alias{taxa2samples}
-\alias{taxa2samples,vegtable-method}
 \title{Merge concepts}
 \usage{
 \S4method{merge_taxa}{vegtable,numeric,missing}(object, concepts, level, ...)
 
 \S4method{merge_taxa}{vegtable,missing,character}(object, concepts, level, ...)
-
-taxa2samples(object, ...)
-
-\S4method{taxa2samples}{vegtable}(object, merge_to, include_levels, na.rm = FALSE, add_traits, ...)
 }
 \arguments{
 \item{object}{Object of class \linkS4class{vegtable}.}
@@ -23,19 +17,10 @@ taxa2samples(object, ...)
 \item{concepts}{Numeric (integer) vector including taxon concepts to be
 merged.}
 
-\item{level, merge_to}{Character value indicating the level to which the taxa
+\item{level}{Character value indicating the level to which the taxa
 have to be merged.}
 
 \item{...}{Further arguments passed to \code{\link[taxlist:merge_taxa]{taxlist::merge_taxa()}}.}
-
-\item{include_levels}{Character vector indicating the levels to be considered
-in the output object. It can be used to exclude some taxonomic ranks.}
-
-\item{na.rm}{Logical value. Apply to records with missing information on
-taxonomic rank (i.e. for undetermined specimens).}
-
-\item{add_traits}{A character vector indicating variables in the slot
-\code{taxonTraits} to be added in slot \code{samples}.}
 }
 \value{
 An object of class \linkS4class{vegtable}.

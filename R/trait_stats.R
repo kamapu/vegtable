@@ -125,9 +125,9 @@ setMethod(
     }
     # Transfer traits to samples
     if (missing(merge_to)) {
-      object <- taxa2samples(object, add_traits = trait)
+      object <- taxa2samples(object, add_traits = TRUE)
     } else {
-      object <- taxa2samples(object, merge_to, trait)
+      object <- taxa2samples(object, merge_to, TRUE)
     }
     # Transfer head variable to samples
     if (!missing(head_var)) {
@@ -311,9 +311,9 @@ setMethod(
     }
     # Transfer traits to samples
     if (missing(merge_to)) {
-      object <- taxa2samples(object, add_traits = trait)
+      object <- taxa2samples(object, add_traits = TRUE)
     } else {
-      object <- taxa2samples(object, merge_to, trait)
+      object <- taxa2samples(object, merge_to, TRUE)
     }
     # Transfer head variable to samples
     if (!missing(head_var)) {

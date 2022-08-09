@@ -41,6 +41,7 @@
 #' head(count_taxa(species ~ ReleveID, Kenya_veg))
 #' head(count_taxa(species ~ ReleveID, Kenya_veg, TRUE))
 #' head(count_taxa(family ~ ReleveID, Kenya_veg, TRUE))
+#'
 #' @rdname count_taxa
 #'
 #' @exportMethod count_taxa

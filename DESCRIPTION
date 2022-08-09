@@ -50,6 +50,7 @@ Collate:
 	'vegtable_stat.R'
 	'df2vegtable.R'
 	'used_synonyms.R'
+	'taxa2samples.R'
 	'subset.R'
 	'names.R'
 	'tv2vegtable.R'
@@ -71,4 +72,4 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'vegtable-deprecated.R'
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1

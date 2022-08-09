@@ -20,112 +20,84 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @seealso [stats::aggregate()]
+#' @seealso [stats::aggregate][aggregate()]
 #'
-#' @exportMethod aggregate
-#'
-setMethod(
-  "aggregate", signature(x = "formula"),
-  function(x, data, FUN, use_nas = TRUE, ...) {
-    if (class(data) != "vegtable") {
-      return(stats::aggregate(x, data, FUN, ...))
-    } else {
-      Terms <- c(as.character(x)[2], attr(
-        terms(x),
-        "term.labels"
-      ))
-      data@samples <- data@samples[, colnames(data@samples) %in%
-        c("ReleveID", "TaxonUsageID", Terms)]
-      # Data from species
-      data@samples$TaxonConceptID <- data@species@taxonNames[
-        match(
-          data@samples$TaxonUsageID,
-          data@species@taxonNames$TaxonUsageID
-        ),
-        "TaxonConceptID"
-      ]
-      if ("TaxonName" %in% Terms & "AcceptedName" %in% Terms) {
-        stop("Terms 'TaxonName' and 'AcceptedName' are mutually exclusive in 'formula'")
-      }
-      # 1: when usage name requested
-      if ("TaxonName" %in% Terms) {
-        data@samples$TaxonName <- data@species@taxonNames[
-          match(
-            data@samples$TaxonUsageID,
-            data@species@taxonNames$TaxonUsageID
-          ),
-          "TaxonName"
-        ]
-        data@samples$AuthorName <- data@species@taxonNames[
-          match(
-            data@samples$TaxonUsageID,
-            data@species@taxonNames$TaxonUsageID
-          ),
-          "AuthorName"
-        ]
-      }
-      # 2: when accepted name requested
-      if ("AcceptedName" %in% Terms) {
-        data@samples$AcceptedName <- data@species@taxonRelations[
-          match(
-            data@samples$TaxonConceptID,
-            data@species@taxonRelations$TaxonConceptID
-          ),
-          "AcceptedName"
-        ]
-        data@samples$AuthorName <- data@species@taxonNames[
-          match(
-            data@samples$AcceptedName,
-            data@species@taxonNames$TaxonUsageID
-          ),
-          "AuthorName"
-        ]
-        data@samples$AcceptedName <- data@species@taxonNames[
-          match(
-            data@samples$AcceptedName,
-            data@species@taxonNames$TaxonUsageID
-          ),
-          "TaxonName"
-        ]
-      }
-      # Data from traits (only for Accepted Name or TaxonConceptID)
-      traits_names <- colnames(data@species@taxonTraits)[
-        colnames(data@species@taxonTraits) != "TaxonConceptID"
-      ]
-      if (any(Terms %in% traits_names)) {
-        traits_names <- traits_names[traits_names %in% Terms]
-        for (i in traits_names) {
-          data@samples[, i] <- data@species@taxonTraits[
-            match(
-              data@samples$TaxonConceptID,
-              data@species@taxonTraits$TaxonConceptID
-            ), i
-          ]
-        }
-      }
-      # Data from header
-      header_names <- colnames(data@header)[colnames(data@header) !=
-        "ReleveID"]
-      if (any(header_names %in% Terms)) {
-        header_names <- header_names[header_names %in% Terms]
-        for (i in header_names) {
-          data@samples[, i] <- data@header[match(
-            data@samples$ReleveID,
-            data@header$ReleveID
-          ), i]
-        }
-      }
-      if (use_nas) {
-        for (i in Terms[-1]) {
-          if (is.factor(data@samples[, i])) {
-            data@samples[, i] <- paste(data@samples[, i])
-          }
-          if (is.character(data@samples[, i])) {
-            data@samples[is.na(data@samples[, i]), i] <- ""
-          }
-        }
-      }
-      return(stats::aggregate(x, data@samples, FUN, ...))
+#' @method aggregate formula
+#' @export
+aggregate.formula <- function(x, data, FUN, use_nas = TRUE, ...) {
+  if (!is(data, "vegtable")) {
+    return(stats::aggregate(x, data, FUN, ...))
+  } else {
+    Terms <- c(as.character(x)[2], attr(
+      terms(x),
+      "term.labels"
+    ))
+    if (any(Terms %in% names(data@species@taxonTraits))) {
+      data <- taxa2samples(data, add_traits = TRUE)
     }
+    if (any(c("TaxonName", "AcceptedName") %in% Terms)) {
+      if (all(c("TaxonName", "AcceptedName") %in% Terms)) {
+        stop(paste(
+          "Terms 'TaxonName' and 'AcceptedName'",
+          "are mutually exclusive in 'formula'"
+        ))
+      }
+      data <- taxa2samples(data)
+    }
+    # Variables from samples
+    if (any(Terms %in% data@samples)) {
+      new_data <- data@samples[, colnames(data@samples) %in%
+        c("ReleveID", "TaxonUsageID", "TaxonConceptID", Terms)]
+    } else {
+      if (any(Terms %in% c("TaxonName", "AcceptedName"))) {
+        new_data <- data@samples[
+          ,
+          c("ReleveID", "TaxonUsageID", "TaxonConceptID")
+        ]
+      } else {
+        new_data <- data.frame(ReleveID = integer())
+      }
+    }
+    # 1: when usage name requested
+    if ("TaxonName" %in% Terms) {
+      new_data$TaxonName <- data@species@taxonNames$TaxonName[
+        match(new_data$TaxonUsageID, data@species@taxonNames$TaxonUsageID)
+      ]
+      new_data$AuthorName <- data@species@taxonNames$AuthorName[
+        match(new_data$TaxonUsageID, data@species@taxonNames$TaxonUsageID)
+      ]
+    }
+    # 2: when accepted name requested
+    if ("AcceptedName" %in% Terms) {
+      new_data$AcceptedNameID <- data@species@taxonRelations$AcceptedName[
+        match(
+          new_data$TaxonConceptID,
+          data@species@taxonRelations$TaxonConceptID
+        )
+      ]
+      new_data$AcceptedName <- data@species@taxonNames$TaxonName[
+        match(new_data$AcceptedNameID, data@species@taxonNames$TaxonUsageID)
+      ]
+      new_data$AuthorName <- data@species@taxonNames$AuthorName[
+        match(new_data$AcceptedNameID, data@species@taxonNames$TaxonUsageID)
+      ]
+    }
+    # Data from header
+    if (any(Terms %in% names(data@header))) {
+      new_data <- merge(new_data, data@header[, names(data@header) %in%
+        c("ReleveID", Terms)], sort = FALSE, all.y = TRUE)
+    }
+    # Call aggregate on new_data
+    if (use_nas) {
+      for (i in Terms[-1]) {
+        if (is.factor(new_data[, i])) {
+          new_data[, i] <- paste(new_data[, i])
+        }
+        if (is.character(new_data[, i])) {
+          new_data[is.na(new_data[, i]), i] <- ""
+        }
+      }
+    }
+    return(stats::aggregate(x, new_data, FUN, ...))
   }
-)
+}

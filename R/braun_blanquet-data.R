@@ -4,6 +4,7 @@
 #'
 #' @title Conversion of Braun-Blanquet codes to cover percentage
 #'
+#' @description
 #' Cover values conversion as [coverconvert-class] object.
 #'
 #' Object of class [coverconvert-class] contains conversion tables

@@ -9,7 +9,6 @@
 ^data-raw$
 ^data-model$
 ^build-pkg$
-^lab$
 ^\.github$
 ^_pkgdown\.yml$
 ^docs$

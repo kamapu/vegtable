@@ -44,6 +44,12 @@ information into the slot samples.
 This function is also used internally by functions such as
 \link[=count_taxa]{vegtable::count_taxa()}.
 }
+\examples{
+## Effect of taxa2samples by counting taxa
+Kenya_veg <- taxa2samples(Kenya_veg, merge_to = "genus")
+head(Kenya_veg@samples)
+
+}
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
 }

@@ -4,10 +4,7 @@
 \name{dune_veg-data}
 \alias{dune_veg-data}
 \alias{dune_veg}
-\title{Dutch dune meadows as vegtable
-
-Data set from the package \link[vegan:vegan-package]{vegan::vegan}, converted to a \linkS4class{vegtable}
-object.}
+\title{Dutch dune meadows as vegtable}
 \format{
 An object of class \code{\linkS4class{vegtable}}.
 }
@@ -18,8 +15,6 @@ Original data were imported from \link[vegan:dune]{vegan::dune}.
 dune_veg
 }
 \description{
-Dutch dune meadows as vegtable
-
 Data set from the package \link[vegan:vegan-package]{vegan::vegan}, converted to a \linkS4class{vegtable}
 object.
 }

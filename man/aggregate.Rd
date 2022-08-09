@@ -2,10 +2,11 @@
 % Please edit documentation in R/aggregate.R
 \name{aggregate}
 \alias{aggregate}
+\alias{aggregate.formula}
 \alias{aggregate,formula-method}
 \title{Aggregating information into a data frame}
 \usage{
-\S4method{aggregate}{formula}(x, data, FUN, use_nas = TRUE, ...)
+\method{aggregate}{formula}(x, data, FUN, use_nas = TRUE, ...)
 }
 \arguments{
 \item{x}{A formula indicating the variables used for the summary.}
@@ -29,7 +30,7 @@ to a summarizing data frame.
 This function works in a similar way as \code{\link[=crosstable]{crosstable()}}.
 }
 \seealso{
-\code{\link[stats:aggregate]{stats::aggregate()}}
+\link[=aggregate]{stats::aggregate}
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
