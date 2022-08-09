@@ -112,23 +112,42 @@ setMethod(
     if (nr_response > 1) {
       stop("More than one response in formula are not allowed.")
     }
-    if (nr_response == 1 & include_lower) {
-      data <- taxa2samples(data, name_response, add_relations = TRUE)
+    if (nr_response == 1) {
+      if (!name_response %in% levels(data@species)) {
+        stop("The response in the formula is not a rank in 'data'.")
+      }
+      object <- as.formula(paste(
+        "TaxonConceptID ~",
+        paste(attr(terms(object), "term.labels"),
+          collapse = " + "
+        )
+      ))
+      if (include_lower) {
+        data <- taxa2samples(data,
+          merge_to = name_response,
+          include_levels = name_response, add_relations = TRUE
+        )
+      } else {
+        data <- taxa2samples(data,
+          include_levels = name_response,
+          add_relations = TRUE
+        )
+      }
+      if (all(is.na(data@samples$TaxonConceptID))) {
+        stop("No records for requested taxon rank.")
+      }
     } else {
       data <- taxa2samples(data, add_relations = TRUE)
+      object <- as.formula(paste(
+        "TaxonUsageID ~",
+        paste(attr(terms(object), "term.labels"),
+          collapse = " + "
+        )
+      ))
     }
-    object <- as.formula(paste(
-      "TaxonUsageID ~",
-      paste(attr(terms(object), "term.labels"),
-        collapse = " + "
-      )
-    ))
-    if (all(is.na(data@samples$TaxonUsageID))) {
-      stop("No records for requested taxon rank.")
-    }
-    data <- veg_aggregate(object, data, function(x) length(unique(x)), ...)
+    data <- aggregate(object, data@samples, function(x) length(unique(x)), ...)
     if (name_response == "ReleveID") name_response <- "taxa"
-    colnames(data)[colnames(data) == "TaxonUsageID"] <-
+    colnames(data)[colnames(data) %in% c("TaxonUsageID", "TaxonConceptID")] <-
       paste0(name_response, suffix)
     if (colnames(data)[1] != "ReleveID" & in_header) {
       warning("'ReleveID' is not included as factor in formula")
