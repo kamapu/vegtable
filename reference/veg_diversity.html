@@ -73,7 +73,7 @@ as alternative to count_taxa()."><!-- mathjax --><script src="https://cdnjs.clou
     <p>Calculation of diversity statistics at the plot level allowing for customized
 functions defined as <code>foo(x, ...)</code>, where <code>x</code> is the vector of abundance
 values.</p>
-<p>This function calls <code><a href="merge_taxa.html">taxa2samples()</a></code> to derive taxa from taxon usage names in
+<p>This function calls <code><a href="taxa2samples.html">taxa2samples()</a></code> to derive taxa from taxon usage names in
 slot <strong>samples</strong> and multiple records of species in a single plot will be
 merged by <code><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">stats::aggregate()</a></code>.</p>
 <p>The functions <code>shannon()</code>, <code>evenness()</code>, and <code>dominance()</code> calculate the
@@ -149,7 +149,7 @@ default.</p></dd>
 
 <dt>arg_fun</dt>
 <dd><p>A named list with parameters and arguments passed to
-<code><a href="merge_taxa.html">taxa2samples()</a></code>, which will
+<code><a href="taxa2samples.html">taxa2samples()</a></code>, which will
 retrieve the respective taxon concept for each taxon usage name and can
 be used to merge taxa at a determined taxonomic rank, for instance to
 merge all sub-specific taxa into their respective species

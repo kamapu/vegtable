@@ -68,8 +68,8 @@ traits if indicated in argument add_traits."><!-- mathjax --><script src="https:
 samples.</p>
 <p>This method is applied to a function defined in the package <a href="https://docs.ropensci.org/taxlist/reference/taxlist-package.html" class="external-link">taxlist-package</a>
 and only modify the slot <code>species</code> in the input <code>object</code>.</p>
-<p>The use of <code>taxa2samples()</code> with <code>merge_to</code> argument will produce a similar
-result as using <code>merge_taxa</code> with <code>level</code> argument, but <code>taxa2samples()</code>
+<p>The use of <code><a href="taxa2samples.html">taxa2samples()</a></code> with <code>merge_to</code> argument will produce a similar
+result as using <code>merge_taxa</code> with <code>level</code> argument, but <code><a href="taxa2samples.html">taxa2samples()</a></code>
 will replace the records in slot samples by the respective accepted names
 without any modification in slot species.
 Additionally taxon concept IDs will be addes as columns in samples and taxon
@@ -82,12 +82,7 @@ traits if indicated in argument <code>add_traits</code>.</p>
 <span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for vegtable,missing,character</span></span>
-<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">taxa2samples</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for vegtable</span></span>
-<span><span class="fu">taxa2samples</span><span class="op">(</span><span class="va">object</span>, <span class="va">merge_to</span>, <span class="va">include_levels</span>, na.rm <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">add_traits</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">merge_taxa</span><span class="op">(</span><span class="va">object</span>, <span class="va">concepts</span>, <span class="va">level</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -101,28 +96,13 @@ traits if indicated in argument <code>add_traits</code>.</p>
 merged.</p></dd>
 
 
-<dt>level, merge_to</dt>
+<dt>level</dt>
 <dd><p>Character value indicating the level to which the taxa
 have to be merged.</p></dd>
 
 
 <dt>...</dt>
 <dd><p>Further arguments passed to <code><a href="https://docs.ropensci.org/taxlist/reference/merge_taxa.html" class="external-link">taxlist::merge_taxa()</a></code>.</p></dd>
-
-
-<dt>include_levels</dt>
-<dd><p>Character vector indicating the levels to be considered
-in the output object. It can be used to exclude some taxonomic ranks.</p></dd>
-
-
-<dt>na.rm</dt>
-<dd><p>Logical value. Apply to records with missing information on
-taxonomic rank (i.e. for undetermined specimens).</p></dd>
-
-
-<dt>add_traits</dt>
-<dd><p>A character vector indicating variables in the slot
-<code>taxonTraits</code> to be added in slot <code>samples</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -195,9 +175,9 @@ taxonomic rank (i.e. for undetermined specimens).</p></dd>
 <span class="r-in"><span><span class="fu"><a href="count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 90</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">Kenya_veg</span> <span class="op">&lt;-</span> <span class="fu">taxa2samples</span><span class="op">(</span><span class="va">Kenya_veg</span>, merge_to <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Kenya_veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="taxa2samples.html">taxa2samples</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, merge_to <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="count_taxa.html">count_taxa</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 699</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 90</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
