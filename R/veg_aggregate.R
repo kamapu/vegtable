@@ -1,5 +1,5 @@
-#' @name aggregate
-#' @aliases aggregate,formula-method
+#' @name veg_aggregate
+#' @rdname veg_aggregate
 #'
 #' @title Aggregating information into a data frame
 #'
@@ -9,7 +9,7 @@
 #'
 #' This function works in a similar way as [crosstable()].
 #'
-#' @param x A formula indicating the variables used for the summary.
+#' @param object A formula indicating the variables used for the summary.
 #' @param data Either a data frame or an object of class [vegtable-class].
 #' @param FUN Function used to aggregate values.
 #' @param use_nas Logical value indicating whether NA's should be included in
@@ -20,16 +20,26 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @seealso [stats::aggregate][aggregate()]
+#' @seealso [aggregate()]
 #'
-#' @method aggregate formula
-#' @export
-aggregate.formula <- function(x, data, FUN, use_nas = TRUE, ...) {
-  if (!is(data, "vegtable")) {
-    return(stats::aggregate(x, data, FUN, ...))
-  } else {
-    Terms <- c(as.character(x)[2], attr(
-      terms(x),
+#' @exportMethod veg_aggregate
+setGeneric(
+  "veg_aggregate",
+  function(object, data, FUN, ...) {
+    standardGeneric("veg_aggregate")
+  }
+)
+
+#' @rdname veg_aggregate
+#' @aliases veg_aggregate,formula,vegtable,function-method
+setMethod(
+  "veg_aggregate", signature(
+    object = "formula", data = "vegtable",
+    FUN = "function"
+  ),
+  function(object, data, FUN, use_nas = TRUE, ...) {
+    Terms <- c(as.character(object)[2], attr(
+      terms(object),
       "term.labels"
     ))
     if (any(Terms %in% names(data@species@taxonTraits))) {
@@ -45,9 +55,9 @@ aggregate.formula <- function(x, data, FUN, use_nas = TRUE, ...) {
       data <- taxa2samples(data)
     }
     # Variables from samples
-    if (any(Terms %in% data@samples)) {
+    if (any(Terms %in% names(data@samples))) {
       new_data <- data@samples[, colnames(data@samples) %in%
-        c("ReleveID", "TaxonUsageID", "TaxonConceptID", Terms)]
+        c("ReleveID", "TaxonUsageID", "TaxonConceptID", Terms), drop = FALSE]
     } else {
       if (any(Terms %in% c("TaxonName", "AcceptedName"))) {
         new_data <- data@samples[
@@ -85,7 +95,7 @@ aggregate.formula <- function(x, data, FUN, use_nas = TRUE, ...) {
     # Data from header
     if (any(Terms %in% names(data@header))) {
       new_data <- merge(new_data, data@header[, names(data@header) %in%
-        c("ReleveID", Terms)], sort = FALSE, all.y = TRUE)
+        c("ReleveID", Terms), drop = FALSE], sort = FALSE, all.y = TRUE)
     }
     # Call aggregate on new_data
     if (use_nas) {
@@ -98,6 +108,6 @@ aggregate.formula <- function(x, data, FUN, use_nas = TRUE, ...) {
         }
       }
     }
-    return(stats::aggregate(x, new_data, FUN, ...))
+    return(aggregate(object, new_data, FUN, ...))
   }
-}
+)

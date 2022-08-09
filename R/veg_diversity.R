@@ -44,7 +44,7 @@
 #'     included as variables in the slot **header** of the input object.
 #'     If `'in_header = TRUE'`, you may assign the result of the function to the
 #'     input object.
-#' @param ... Further arguments passed to `'FUN'` by [stats::aggregate()] in
+#' @param ... Further arguments passed to `'FUN'` by [aggregate()] in
 #'     function `'veg_diversity()'`.
 #'
 #' @return
