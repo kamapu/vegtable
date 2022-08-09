@@ -41,7 +41,7 @@ veg_diversity(object, ...)
 \item{na.rm}{A logical value indicating whether NA values should be removed
 from the abundance vector or not.}
 
-\item{...}{Further arguments passed to \code{'FUN'} by \code{\link[stats:aggregate]{stats::aggregate()}} in
+\item{...}{Further arguments passed to \code{'FUN'} by \code{\link[=aggregate]{aggregate()}} in
 function \code{'veg_diversity()'}.}
 
 \item{object}{A \linkS4class{vegtable} object.}

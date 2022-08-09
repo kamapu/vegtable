@@ -63,9 +63,9 @@ in any unit, an error message will be retrieved.
 \examples{
 ## Different alternatives
 count_taxa(Kenya_veg)
-head(count_taxa(~ReleveID, Kenya_veg))
-head(count_taxa(species ~ ReleveID, Kenya_veg))
-head(count_taxa(species ~ ReleveID, Kenya_veg, TRUE))
+head(count_taxa(~ReleveID, Kenya_veg, in_header = FALSE))
+head(count_taxa(species ~ ReleveID, Kenya_veg, in_header = FALSE))
+head(count_taxa(species ~ ReleveID, Kenya_veg, TRUE, in_header = FALSE))
 head(count_taxa(family ~ ReleveID, Kenya_veg, TRUE))
 
 }
