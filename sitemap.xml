@@ -28,9 +28,6 @@
     <loc>http://kamapu.github.io/vegtable/reference/add_releves.html</loc>
   </url>
   <url>
-    <loc>http://kamapu.github.io/vegtable/reference/aggregate.html</loc>
-  </url>
-  <url>
     <loc>http://kamapu.github.io/vegtable/reference/as.list.html</loc>
   </url>
   <url>
@@ -113,6 +110,9 @@
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/used_synonyms.html</loc>
+  </url>
+  <url>
+    <loc>http://kamapu.github.io/vegtable/reference/veg_aggregate.html</loc>
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/veg_diversity.html</loc>
