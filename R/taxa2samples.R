@@ -1,34 +1,47 @@
 #' @name taxa2samples
 #'
-#' @title Insert taxonomic information into slot samples
+#' @title Insert taxon information into samples
 #'
 #' @description
-#' For some statistical purposes it may be necessary to insert taxonomic
-#' information into the slot samples.
+#' For statistical purposes it may be necessary to insert information on
+#' recorded taxa into the slot samples, which contain the records of taxa in
+#' sampling plots.
+#' This can be also done selectivelly for specific taxonomic ranks and lower
+#' ranks can be aggregated to their parental ones.
 #'
-#' This function is also used internally by functions such as
-#' [vegtable::count_taxa()][count_taxa()].
-#'
-#'
-#' @param object Object of class [vegtable-class].
-#' @param merge_to Character value indicating the level to which the taxa
-#'     have to be merged.
+#' @param object A [vegtable-class] object.
+#' @param merge_to Character value indicating the level (taxonomic rank) to
+#'     which taxa of lower rank have to be merged.
 #' @param include_levels Character vector indicating the levels to be considered
-#'     in the output object. It can be used to exclude some taxonomic ranks.
+#'     in the output object. This will set the values of **TaxonConceptID** and
+#'     any respective values inserted from slots **taxonRelations** and
+#'     **taxonTraits** as NA.
 #' @param add_relations A logical value indicating whether the content of slot
 #'     **taxonRelations** have to be inserted in slot **samples** or not.
 #' @param add_traits A logical value indicating whether the content of slot
 #'     **taxonTraits** have to be inserted in slot **samples** or not.
-#' @param ... Further arguments passed to [taxlist::merge_taxa()].
+#' @param ... Further arguments passed among methods.
 #'
 #' @return An object of class [vegtable-class].
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @examples
-#' ## Effect of taxa2samples by counting taxa
-#' Kenya_veg <- taxa2samples(Kenya_veg, merge_to = "genus")
-#' head(Kenya_veg@samples)
+#' ## Add only variable TaxonConceptID
+#' veg <- taxa2samples(Kenya_veg)
+#' head(veg@samples)
+#'
+#' ## Add also information from slots taxonRelations and taxonTraits
+#' veg <- taxa2samples(Kenya_veg, add_relations = TRUE, add_traits = TRUE)
+#' head(veg@samples)
+#'
+#' ## Different ranks recorded at samples
+#' veg <- taxa2samples(Kenya_veg, add_relations = TRUE)
+#' summary(veg@samples$Level)
+#' 
+#' ## Aggregate taxa to family level
+#' veg <- taxa2samples(Kenya_veg, add_relations = TRUE, merge_to = "family")
+#' summary(veg@samples$Level)
 #'
 #' @rdname taxa2samples
 #'
