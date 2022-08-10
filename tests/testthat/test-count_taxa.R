@@ -23,4 +23,5 @@ test_that("counting taxa is working", {
     ),
     "data.frame"
   )
+  expect_error(count_taxa(Kenya_veg, level = "plant"))
 })

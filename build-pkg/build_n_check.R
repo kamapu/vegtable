@@ -5,6 +5,7 @@
 
 library(devtools)
 library(styler)
+library(covr)
 
 # Clean session
 rm(list = ls())
@@ -26,9 +27,18 @@ document()
 pkg_loc <- build(path = "build-pkg", args = "--resave-data")
 check_built(path = pkg_loc)
 
+# Report coverage
+report()
+
+
+
+
 build_manual(path = "build-pkg")
 
+
+
 install()
+
 
 
 
