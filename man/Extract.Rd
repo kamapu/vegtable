@@ -9,9 +9,9 @@
 \alias{$<-,vegtable-method}
 \alias{$,coverconvert-method}
 \alias{$<-,coverconvert,list-method}
-\alias{[,vegtable,ANY,ANY,ANY-method}
-\alias{[}
 \alias{[,vegtable-method}
+\alias{[}
+\alias{[,vegtable,ANY,ANY,ANY-method}
 \alias{[<-,vegtable-method}
 \alias{[<-}
 \title{Select or replace elements in objects}
@@ -24,7 +24,7 @@
 
 \S4method{$}{coverconvert,list}(x, name) <- value
 
-\S4method{[}{vegtable,ANY,ANY,ANY}(x, i, j, ..., drop = FALSE)
+\S4method{[}{vegtable}(x, i, j, ..., drop = FALSE)
 
 \S4method{[}{vegtable}(x, i, j) <- value
 }
