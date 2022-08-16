@@ -429,7 +429,7 @@ setMethod(
     # Build pseudo-species
     if (length(shaker@pseudos) > 0) {
       for (i in 1:length(shaker@pseudos)) {
-        vegtable <- merge_taxa(vegtable, shaker@pseudos[[i]])
+        vegtable@species <- merge_taxa(vegtable@species, shaker@pseudos[[i]])
       }
     }
     # Insert concept IDs in samples

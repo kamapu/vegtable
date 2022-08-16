@@ -77,7 +77,7 @@ setMethod(
     if (!usage_ids & format == 1) {
       releves$TaxonUsageID <- match_names(
         releves$TaxonUsageID,
-        vegtable
+        vegtable@species
       )$TaxonUsageID
     }
     if (!usage_ids & format == 2) {
@@ -90,7 +90,7 @@ setMethod(
       }
       releves$TaxonUsageID <- match_names(
         releves$TaxonName,
-        vegtable
+        vegtable@species
       )$TaxonUsageID
       # delete column TaxonName
       releves <- releves[, colnames(releves) != "TaxonName"]

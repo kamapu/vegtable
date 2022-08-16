@@ -14,7 +14,9 @@ vegtable 0.1.8
 * Parameter `in_header` defined in several functions is set as
   `in_header = TRUE`.
 * Former method for 'aggregate()' is now defined in function 'veg_aggregate()'.
-
+* Deprecated functions: `match_names()`, `merge_taxa()`. These functions are now
+  exclusive for objects of class `taxlist`.
+  
 ## Bug Fixes
 
 * An issue was solved for function `taxa2samples()` when setting an argument in

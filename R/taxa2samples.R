@@ -38,7 +38,7 @@
 #' ## Different ranks recorded at samples
 #' veg <- taxa2samples(Kenya_veg, add_relations = TRUE)
 #' summary(veg@samples$Level)
-#' 
+#'
 #' ## Aggregate taxa to family level
 #' veg <- taxa2samples(Kenya_veg, add_relations = TRUE, merge_to = "family")
 #' summary(veg@samples$Level)
