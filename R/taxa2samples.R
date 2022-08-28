@@ -9,6 +9,9 @@
 #' This can be also done selectivelly for specific taxonomic ranks and lower
 #' ranks can be aggregated to their parental ones.
 #'
+#' If column **TaxonConceptID** is already existing in `'objec@@samples'`,
+#' this column will get overwritten, retrieving a warning message.
+#'
 #' @param object A [vegtable-class] object.
 #' @param merge_to Character value indicating the level (taxonomic rank) to
 #'     which taxa of lower rank have to be merged.

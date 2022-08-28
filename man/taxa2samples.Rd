@@ -45,6 +45,9 @@ recorded taxa into the slot samples, which contain the records of taxa in
 sampling plots.
 This can be also done selectivelly for specific taxonomic ranks and lower
 ranks can be aggregated to their parental ones.
+
+If column \strong{TaxonConceptID} is already existing in \code{'objec@samples'},
+this column will get overwritten, retrieving a warning message.
 }
 \examples{
 ## Add only variable TaxonConceptID
