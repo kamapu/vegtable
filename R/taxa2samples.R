@@ -59,6 +59,17 @@ taxa2samples <- function(object, ...) {
 taxa2samples.vegtable <- function(object, merge_to, include_levels,
                                   add_relations = FALSE, add_traits = FALSE,
                                   ...) {
+  # Delete existing entries for TaxonConceptIDs
+  if ("TaxonConceptID" %in% names(object@samples)) {
+    warning(paste(
+      "Entries of 'TaxonConceptID' detected in 'objec@samples'.",
+      "They will get overwritten."
+    ))
+    object@samples <- object@samples[
+      ,
+      names(object@samples) != "TaxonConceptID"
+    ]
+  }
   # Internal objects
   spp <- used_concepts(object, keep_children = TRUE, keep_parents = TRUE)
   samples <- data.frame(TaxonUsageID = unique(object@samples$TaxonUsageID))
@@ -116,7 +127,8 @@ taxa2samples.vegtable <- function(object, merge_to, include_levels,
   }
   object@samples <- merge(object@samples, samples,
     by = "TaxonUsageID",
-    sort = FALSE, all.x = TRUE
+    sort = FALSE, all.x = TRUE,
+    suffixes = c("", "_y") # Preserve original column name
   )
   return(object)
 }

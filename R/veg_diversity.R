@@ -106,7 +106,8 @@ veg_diversity <- function(object, ...) {
 #' @method veg_diversity vegtable
 #' @export
 veg_diversity.vegtable <- function(object, weight, FUN = shannon,
-                                   aggr_fun = mean, arg_fun = list(), var_name, in_header = TRUE,
+                                   aggr_fun = mean, arg_fun = list(), var_name,
+                                   in_header = TRUE,
                                    ...) {
   if (!weight %in% names(object@samples)) {
     stop(paste0(
