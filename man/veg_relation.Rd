@@ -4,28 +4,16 @@
 \alias{veg_relation}
 \alias{veg_relation,vegtable,character-method}
 \alias{veg_relation<-}
-\alias{veg_relation<-,vegtable,character,data.frame-method}
-\alias{relation2header}
-\alias{relation2header,vegtable,data.frame-method}
-\alias{relation2header,vegtable,lib_df-method}
-\alias{relation2header,vegtable,character-method}
+\alias{veg_relation<-,vegtable,data.frame-method}
 \title{Retrieve or replace relations in vegtable objects}
 \usage{
 veg_relation(vegtable, relation, ...)
 
 \S4method{veg_relation}{vegtable,character}(vegtable, relation, match_header = FALSE, ...)
 
-veg_relation(vegtable, relation) <- value
+veg_relation(vegtable) <- value
 
-\S4method{veg_relation}{vegtable,character,data.frame}(vegtable, relation) <- value
-
-relation2header(vegtable, relation, ...)
-
-\S4method{relation2header}{vegtable,data.frame}(vegtable, relation, by, vars, ...)
-
-\S4method{relation2header}{vegtable,lib_df}(vegtable, relation, ...)
-
-\S4method{relation2header}{vegtable,character}(vegtable, relation, ...)
+\S4method{veg_relation}{vegtable,data.frame}(vegtable) <- value
 }
 \arguments{
 \item{vegtable}{An object of class \linkS4class{vegtable}.}
@@ -39,12 +27,6 @@ retrieved or replaced.}
 \code{header} should be considered or all.}
 
 \item{value}{A data frame containing the new veg_relation.}
-
-\item{by}{Character value indicating the name of the common column used as
-index for inserting values in slot \code{header}.}
-
-\item{vars}{A character vector with the names of variables to be inserted in
-slot \code{header}.}
 }
 \value{
 This function retrieves and object of class \code{data.frame}.
@@ -53,8 +35,8 @@ In the replacement method, an object of class \linkS4class{vegtable}, including
 }
 \description{
 Tables providing information about levels of categorical variables in the
-header of a \strong{Turboveg} database are called \code{popups} in \strong{Turboveg},
-but \code{relations} in \link{vegtable}.
+header are called \code{popups} in \strong{Turboveg} databases
+but \code{relations} in \linkS4class{vegtable} objects.
 Such variables will be converted into factors in the slot \code{header} according
 to the levels and their sorting in the respective relation.
 }

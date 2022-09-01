@@ -39,6 +39,7 @@ Collate:
 	'vegtable-class.R'
 	'shaker-class.R'
 	'new_relation.R'
+	'relation2header.R'
 	'transform.R'
 	'cover_trans.R'
 	'clean.R'

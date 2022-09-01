@@ -45,9 +45,9 @@
 #'
 #' @examples
 #' ## Installed 'Turboveg' version of 'Fujiwara et al. (2014)'
-#' TV_Home <- file.path(path.package("vegtable"), "tv_data")
-#' Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
-#' summary(Veg)
+#' # TV_Home <- file.path(path.package("vegtable"), "tv_data")
+#' # Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
+#' # summary(Veg)
 #' @rdname tv2vegtable
 #'
 #' @export
@@ -200,7 +200,7 @@ tv2vegtable <- function(db, tv_home = tv.home(), skip_empty_relations = TRUE,
   VEG@coverconvert <- coverconvert
   for (i in names(relations)) {
     if (colnames(relations[[i]])[1] %in% colnames(VEG@header)) {
-      veg_relation(VEG, i) <- relations[[i]]
+      veg_relation(VEG) <- relations[[i]]
     }
   }
   if (clean) VEG <- clean(VEG)

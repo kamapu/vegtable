@@ -21,6 +21,8 @@
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @seealso [aggregate()]
+#' 
+#' @examples 
 #'
 #' @exportMethod veg_aggregate
 setGeneric(

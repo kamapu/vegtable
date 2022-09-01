@@ -11,7 +11,10 @@
 #' @param x An object of class [coverconvert-class] or [vegtable-class].
 #' @param value A character vector used for replacement methods.
 #'
-#' @return Either a vector or a list (in the case of `dimnames()`) with
+#' @return
+#' A list containing the names from each slot.
+#' 
+#' Either a vector or a list (in the case of `dimnames()`) with
 #' the names of variables.
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}.
@@ -24,22 +27,13 @@
 #' @aliases names,vegtable-method
 #'
 #' @exportMethod names
-#'
 setMethod(
   "names", signature(x = "vegtable"),
-  function(x) colnames(x@header)
-)
-
-#' @rdname names
-#' @aliases names<- names<-,vegtable-method
-#'
-#' @exportMethod names<-
-#'
-setReplaceMethod(
-  "names", signature(x = "vegtable"),
-  function(x, value) {
-    colnames(x@header) <- value
-    return(x)
+  function(x) {
+    names_list <- list()
+    for(i in slotNames(x))
+      names_list[[i]] <- names(slot(x, i))
+    return(names_list)
   }
 )
 
@@ -47,7 +41,6 @@ setReplaceMethod(
 #' @aliases dimnames dimnames,vegtable-method
 #'
 #' @exportMethod dimnames
-#'
 setMethod(
   "dimnames", signature(x = "vegtable"),
   function(x) {
@@ -57,7 +50,6 @@ setMethod(
 
 #' @rdname names
 #' @aliases names,coverconvert-method
-#'
 setMethod(
   "names", signature(x = "coverconvert"),
   function(x) names(x@value)
@@ -65,7 +57,6 @@ setMethod(
 
 #' @rdname names
 #' @aliases names<-,coverconvert-method
-#'
 setReplaceMethod(
   "names", signature(x = "coverconvert"),
   function(x, value) {
