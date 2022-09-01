@@ -18,7 +18,7 @@
 \arguments{
 \item{x}{A \linkS4class{vegtable} object for subset.}
 
-\item{subset}{Logical expression for subset.}
+\item{subset}{Logical expression for the subset.}
 
 \item{slot}{Character value indicating the slot used as reference for subset.
 At the moment only the values "taxonNames", "taxonRelations",
@@ -41,8 +41,7 @@ A S4 object of class \linkS4class{vegtable}.
 \description{
 Produce subsets of \linkS4class{vegtable} objects.
 
-This function generate subsets of \linkS4class{vegtable} objects through logical
-operations. Such operations can be applied either to the plots, or the
+Logical operations can be applied either to the plots, or the
 relations, which are the main slots in that class.
 
 This method can be referred to the slot \code{species} the same way as

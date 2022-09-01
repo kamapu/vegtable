@@ -61,6 +61,7 @@ to the levels and their sorting in the respective relation.
 \examples{
 ## overview of references
 veg_relation(Kenya_veg, "REFERENCE")
+
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

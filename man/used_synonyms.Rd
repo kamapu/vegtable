@@ -2,27 +2,33 @@
 % Please edit documentation in R/used_synonyms.R
 \name{used_synonyms}
 \alias{used_synonyms}
+\alias{used_synonyms.vegtable}
 \alias{used_synonyms,vegtable-method}
 \alias{used_concepts}
+\alias{used_concepts.vegtable}
 \alias{used_concepts,vegtable-method}
 \title{Retrieve synonyms or taxon concepts used in a data set}
 \usage{
 used_synonyms(x, ...)
 
-\S4method{used_synonyms}{vegtable}(x, ...)
+\method{used_synonyms}{vegtable}(x, ...)
 
 used_concepts(x, ...)
 
-\S4method{used_concepts}{vegtable}(x, keep_children = FALSE, keep_parents = FALSE, ...)
+\method{used_concepts}{vegtable}(x, keep_children = FALSE, keep_parents = FALSE, ...)
 }
 \arguments{
 \item{x}{A \linkS4class{vegtable} object.}
 
 \item{...}{Further arguments to be passed from or to another methods.}
 
-\item{keep_children}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_children()}}.}
+\item{keep_children}{A logical argument indicating whether children of
+selected taxa should be included in the output or not.
+This argument passed to \code{\link[=get_children]{get_children()}}.}
 
-\item{keep_parents}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_parents()}}.}
+\item{keep_parents}{A logical argument indicating whether parents of
+selected taxa should be included in the output or not.
+This argument passed to \code{\link[=get_parents]{get_parents()}}.}
 }
 \value{
 The function \code{used_synonyms()} returns a data frame including following
@@ -43,21 +49,24 @@ only taxa occurring in the plot observations of the input \linkS4class{vegtable}
 object.
 }
 \description{
-Plots records are rather linked to plant names than plant taxon concepts.
-The function \code{used_synonyms()} provides a quick report about synonyms used in
-a data set (a \linkS4class{vegtable} object) and their respective accepted names.
+Plots records are rather linked to plant names than plant taxon concepts and
+\code{used_synonyms()} lists all synonyms linked to records in a \linkS4class{vegtable}
+object, including their respective accepted names.
 
-Additionally, not all taxon concepts included in the taxonomic list (slot
-\strong{species}) may be recorded in the plot observations.
-In that case the function \code{used_concepts()} will optimize the size of the
-taxonomic list by discarding taxa that are not "in use".
-Alternatively parents or children of these taxa may be included in the output
-data set.
+On the other side, the function \code{used_concepts()} produces a subset of the
+taxonomic list embeded in the slot \strong{species} including only taxonomic
+concepts linked to records in the slot \strong{samples}.
 }
 \examples{
 ## Synonyms used in the Kenya_veg
 Synonyms <- used_synonyms(Kenya_veg)
 head(Synonyms)
+
+## Subset species list to used concepts
+species <- used_concepts(Kenya_veg)
+Kenya_veg@species
+species
+
 }
 \seealso{
 \code{\link[=accepted_name]{accepted_name()}}

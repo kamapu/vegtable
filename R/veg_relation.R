@@ -31,6 +31,7 @@
 #' @examples
 #' ## overview of references
 #' veg_relation(Kenya_veg, "REFERENCE")
+#'
 #' @rdname veg_relation
 #'
 #' @exportMethod veg_relation

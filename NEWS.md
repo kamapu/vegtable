@@ -5,6 +5,7 @@ vegtable 0.1.8
 
 * New function `veg_diversity()` and functions calculating diversity indices:
   `shannon()`, `evenness()`, `dominance()`, `simpson()`, and `richness()`.
+* New function `new_relation()` inserting new relations into `vegtable` objects.
 
 ## Improvements
 
