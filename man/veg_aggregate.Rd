@@ -10,7 +10,10 @@ veg_aggregate(object, data, FUN, ...)
 \S4method{veg_aggregate}{formula,vegtable,`function`}(object, data, FUN, use_nas = TRUE, ...)
 }
 \arguments{
-\item{object}{A formula indicating the variables used for the summary.}
+\item{object}{A formula indicating the variables used for the summary.
+As in \code{\link[=crosstable]{crosstable()}}, the keywords \code{"TaxonName"} and \code{"AcceptedName"}
+can be used to retrieve taxonomic names, where the second will set the
+accepted name for names considered as synonyms.}
 
 \item{data}{Either a data frame or an object of class \linkS4class{vegtable}.}
 
@@ -25,10 +28,21 @@ categorical variables or not.}
 An object of class \link{data.frame}.
 }
 \description{
-This function aggregates information contained in \linkS4class{vegtable} objects
-to a summarizing data frame.
-
+Compute summarizing tables from \linkS4class{vegtable} objects.
 This function works in a similar way as \code{\link[=crosstable]{crosstable()}}.
+}
+\examples{
+## Transform cover to percentage cover
+veg <- cover_trans(x = Kenya_veg, to = "cover")
+
+## Frequency of taxa per publication
+atab <- veg_aggregate(object = cover ~ AcceptedName + REFERENCE, data = veg, FUN = length)
+head(atab)
+
+## Life form proportions per plot
+atab <- veg_aggregate(object = cover ~ lf_behn_2018 + ReleveID, data = veg, FUN = sum)
+head(atab)
+
 }
 \seealso{
 \code{\link[=aggregate]{aggregate()}}

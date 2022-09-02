@@ -13,7 +13,7 @@
 #'
 #' @return
 #' A list containing the names from each slot.
-#' 
+#'
 #' Either a vector or a list (in the case of `dimnames()`) with
 #' the names of variables.
 #'
@@ -31,8 +31,9 @@ setMethod(
   "names", signature(x = "vegtable"),
   function(x) {
     names_list <- list()
-    for(i in slotNames(x))
+    for (i in slotNames(x)) {
       names_list[[i]] <- names(slot(x, i))
+    }
     return(names_list)
   }
 )

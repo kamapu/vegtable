@@ -48,10 +48,11 @@ relation2header.vegtable <- function(vegtable, relation, vars, ...) {
   }
   if (missing(vars)) {
     vars <- names(vegtable@relations[[relation]])[
-        names(vegtable@relations[[relation]]) != relation]
+      names(vegtable@relations[[relation]]) != relation
+    ]
   } else {
     vars <- vars[vars != relation & vars %in%
-            names(vegtable@relations[[relation]])]
+      names(vegtable@relations[[relation]])]
   }
   if (length(vars) == 0) {
     stop("Values of 'vars' are not included in 'relation'.")

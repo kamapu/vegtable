@@ -6,6 +6,7 @@ vegtable 0.1.8
 * New function `veg_diversity()` and functions calculating diversity indices:
   `shannon()`, `evenness()`, `dominance()`, `simpson()`, and `richness()`.
 * New function `new_relation()` inserting new relations into `vegtable` objects.
+  This function is internally called by `veg_relation()`.
 
 ## Improvements
 
@@ -17,6 +18,9 @@ vegtable 0.1.8
 * Former method for 'aggregate()' is now defined in function 'veg_aggregate()'.
 * Deprecated functions: `match_names()`, `merge_taxa()`. These functions are now
   exclusive for objects of class `taxlist`.
+* Method `names()` for `vegtable` objects will retrieve a list with all names
+  from the respective slots.
+* New coercion methods including functions `as()` and `as<-`.
   
 ## Bug Fixes
 

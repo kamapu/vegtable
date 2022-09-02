@@ -20,5 +20,3 @@ test_that("Summaries are produced", {
   result <- evaluate_promise(summary(Wetlands, Wetlands_veg), print = TRUE)
   expect_true(grepl("## Species groups", result$output))
 })
-
-

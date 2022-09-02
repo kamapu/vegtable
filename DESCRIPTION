@@ -43,7 +43,7 @@ Collate:
 	'transform.R'
 	'cover_trans.R'
 	'clean.R'
-	'as.list.R'
+	'as.R'
 	'merge_taxa.R'
 	'add_releves.R'
 	'header.R'
