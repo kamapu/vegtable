@@ -61,9 +61,6 @@ coverconvert and vegtable objects."><!-- mathjax --><script src="https://cdnjs.c
 <span><span class="fu">names</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for vegtable</span></span>
-<span><span class="fu">names</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
-<span></span>
-<span><span class="co"># S4 method for vegtable</span></span>
 <span><span class="fu">dimnames</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for coverconvert</span></span>
@@ -87,6 +84,9 @@ coverconvert and vegtable objects."><!-- mathjax --><script src="https://cdnjs.c
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
+<p>A list containing the names from each slot.</p>
+
+
 <p>Either a vector or a list (in the case of <code>dimnames()</code>) with
 the names of variables.</p>
     </div>
@@ -100,6 +100,14 @@ the names of variables.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">names</span><span class="op">(</span><span class="va">Kenya_veg</span><span class="op">@</span><span class="va">coverconvert</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "br_bl"  "b_bbds" "ordin."</span>
 <span class="r-in"><span><span class="fu">names</span><span class="op">(</span><span class="va">Kenya_veg</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $description</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "db_name"    "sp_list"    "dictionary"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $samples</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ReleveID"     "TaxonUsageID" "COVER_CODE"   "LAYER"        "SOCIABILIT"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "INDIVID"      "br_bl"        "b_bbds"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $header</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ReleveID"   "COUNTRY"    "REFERENCE"  "TABLE_NR"   "NR_IN_TAB" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "COVERSCALE" "DATE"       "SURF_AREA"  "ALTITUDE"   "EXPOSITION"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "INCLINATIO" "COV_TOTAL"  "TREE_HIGH"  "REMARKS"    "LONGITUDE" </span>
@@ -107,6 +115,13 @@ the names of variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] "HEIGHT_T1"  "HEIGHT_T2"  "HEIGHT_S1"  "HEIGHT_S2"  "HEIGHT_HL" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [26] "COVER_T1"   "COVER_T2"   "COVER_S1"   "COVER_S2"   "COVER_HL"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [31] "ORIG_CODE"  "RECORD"     "DIM_1"      "DIM_2"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $relations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "COUNTRY"    "REFERENCE"  "COVERSCALE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $coverconvert</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "br_bl"  "b_bbds" "ordin."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">dimnames</span><span class="op">(</span><span class="va">Kenya_veg</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    [1]  358  359  360  361  362  363  364  365  366  367  368  369  370  371</span>

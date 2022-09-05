@@ -166,34 +166,9 @@ A <a href="coverconvert.html">coverconvert</a> object in the case of <code>tv2co
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Installed 'Turboveg' version of 'Fujiwara et al. (2014)'</span></span></span>
-<span class="r-in"><span><span class="va">TV_Home</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"vegtable"</span><span class="op">)</span>, <span class="st">"tv_data"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">Veg</span> <span class="op">&lt;-</span> <span class="fu">tv2vegtable</span><span class="op">(</span><span class="st">"Fujiwara_2014"</span>, <span class="va">TV_Home</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Field name: ‘_ORIG_NAME’ changed to: ‘X_ORIG_NAME’</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> zero values will be replaced by NAs </span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>value |0| found in logical field</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>value |0| found in logical field</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>value |0| found in logical field</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>value |0| found in logical field</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>value |0| found in logical field</span>
-<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">Veg</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ## Metadata </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    db_name: Fujiwara_2014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    sp_list: Fujiwara_sp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    dictionary: Swea</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    object size: 392.8 Kb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    validity: TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ## Content </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    number of plots: 56 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    plots with records: 56 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variables in header: 29 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    number of relations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ## Taxonomic List </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    taxon names: 301 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    taxon concepts: 254 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    validity: TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="co"># TV_Home &lt;- file.path(path.package("vegtable"), "tv_data")</span></span></span>
+<span class="r-in"><span><span class="co"># Veg &lt;- tv2vegtable("Fujiwara_2014", TV_Home)</span></span></span>
+<span class="r-in"><span><span class="co"># summary(Veg)</span></span></span>
 <span class="r-in"><span><span class="co">## Installed 'Turboveg' version of "Fujiwara et al. (2014)"</span></span></span>
 <span class="r-in"><span><span class="va">TV_Home</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"vegtable"</span><span class="op">)</span>, <span class="st">"tv_data"</span>, <span class="st">"popup"</span>, <span class="st">"Swea"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Table</span> <span class="op">&lt;-</span> <span class="fu">tv2coverconvert</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">TV_Home</span>, <span class="st">"tvscale.dbf"</span><span class="op">)</span><span class="op">)</span></span></span>

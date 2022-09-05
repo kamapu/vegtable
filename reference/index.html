@@ -56,7 +56,7 @@
 
       <dl><dt>
           
-          <code><a href="Extract.html">`$`(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="Extract.html">`$&lt;-`(<i>&lt;vegtable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Extract.html">`$`(<i>&lt;coverconvert&gt;</i>)</a></code> <code><a href="Extract.html">`$&lt;-`(<i>&lt;coverconvert&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="Extract.html">`[`(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="Extract.html">`[&lt;-`(<i>&lt;vegtable&gt;</i>)</a></code> 
+          <code><a href="Extract.html">`$`(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="Extract.html">`$&lt;-`(<i>&lt;vegtable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Extract.html">`$`(<i>&lt;coverconvert&gt;</i>)</a></code> <code><a href="Extract.html">`$&lt;-`(<i>&lt;coverconvert&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="Extract.html">`[`(<i>&lt;vegtable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Extract.html">`[&lt;-`(<i>&lt;vegtable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> 
         </dt>
         <dd>Select or replace elements in objects</dd>
       </dl><dl><dt>
@@ -76,11 +76,6 @@
         <dd>Merge relevés from data frames into vegtable objects</dd>
       </dl><dl><dt>
           
-          <code><a href="as.list.html">as.list(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="as.list.html">as.list(<i>&lt;coverconvert&gt;</i>)</a></code> 
-        </dt>
-        <dd>Coerce an S4 object to a list</dd>
-      </dl><dl><dt>
-          
           <code><a href="aspect_conv-data.html">aspect_conv</a></code> 
         </dt>
         <dd>Conversion of aspect classes to azimuth</dd>
@@ -94,6 +89,11 @@
           <code><a href="clean.html">clean_once()</a></code> <code><a href="clean.html">clean(<i>&lt;vegtable&gt;</i>)</a></code> 
         </dt>
         <dd>Clean orphaned records in vegtable object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="coerce-methods.html">as.list(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="coerce-methods.html">`as&lt;-`()</a></code> <code><a href="coerce-methods.html">as.list(<i>&lt;coverconvert&gt;</i>)</a></code> 
+        </dt>
+        <dd>Coerce objects to lists</dd>
       </dl><dl><dt>
           
           <code><a href="count_taxa.html">count_taxa(<i>&lt;vegtable&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="count_taxa.html">count_taxa(<i>&lt;formula&gt;</i>,<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="count_taxa.html">`count_taxa&lt;-`()</a></code> 
@@ -141,19 +141,19 @@
         <dd>Produce a Cocktail classification</dd>
       </dl><dl><dt>
           
-          <code><a href="match_names.html">match_names(<i>&lt;character&gt;</i>,<i>&lt;vegtable&gt;</i>)</a></code> 
-        </dt>
-        <dd>Search matchings between character and taxlist objects.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="merge_taxa.html">merge_taxa(<i>&lt;vegtable&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="merge_taxa.html">merge_taxa(<i>&lt;vegtable&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> 
-        </dt>
-        <dd>Merge concepts</dd>
-      </dl><dl><dt>
-          
-          <code><a href="names.html">names(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="names.html">`names&lt;-`(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="names.html">dimnames(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="names.html">names(<i>&lt;coverconvert&gt;</i>)</a></code> <code><a href="names.html">`names&lt;-`(<i>&lt;coverconvert&gt;</i>)</a></code> 
+          <code><a href="names.html">names(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="names.html">dimnames(<i>&lt;vegtable&gt;</i>)</a></code> <code><a href="names.html">names(<i>&lt;coverconvert&gt;</i>)</a></code> <code><a href="names.html">`names&lt;-`(<i>&lt;coverconvert&gt;</i>)</a></code> 
         </dt>
         <dd>Retrieve names of vegtable and coverconvert objects</dd>
+      </dl><dl><dt>
+          
+          <code><a href="new_relation.html">new_relation()</a></code> <code><a href="new_relation.html">`new_relation&lt;-`()</a></code> 
+        </dt>
+        <dd>Insert a new variable as relation in vegtable object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="relation2heder.html">relation2header()</a></code> 
+        </dt>
+        <dd>Insert variables from relations into header</dd>
       </dl><dl><dt>
           
           <code><a href="shaker-class.html">shaker-class</a></code> <code><a href="shaker-class.html">shaker</a></code> 
@@ -173,7 +173,7 @@
           
           <code><a href="taxa2samples.html">taxa2samples()</a></code> 
         </dt>
-        <dd>Insert taxonomic information into slot samples</dd>
+        <dd>Insert taxon information into samples</dd>
       </dl><dl><dt>
           
           <code><a href="trait_stats.html">trait_stats()</a></code> <code><a href="trait_stats.html">trait_proportion()</a></code> 
@@ -206,7 +206,7 @@
         <dd>Calculation of statistics at plot level</dd>
       </dl><dl><dt>
           
-          <code><a href="veg_relation.html">veg_relation()</a></code> <code><a href="veg_relation.html">`veg_relation&lt;-`()</a></code> <code><a href="veg_relation.html">relation2header()</a></code> 
+          <code><a href="veg_relation.html">veg_relation()</a></code> <code><a href="veg_relation.html">`veg_relation&lt;-`()</a></code> 
         </dt>
         <dd>Retrieve or replace relations in vegtable objects</dd>
       </dl><dl><dt>

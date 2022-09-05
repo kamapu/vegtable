@@ -28,9 +28,6 @@
     <loc>http://kamapu.github.io/vegtable/reference/add_releves.html</loc>
   </url>
   <url>
-    <loc>http://kamapu.github.io/vegtable/reference/as.list.html</loc>
-  </url>
-  <url>
     <loc>http://kamapu.github.io/vegtable/reference/aspect_conv-data.html</loc>
   </url>
   <url>
@@ -38,6 +35,9 @@
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/clean.html</loc>
+  </url>
+  <url>
+    <loc>http://kamapu.github.io/vegtable/reference/coerce-methods.html</loc>
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/count_taxa.html</loc>
@@ -73,13 +73,13 @@
     <loc>http://kamapu.github.io/vegtable/reference/make_cocktail.html</loc>
   </url>
   <url>
-    <loc>http://kamapu.github.io/vegtable/reference/match_names.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/merge_taxa.html</loc>
-  </url>
-  <url>
     <loc>http://kamapu.github.io/vegtable/reference/names.html</loc>
+  </url>
+  <url>
+    <loc>http://kamapu.github.io/vegtable/reference/new_relation.html</loc>
+  </url>
+  <url>
+    <loc>http://kamapu.github.io/vegtable/reference/relation2heder.html</loc>
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/rewrite_formulas.html</loc>
@@ -125,9 +125,6 @@
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/vegtable-deprecated.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/vegtable2kml.html</loc>
   </url>
   <url>
     <loc>http://kamapu.github.io/vegtable/reference/vegtable_stat.html</loc>

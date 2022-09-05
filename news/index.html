@@ -48,7 +48,9 @@
 <h2 class="pkg-version" data-toc-text="0.1.8" id="vegtable-018">vegtable 0.1.8<a class="anchor" aria-label="anchor" href="#vegtable-018"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-1-8">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-8"></a></h3>
-<ul><li>New function <code><a href="../reference/veg_diversity.html">veg_diversity()</a></code> and functions calculating diversity indices: <code><a href="../reference/veg_diversity.html">shannon()</a></code>, <code><a href="../reference/veg_diversity.html">evenness()</a></code>, <code><a href="../reference/veg_diversity.html">dominance()</a></code>, <code><a href="../reference/veg_diversity.html">simpson()</a></code>, and <code><a href="../reference/veg_diversity.html">richness()</a></code>.</li></ul></div>
+<ul><li>New function <code><a href="../reference/veg_diversity.html">veg_diversity()</a></code> and functions calculating diversity indices: <code><a href="../reference/veg_diversity.html">shannon()</a></code>, <code><a href="../reference/veg_diversity.html">evenness()</a></code>, <code><a href="../reference/veg_diversity.html">dominance()</a></code>, <code><a href="../reference/veg_diversity.html">simpson()</a></code>, and <code><a href="../reference/veg_diversity.html">richness()</a></code>.</li>
+<li>New function <code><a href="../reference/new_relation.html">new_relation()</a></code> inserting new relations into <code>vegtable</code> objects. This function is internally called by <code><a href="../reference/veg_relation.html">veg_relation()</a></code>.</li>
+</ul></div>
 <div class="section level3">
 <h3 id="improvements-0-1-8">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-1-8"></a></h3>
 <ul><li>Slot <strong>relations</strong> may deal with any element that can be coerced to <code>data.frame</code>.</li>
@@ -56,6 +58,9 @@
 </li>
 <li>Parameter <code>in_header</code> defined in several functions is set as <code>in_header = TRUE</code>.</li>
 <li>Former method for ‘aggregate()’ is now defined in function ‘veg_aggregate()’.</li>
+<li>Deprecated functions: <code><a href="../reference/vegtable-deprecated.html">match_names()</a></code>, <code><a href="../reference/vegtable-deprecated.html">merge_taxa()</a></code>. These functions are now exclusive for objects of class <code>taxlist</code>.</li>
+<li>Method <code><a href="../reference/names.html">names()</a></code> for <code>vegtable</code> objects will retrieve a list with all names from the respective slots.</li>
+<li>New coercion methods including functions <code><a href="../reference/coerce-methods.html">as()</a></code> and <code>as&lt;-</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-0-1-8">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-1-8"></a></h3>
@@ -78,7 +83,7 @@
 <li>Function <code><a href="../reference/write_juice.html">write_juice()</a></code> includes a messages when working and with some metadata for cross-check when importing in Juice.</li>
 <li>New arguments in function <code><a href="../reference/taxa2samples.html">taxa2samples()</a></code> setting the levels to be included in output object (<code>include_levels</code>) and to remove taxa without levels (<code>na.rm</code>).</li>
 <li>Application of <code><a href="../reference/subset.html">subset()</a></code> extended to content in slot <strong>relations</strong>.</li>
-<li>Function <code><a href="../reference/vegtable2kml.html">vegtable2kml()</a></code> was deprecated to resolve dependencies on GIS packages associated to package <code>plotKML</code>.</li>
+<li>Function <code><a href="../reference/vegtable-deprecated.html">vegtable2kml()</a></code> was deprecated to resolve dependencies on GIS packages associated to package <code>plotKML</code>.</li>
 <li>Validity checks allow plots in slot <strong>header</strong> without records in <strong>samples</strong>.</li>
 <li>Function <code><a href="../reference/summary.html">summary()</a></code> also providing number of plots with records.</li>
 <li>Function <code><a href="../reference/transform.html">transform()</a></code> deprecated and replaced by <code><a href="../reference/cover_trans.html">cover_trans()</a></code>.</li>
@@ -105,7 +110,7 @@
 <h2 class="pkg-version" data-toc-text="0.1.5" id="vegtable-015">vegtable 0.1.5<a class="anchor" aria-label="anchor" href="#vegtable-015"></a></h2><p class="text-muted">CRAN release: 2020-01-13</p>
 <div class="section level4">
 <h4 id="new-features-0-1-5">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-5"></a></h4>
-<ul><li>New function <code><a href="../reference/veg_relation.html">relation2header()</a></code>.</li>
+<ul><li>New function <code><a href="../reference/relation2heder.html">relation2header()</a></code>.</li>
 <li>New functions <code><a href="../reference/trait_stats.html">trait_stats()</a></code> and <code><a href="../reference/trait_stats.html">trait_proportion()</a></code>.</li>
 </ul></div>
 <div class="section level4">
@@ -146,7 +151,7 @@
 <div class="section level4">
 <h4 id="new-features-0-1-2">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-1-2"></a></h4>
 <ul><li>File <strong>inst/ChangeLog</strong> replaced by <strong>NEWS.md</strong>.</li>
-<li>Method <code><a href="../reference/match_names.html">match_names()</a></code> for <code>vegtable</code> objects.</li>
+<li>Method <code><a href="../reference/vegtable-deprecated.html">match_names()</a></code> for <code>vegtable</code> objects.</li>
 <li>New method <code><a href="../reference/layers2samples.html">layers2samples()</a></code>.</li>
 <li>New method <code><a href="../reference/add_releves.html">add_releves()</a></code>, adding releves from data frames into <code>vegtable</code> objects.</li>
 </ul></div>
