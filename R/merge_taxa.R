@@ -1,4 +1,4 @@
-#' @name merge_taxa
+#' @name vegtable-deprecated
 #'
 #' @title Merge concepts
 #'
@@ -25,51 +25,18 @@
 #'
 #' @return An object of class [vegtable-class].
 #'
-#' @author Miguel Alvarez \email{kamapu78@@gmail.com}
+#' @author Miguel Alvarez \email{kamapu@@posteo.de}
 #'
-#' @examples
-#' ## Merge Olea capensis into one
-#' summary(subset(Kenya_veg@species, grepl("Olea capensis", TaxonName),
-#'   slot = "names"
-#' ), "all")
-#' Kenya_veg <- merge_taxa(Kenya_veg, c(52041, 50432, 50235))
-#'
-#' ## Check Olea capensis again
-#' summary(subset(Kenya_veg@species, grepl("Olea capensis", TaxonName),
-#'   slot = "names"
-#' ), "all")
-#'
-#' ## Effect of taxa2samples by counting taxa
-#' count_taxa(Kenya_veg, level = "genus")
-#'
-#' Kenya_veg <- taxa2samples(Kenya_veg, merge_to = "genus")
-#' count_taxa(Kenya_veg, level = "genus")
-#' @rdname merge_taxa
-#'
-#' @aliases merge_taxa,vegtable,numeric,missing-method
-#'
-#' @exportMethod merge_taxa
-setMethod(
-  "merge_taxa", signature(
-    object = "vegtable", concepts = "numeric",
-    level = "missing"
-  ),
-  function(object, concepts, ...) {
-    object@species <- merge_taxa(object@species, concepts, ...)
-    return(object)
-  }
-)
+#' @keywords internal
+NULL
 
-#' @rdname merge_taxa
-#'
-#' @aliases merge_taxa,vegtable,missing,missing-method
-setMethod(
-  "merge_taxa", signature(
-    object = "vegtable", concepts = "missing",
-    level = "character"
-  ),
-  function(object, level, ...) {
-    object@species <- merge_taxa(object@species, level = level, ...)
-    return(object)
-  }
-)
+#' @rdname vegtable-deprecated
+#' @section `merge_taxa`:
+#' For `merge_taxa(object, ...)`, use `merge_taxa(object@@species, ...)`
+#' @export
+merge_taxa <- function(object, ...) {
+  .Deprecated(msg = paste(
+    "This function is deprecated.",
+    "Use 'merge_taxa(object@species)' instead."
+  ))
+}

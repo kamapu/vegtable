@@ -6,8 +6,7 @@
 #' @description
 #' Produce subsets of [vegtable-class] objects.
 #'
-#' This function generate subsets of [vegtable-class] objects through logical
-#' operations. Such operations can be applied either to the plots, or the
+#' Logical operations can be applied either to the plots, or the
 #' relations, which are the main slots in that class.
 #'
 #' This method can be referred to the slot `species` the same way as
@@ -15,7 +14,7 @@
 #' references to the subset of species list.
 #'
 #' @param x A [vegtable-class] object for subset.
-#' @param subset Logical expression for subset.
+#' @param subset Logical expression for the subset.
 #' @param slot Character value indicating the slot used as reference for subset.
 #'     At the moment only the values "taxonNames", "taxonRelations",
 #'     "taxonTraits", "header", "samples", and "relations" are accepted.

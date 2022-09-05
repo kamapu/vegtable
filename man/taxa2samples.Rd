@@ -4,7 +4,7 @@
 \alias{taxa2samples}
 \alias{taxa2samples.vegtable}
 \alias{taxa2samples,vegtable-method}
-\title{Insert taxonomic information into slot samples}
+\title{Insert taxon information into samples}
 \usage{
 taxa2samples(object, ...)
 
@@ -18,15 +18,17 @@ taxa2samples(object, ...)
 )
 }
 \arguments{
-\item{object}{Object of class \linkS4class{vegtable}.}
+\item{object}{A \linkS4class{vegtable} object.}
 
-\item{...}{Further arguments passed to \code{\link[taxlist:merge_taxa]{taxlist::merge_taxa()}}.}
+\item{...}{Further arguments passed among methods.}
 
-\item{merge_to}{Character value indicating the level to which the taxa
-have to be merged.}
+\item{merge_to}{Character value indicating the level (taxonomic rank) to
+which taxa of lower rank have to be merged.}
 
 \item{include_levels}{Character vector indicating the levels to be considered
-in the output object. It can be used to exclude some taxonomic ranks.}
+in the output object. This will set the values of \strong{TaxonConceptID} and
+any respective values inserted from slots \strong{taxonRelations} and
+\strong{taxonTraits} as NA.}
 
 \item{add_relations}{A logical value indicating whether the content of slot
 \strong{taxonRelations} have to be inserted in slot \strong{samples} or not.}
@@ -38,16 +40,31 @@ in the output object. It can be used to exclude some taxonomic ranks.}
 An object of class \linkS4class{vegtable}.
 }
 \description{
-For some statistical purposes it may be necessary to insert taxonomic
-information into the slot samples.
+For statistical purposes it may be necessary to insert information on
+recorded taxa into the slot samples, which contain the records of taxa in
+sampling plots.
+This can be also done selectivelly for specific taxonomic ranks and lower
+ranks can be aggregated to their parental ones.
 
-This function is also used internally by functions such as
-\link[=count_taxa]{vegtable::count_taxa()}.
+If column \strong{TaxonConceptID} is already existing in \code{'objec@samples'},
+this column will get overwritten, retrieving a warning message.
 }
 \examples{
-## Effect of taxa2samples by counting taxa
-Kenya_veg <- taxa2samples(Kenya_veg, merge_to = "genus")
-head(Kenya_veg@samples)
+## Add only variable TaxonConceptID
+veg <- taxa2samples(Kenya_veg)
+head(veg@samples)
+
+## Add also information from slots taxonRelations and taxonTraits
+veg <- taxa2samples(Kenya_veg, add_relations = TRUE, add_traits = TRUE)
+head(veg@samples)
+
+## Different ranks recorded at samples
+veg <- taxa2samples(Kenya_veg, add_relations = TRUE)
+summary(veg@samples$Level)
+
+## Aggregate taxa to family level
+veg <- taxa2samples(Kenya_veg, add_relations = TRUE, merge_to = "family")
+summary(veg@samples$Level)
 
 }
 \author{

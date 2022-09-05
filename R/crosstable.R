@@ -3,22 +3,29 @@
 #' @title Generating cross tables from database lists
 #'
 #' @description
-#' This function is generating cross tables, which are the most common format
-#' used by statistical packages analysing vegetation data (e.g. [vegan::vegan]).
+#' cross table is the most common format required by statistical packages
+#' used to analyse vegetation data (e.g.
+#' [vegan](https://cran.r-project.org/web/packages/vegan/index.html)).
 #'
-#' Most applications and displays of vegetation data use preferentially the
-#' cross table format. For convenience, the formula has the form
-#' `abundance ~ plot + species + \ldots{}`.
-#' Additional variables used for rows (`\ldots{}`) can be for instance the
+#' You may use for convenience a formula as
+#' `'abundance ~ plot + species + ...'`.
+#' Additional variables used for rows (`...`) can be for instance the
 #' layers.
-#'
 #' For objects of class [vegtable-class], the formula can also include
 #' variables from the species list (for example `AcceptedName`, `AuthorName`)
 #' or even taxon traits.
 #'
+#' If required, tables already formatted as cross tables can be converted into
+#' column-oriented tables by using the function `cross2db()`.
+#'
 #' @param formula A formula indicating the variables used in the cross table.
+#'     This formula can be represented as `'abundance ~ cols + rows'`, where
+#'     `'abundance'` is the numeric variable quantified for a row in a column,
+#'     for instance the abundance of a species in a plot.
+#'     Further variables can be set as additional rows indices in a cross table.
 #' @param data Either a data frame or an object of class [vegtable-class].
-#' @param FUN Function used to aggregate values.
+#' @param FUN Function used to aggregate values in the case of a multiple
+#'     occurrence of a species in a plot, for instance.
 #' @param na_to_zero A logical value indicating whether zeros should be
 #'     inserted into empty cells or not.
 #' @param use_nas Logical value indicating whether NAs should be considered as
@@ -36,14 +43,14 @@
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @examples
-#' Kenya_veg <- subset(Kenya_veg, REFERENCE == 2331, slot = "header")
+#' veg <- subset(Kenya_veg, REFERENCE == 2331, slot = "header")
 #'
 #' ## transform cover to percentage
-#' Kenya_veg <- cover_trans(Kenya_veg, to = "cover_perc", rule = "middle")
+#' veg <- cover_trans(veg, to = "cover_perc", rule = "middle")
 #'
 #' ## cross table of the first 5 plots
 #' Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
-#'   Kenya_veg[1:5, ], mean,
+#'   veg[1:5, ], mean,
 #'   na_to_zero = TRUE
 #' )
 #' head(Cross)
