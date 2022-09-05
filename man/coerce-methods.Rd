@@ -38,14 +38,12 @@ fail.
 Coercion is applied for different classes by vegtable.
 }
 \examples{
-## Head of slot 'taxonNames'
-class(Easplist)
-head(Easplist@taxonNames)
+## vegtable as list
+veg <- as(Kenya_veg, "list")
+names(veg)
 
-## The same after coercing to list
-Easplist <- as.list(Easplist)
-class(Easplist)
-head(Easplist$taxonNames)
+## coverconvert as list
+as(Kenya_veg@coverconvert, "list")
 
 }
 \author{

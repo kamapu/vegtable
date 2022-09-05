@@ -59,7 +59,7 @@
 #'
 #' @examples
 #' ## Cocktail classification of plots
-#' Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
+#' Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
 #'
 #' ## Calculation of proportion of Cyperaceae species in the plot
 #' Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,

@@ -68,7 +68,7 @@ Collate:
 	'trait_stats.R'
 	'update_det.R'
 	'veg_diversity.R'
-	'aspect_con-data.R'
+	'aspect_conv-data.R'
 	'braun_blanquet-data.R'
 	'dune_veg-data.R'
 	'Kenya_veg-data.R'

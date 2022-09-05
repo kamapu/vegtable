@@ -21,6 +21,14 @@
 #' @return A clean [vegtable-class] object.
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
+#' @examples
+#' ## Create an invalid object
+#' veg <- Kenya_veg
+#' veg@header <- veg@header[1:10, ]
+#'
+#' ## Resolve invalidity
+#' veg <- clean(veg)
+#'
 #' @rdname clean
 clean_once <- function(object) {
   # delete orphan species records

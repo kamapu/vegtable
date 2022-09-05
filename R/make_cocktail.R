@@ -46,6 +46,9 @@
 #' @param authority Logical value indicating whether author names should be
 #'     included in the taxon name or not.
 #' @param enc_cont,enc_gr Encodings used for special characters.
+#' @param in_header Logical value indicating whether results of Cocktail
+#'     classification should be inserted to the header of the input vegtable or
+#'     not. In the second case, a data frame is provided as output.
 #' @param ... Further arguments passes from or to other methods.
 #'
 #' @return
@@ -72,11 +75,11 @@
 #'
 #' @examples
 #' ## Example from Alvarez (2017)
-#' Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
+#' Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
 #' summary(as.factor(Wetlands_veg@header$Syntax))
 #'
 #' ## Same but only for two vegetation units
-#' Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg,
+#' Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg,
 #'   which = c("HY1", "HY2"), cover = "percen"
 #' )
 #' summary(as.factor(Wetlands_veg$Syntax))
@@ -425,7 +428,10 @@ setGeneric(
 setMethod(
   "make_cocktail", signature(shaker = "shaker", vegtable = "vegtable"),
   function(shaker, vegtable, which, cover, syntax = "Syntax", FUN = sum,
-           ...) {
+           in_header = TRUE, ...) {
+    # Preserve original species list and samples
+    species_in <- vegtable@species
+    samples_in <- vegtable@samples
     # Build pseudo-species
     if (length(shaker@pseudos) > 0) {
       for (i in 1:length(shaker@pseudos)) {
@@ -433,13 +439,7 @@ setMethod(
       }
     }
     # Insert concept IDs in samples
-    vegtable@samples$TaxonConceptID <- vegtable@species@taxonNames[
-      match(
-        vegtable@samples$TaxonUsageID,
-        vegtable@species@taxonNames$TaxonUsageID
-      ),
-      "TaxonConceptID"
-    ]
+    vegtable <- taxa2samples(vegtable)
     # Check presence of groups
     OUT <- list()
     if (length(shaker@groups) > 0) {
@@ -523,6 +523,12 @@ setMethod(
     }
     SYNTAX[rowSums(OUT) > 1] <- "+"
     vegtable@header[, syntax] <- SYNTAX
-    return(vegtable@header)
+    if (in_header) {
+      vegtable@samples <- samples_in
+      vegtable@species <- species_in
+      return(vegtable)
+    } else {
+      return(vegtable@header[, c("ReleveID", which, syntax)])
+    }
   }
 )
