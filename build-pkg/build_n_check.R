@@ -30,79 +30,73 @@ check_built(path = pkg_loc)
 # Report coverage
 report()
 
-
-
-
+# Render the manual
 build_manual(path = "build-pkg")
 
-
-
+# Install this version
 install()
-
-
-
 
 # See at
 ## browseURL(paste0("https://www.marinedatascience.co/blog/2020/01/09/",
 ##                 "checklist-for-r-package-re-submissions-on-cran/"))
-
-# Needed packages
-library(devtools)
-library(covr)
-library(goodpractice)
-library(rmarkdown)
-library(knitr)
-library(pkgdown)
-library(codemetar)
-
-# Document package
-document()
-
-# Report coverage
-report()
-
-# Carry out the tests
-#test()
-
-# Write data set
-source("data-raw/Easplist/Easplist.R")
-
-# Purl vignette R-code
-#purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
-
-# Check application of good practices
-#gp()
-
-# Codemetar
-# write_codemeta()
-
-# Build package
-library(devtools)
-document()
-pkg_loc <- build(path = "build-pkg", args = "--resave-data")
-
-# Test the package
-## Sys.setenv(LANG="en_US.iso88591")
-## Sys.setlocale("LC_ALL", "en_US.iso88591")
-## Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
-check_built(path = pkg_loc)
-
-# After check ------------------------------------------------------------------
-
-# Install the package
-## install()
-
-# Render readme-file.
-## render("README.Rmd")
-
-# Check on Win-builder
-browseURL("https://win-builder.r-project.org/")
-
-# submit to CRAN
-
-
-# build manual
-build_manual(path = "build-pkg")
+## 
+## # Needed packages
+## library(devtools)
+## library(covr)
+## library(goodpractice)
+## library(rmarkdown)
+## library(knitr)
+## library(pkgdown)
+## library(codemetar)
+## 
+## # Document package
+## document()
+## 
+## # Report coverage
+## report()
+## 
+## # Carry out the tests
+## #test()
+## 
+## # Write data set
+## source("data-raw/Easplist/Easplist.R")
+## 
+## # Purl vignette R-code
+## #purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
+## 
+## # Check application of good practices
+## #gp()
+## 
+## # Codemetar
+## # write_codemeta()
+## 
+## # Build package
+## library(devtools)
+## document()
+## pkg_loc <- build(path = "build-pkg", args = "--resave-data")
+## 
+## # Test the package
+## ## Sys.setenv(LANG="en_US.iso88591")
+## ## Sys.setlocale("LC_ALL", "en_US.iso88591")
+## ## Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
+## check_built(path = pkg_loc)
+## 
+## # After check ------------------------------------------------------------------
+## 
+## # Install the package
+## ## install()
+## 
+## # Render readme-file.
+## ## render("README.Rmd")
+## 
+## # Check on Win-builder
+## browseURL("https://win-builder.r-project.org/")
+## 
+## # submit to CRAN
+## 
+## 
+## # build manual
+## build_manual(path = "build-pkg")
 
 # Render package-site
 # pkgdown::build_home()

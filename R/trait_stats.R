@@ -7,27 +7,18 @@
 #' observations or groups of observations, considering data relationships,
 #' taxonomic ranks and the handling of not available values.
 #'
-#' The function `trait_stats()` calculates statistics for numeric variables,
-#' while the function `trait_proportion()` may be used for
-#' categorical variables. In the first case, a column with the name of the
-#' variable and a suffix will be generated, while in the second case, one
-#' additional column per selected trait level will be calculated.
-#'
-#' Both mentioned functions offer the alternative weighted and unweighted
-#' calculations (e.g. calculations weighted by the abundance of species). In
-#' the particular case of `trait_stats()`, customized functions have to be
-#' defined as `foo(x, w, ...)`, where `w` is the weight.
+#' In `trait_stats()` you can use customized functions, which have to be
+#' defined as `foo(x, w, ...)`, where `'x'` is the (numeric) taxon trait and
+#' `'w'` is the weight (e.g. the abundance).
 #'
 #' With the arguments `taxon_level` and `merge_to` the used taxonomic ranks
 #' can be defined, where the first one indicates which ranks
 #' have to be considered in the calculations and the second one determine the
 #' aggregation of taxa from a lower level to a parental one.
 #'
-#' Formula methods allow for the calculation of multiple variables at once. The
-#' formulas have to be written as `trait_1 + ... + trait_n ~ head_var`.
-#'
 #' @param trait Either a character value indicating the name of trait variable
-#'     or a formula including both arguments, `trait` and `head_var`.
+#'     or a formula as `'trait ~ head_var'`. Note that you can add multiple
+#'     variables in the form `trait_1 + ... + trait_n ~ head_var`.
 #' @param object A [vegtable-class] object.
 #' @param FUN A function usually defined as `foo(x, ...)` or as
 #'     `foo(x, w, ...)` for weighted statistics.
@@ -68,12 +59,12 @@
 #'
 #' @examples
 #' ## Cocktail classification of plots
-#' Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
+#' Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
 #'
 #' ## Calculation of proportion of Cyperaceae species in the plot
 #' Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,
 #'   trait_level = "Cyperaceae",
-#'   weight = "percen", include_nas = FALSE, in_header = TRUE
+#'   weight = "percen", include_nas = FALSE
 #' )
 #'
 #' ## Display of proportions per plant community
@@ -101,7 +92,10 @@ setMethod(
     object@species <- tax2traits(object@species, get_names = TRUE)
     # Cross-check
     if (!trait %in% colnames(object@species@taxonTraits)) {
-      stop("Value of argument 'trait' is not a taxon trait in the input object.")
+      stop(paste(
+        "Value of argument 'trait' is not a taxon trait",
+        "in the input object."
+      ))
     }
     if (!missing(head_var)) {
       if (!head_var %in% colnames(object@header)) {
@@ -110,12 +104,18 @@ setMethod(
     }
     if (!missing(taxon_level)) {
       if (!taxon_level %in% taxlist::levels(object@species)) {
-        stop("Value of argument 'taxon_level' is not included in the taxonomic list.")
+        stop(paste(
+          "Value of argument 'taxon_level'",
+          "is not included in the taxonomic list."
+        ))
       }
     }
     if (!missing(merge_to)) {
       if (!merge_to %in% taxlist::levels(object@species)) {
-        stop("Value of in argument 'merge_to' is not included in the taxonomic list.")
+        stop(paste(
+          "Value of in argument 'merge_to'",
+          "is not included in the taxonomic list."
+        ))
       }
     }
     if (!missing(weight)) {
@@ -266,7 +266,10 @@ setMethod(
     }
     # Cross-check
     if (!trait %in% colnames(object@species@taxonTraits)) {
-      stop("Value of argument 'trait' is not a taxon trait in the input object.")
+      stop(paste(
+        "Value of argument 'trait' is not a taxon trait",
+        "in the input object."
+      ))
     }
     if (!missing(head_var)) {
       if (!head_var %in% colnames(object@header)) {
@@ -276,17 +279,26 @@ setMethod(
     if (!missing(trait_level)) {
       if (any(!trait_level %in%
         paste(object@species@taxonTraits[, trait]))) {
-        stop("Some values in argument 'trait_level' are not included in variable trait.")
+        stop(paste(
+          "Some values in argument 'trait_level'",
+          "are not included in variable trait."
+        ))
       }
     }
     if (!missing(taxon_level)) {
       if (!taxon_level %in% taxlist::levels(object@species)) {
-        stop("Value of argument 'taxon_level' is not included in the taxonomic list.")
+        stop(paste(
+          "Value of argument 'taxon_level'",
+          "is not included in the taxonomic list."
+        ))
       }
     }
     if (!missing(merge_to)) {
       if (!merge_to %in% taxlist::levels(object@species)) {
-        stop("Value of in argument 'merge_to' is not included in the taxonomic list.")
+        stop(paste(
+          "Value of in argument 'merge_to'",
+          "is not included in the taxonomic list."
+        ))
       }
     }
     if (!missing(weight)) {
@@ -407,7 +419,7 @@ setMethod(
 #'
 setMethod(
   "trait_proportion", signature(trait = "formula", object = "vegtable"),
-  function(trait, object, in_header = FALSE, ...) {
+  function(trait, object, in_header = TRUE, ...) {
     head_var <- all.vars(update(trait, 0 ~ .))
     trait <- all.vars(update(trait, . ~ 0))
     OUT <- list()
@@ -420,7 +432,10 @@ setMethod(
     }
     cat("DONE\n")
     if (in_header & head_var != "ReleveID") {
-      warning("To insert in header 'ReleveID' is required as right term in the formula.")
+      warning(paste(
+        "To insert in header 'ReleveID'",
+        "is required as right term in the formula."
+      ))
     }
     if (in_header & head_var == "ReleveID") {
       for (i in trait) {

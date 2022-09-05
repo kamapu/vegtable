@@ -41,8 +41,10 @@ veg_diversity(object, ...)
 \item{na.rm}{A logical value indicating whether NA values should be removed
 from the abundance vector or not.}
 
-\item{...}{Further arguments passed to \code{'FUN'} by \code{\link[=aggregate]{aggregate()}} in
-function \code{'veg_diversity()'}.}
+\item{...}{Further arguments passed among methods. In \code{'evenness()'} and
+\code{'dominance()'}, these arguments are passed to \code{'shannon()'}.
+In \code{'veg_diversity()'}, these arguments are passed to \code{\link[=aggregate]{aggregate()}}
+(actually to \code{'FUN'}).}
 
 \item{object}{A \linkS4class{vegtable} object.}
 
@@ -86,15 +88,25 @@ values.
 
 This function calls \code{\link[=taxa2samples]{taxa2samples()}} to derive taxa from taxon usage names in
 slot \strong{samples} and multiple records of species in a single plot will be
-merged by \code{\link[stats:aggregate]{stats::aggregate()}}.
+merged by \link[=aggregate]{stats::aggregate}.
 
 The functions \code{shannon()}, \code{evenness()}, and \code{dominance()} calculate the
-diversity index of Shannon, the evenness, and the dominance, respectively.
+diversity index of Shannon, the evenness, and the dominance
+(\emph{1 - evenness}), respectively.
 Dominance is the complementary value to evenness (i.e. \code{1 - evenness}).
 
 The function \code{simpson()} calculates the Simpson's index using the alternative
 for vegetation plot observations.
 
 The function \code{richness()} counts the number of taxa per plot and can be used
-as alternative to \code{\link[=count_taxa]{count_taxa()}}.
+as alternative to \link[=count_taxa]{vegtable::count_taxa}.
+}
+\examples{
+## Compare Evenness with Shannon index
+Kenya_veg <- cover_trans(x = Kenya_veg, to = "cover")
+Kenya_veg <- veg_diversity(object = Kenya_veg, weight = "cover")
+Kenya_veg <- veg_diversity(object = Kenya_veg, weight = "cover", FUN = evenness)
+
+with(Kenya_veg@header, plot(shannon, evenness))
+
 }

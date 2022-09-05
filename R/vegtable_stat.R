@@ -1,4 +1,5 @@
 #' @name vegtable_stat
+#' @rdname vegtable_stat
 #'
 #' @title General statistics from vegtable objects
 #'
@@ -12,24 +13,31 @@
 #' page of the Global Index for Vegetation-Plot Databases).
 #'
 #' @param vegtable An object of class [vegtable-class].
+#' @param ... Further arguments passed among methods.
 #'
 #' @author GIVD. Adapted by Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @examples
 #' ## Statistics for GIVD
 #' vegtable_stat(Kenya_veg)
-#' @export
 #'
-vegtable_stat <- function(vegtable) {
-  if (!is(vegtable, "vegtable")) {
-    stop("vegtable must be an object of class 'vegtable'.")
-  }
+#' @export
+vegtable_stat <- function(vegtable, ...) {
+  UseMethod("vegtable_stat", vegtable)
+}
+
+#' @rdname vegtable_stat
+#' @aliases vegtable_stat,vegtable-method
+#' @method vegtable_stat vegtable
+#' @export
+vegtable_stat.vegtable <- function(vegtable, ...) {
   summary(vegtable)
   vegtable <- vegtable@header
   # Number of references
   if (!is.null(vegtable$REFERENCE)) {
     cat("REFERENCES", "\n")
-    cat("Primary references: ", length(base::levels(factor(vegtable$REFERENCE))),
+    cat("Primary references: ",
+      length(base::levels(factor(vegtable$REFERENCE))),
       sep = "", "\n"
     )
     cat("\n")

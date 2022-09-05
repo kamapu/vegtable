@@ -33,6 +33,15 @@ once does not assure the deletion of all orphaned entries, it is recommended
 to run it at least twice. This repetition of cleaning is controlled by the
 argument \code{times}.
 }
+\examples{
+## Create an invalid object
+veg <- Kenya_veg
+veg@header <- veg@header[1:10, ]
+
+## Resolve invalidity
+veg <- clean(veg)
+
+}
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
 }

@@ -4,12 +4,13 @@
 #' @title Aggregating information into a data frame
 #'
 #' @description
-#' This function aggregates information contained in [vegtable-class] objects
-#' to a summarizing data frame.
-#'
+#' Compute summarizing tables from [vegtable-class] objects.
 #' This function works in a similar way as [crosstable()].
 #'
 #' @param object A formula indicating the variables used for the summary.
+#'     As in [crosstable()], the keywords `"TaxonName"` and `"AcceptedName"`
+#'     can be used to retrieve taxonomic names, where the second will set the
+#'     accepted name for names considered as synonyms.
 #' @param data Either a data frame or an object of class [vegtable-class].
 #' @param FUN Function used to aggregate values.
 #' @param use_nas Logical value indicating whether NA's should be included in
@@ -21,6 +22,18 @@
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @seealso [aggregate()]
+#'
+#' @examples
+#' ## Transform cover to percentage cover
+#' veg <- cover_trans(x = Kenya_veg, to = "cover")
+#'
+#' ## Frequency of taxa per publication
+#' atab <- veg_aggregate(object = cover ~ AcceptedName + REFERENCE, data = veg, FUN = length)
+#' head(atab)
+#'
+#' ## Life form proportions per plot
+#' atab <- veg_aggregate(object = cover ~ lf_behn_2018 + ReleveID, data = veg, FUN = sum)
+#' head(atab)
 #'
 #' @exportMethod veg_aggregate
 setGeneric(

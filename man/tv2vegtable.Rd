@@ -64,9 +64,9 @@ rebuild the \code{coverconvert} slot or use \link{braun_blanquet}.
 }
 \examples{
 ## Installed 'Turboveg' version of 'Fujiwara et al. (2014)'
-TV_Home <- file.path(path.package("vegtable"), "tv_data")
-Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
-summary(Veg)
+# TV_Home <- file.path(path.package("vegtable"), "tv_data")
+# Veg <- tv2vegtable("Fujiwara_2014", TV_Home)
+# summary(Veg)
 ## Installed 'Turboveg' version of "Fujiwara et al. (2014)"
 TV_Home <- file.path(path.package("vegtable"), "tv_data", "popup", "Swea")
 Table <- tv2coverconvert(file.path(TV_Home, "tvscale.dbf"))

@@ -42,11 +42,12 @@ trait_proportion(trait, object, ...)
   ...
 )
 
-\S4method{trait_proportion}{formula,vegtable}(trait, object, in_header = FALSE, ...)
+\S4method{trait_proportion}{formula,vegtable}(trait, object, in_header = TRUE, ...)
 }
 \arguments{
 \item{trait}{Either a character value indicating the name of trait variable
-or a formula including both arguments, \code{trait} and \code{head_var}.}
+or a formula as \code{'trait ~ head_var'}. Note that you can add multiple
+variables in the form \code{trait_1 + ... + trait_n ~ head_var}.}
 
 \item{object}{A \linkS4class{vegtable} object.}
 
@@ -99,33 +100,23 @@ Calculation of statistics and proportions of taxon traits for plot
 observations or groups of observations, considering data relationships,
 taxonomic ranks and the handling of not available values.
 
-The function \code{trait_stats()} calculates statistics for numeric variables,
-while the function \code{trait_proportion()} may be used for
-categorical variables. In the first case, a column with the name of the
-variable and a suffix will be generated, while in the second case, one
-additional column per selected trait level will be calculated.
-
-Both mentioned functions offer the alternative weighted and unweighted
-calculations (e.g. calculations weighted by the abundance of species). In
-the particular case of \code{trait_stats()}, customized functions have to be
-defined as \code{foo(x, w, ...)}, where \code{w} is the weight.
+In \code{trait_stats()} you can use customized functions, which have to be
+defined as \code{foo(x, w, ...)}, where \code{'x'} is the (numeric) taxon trait and
+\code{'w'} is the weight (e.g. the abundance).
 
 With the arguments \code{taxon_level} and \code{merge_to} the used taxonomic ranks
 can be defined, where the first one indicates which ranks
 have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one.
-
-Formula methods allow for the calculation of multiple variables at once. The
-formulas have to be written as \code{trait_1 + ... + trait_n ~ head_var}.
 }
 \examples{
 ## Cocktail classification of plots
-Wetlands_veg@header <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
+Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
 
 ## Calculation of proportion of Cyperaceae species in the plot
 Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,
   trait_level = "Cyperaceae",
-  weight = "percen", include_nas = FALSE, in_header = TRUE
+  weight = "percen", include_nas = FALSE
 )
 
 ## Display of proportions per plant community
