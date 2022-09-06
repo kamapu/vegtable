@@ -27,7 +27,8 @@
 #' ## coverconvert as list
 #' as(Kenya_veg@coverconvert, "list")
 #'
-#' @aliases as.list,vegtable-method
+#' @aliases as.list,vegtable-method coerce,vegtable,list-method
+#' coerce,coverconvert,list-method
 #'
 #' @exportMethod as.list
 setMethod(
@@ -37,8 +38,6 @@ setMethod(
   }
 )
 
-#' @rdname coerce-methods
-#' @aliases coerce,vegtable,list-method
 setAs("vegtable", "list", function(from) as.list(from))
 
 #' @rdname coerce-methods
@@ -81,8 +80,6 @@ setMethod(
   }
 )
 
-#' @rdname coerce-methods
-#' @aliases coerce,coverconvert,list-method
 setAs("coverconvert", "list", function(from) as.list(from))
 
 #' @rdname coerce-methods

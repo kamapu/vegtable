@@ -15,16 +15,17 @@ trait_stats(trait, object, ...)
   trait,
   object,
   FUN,
-  head_var,
-  taxon_level,
+  head_var = "ReleveID",
+  taxon_levels,
   merge_to,
   weight,
   suffix = "_stats",
   in_header = TRUE,
+  na.rm = TRUE,
   ...
 )
 
-\S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix = "_stats", in_header = TRUE, ...)
+\S4method{trait_stats}{formula,vegtable}(trait, object, ...)
 
 trait_proportion(trait, object, ...)
 
@@ -33,7 +34,7 @@ trait_proportion(trait, object, ...)
   object,
   head_var,
   trait_level,
-  taxon_level,
+  taxon_levels,
   merge_to,
   include_nas = TRUE,
   weight,
@@ -52,7 +53,7 @@ variables in the form \code{trait_1 + ... + trait_n ~ head_var}.}
 \item{object}{A \linkS4class{vegtable} object.}
 
 \item{...}{Further arguments passed among methods. In the case of the
-formula method, arguments are passed to the character method.}
+character method, they are passed to 'FUN'.}
 
 \item{FUN}{A function usually defined as \code{foo(x, ...)} or as
 \code{foo(x, w, ...)} for weighted statistics.}
@@ -62,8 +63,8 @@ be used as aggregation level for the calculation of statistics or
 proportions.
 If not provided, the function will use \strong{ReleveID} by default.}
 
-\item{taxon_level}{Character value indicating a selected taxonomic rank for
-the output.}
+\item{taxon_levels}{Character vector indicating the selected taxonomic ranks
+to be considered in the output.}
 
 \item{merge_to}{Character value indicating the taxonomic rank for
 aggregation of taxa.
@@ -83,6 +84,10 @@ inserted in the slot \strong{header} or provided as data frame. In the case
 that \code{'head_var'} (or the right term in the formula method) is different
 from \strong{ReleveID}, the statistics and proportions will be inserted in the
 respective data frame at slot \strong{relations}.}
+
+\item{na.rm}{A logical value indicating whether NAs should be removed for the
+calculation of statistics or not. It is passed to \code{'FUN'} in
+\code{trait_stats()}.}
 
 \item{trait_level}{Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.
@@ -107,7 +112,7 @@ In \code{trait_stats()} you can use customized functions, which have to be
 defined as \code{foo(x, w, ...)}, where \code{'x'} is the (numeric) taxon trait and
 \code{'w'} is the weight (e.g. the abundance).
 
-With the arguments \code{taxon_level} and \code{merge_to} the used taxonomic ranks
+With the arguments \code{taxon_levels} and \code{merge_to} the used taxonomic ranks
 can be defined, where the first one indicates which ranks
 have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one.
