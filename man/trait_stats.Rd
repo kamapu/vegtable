@@ -79,7 +79,10 @@ levels of categorical trait variables. I is meant to avoid homonymous
 variables within the same object.}
 
 \item{in_header}{Logical value indicating whether the output should be
-inserted in the slot \bold{header} or provided as data frame.}
+inserted in the slot \strong{header} or provided as data frame. In the case
+that \code{'head_var'} (or the right term in the formula method) is different
+from \strong{ReleveID}, the statistics and proportions will be inserted in the
+respective data frame at slot \strong{relations}.}
 
 \item{trait_level}{Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.

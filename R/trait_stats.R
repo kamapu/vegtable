@@ -46,7 +46,10 @@
 #'     levels of categorical trait variables. I is meant to avoid homonymous
 #'     variables within the same object.
 #' @param in_header Logical value indicating whether the output should be
-#'     inserted in the slot \bold{header} or provided as data frame.
+#'     inserted in the slot **header** or provided as data frame. In the case
+#'     that `'head_var'` (or the right term in the formula method) is different
+#'     from **ReleveID**, the statistics and proportions will be inserted in the
+#'     respective data frame at slot **relations**.
 #' @param ... Further arguments passed among methods. In the case of the
 #'     formula method, arguments are passed to the character method.
 #'
@@ -81,9 +84,7 @@ setGeneric(
 )
 
 #' @rdname trait_stats
-#'
 #' @aliases trait_stats,character,vegtable-method
-#'
 setMethod(
   "trait_stats", signature(trait = "character", object = "vegtable"),
   function(trait, object, FUN, head_var, taxon_level, merge_to, weight,
@@ -172,12 +173,24 @@ setMethod(
     }
     # Finally the output
     if (in_header) {
-      object_in@header[, paste0(trait, suffix)] <-
-        object[match(
-          object_in@header[, head_var],
-          object[, head_var]
-        ), trait]
-      return(object_in)
+      if (head_var == "ReleveID") {
+        object_in@header[, paste0(trait, suffix)] <-
+          object[match(
+            object_in@header[, head_var],
+            object[, head_var]
+          ), trait]
+        return(object_in)
+      } else {
+        if (!head_var %in% names(object_in@relations)) {
+          new_relation(object_in) <- head_var
+        }
+        object_in@relations[[head_var]][, paste0(trait, suffix)] <-
+          object[match(
+            object_in@relations[[head_var]][, head_var],
+            object[, head_var]
+          ), trait]
+        return(object_in)
+      }
     } else {
       colnames(object)[colnames(object) == trait] <- paste0(
         trait,
@@ -205,7 +218,10 @@ setMethod(
       )
     }
     if (in_header & head_var != "ReleveID") {
-      warning("To insert in header 'ReleveID' is required as right term in the formula.")
+      warning(paste(
+        "To insert in header 'ReleveID' is required",
+        "as right term in the formula."
+      ))
     }
     if (in_header & head_var == "ReleveID") {
       for (i in trait) {
@@ -399,12 +415,25 @@ setMethod(
     }
     # Finally the output
     names(object)[1] <- head_var
+    # TODO: Here pass also to relations
     if (in_header) {
-      for (i in colnames(object)[-1]) {
-        object_in@header[, i] <- object[match(
-          object_in$ReleveID,
-          object$ReleveID
-        ), i]
+      if (head_var == "ReleveID") {
+        for (i in colnames(object)[-1]) {
+          object_in@header[, i] <- object[match(
+            object_in@header[, head_var],
+            object[, head_var]
+          ), i]
+        }
+      } else {
+        if (!head_var %in% names(object_in@relations)) {
+          new_relation(object_in) <- head_var
+        }
+        for (i in colnames(object)[-1]) {
+          object_in@relations[[head_var]][, i] <- object[match(
+            object_in@relations[[head_var]][, head_var],
+            object[, head_var]
+          ), i]
+        }
       }
       return(object_in)
     } else {
