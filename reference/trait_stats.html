@@ -5,7 +5,7 @@ taxonomic ranks and the handling of not available values.
 In trait_stats() you can use customized functions, which have to be
 defined as foo(x, w, ...), where 'x' is the (numeric) taxon trait and
 'w' is the weight (e.g. the abundance).
-With the arguments taxon_level and merge_to the used taxonomic ranks
+With the arguments taxon_levels and merge_to the used taxonomic ranks
 can be defined, where the first one indicates which ranks
 have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one."><title>Statistics and proportion for taxon traits — trait_stats • vegtable</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Statistics and proportion for taxon traits — trait_stats"><meta property="og:description" content="Calculation of statistics and proportions of taxon traits for plot
@@ -14,7 +14,7 @@ taxonomic ranks and the handling of not available values.
 In trait_stats() you can use customized functions, which have to be
 defined as foo(x, w, ...), where 'x' is the (numeric) taxon trait and
 'w' is the weight (e.g. the abundance).
-With the arguments taxon_level and merge_to the used taxonomic ranks
+With the arguments taxon_levels and merge_to the used taxonomic ranks
 can be defined, where the first one indicates which ranks
 have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -70,7 +70,7 @@ taxonomic ranks and the handling of not available values.</p>
 <p>In <code>trait_stats()</code> you can use customized functions, which have to be
 defined as <code>foo(x, w, ...)</code>, where <code>'x'</code> is the (numeric) taxon trait and
 <code>'w'</code> is the weight (e.g. the abundance).</p>
-<p>With the arguments <code>taxon_level</code> and <code>merge_to</code> the used taxonomic ranks
+<p>With the arguments <code>taxon_levels</code> and <code>merge_to</code> the used taxonomic ranks
 can be defined, where the first one indicates which ranks
 have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one.</p>
@@ -85,17 +85,18 @@ aggregation of taxa from a lower level to a parental one.</p>
 <span>  <span class="va">trait</span>,</span>
 <span>  <span class="va">object</span>,</span>
 <span>  <span class="va">FUN</span>,</span>
-<span>  <span class="va">head_var</span>,</span>
-<span>  <span class="va">taxon_level</span>,</span>
+<span>  head_var <span class="op">=</span> <span class="st">"ReleveID"</span>,</span>
+<span>  <span class="va">taxon_levels</span>,</span>
 <span>  <span class="va">merge_to</span>,</span>
 <span>  <span class="va">weight</span>,</span>
 <span>  suffix <span class="op">=</span> <span class="st">"_stats"</span>,</span>
 <span>  in_header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for formula,vegtable</span></span>
-<span><span class="fu">trait_stats</span><span class="op">(</span><span class="va">trait</span>, <span class="va">object</span>, <span class="va">weight</span>, suffix <span class="op">=</span> <span class="st">"_stats"</span>, in_header <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">trait_stats</span><span class="op">(</span><span class="va">trait</span>, <span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">trait_proportion</span><span class="op">(</span><span class="va">trait</span>, <span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
@@ -103,9 +104,9 @@ aggregation of taxa from a lower level to a parental one.</p>
 <span><span class="fu">trait_proportion</span><span class="op">(</span></span>
 <span>  <span class="va">trait</span>,</span>
 <span>  <span class="va">object</span>,</span>
-<span>  <span class="va">head_var</span>,</span>
-<span>  <span class="va">trait_level</span>,</span>
-<span>  <span class="va">taxon_level</span>,</span>
+<span>  head_var <span class="op">=</span> <span class="st">"ReleveID"</span>,</span>
+<span>  <span class="va">trait_levels</span>,</span>
+<span>  <span class="va">taxon_levels</span>,</span>
 <span>  <span class="va">merge_to</span>,</span>
 <span>  include_nas <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">weight</span>,</span>
@@ -115,7 +116,7 @@ aggregation of taxa from a lower level to a parental one.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for formula,vegtable</span></span>
-<span><span class="fu">trait_proportion</span><span class="op">(</span><span class="va">trait</span>, <span class="va">object</span>, in_header <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">trait_proportion</span><span class="op">(</span><span class="va">trait</span>, <span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -132,7 +133,7 @@ variables in the form <code>trait_1 + ... + trait_n ~ head_var</code>.</p></dd>
 
 <dt>...</dt>
 <dd><p>Further arguments passed among methods. In the case of the
-formula method, arguments are passed to the character method.</p></dd>
+character method, they are passed to 'FUN'.</p></dd>
 
 
 <dt>FUN</dt>
@@ -147,9 +148,9 @@ proportions.
 If not provided, the function will use <strong>ReleveID</strong> by default.</p></dd>
 
 
-<dt>taxon_level</dt>
-<dd><p>Character value indicating a selected taxonomic rank for
-the output.</p></dd>
+<dt>taxon_levels</dt>
+<dd><p>Character vector indicating the selected taxonomic ranks
+to be considered in the output.</p></dd>
 
 
 <dt>merge_to</dt>
@@ -173,10 +174,19 @@ variables within the same object.</p></dd>
 
 <dt>in_header</dt>
 <dd><p>Logical value indicating whether the output should be
-inserted in the slot <b>header</b> or provided as data frame.</p></dd>
+inserted in the slot <strong>header</strong> or provided as data frame. In the case
+that <code>'head_var'</code> (or the right term in the formula method) is different
+from <strong>ReleveID</strong>, the statistics and proportions will be inserted in the
+respective data frame at slot <strong>relations</strong>.</p></dd>
 
 
-<dt>trait_level</dt>
+<dt>na.rm</dt>
+<dd><p>A logical value indicating whether NAs should be removed for the
+calculation of statistics or not. It is passed to <code>'FUN'</code> in
+<code>trait_stats()</code>.</p></dd>
+
+
+<dt>trait_levels</dt>
 <dd><p>Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.
 Trait levels that are skipped at output will be still used for the
@@ -204,18 +214,13 @@ results at the slot <code>header</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Cocktail classification of plots</span></span></span>
-<span class="r-in"><span><span class="va">Wetlands_veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="make_cocktail.html">make_cocktail</a></span><span class="op">(</span><span class="va">Wetlands</span>, <span class="va">Wetlands_veg</span>, cover <span class="op">=</span> <span class="st">"percen"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Calculation of proportion of Cyperaceae species in the plot</span></span></span>
-<span class="r-in"><span><span class="va">Wetlands_veg</span> <span class="op">&lt;-</span> <span class="fu">trait_proportion</span><span class="op">(</span><span class="st">"FAMILY"</span>, <span class="va">Wetlands_veg</span>,</span></span>
-<span class="r-in"><span>  trait_level <span class="op">=</span> <span class="st">"Cyperaceae"</span>,</span></span>
-<span class="r-in"><span>  weight <span class="op">=</span> <span class="st">"percen"</span>, include_nas <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">veg</span> <span class="op">&lt;-</span> <span class="fu"><a href="cover_trans.html">cover_trans</a></span><span class="op">(</span><span class="va">Kenya_veg</span>, to <span class="op">=</span> <span class="st">"cover"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">veg</span> <span class="op">&lt;-</span> <span class="fu">trait_proportion</span><span class="op">(</span><span class="st">"lf_behn_2018"</span>, <span class="va">veg</span>,</span></span>
+<span class="r-in"><span>  trait_levels <span class="op">=</span> <span class="st">"obligate_annual"</span>, weight <span class="op">=</span> <span class="st">"cover"</span>, include_nas <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Display of proportions per plant community</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">Cyperaceae_prop</span> <span class="op">~</span> <span class="va">Syntax</span>, <span class="va">Wetlands_veg</span><span class="op">@</span><span class="va">header</span>, col <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="trait_stats-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="summary.html">summary</a></span><span class="op">(</span><span class="va">veg</span><span class="op">$</span><span class="va">obligate_annual_prop</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0077  0.2500  0.5000  0.4992  0.7143  1.0000    1039 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
