@@ -15,25 +15,26 @@ trait_stats(trait, object, ...)
   trait,
   object,
   FUN,
-  head_var,
-  taxon_level,
+  head_var = "ReleveID",
+  taxon_levels,
   merge_to,
   weight,
   suffix = "_stats",
   in_header = TRUE,
+  na.rm = TRUE,
   ...
 )
 
-\S4method{trait_stats}{formula,vegtable}(trait, object, weight, suffix = "_stats", in_header = TRUE, ...)
+\S4method{trait_stats}{formula,vegtable}(trait, object, ...)
 
 trait_proportion(trait, object, ...)
 
 \S4method{trait_proportion}{character,vegtable}(
   trait,
   object,
-  head_var,
-  trait_level,
-  taxon_level,
+  head_var = "ReleveID",
+  trait_levels,
+  taxon_levels,
   merge_to,
   include_nas = TRUE,
   weight,
@@ -42,7 +43,7 @@ trait_proportion(trait, object, ...)
   ...
 )
 
-\S4method{trait_proportion}{formula,vegtable}(trait, object, in_header = TRUE, ...)
+\S4method{trait_proportion}{formula,vegtable}(trait, object, ...)
 }
 \arguments{
 \item{trait}{Either a character value indicating the name of trait variable
@@ -52,7 +53,7 @@ variables in the form \code{trait_1 + ... + trait_n ~ head_var}.}
 \item{object}{A \linkS4class{vegtable} object.}
 
 \item{...}{Further arguments passed among methods. In the case of the
-formula method, arguments are passed to the character method.}
+character method, they are passed to 'FUN'.}
 
 \item{FUN}{A function usually defined as \code{foo(x, ...)} or as
 \code{foo(x, w, ...)} for weighted statistics.}
@@ -62,8 +63,8 @@ be used as aggregation level for the calculation of statistics or
 proportions.
 If not provided, the function will use \strong{ReleveID} by default.}
 
-\item{taxon_level}{Character value indicating a selected taxonomic rank for
-the output.}
+\item{taxon_levels}{Character vector indicating the selected taxonomic ranks
+to be considered in the output.}
 
 \item{merge_to}{Character value indicating the taxonomic rank for
 aggregation of taxa.
@@ -79,9 +80,16 @@ levels of categorical trait variables. I is meant to avoid homonymous
 variables within the same object.}
 
 \item{in_header}{Logical value indicating whether the output should be
-inserted in the slot \bold{header} or provided as data frame.}
+inserted in the slot \strong{header} or provided as data frame. In the case
+that \code{'head_var'} (or the right term in the formula method) is different
+from \strong{ReleveID}, the statistics and proportions will be inserted in the
+respective data frame at slot \strong{relations}.}
 
-\item{trait_level}{Character vector indicating a selection of levels from a
+\item{na.rm}{A logical value indicating whether NAs should be removed for the
+calculation of statistics or not. It is passed to \code{'FUN'} in
+\code{trait_stats()}.}
+
+\item{trait_levels}{Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.
 Trait levels that are skipped at output will be still used for the
 calculation of proportions.
@@ -104,23 +112,17 @@ In \code{trait_stats()} you can use customized functions, which have to be
 defined as \code{foo(x, w, ...)}, where \code{'x'} is the (numeric) taxon trait and
 \code{'w'} is the weight (e.g. the abundance).
 
-With the arguments \code{taxon_level} and \code{merge_to} the used taxonomic ranks
+With the arguments \code{taxon_levels} and \code{merge_to} the used taxonomic ranks
 can be defined, where the first one indicates which ranks
 have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one.
 }
 \examples{
-## Cocktail classification of plots
-Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
-
-## Calculation of proportion of Cyperaceae species in the plot
-Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,
-  trait_level = "Cyperaceae",
-  weight = "percen", include_nas = FALSE
+veg <- cover_trans(Kenya_veg, to = "cover")
+veg <- trait_proportion("lf_behn_2018", veg,
+  trait_levels = "obligate_annual", weight = "cover", include_nas = FALSE
 )
-
-## Display of proportions per plant community
-boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col = "grey")
+summary(veg$obligate_annual_prop)
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

@@ -23,16 +23,23 @@
 
 \item{from}{Scale name of values in \code{x} as character value.}
 
-\item{rule}{Rule applied for the conversion (see details).}
+\item{rule}{A character value indicating the rule applied for cover
+transformation. Three rules are implemented for transformation,
+either \code{top} (values transformed to the top of the range),
+\code{middle} (transformation at the midpoint), and
+\code{bottom} (conversion at the lowest value of the range).
+In the later case, if the bottom is zero cover, a fictive bottom value
+can be set by \code{'zeroto'}}
 
-\item{zeroto}{Value used to replace levels with bottom at 0\% cover.}
+\item{zeroto}{Value set for transformation of classes with bottom at 0\%
+cover.}
 
 \item{...}{Further arguments passed from or to other methods.}
 
 \item{to}{Name of the column in slot \code{samples} for writing converted values.}
 
 \item{replace}{Logical value indicating whether existing cover values should
-be replaced or not.}
+be replaced by the new computed values or not.}
 }
 \value{
 Either a vector or a \linkS4class{vegtable} object.
@@ -42,20 +49,6 @@ Convert values of a categorical cover scale to percentage values.
 
 This function requires as input a \linkS4class{coverconvert} object which contains
 the conversion tables.
-
-In the case of \linkS4class{vegtable} objects, the conversion is already embedded
-in the slot \code{coverconvert}.
-
-Three rules are implemented for transformation, either \code{top} (values
-transformed to the top of the range), \code{middle} (transformation at the
-midpoint), and \code{bottom} (conversion at the lowest value of the
-range). In the later case, transformation ranges starting at 0\% of cover
-can be set to a different value by the argument \code{zeroto}.
-
-When \code{replace=FALSE}, existing values of cover in the \linkS4class{vegtable}
-object will be maintained. Since there is not a standard naming of cover
-values, in the transformation the name of cover variable should be
-indicated in the argument \code{to}.
 }
 \examples{
 ## Check the available scales

@@ -3,6 +3,8 @@
 \name{as}
 \alias{as}
 \alias{as.list,vegtable-method}
+\alias{coerce,vegtable,list-method}
+\alias{coerce,coverconvert,list-method}
 \alias{as<-}
 \alias{as<-,vegtable-method}
 \alias{as.list,coverconvert-method}

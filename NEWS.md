@@ -21,6 +21,8 @@ vegtable 0.1.8
 * Method `names()` for `vegtable` objects will retrieve a list with all names
   from the respective slots.
 * New coercion methods including functions `as()` and `as<-`.
+* Functions `trait_proportion()` and `trait_stats()` are also adding results to
+  the slot **relations**.
   
 ## Bug Fixes
 
