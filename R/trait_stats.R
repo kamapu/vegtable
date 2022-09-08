@@ -26,7 +26,7 @@
 #'     be used as aggregation level for the calculation of statistics or
 #'     proportions.
 #'     If not provided, the function will use **ReleveID** by default.
-#' @param trait_level Character vector indicating a selection of levels from a
+#' @param trait_levels Character vector indicating a selection of levels from a
 #'     trait, in the case that some levels should be ignored in the output.
 #'     Trait levels that are skipped at output will be still used for the
 #'     calculation of proportions.
@@ -64,17 +64,11 @@
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
 #' @examples
-#' ## Cocktail classification of plots
-#' Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
-#'
-#' ## Calculation of proportion of Cyperaceae species in the plot
-#' Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,
-#'   trait_level = "Cyperaceae",
-#'   weight = "percen", include_nas = FALSE
+#' veg <- cover_trans(Kenya_veg, to = "cover")
+#' veg <- trait_proportion("lf_behn_2018", veg,
+#'   trait_levels = "obligate_annual", weight = "cover", include_nas = FALSE
 #' )
-#'
-#' ## Display of proportions per plant community
-#' boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col = "grey")
+#' summary(veg$obligate_annual_prop)
 #' @rdname trait_stats
 NULL
 
@@ -84,7 +78,8 @@ NULL
 #' Check validity of arguments in functions [trait_stats()] and
 #' [trait_proportion()].
 #' @keywords internal
-check_args <- function(object, trait, head_var, weight, taxon_levels, merge_to) {
+check_args <- function(object, trait, head_var, weight, taxon_levels, merge_to,
+                       trait_levels) {
   if (!all(trait %in% names(object@species@taxonTraits))) {
     trait <- trait[!trait %in% names(object@species@taxonTraits)]
     stop(paste0(
@@ -118,6 +113,17 @@ check_args <- function(object, trait, head_var, weight, taxon_levels, merge_to) 
   if (!missing(weight)) {
     if (!weight %in% colnames(object@samples)) {
       stop("Value of argument 'weight' is not included at slot samples.")
+    }
+  }
+  if (!missing(trait_levels)) {
+    if (!all(trait_levels %in% object@species@taxonTraits[, trait])) {
+      trait_levels <- trait_levels[!trait_levels %in%
+        object@species@taxonTraits[, trait]]
+      stop(paste0(
+        "Following values of 'trait_levels' ",
+        "are not included in trait '", trait, "': '",
+        paste0(trait_levels, collapse = "', '"), "'."
+      ))
     }
   }
 }
@@ -241,85 +247,25 @@ setGeneric(
 )
 
 #' @rdname trait_stats
-#'
 #' @aliases trait_proportion,character,vegtable-method
-#'
 setMethod(
   "trait_proportion", signature(trait = "character", object = "vegtable"),
-  function(trait, object, head_var, trait_level, taxon_levels, merge_to,
+  function(trait, object, head_var = "ReleveID", trait_levels, taxon_levels, merge_to,
            include_nas = TRUE, weight, suffix = "_prop", in_header = TRUE,
            ...) {
+    # Only one trait is allowed for this function
+    if (length(trait) > 1) {
+      stop("Only one trait can be assessed by 'trait_proportion'.")
+    }
+    # Check conditions
+    check_args(
+      object, trait, head_var, weight, taxon_levels, merge_to,
+      trait_levels
+    )
+    # Retain original object
     object_in <- object
-    if (!missing(taxon_levels) | !missing(merge_to)) {
-      object@species <- tax2traits(object@species, get_names = TRUE)
-    }
-    # Cross-check
-    if (!all(trait %in% names(object@species@taxonTraits))) {
-      trait <- trait[!trait %in% names(object@species@taxonTraits)]
-      stop(paste0(
-        "Following values in 'trait' are missing at ",
-        "'object@species@taxonTraits': ", paste0(trait, collapse = ", "),
-        "."
-      ))
-    }
-    if (!missing(head_var)) {
-      if (!head_var %in% colnames(object@header)) {
-        stop("Value of argument 'head_var' is not a variable at header.")
-      }
-    }
-    if (!missing(trait_level)) {
-      if (any(!trait_level %in%
-        paste(object@species@taxonTraits[, trait]))) {
-        stop(paste(
-          "Some values in argument 'trait_level'",
-          "are not included in variable trait."
-        ))
-      }
-    }
-    if (!missing(taxon_levels)) {
-      if (!taxon_levels %in% taxlist::levels(object@species)) {
-        stop(paste(
-          "Value of argument 'taxon_levels'",
-          "is not included in the taxonomic list."
-        ))
-      }
-    }
-    if (!missing(merge_to)) {
-      if (!merge_to %in% taxlist::levels(object@species)) {
-        stop(paste(
-          "Value of in argument 'merge_to'",
-          "is not included in the taxonomic list."
-        ))
-      }
-    }
-    if (!missing(weight)) {
-      if (!weight %in% colnames(object@samples)) {
-        stop("Value of argument 'weight' is not included at slot samples.")
-      }
-    }
-    # Transfer taxonomy to traits
-    object@species@taxonTraits[, trait] <-
-      paste(object@species@taxonTraits[, trait])
-    object@species@taxonTraits[, trait] <-
-      replace_x(
-        object@species@taxonTraits[, trait], c(NA, ""),
-        c("NA", "NA")
-      )
-    if (!include_nas) {
-      object@species@taxonTraits[, trait] <-
-        replace_x(
-          object@species@taxonTraits[, trait], c("NA"),
-          NA
-        )
-    }
-    # Transfer traits to samples
-    if (missing(merge_to)) {
-      object <- taxa2samples(object, add_traits = TRUE)
-    } else {
-      object <- taxa2samples(object, merge_to, TRUE)
-    }
     # Transfer head variable to samples
-    if (!missing(head_var)) {
+    if (head_var != "ReleveID") {
       object@samples[, head_var] <- with(
         object@header,
         replace_x(
@@ -327,145 +273,89 @@ setMethod(
           get(head_var)
         )
       )
-    } else {
-      head_var <- "ReleveID"
     }
-    object@samples <- object@samples[!is.na(object@samples[, trait]), ]
-    # Aggregate to taxon
-    object@samples$Level <- with(
-      object@species@taxonRelations,
-      paste(Level)[match(
-        object@samples$TaxonConceptID,
-        TaxonConceptID
-      )]
+    # Get traits in slot samples
+    if (missing(taxon_levels)) {
+      taxon_levels <- taxlist::levels(object_in@species)
+    }
+    if (missing(merge_to)) {
+      object <- taxa2samples(object,
+        include_levels = taxon_levels,
+        add_traits = TRUE
+      )
+    } else {
+      object <- taxa2samples(object,
+        include_levels = taxon_levels,
+        add_traits = TRUE, merge_to = merge_to
+      )
+    }
+    # Include NAs
+    if (include_nas) {
+      object@samples[is.na(object@samples[, trait]), trait] <- "NA"
+    } else {
+      object@samples <- object@samples[!is.na(object@samples[, trait]), ]
+    }
+    # Calculate output
+    if (missing(weight)) {
+      weight <- "count_presence"
+      count_presence <- rep(1, nrow(object@samples))
+    }
+    OUT <- aggregate(as.formula(paste(weight, "~", trait, "+", head_var)),
+      data = object@samples, FUN = sum
     )
-    if (!missing(taxon_levels)) {
-      object@samples <- object@samples[object@samples$Level ==
-        taxon_levels, ]
+    SUM <- aggregate(as.formula(paste(weight, "~", head_var)),
+      data = object@samples, FUN = sum
+    )
+    SUM <- SUM[match(OUT[, head_var], SUM[, head_var]), weight]
+    OUT[, weight] <- OUT[, weight] / SUM
+    # Filter to selected trait levels
+    if (!missing(trait_levels)) {
+      OUT <- OUT[OUT[, trait] %in% trait_levels, ]
     }
-    if (!missing(weight)) {
-      object <- aggregate(
-        as.formula(paste(
-          weight, "~", head_var, "+",
-          trait, "+ TaxonConceptID + Level"
-        )),
-        object@samples, sum
-      )
-      object <- crosstable(as.formula(paste(
-        weight, "~", trait, "+",
-        head_var
-      )), object, sum,
-      na_to_zero = TRUE
-      )
-      names(object)[-1] <- paste0(names(object)[-1], suffix)
-    } else {
-      object@samples$tax_count <- 1
-      object <- aggregate(
-        as.formula(paste(
-          "tax_count ~", head_var,
-          "+", trait,
-          "+ TaxonConceptID + Level"
-        )),
-        object@samples, function(x) 1
-      )
-      object <- crosstable(as.formula(paste(
-        "tax_count ~", trait, "+",
-        head_var
-      )), object, sum,
-      na_to_zero = TRUE
-      )
-      names(object)[-1] <- paste0(names(object)[-1], suffix)
-    }
-    # Calculation of proportions
-    object <- cbind(object[, 1], sweep(
-      object[, -1], 1,
-      rowSums(object[, -1]), "/"
-    ))
-    # Subset to requested levels
-    if (!missing(trait_level)) {
-      object <- object[, c(colnames(object)[1], paste0(
-        trait_level,
-        suffix
-      ))]
-    }
-    # Finally the output
-    names(object)[1] <- head_var
-    # TODO: Here pass also to relations
+    OUT[, trait] <- paste0(OUT[, trait], suffix)
+    OUT <- crosstable(as.formula(paste(
+      weight, "~", trait, "+",
+      head_var
+    )), OUT, sum,
+    na_to_zero = TRUE
+    )
+    # Last output
     if (in_header) {
       if (head_var == "ReleveID") {
-        for (i in colnames(object)[-1]) {
-          object_in@header[, i] <- object[match(
+        for (i in names(OUT)[names(OUT) != head_var]) {
+          object_in@header[, i] <- OUT[match(
             object_in@header[, head_var],
-            object[, head_var]
+            OUT[, head_var]
           ), i]
         }
+        return(object_in)
       } else {
         if (!head_var %in% names(object_in@relations)) {
           new_relation(object_in) <- head_var
         }
-        for (i in colnames(object)[-1]) {
-          object_in@relations[[head_var]][, i] <- object[match(
-            object_in@relations[[head_var]][, head_var],
-            object[, head_var]
-          ), i]
+        for (i in names(OUT)[names(OUT) != head_var]) {
+          object_in@relations[[head_var]][, i] <- OUT[
+            match(
+              object_in@relations[[head_var]][, head_var],
+              OUT[, head_var]
+            ), i
+          ]
         }
+        return(object_in)
       }
-      return(object_in)
     } else {
-      return(object)
+      return(OUT)
     }
   }
 )
 
 #' @rdname trait_stats
-#'
 #' @aliases trait_proportion,formula,vegtable-method
-#'
 setMethod(
   "trait_proportion", signature(trait = "formula", object = "vegtable"),
-  function(trait, object, in_header = TRUE, ...) {
+  function(trait, object, ...) {
     head_var <- all.vars(update(trait, 0 ~ .))
     trait <- all.vars(update(trait, . ~ 0))
-    OUT <- list()
-    for (i in trait) {
-      cat(paste0("Processing trait ", i, "...\n"))
-      OUT[[i]] <- trait_proportion(i, object,
-        head_var = head_var,
-        in_header = FALSE, ...
-      )
-    }
-    cat("DONE\n")
-    if (in_header & head_var != "ReleveID") {
-      warning(paste(
-        "To insert in header 'ReleveID'",
-        "is required as right term in the formula."
-      ))
-    }
-    if (in_header & head_var == "ReleveID") {
-      for (i in trait) {
-        for (j in colnames(OUT[[i]])[-1]) {
-          object@header[, j] <- with(
-            OUT[[i]],
-            get(j)[match(object@header$ReleveID, ReleveID)]
-          )
-        }
-      }
-    }
-    if (!in_header | (in_header & head_var != "ReleveID")) {
-      object <- data.frame(
-        Var1 = unique(object@header[, head_var]),
-        stringsAsFactors = FALSE
-      )
-      colnames(object) <- head_var
-      for (i in trait) {
-        for (j in colnames(OUT[[i]])[-1]) {
-          object[, j] <- with(
-            OUT[[i]],
-            get(j)[match(object$ReleveID, get(head_var))]
-          )
-        }
-      }
-    }
-    return(object)
+    return(trait_proportion(trait, object, head_var = head_var, ...))
   }
 )

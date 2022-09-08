@@ -4,7 +4,15 @@
 \alias{check_args}
 \title{Check validity of arguments for statistics}
 \usage{
-check_args(object, trait, head_var, weight, taxon_levels, merge_to)
+check_args(
+  object,
+  trait,
+  head_var,
+  weight,
+  taxon_levels,
+  merge_to,
+  trait_levels
+)
 }
 \description{
 Check validity of arguments in functions \code{\link[=trait_stats]{trait_stats()}} and

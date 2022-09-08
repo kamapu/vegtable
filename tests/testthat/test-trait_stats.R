@@ -53,10 +53,26 @@ test_that("trait_stats is working", {
 test_that("trait_proportion is working", {
   veg <- cover_trans(Kenya_veg, to = "cover", rule = "middle")
   veg@species <- tax2traits(veg@species, get_names = TRUE)
+  veg$clust <- sample(letters[1:4], nrow(veg@header), replace = TRUE)
   expect_true("Cyperaceae_prop" %in%
     names(trait_proportion("family", veg,
       trait_level = "Cyperaceae",
       weight = "cover", include_nas = FALSE,
       in_header = TRUE
     )@header))
+  expect_is(trait_proportion(family ~ COMM_TYPE, veg,
+    weight = "cover",
+    in_header = FALSE
+  ), "data.frame")
+  expect_is(trait_proportion(lf_behn_2018 ~ clust, veg,
+    merge_to = "species"
+  ), "vegtable")
+  expect_error(trait_proportion("family", veg,
+    trait_level = "Trees",
+    weight = "cover", include_nas = FALSE,
+    in_header = TRUE
+  ))
+  expect_error(trait_proportion(lf_behn_2018 + family ~ ReleveID, veg,
+    in_header = TRUE
+  ))
 })

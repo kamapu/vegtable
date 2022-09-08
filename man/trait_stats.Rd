@@ -32,8 +32,8 @@ trait_proportion(trait, object, ...)
 \S4method{trait_proportion}{character,vegtable}(
   trait,
   object,
-  head_var,
-  trait_level,
+  head_var = "ReleveID",
+  trait_levels,
   taxon_levels,
   merge_to,
   include_nas = TRUE,
@@ -43,7 +43,7 @@ trait_proportion(trait, object, ...)
   ...
 )
 
-\S4method{trait_proportion}{formula,vegtable}(trait, object, in_header = TRUE, ...)
+\S4method{trait_proportion}{formula,vegtable}(trait, object, ...)
 }
 \arguments{
 \item{trait}{Either a character value indicating the name of trait variable
@@ -89,7 +89,7 @@ respective data frame at slot \strong{relations}.}
 calculation of statistics or not. It is passed to \code{'FUN'} in
 \code{trait_stats()}.}
 
-\item{trait_level}{Character vector indicating a selection of levels from a
+\item{trait_levels}{Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.
 Trait levels that are skipped at output will be still used for the
 calculation of proportions.
@@ -118,17 +118,11 @@ have to be considered in the calculations and the second one determine the
 aggregation of taxa from a lower level to a parental one.
 }
 \examples{
-## Cocktail classification of plots
-Wetlands_veg <- make_cocktail(Wetlands, Wetlands_veg, cover = "percen")
-
-## Calculation of proportion of Cyperaceae species in the plot
-Wetlands_veg <- trait_proportion("FAMILY", Wetlands_veg,
-  trait_level = "Cyperaceae",
-  weight = "percen", include_nas = FALSE
+veg <- cover_trans(Kenya_veg, to = "cover")
+veg <- trait_proportion("lf_behn_2018", veg,
+  trait_levels = "obligate_annual", weight = "cover", include_nas = FALSE
 )
-
-## Display of proportions per plant community
-boxplot(Cyperaceae_prop ~ Syntax, Wetlands_veg@header, col = "grey")
+summary(veg$obligate_annual_prop)
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
