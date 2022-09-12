@@ -30,7 +30,6 @@
 #' @rdname Extract
 #'
 #' @exportMethod $
-#'
 setMethod("$", signature(x = "vegtable"), function(x, name) {
   return(x@header[[name]])
 })
@@ -47,12 +46,10 @@ setReplaceMethod("$", signature(x = "vegtable"), function(x, name, value) {
 })
 
 #' @rdname Extract
-#'
 #' @aliases $,coverconvert-method
 setMethod(
   "$", signature(x = "coverconvert"),
   function(x, name) {
-    ## list(value=x@value[[name]], conversion=x@conversion[[name]])
     x@value <- x@value[name]
     x@conversion <- x@conversion[name]
     return(x)
@@ -60,23 +57,34 @@ setMethod(
 )
 
 #' @rdname Extract
-#'
-#' @aliases $<-,coverconvert,list-method
+#' @aliases [ [,coverconvert,ANY,ANY,ANY-method [,coverconvert-method
+#' @exportMethod [
+setMethod("[", signature(x = "coverconvert"), function(x, i) {
+  x@value <- x@value[i]
+  x@conversion <- x@conversion[i]
+  return(x)
+})
+
+#' @rdname Extract
+#' @aliases $<-,coverconvert,coverconvert-method
 setReplaceMethod(
-  "$", signature(x = "coverconvert", value = "list"),
+  "$", signature(x = "coverconvert", value = "coverconvert"),
   function(x, name, value) {
-    x@value[[name]] <- value$value
-    x@conversion[[name]] <- value$conversion
+    if (length(names(value)) > 1) {
+      warning(paste0(
+        "Multiple cover scales detected in 'value'. ",
+        "Only the first ('", names(value)[1], "') will be inserted."
+      ))
+    }
+    x@value[[name]] <- value@value[[1]]
+    x@conversion[[name]] <- value@conversion[[1]]
     return(x)
   }
 )
 
 #' @rdname Extract
-#'
 #' @aliases [ [,vegtable,ANY,ANY,ANY-method [,vegtable-method
-#'
 #' @exportMethod [
-#'
 setMethod("[", signature(x = "vegtable"), function(x, i, j, ..., drop = FALSE) {
   if (missing(i)) i <- TRUE
   if (missing(j)) j <- TRUE
@@ -93,11 +101,8 @@ setMethod("[", signature(x = "vegtable"), function(x, i, j, ..., drop = FALSE) {
 })
 
 #' @rdname Extract
-#'
 #' @aliases [<- [<-,vegtable-method
-#'
 #' @exportMethod [<-
-#'
 setReplaceMethod("[", signature(x = "vegtable"), function(x, i, j, value) {
   if (missing(i)) i <- TRUE
   if (missing(j)) j <- TRUE

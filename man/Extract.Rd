@@ -8,9 +8,11 @@
 \alias{$<-}
 \alias{$<-,vegtable-method}
 \alias{$,coverconvert-method}
-\alias{$<-,coverconvert,list-method}
-\alias{[,vegtable-method}
+\alias{[,coverconvert-method}
 \alias{[}
+\alias{[,coverconvert,ANY,ANY,ANY-method}
+\alias{$<-,coverconvert,coverconvert-method}
+\alias{[,vegtable-method}
 \alias{[,vegtable,ANY,ANY,ANY-method}
 \alias{[<-,vegtable-method}
 \alias{[<-}
@@ -22,7 +24,9 @@
 
 \S4method{$}{coverconvert}(x, name)
 
-\S4method{$}{coverconvert,list}(x, name) <- value
+\S4method{[}{coverconvert}(x, i)
+
+\S4method{$}{coverconvert,coverconvert}(x, name) <- value
 
 \S4method{[}{vegtable}(x, i, j, ..., drop = FALSE)
 
