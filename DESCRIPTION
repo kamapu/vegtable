@@ -38,6 +38,7 @@ Collate:
 	'coverconvert-class.R'
 	'vegtable-class.R'
 	'shaker-class.R'
+	'df2coverconvert.R'
 	'new_relation.R'
 	'relation2header.R'
 	'transform.R'

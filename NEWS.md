@@ -7,6 +7,8 @@ vegtable 0.1.8
   `shannon()`, `evenness()`, `dominance()`, `simpson()`, and `richness()`.
 * New function `new_relation()` inserting new relations into `vegtable` objects.
   This function is internally called by `veg_relation()`.
+* New function `df2coverconvert()` coercing data frames and lists into
+  `coverconvert` objects.
 
 ## Improvements
 

@@ -5,15 +5,12 @@
 \alias{as.list,vegtable-method}
 \alias{coerce,vegtable,list-method}
 \alias{coerce,coverconvert,list-method}
-\alias{as<-}
 \alias{as<-,vegtable-method}
 \alias{as.list,coverconvert-method}
 \alias{as<-,coverconvert-method}
 \title{Coerce objects to lists}
 \usage{
 \S4method{as.list}{vegtable}(x, ...)
-
-as(from) <- value
 
 \S4method{as}{vegtable}(from) <- value
 

@@ -41,13 +41,6 @@ setMethod(
 setAs("vegtable", "list", function(from) as.list(from))
 
 #' @rdname coerce-methods
-#' @aliases as<-
-#' @exportMethod as<-
-setGeneric("as<-", function(from, value) {
-  standardGeneric("as<-")
-})
-
-#' @rdname coerce-methods
 #' @aliases as<-,vegtable-method
 setReplaceMethod(
   "as", signature(from = "vegtable"),
