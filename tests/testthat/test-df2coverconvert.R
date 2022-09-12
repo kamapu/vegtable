@@ -9,5 +9,6 @@ test_that("df2coverconvert is working", {
   names(y2[[2]])[2] <- "bottom_value"
   expect_error(df2coverconvert(y2))
   expect_error(df2coverconvert(x))
+  expect_is(df2coverconvert(x, "br_bl"), "coverconvert")
   expect_warning(z$cover1 <- z)
 })

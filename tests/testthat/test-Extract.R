@@ -6,6 +6,7 @@ test_that("indexing is working", {
   expect_is(Kenya_veg[1:10, ], "vegtable")
   expect_is(Kenya_veg[, 1:5], "vegtable")
   expect_is(Kenya_veg@coverconvert$br_bl, "coverconvert")
+  expect_is(Kenya_veg@coverconvert["br_bl"], "coverconvert")
 })
 
 test_that("replacement methods are working", {
