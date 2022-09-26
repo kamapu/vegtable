@@ -23,10 +23,12 @@ NULL
 #' @rdname vegtable-deprecated
 #' @section `match_names`:
 #' For `match_names(object, ...)`, use `match_names(object@@species, ...)`
-#' @export
-match_names <- function(x, ...) {
-  .Deprecated(msg = paste(
-    "This function is deprecated.",
-    "Use 'match_names(object@species, ...)' instead."
-  ))
-}
+setMethod(
+  "match_names", signature(x = "character", object = "vegtable"),
+  function(x, object, ...) {
+    .Deprecated(msg = paste(
+      "This function is deprecated.",
+      "Use 'match_names(object@species, ...)' instead."
+    ))
+  }
+)

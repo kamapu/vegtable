@@ -5,14 +5,14 @@
 \alias{vegtable-deprecated}
 \alias{merge_taxa}
 \alias{vegtable2kml}
-\alias{match_names}
+\alias{match_names,character,vegtable-method}
 \title{Merge concepts}
 \usage{
 merge_taxa(object, ...)
 
 vegtable2kml(obj, ...)
 
-match_names(x, ...)
+\S4method{match_names}{character,vegtable}(x, object, ...)
 }
 \arguments{
 \item{object}{An object of class \linkS4class{vegtable} to be compared with.}

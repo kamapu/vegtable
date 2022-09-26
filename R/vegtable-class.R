@@ -27,7 +27,6 @@
 #' @examples
 #' showClass("vegtable")
 #' @exportClass vegtable
-#'
 setClass("vegtable",
   slots = c(
     description = "character",

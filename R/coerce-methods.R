@@ -10,7 +10,8 @@
 #'
 #' Coercion is applied for different classes by vegtable.
 #'
-#' @param x,from An object to be coerced.
+#' @param x,object An object to be coerced.
+#' @param Class A character value with the target class (not used).
 #' @param value A character value indicating the class to be coerced to. This is
 #'     only required by the replacement methods.
 #' @param ... further arguments passed from or to other methods.
@@ -41,12 +42,11 @@ setMethod(
 setAs("vegtable", "list", function(from) as.list(from))
 
 #' @rdname coerce-methods
-#' @aliases as<-,vegtable-method
+#' @aliases as<-,vegtable,missing,character-method
 setReplaceMethod(
-  "as", signature(from = "vegtable"),
-  function(from, value) {
-    from <- as(object = from, Class = value)
-    return(from)
+  "as", signature(object = "vegtable", Class = "missing", value = "character"),
+  function(object, Class, value) {
+    return(as(object, value))
   }
 )
 
@@ -76,11 +76,13 @@ setMethod(
 setAs("coverconvert", "list", function(from) as.list(from))
 
 #' @rdname coerce-methods
-#' @aliases as<-,vegtable-method
+#' @aliases as<-,coverconvert,missing,character-method
 setReplaceMethod(
-  "as", signature(from = "coverconvert"),
-  function(from, value) {
-    from <- as(object = from, Class = value)
-    return(from)
+  "as", signature(
+    object = "coverconvert", Class = "missing",
+    value = "character"
+  ),
+  function(object, Class, value) {
+    return(as(object, value))
   }
 )
