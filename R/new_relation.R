@@ -53,10 +53,11 @@ new_relation.vegtable <- function(object, relation, levels, ...) {
   if (relation %in% names(object@header)) {
     if (is(object@header[, relation], "factor") & missing(levels)) {
       levels <- base::levels(object@header[, relation])
-      relation_vector <- factor(unique(as.character(object@header[
-        !is.na(object@header[, relation]), relation
-      ])),
-      levels = levels
+      relation_vector <- factor(
+        unique(as.character(object@header[
+          !is.na(object@header[, relation]), relation
+        ])),
+        levels = levels
       )
     } else {
       if (missing(levels)) {
@@ -68,10 +69,11 @@ new_relation.vegtable <- function(object, relation, levels, ...) {
             levels = base::levels(relation_vector)
           )
       } else {
-        relation_vector <- factor(unique(as.character(object@header[
-          !is.na(object@header[, relation]), relation
-        ])),
-        levels = levels
+        relation_vector <- factor(
+          unique(as.character(object@header[
+            !is.na(object@header[, relation]), relation
+          ])),
+          levels = levels
         )
         object@header[, relation] <-
           factor(as.character(object@header[, relation]),

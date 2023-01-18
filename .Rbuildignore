@@ -8,6 +8,7 @@
 ^TODO\.md$
 ^data-raw$
 ^data-model$
+^examples$
 ^lab$
 ^build-pkg$
 ^\.github$

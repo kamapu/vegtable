@@ -2,7 +2,6 @@
 % Please edit documentation in R/vegtable-deprecated.R
 \name{vegtable-deprecated}
 \alias{vegtable-deprecated}
-\alias{match_names,character,vegtable-method}
 \alias{merge_taxa,vegtable,numeric,missing-method}
 \alias{vegtable2kml}
 \title{Deprecated functions in package \pkg{vegtable}}
@@ -32,4 +31,3 @@ For \code{merge_taxa(object, ...)}, use \code{merge_taxa(object@species, ...)}
 Use leaflet to map plot observations.
 }
 
-\keyword{internal}

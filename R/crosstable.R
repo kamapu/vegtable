@@ -95,11 +95,12 @@ setMethod(
     plots <- attr(terms(formula), "term.labels")[1]
     # for multiple plot entries
     if (length(attr(terms(formula), "term.labels")) > 2) {
-      data$.spp <- apply(data[attr(
-        terms(formula),
-        "term.labels"
-      )[-1]], 1, paste,
-      collapse = "."
+      data$.spp <- apply(
+        data[attr(
+          terms(formula),
+          "term.labels"
+        )[-1]], 1, paste,
+        collapse = "."
       )
       spp <- ".spp"
     } else {

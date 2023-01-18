@@ -5,28 +5,17 @@
 \alias{as.list,vegtable-method}
 \alias{coerce,vegtable,list-method}
 \alias{coerce,coverconvert,list-method}
-\alias{as<-,vegtable,missing,character-method}
 \alias{as.list,coverconvert-method}
-\alias{as<-,coverconvert,missing,character-method}
 \title{Coerce objects to lists}
 \usage{
 \S4method{as.list}{vegtable}(x, ...)
 
-\S4method{as}{vegtable,missing,character}(object, Class) <- value
-
 \S4method{as.list}{coverconvert}(x, ...)
-
-\S4method{as}{coverconvert,missing,character}(object, Class) <- value
 }
 \arguments{
-\item{x, object}{An object to be coerced.}
+\item{x}{An object to be coerced.}
 
 \item{...}{further arguments passed from or to other methods.}
-
-\item{Class}{A character value with the target class (not used).}
-
-\item{value}{A character value indicating the class to be coerced to. This is
-only required by the replacement methods.}
 }
 \value{
 An object of class \code{list}.

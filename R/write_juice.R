@@ -46,17 +46,11 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' ## Only first 20 observations
-#' Kenya_veg <- Kenya_veg[1:20, ]
-#' \dontrun{
-#' write_juice(Kenya_veg, "SWEA", FUN = mean)
-#' }
+#' @example examples/write_juice.R
 #'
 #' @rdname write_juice
 #'
 #' @exportMethod write_juice
-#'
 setGeneric("write_juice", function(data, file, formula, ...) {
   standardGeneric("write_juice")
 })

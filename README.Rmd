@@ -7,9 +7,9 @@ always_allow_html: true
 
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(
-  collapse=TRUE,
-  comment="#>",
-  fig.path="man/figures/"
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
 )
 ```
 
@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 # vegtable
 
 <!-- badges: start -->
+[![cran checks](https://badges.cranchecks.info/worst/vegtable.svg)](https://cran.r-project.org/web/checks/check_results_vegtable.html)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
 [![DOI](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
 <br>
@@ -89,9 +90,11 @@ produce a map of the distribution of your plots by using the package `leaflet`.
 ```{r eval = FALSE}
 library(leaflet)
 leaflet(JPcomm@header) %>%
-		addTiles() %>%
-		addCircleMarkers(lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
-				opacity = 0.3, radius = 1)
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
+    opacity = 0.3, radius = 1
+  )
 ```
 
 

@@ -313,11 +313,12 @@ setMethod(
       OUT <- OUT[OUT[, trait] %in% trait_levels, ]
     }
     OUT[, trait] <- paste0(OUT[, trait], suffix)
-    OUT <- crosstable(as.formula(paste(
-      weight, "~", trait, "+",
-      head_var
-    )), OUT, sum,
-    na_to_zero = TRUE
+    OUT <- crosstable(
+      as.formula(paste(
+        weight, "~", trait, "+",
+        head_var
+      )), OUT, sum,
+      na_to_zero = TRUE
     )
     # Last output
     if (in_header) {

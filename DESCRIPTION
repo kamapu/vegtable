@@ -13,7 +13,9 @@ Imports:
 	methods,
 	qdapRegex,
 	sp,
+	stats,
 	stringi,
+	utils,
 	vegdata
 Suggests:
 	biblio,
@@ -71,4 +73,4 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'vegtable-deprecated.R'
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2

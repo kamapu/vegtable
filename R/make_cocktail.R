@@ -487,14 +487,15 @@ setMethod(
           "TaxonConceptID"
         ], ]
         DOM_aux <- DOM_aux[
-          eval(parse(text = paste(c(cover, shaker@dominants[
-            i,
-            c(
-              "operator",
-              "value"
-            )
-          ]),
-          collapse = " "
+          eval(parse(text = paste(
+            c(cover, shaker@dominants[
+              i,
+              c(
+                "operator",
+                "value"
+              )
+            ]),
+            collapse = " "
           )), DOM_aux),
         ]
         OUT$dominants[[i]] <- vegtable@header$ReleveID %in%

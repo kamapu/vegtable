@@ -78,12 +78,14 @@ the column (\verb{Releve number}) is the number originally assigned to the plot
 (e.g. \strong{Turboveg} ID).
 }
 \examples{
-## Only first 20 observations
-Kenya_veg <- Kenya_veg[1:20, ]
-\dontrun{
-write_juice(Kenya_veg, "SWEA", FUN = mean)
-}
+## Subset and transform cover values to percentage
+vegetation <- Kenya_veg[1:20, ]
+vegetation <- cover_trans(x = vegetation, to = "cover_percent", rule = "middle")
 
+## Write in tempdir
+write_juice(data = vegetation, file = file.path(tempdir(), "SWEA"),
+    formula = cover_percent ~ ReleveID + AcceptedName, FUN = mean,
+    header = c("ReleveID", "COMM_TYPE"))
 ## Installed 'Juice' version of 'Wetlands_veg'
 Veg <- file.path(path.package("vegtable"), "juice", "Wetlands_juice.txt")
 Veg <- read_juice(Veg)

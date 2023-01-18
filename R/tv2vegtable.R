@@ -91,11 +91,12 @@ tv2vegtable <- function(db, tv_home = tv.home(), skip_empty_relations = TRUE,
   )
   remarks <- split(remarks$REMARKS, remarks$RELEVE_NR)
   for (i in as.integer(names(remarks))) {
-    header[header$ReleveID == i, "REMARKS"] <- paste(header[
-      header$ReleveID == i, "REMARKS"
-    ],
-    paste(remarks[[paste(i)]], collapse = " "),
-    collapse = " "
+    header[header$ReleveID == i, "REMARKS"] <- paste(
+      header[
+        header$ReleveID == i, "REMARKS"
+      ],
+      paste(remarks[[paste(i)]], collapse = " "),
+      collapse = " "
     )
   }
   # Importing coverconvert ---------------------------------------------------
