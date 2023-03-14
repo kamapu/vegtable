@@ -7,7 +7,7 @@ Authors@R:
 		role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834"))
 Depends:
 	R(>= 3.5.0),
-	taxlist
+	taxlist (>= 0.2.4)
 Imports:
     foreign,
 	methods,
@@ -72,5 +72,4 @@ Collate:
 	'dune_veg-data.R'
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
-	'vegtable-deprecated.R'
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3

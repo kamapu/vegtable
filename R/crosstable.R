@@ -5,7 +5,7 @@
 #' @description
 #' cross table is the most common format required by statistical packages
 #' used to analyse vegetation data (e.g.
-#' [vegan](https://cran.r-project.org/web/packages/vegan/index.html)).
+#' [vegan](https://CRAN.R-project.org/package=vegan)).
 #'
 #' You may use for convenience a formula as
 #' `'abundance ~ plot + species + ...'`.

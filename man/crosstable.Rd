@@ -59,7 +59,7 @@ An object of class \link{data.frame}.
 \description{
 cross table is the most common format required by statistical packages
 used to analyse vegetation data (e.g.
-\href{https://cran.r-project.org/web/packages/vegan/index.html}{vegan}).
+\href{https://CRAN.R-project.org/package=vegan}{vegan}).
 
 You may use for convenience a formula as
 \code{'abundance ~ plot + species + ...'}.
