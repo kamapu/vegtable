@@ -24,8 +24,8 @@
 #' @param suffix Character value used as suffix on the calculated variable.
 #' @param in_header Logical value, whether the result should be included in the
 #'     slot header of the input [vegtable-class] object or not.
-#'     A warning message is provided if the calculation is not done for every
-#'     plot observation.
+#'     If the formula term is related to a categorical variable at header, the
+#'     result will be inserted in the respective table at slot **relations**.
 #' @param ... further arguments passed among methods.
 #'
 #' @return
@@ -100,7 +100,6 @@ setMethod(
 )
 
 #' @rdname count_taxa
-#'
 #' @aliases count_taxa,formula,vegtable-method
 setMethod(
   "count_taxa", signature(object = "formula", data = "vegtable"),
@@ -109,19 +108,28 @@ setMethod(
     data_in <- data
     nr_response <- attr(terms(object), "response")
     name_response <- as.character(object)[2]
-    if (nr_response > 1) {
-      stop("More than one response in formula are not allowed.")
+    f_term <- attr(terms(object), "term.labels")
+    if (in_header) {
+      if (length(f_term) > 1) {
+        stop(paste(
+          "Only one term is allowed in formula for the option",
+          "'in_header = TRUE'."
+        ))
+      }
+      if (!f_term %in% names(data@header)) {
+        stop(paste(
+          "Term in formula is not a variable at slot header",
+          "as required for 'in_header = TRUE'."
+        ))
+      }
     }
     if (nr_response == 1) {
       if (!name_response %in% levels(data@species)) {
         stop("The response in the formula is not a rank in 'data'.")
       }
-      object <- as.formula(paste(
-        "TaxonConceptID ~",
-        paste(attr(terms(object), "term.labels"),
-          collapse = " + "
-        )
-      ))
+      object <- as.formula(paste("TaxonConceptID ~", paste(f_term,
+        collapse = " + "
+      )))
       if (include_lower) {
         data <- taxa2samples(data,
           merge_to = name_response,
@@ -138,25 +146,41 @@ setMethod(
       }
     } else {
       data <- taxa2samples(data, add_relations = TRUE)
-      object <- as.formula(paste(
-        "TaxonUsageID ~",
-        paste(attr(terms(object), "term.labels"),
-          collapse = " + "
-        )
-      ))
+      object <- as.formula(paste("TaxonUsageID ~", paste(f_term,
+        collapse = " + "
+      )))
+    }
+    head_vars <- f_term[f_term %in% names(data_in@header)[
+      names(data_in@header) != "ReleveID"
+    ]]
+    if (length(head_vars) > 0) {
+      for (i in head_vars) {
+        data@samples[[i]] <- data@header[[i]][
+          match(data@samples$ReleveID, data@header$ReleveID)
+        ]
+      }
     }
     data <- aggregate(object, data@samples, function(x) length(unique(x)), ...)
-    if (name_response == "ReleveID") name_response <- "taxa"
-    colnames(data)[colnames(data) %in% c("TaxonUsageID", "TaxonConceptID")] <-
-      paste0(name_response, suffix)
-    if (colnames(data)[1] != "ReleveID" & in_header) {
-      warning("'ReleveID' is not included as factor in formula")
+    if (nr_response == 0) {
+      name_response <- paste0("taxa", suffix)
+    } else {
+      name_response <- paste0(name_response, suffix)
     }
-    if (colnames(data)[1] == "ReleveID" & in_header) {
-      data_in@header[, colnames(data)[2]] <- with(
-        data_in@header,
-        data[match(ReleveID, data$ReleveID), 2]
-      )
+    colnames(data)[colnames(data) %in% c("TaxonUsageID", "TaxonConceptID")] <-
+      name_response
+    if (in_header) {
+      if (f_term == "ReleveID") {
+        data_in@header[[name_response]] <- data[[name_response]][
+          match(data_in@header$ReleveID, data$ReleveID)
+        ]
+      } else {
+        if (!f_term %in% names(data_in@relations)) {
+          new_relation(data_in) <- f_term
+        }
+        data_in@relations[[f_term]][[name_response]] <- data[[name_response]][
+          match(data_in@relations[[f_term]][[f_term]], data[[f_term]])
+        ]
+      }
       return(data_in)
     } else {
       return(data)
@@ -165,19 +189,14 @@ setMethod(
 )
 
 #' @rdname count_taxa
-#'
 #' @aliases count_taxa<-
-#'
 #' @exportMethod count_taxa<-
-#'
 setGeneric("count_taxa<-", function(data, ..., value) {
   standardGeneric("count_taxa<-")
 })
 
 #' @rdname count_taxa
-#'
 #' @aliases count_taxa<-,vegtable,formula-method
-#'
 setReplaceMethod(
   "count_taxa", signature(data = "vegtable", value = "formula"),
   function(data, ..., value) {
