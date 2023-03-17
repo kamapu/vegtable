@@ -23,5 +23,11 @@ test_that("counting taxa is working", {
     ),
     "data.frame"
   )
+})
+
+test_that("error messages are accordingly retrieved", {
   expect_error(count_taxa(Kenya_veg, level = "plant"))
+  expect_error(count_taxa(species ~ ReleveID + COUNTRY, data = Kenya_veg))
+  expect_error(count_taxa(species ~ superpower, data = Kenya_veg))
+  expect_error(count_taxa(megaspecies ~ ReleveID, data = Kenya_veg))
 })

@@ -1,3 +1,9 @@
+# vegtable 0.1.9
+
+## Improvements
+
+- Function `count_taxa()` also inserts results into slot **relations**.
+
 vegtable 0.1.8
 ==============
 

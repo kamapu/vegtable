@@ -39,8 +39,8 @@ included at the requested level.}
 
 \item{in_header}{Logical value, whether the result should be included in the
 slot header of the input \linkS4class{vegtable} object or not.
-A warning message is provided if the calculation is not done for every
-plot observation.}
+If the formula term is related to a categorical variable at header, the
+result will be inserted in the respective table at slot \strong{relations}.}
 
 \item{value}{A formula passed to parameter 'object' by the replace method.}
 }
