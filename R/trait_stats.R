@@ -20,8 +20,8 @@
 #'     or a formula as `'trait ~ head_var'`. Note that you can add multiple
 #'     variables in the form `trait_1 + ... + trait_n ~ head_var`.
 #' @param object A [vegtable-class] object.
-#' @param FUN A function usually defined as `foo(x, ...)` or as
-#'     `foo(x, w, ...)` for weighted statistics.
+#' @param FUN A function usually defined as `foo(x)` or as
+#'     `foo(x, w)` for weighted statistics.
 #' @param head_var Character value, the name of the variable at slot header to
 #'     be used as aggregation level for the calculation of statistics or
 #'     proportions.
@@ -50,9 +50,6 @@
 #'     that `'head_var'` (or the right term in the formula method) is different
 #'     from **ReleveID**, the statistics and proportions will be inserted in the
 #'     respective data frame at slot **relations**.
-#' @param na.rm A logical value indicating whether NAs should be removed for the
-#'     calculation of statistics or not. It is passed to `'FUN'` in
-#'     `trait_stats()`.
 #' @param ... Further arguments passed among methods. In the case of the
 #'     character method, they are passed to 'FUN'.
 #'
@@ -142,7 +139,7 @@ setGeneric(
 setMethod(
   "trait_stats", signature(trait = "character", object = "vegtable"),
   function(trait, object, FUN, head_var = "ReleveID", taxon_levels, merge_to,
-           weight, suffix = "_stats", in_header = TRUE, na.rm = TRUE, ...) {
+           weight, suffix = "_stats", in_header = TRUE, ...) {
     # Check conditions
     check_args(object, trait, head_var, weight, taxon_levels, merge_to)
     # Retain original object
@@ -179,7 +176,7 @@ setMethod(
       for (i in trait) {
         x <- with(object@samples, split(get(i), get(head_var)))
         w <- with(object@samples, split(get(weight), get(head_var)))
-        OUT[[i]] <- mapply(FUN, x = x, w = w, na.rm = na.rm, ...)
+        OUT[[i]] <- mapply(FUN, x = x, w = w, ...)
       }
       OUT <- as.data.frame(OUT)
     } else {
@@ -187,8 +184,7 @@ setMethod(
         as.formula(paste0(
           "cbind(", paste0(trait, collapse = ","), ") ~ ",
           head_var
-        )), object@samples, FUN,
-        na.rm = na.rm, ...
+        )), object@samples, FUN, ...
       )
     }
     names(OUT) <- replace_x(names(OUT),
@@ -250,8 +246,8 @@ setGeneric(
 #' @aliases trait_proportion,character,vegtable-method
 setMethod(
   "trait_proportion", signature(trait = "character", object = "vegtable"),
-  function(trait, object, head_var = "ReleveID", trait_levels, taxon_levels, merge_to,
-           include_nas = TRUE, weight, suffix = "_prop", in_header = TRUE,
+  function(trait, object, head_var = "ReleveID", trait_levels, taxon_levels,
+           merge_to, include_nas = TRUE, weight, suffix = "_prop", in_header = TRUE,
            ...) {
     # Only one trait is allowed for this function
     if (length(trait) > 1) {

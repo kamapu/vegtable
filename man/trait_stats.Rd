@@ -21,7 +21,6 @@ trait_stats(trait, object, ...)
   weight,
   suffix = "_stats",
   in_header = TRUE,
-  na.rm = TRUE,
   ...
 )
 
@@ -55,8 +54,8 @@ variables in the form \code{trait_1 + ... + trait_n ~ head_var}.}
 \item{...}{Further arguments passed among methods. In the case of the
 character method, they are passed to 'FUN'.}
 
-\item{FUN}{A function usually defined as \code{foo(x, ...)} or as
-\code{foo(x, w, ...)} for weighted statistics.}
+\item{FUN}{A function usually defined as \code{foo(x)} or as
+\code{foo(x, w)} for weighted statistics.}
 
 \item{head_var}{Character value, the name of the variable at slot header to
 be used as aggregation level for the calculation of statistics or
@@ -84,10 +83,6 @@ inserted in the slot \strong{header} or provided as data frame. In the case
 that \code{'head_var'} (or the right term in the formula method) is different
 from \strong{ReleveID}, the statistics and proportions will be inserted in the
 respective data frame at slot \strong{relations}.}
-
-\item{na.rm}{A logical value indicating whether NAs should be removed for the
-calculation of statistics or not. It is passed to \code{'FUN'} in
-\code{trait_stats()}.}
 
 \item{trait_levels}{Character vector indicating a selection of levels from a
 trait, in the case that some levels should be ignored in the output.
