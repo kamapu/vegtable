@@ -18,7 +18,13 @@ test_that("crosstable is working", {
     ),
     "matrix"
   )
+  expect_is(crosstable(cover ~ ReleveID + AcceptedName, veg, mean,
+          level = "species"), "data.frame")
+  expect_is(crosstable(cover ~ ReleveID + AcceptedName, veg, mean,
+          level = "species", include_lower = TRUE), "data.frame")
   expect_error(crosstable(the_cover ~ ReleveID + AcceptedName, veg, mean))
+  expect_error(crosstable(the_cover ~ ReleveID + AcceptedName + TaxonName, veg,
+          mean))
 })
 
 test_that("cross2db is working", {
