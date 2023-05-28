@@ -26,6 +26,13 @@
 #' @param data Either a data frame or an object of class [vegtable-class].
 #' @param FUN Function used to aggregate values in the case of a multiple
 #'     occurrence of a species in a plot, for instance.
+#' @param level A character vector with taxonomic ranks (levels) requested in
+#'     the cross table.
+#' @param include_lower A logical value indicating wether lower value to the
+#'     requested levels should be merged or not. It works only if `'level'` is
+#'     not missing. Note that if you like to include higher ranks or rankless
+#'     taxa in the cross table, you will rahter need to run [merge_taxa()] on
+#'     slot **species**.
 #' @param na_to_zero A logical value indicating whether zeros should be
 #'     inserted into empty cells or not.
 #' @param use_nas Logical value indicating whether NAs should be considered as
@@ -42,18 +49,8 @@
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @examples
-#' veg <- subset(Kenya_veg, REFERENCE == 2331, slot = "header")
+#' @example examples/crosstable.R
 #'
-#' ## transform cover to percentage
-#' veg <- cover_trans(veg, to = "cover_perc", rule = "middle")
-#'
-#' ## cross table of the first 5 plots
-#' Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
-#'   veg[1:5, ], mean,
-#'   na_to_zero = TRUE
-#' )
-#' head(Cross)
 #' @rdname crosstable
 #'
 #' @exportMethod crosstable
@@ -63,7 +60,6 @@ setGeneric("crosstable", function(formula, data, ...) {
 })
 
 #' @rdname crosstable
-#'
 #' @aliases crosstable,formula,data.frame-method
 setMethod(
   "crosstable", signature(formula = "formula", data = "data.frame"),
@@ -144,15 +140,28 @@ setMethod(
 )
 
 #' @rdname crosstable
-#'
 #' @aliases crosstable,formula,vegtable-method
 setMethod(
   "crosstable", signature(formula = "formula", data = "vegtable"),
-  function(formula, data, FUN, na_to_zero = FALSE, use_nas = TRUE, ...) {
-    Terms <- c(as.character(formula)[2], attr(
-      terms(formula),
-      "term.labels"
-    ))
+  function(formula, data, FUN, level, include_lower = FALSE, na_to_zero = FALSE,
+           use_nas = TRUE, ...) {
+    Terms <- c(as.character(formula)[2], attr(terms(formula), "term.labels"))
+    # If ranks and merge required
+    if (!missing(level)) {
+      if (include_lower) {
+        data@species <- merge_taxa(data@species,
+          level = level,
+          delete_nomatch = TRUE
+        )
+      } else {
+        data@species@taxonRelations <- data@species@taxonRelations[
+          data@species@taxonRelations$Level %in% level,
+        ]
+        data@species <- clean(data@species)
+        data <- clean(data)
+      }
+    }
+    # The rest works as usual
     data@samples <- data@samples[, colnames(data@samples) %in%
       c("ReleveID", "TaxonUsageID", Terms)]
     # Data from species
@@ -164,7 +173,10 @@ setMethod(
       "TaxonConceptID"
     ]
     if ("TaxonName" %in% Terms & "AcceptedName" %in% Terms) {
-      stop("Terms 'TaxonName' and 'AcceptedName' are mutually exclusive in 'formula'")
+      stop(paste(
+        "Terms 'TaxonName' and 'AcceptedName'",
+        "are mutually exclusive in 'formula'"
+      ))
     }
     # 1: when usage name requested
     if ("TaxonName" %in% Terms) {
@@ -243,9 +255,7 @@ setMethod(
 )
 
 #' @rdname crosstable
-#'
 #' @aliases cross2db
-#'
 #' @export
 cross2db <- function(object, layers = FALSE, na_strings) {
   species <- object[, 1]

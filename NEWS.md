@@ -3,6 +3,8 @@
 ## Improvements
 
 - Function `count_taxa()` also inserts results into slot **relations**.
+- New arguments `'level'` and `'include_lower'` in function `crosstable()`
+  They enable selection and/or merging of taxon ranks in cross tables.
 
 vegtable 0.1.8
 ==============

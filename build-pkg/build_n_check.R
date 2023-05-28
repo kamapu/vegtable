@@ -27,11 +27,11 @@ document()
 pkg_loc <- build(path = "build-pkg", args = "--resave-data")
 check_built(path = pkg_loc)
 
-# Install this version
-install()
-
 # Report coverage
 report()
+
+# Install this version
+install()
 
 # Render the manual
 build_manual(path = "build-pkg")

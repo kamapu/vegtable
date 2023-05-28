@@ -19,7 +19,16 @@ crosstable(formula, data, ...)
   ...
 )
 
-\S4method{crosstable}{formula,vegtable}(formula, data, FUN, na_to_zero = FALSE, use_nas = TRUE, ...)
+\S4method{crosstable}{formula,vegtable}(
+  formula,
+  data,
+  FUN,
+  level,
+  include_lower = FALSE,
+  na_to_zero = FALSE,
+  use_nas = TRUE,
+  ...
+)
 
 cross2db(object, layers = FALSE, na_strings)
 }
@@ -45,6 +54,15 @@ levels for categorical variables or not.}
 
 \item{as_matrix}{A logical value, whether output should be done as matrix or
 data frame.}
+
+\item{level}{A character vector with taxonomic ranks (levels) requested in
+the cross table.}
+
+\item{include_lower}{A logical value indicating wether lower value to the
+requested levels should be merged or not. It works only if \code{'level'} is
+not missing. Note that if you like to include higher ranks or rankless
+taxa in the cross table, you will rahter need to run \code{\link[=merge_taxa]{merge_taxa()}} on
+slot \strong{species}.}
 
 \item{object}{A data frame including a cross table.}
 
@@ -73,6 +91,7 @@ If required, tables already formatted as cross tables can be converted into
 column-oriented tables by using the function \code{cross2db()}.
 }
 \examples{
+# Produce a subset
 veg <- subset(Kenya_veg, REFERENCE == 2331, slot = "header")
 
 ## transform cover to percentage
@@ -80,10 +99,23 @@ veg <- cover_trans(veg, to = "cover_perc", rule = "middle")
 
 ## cross table of the first 5 plots
 Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
-  veg[1:5, ], mean,
-  na_to_zero = TRUE
-)
+  data = veg[1:5, ], FUN = mean, na_to_zero = TRUE)
 head(Cross)
+
+## cross table of recorded genera
+Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
+    data = veg, FUN = mean, level = "genus")
+head(Cross[ , 1:7])
+
+## cross table of data merged to genus
+Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
+    data = veg, FUN = sum, level = "genus", include_lower = TRUE)
+head(Cross[ , 1:7])
+
+## the same for families
+Cross <- crosstable(cover_perc ~ ReleveID + AcceptedName + AuthorName,
+    data = veg, FUN = sum, level = "family", include_lower = TRUE)
+head(Cross[ , 1:7])
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}
