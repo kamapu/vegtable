@@ -31,7 +31,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           #extra-packages: any::pkgdown, local::., XML
-          extra-packages: any::pkgdown, local::.
+          extra-packages: any::pkgdown, any::remotes, local::.
           needs: website
       
       - name: Install XML package
