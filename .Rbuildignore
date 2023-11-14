@@ -1,17 +1,22 @@
+# dot folders and files
 ^\.dbeaver$
 ^\.git$
-^\.settings$
+^\.github$
 ^\.gitignore$
 ^\.project$
-^README\.md$
-^README\.Rmd$
-^TODO\.md$
+^\.settings$
+
+# extra folders
+^build-pkg$
 ^data-raw$
 ^data-model$
-^examples$
-^lab$
-^build-pkg$
-^\.github$
-^_pkgdown\.yml$
 ^docs$
+^examples$
+^hex-logo$
+^lab$
 ^pkgdown$
+
+# extra files
+^_pkgdown\.yml$
+^README\.md$
+^README\.Rmd$
