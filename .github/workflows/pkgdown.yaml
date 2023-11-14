@@ -30,8 +30,12 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, XML, local::.
+          #extra-packages: any::pkgdown, local::., XML
+          extra-packages: any::pkgdown, local::.
           needs: website
+      
+      - name: Install XML package
+        run: Rscript -e 'remotes::install_cran("XML")'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
