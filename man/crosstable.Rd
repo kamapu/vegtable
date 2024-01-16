@@ -5,6 +5,10 @@
 \alias{crosstable,formula,data.frame-method}
 \alias{crosstable,formula,vegtable-method}
 \alias{cross2db}
+\alias{cross2db.data.frame}
+\alias{cross2db,data.frame-method}
+\alias{cross2db.matrix}
+\alias{cross2db,matrix-method}
 \title{Generating cross tables from database lists}
 \usage{
 crosstable(formula, data, ...)
@@ -30,7 +34,11 @@ crosstable(formula, data, ...)
   ...
 )
 
-cross2db(object, layers = FALSE, na_strings)
+cross2db(object, ...)
+
+\method{cross2db}{data.frame}(object, layers = FALSE, na_strings, ...)
+
+\method{cross2db}{matrix}(object, ...)
 }
 \arguments{
 \item{formula}{A formula indicating the variables used in the cross table.
@@ -64,7 +72,10 @@ not missing. Note that if you like to include higher ranks or rankless
 taxa in the cross table, you will rahter need to run \code{\link[=merge_taxa]{merge_taxa()}} on
 slot \strong{species}.}
 
-\item{object}{A data frame including a cross table.}
+\item{object}{A data frame or a matrix including a cross table. Note that
+\code{cross2db()} assumes observations as columns and species (and layers)
+as rows in the \code{data.frame-method} but species as columns and
+observations as rows in the \code{matrix-method}.}
 
 \item{layers}{Logical value, whether the cross table includes a layer column
 or not.}

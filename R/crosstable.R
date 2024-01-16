@@ -40,7 +40,10 @@
 #' @param as_matrix A logical value, whether output should be done as matrix or
 #'     data frame.
 #' @param ... Further arguments passed to the function [stats::aggregate()].
-#' @param object A data frame including a cross table.
+#' @param object A data frame or a matrix including a cross table. Note that
+#'     `cross2db()` assumes observations as columns and species (and layers)
+#'     as rows in the `data.frame-method` but species as columns and
+#'     observations as rows in the `matrix-method`.
 #' @param layers Logical value, whether the cross table includes a layer column
 #'     or not.
 #' @param na_strings Character vector indicating no records in the cross table.
@@ -257,7 +260,14 @@ setMethod(
 #' @rdname crosstable
 #' @aliases cross2db
 #' @export
-cross2db <- function(object, layers = FALSE, na_strings) {
+cross2db <- function(object, ...) {
+  UseMethod("cross2db", object)
+}
+
+#' @rdname crosstable
+#' @aliases cross2db,data.frame-method
+#' @export
+cross2db.data.frame <- function(object, layers = FALSE, na_strings, ...) {
   species <- object[, 1]
   if (layers) {
     LAY <- object[, 2]
@@ -290,4 +300,13 @@ cross2db <- function(object, layers = FALSE, na_strings) {
     object$cover[paste(object$cover) %in% na_strings] <- NA
   }
   return(object[!is.na(object$cover), ])
+}
+
+#' @rdname crosstable
+#' @aliases cross2db,matrix-method
+#' @export
+cross2db.matrix <- function(object, ...) {
+  object <- as.data.frame(t(object))
+  object <- cbind(data.frame(species = rownames(object)), object)
+  cross2db(object, ...)
 }
