@@ -75,17 +75,22 @@ setMethod(
       colnames(data))) {
       stop("all terms in 'formula' must be a column in 'data'")
     }
+    # Extract terms from formula
+    Terms <- c(as.character(formula)[2], attr(
+      terms(formula),
+      "term.labels"
+    ))
+    # Set NAs as characters or factor class
     if (use_nas) {
-      Terms <- c(as.character(formula)[2], attr(
-        terms(formula),
-        "term.labels"
-      ))
       for (i in Terms[-1]) {
-        if (is.factor(data[, i])) {
-          data[, i] <- paste(data[, i])
-        }
-        if (is.character(data[, i])) {
-          data[is.na(data[, i]), i] <- ""
+        if (any(is.na(data[, i]))) {
+          if (is(data[, i], "factor")) {
+            data[, i] <- factor(paste(data[, i]),
+              levels = c(levels(data[, i]), "NA")
+            )
+          } else {
+            data[, i] <- paste(data[, i])
+          }
         }
       }
     }

@@ -28,6 +28,7 @@ pkg_loc <- build(path = "build-pkg", args = "--resave-data")
 check_built(path = pkg_loc)
 
 # Report coverage
+## Sys.setenv(R_HOME="/usr/lib/R")
 report()
 
 # Install this version
