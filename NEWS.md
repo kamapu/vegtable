@@ -13,6 +13,8 @@
   They enable selection and/or merging of taxon ranks in cross tables.
 - Function `cross2db()` implemented in two methods, a `data.frame-method`
   and a `matrix-method`.
+- New parameter `keep_synonyms` in function `used_concepts()`, which can be used
+  to skp synonyms in the output object.
 
 ## Bug fixes
 

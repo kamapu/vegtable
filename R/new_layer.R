@@ -44,8 +44,10 @@ setMethod(
     # Conditions
     layer_name <- names(layer)[1]
     if (any(duplicated(layer[[layer_name]]))) {
-      stop(paste0("Duplicated values are not allowed for layer '", layer_name,
-              "'."))
+      stop(paste0(
+        "Duplicated values are not allowed for layer '", layer_name,
+        "'."
+      ))
     }
     if (layer_name %in% names(object@layers)) {
       stop(paste0("layer '", layer_name, "' is already in 'object'."))

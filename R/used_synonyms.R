@@ -15,9 +15,11 @@
 #' @param keep_children A logical argument indicating whether children of
 #'     selected taxa should be included in the output or not.
 #'     This argument passed to [get_children()].
-#' @param keep_parents A logical argument indicating whether parents of
+#' @param keep_parents A logical value indicating whether parents of
 #'     selected taxa should be included in the output or not.
 #'     This argument passed to [get_parents()].
+#' @param keep_synonyms A logical value indicating whether synonyms should be
+#'     included or not.
 #' @param ... Further arguments to be passed from or to another methods.
 #'
 #' @return
@@ -107,8 +109,10 @@ used_concepts <- function(x, ...) {
 #' @aliases used_concepts,vegtable-method
 #' @method used_concepts vegtable
 #' @export
-used_concepts.vegtable <- function(x, keep_children = FALSE,
-                                   keep_parents = FALSE, ...) {
+used_concepts.vegtable <- function(x,
+                                   keep_children = FALSE,
+                                   keep_parents = FALSE,
+                                   keep_synonyms = TRUE, ...) {
   concepts <- unique(x@species@taxonNames$TaxonConceptID[
     x@species@taxonNames$TaxonUsageID %in%
       x@samples$TaxonUsageID
@@ -123,6 +127,10 @@ used_concepts.vegtable <- function(x, keep_children = FALSE,
   }
   if (keep_parents) {
     z <- get_parents(x@species, z)
+  }
+  if (!keep_synonyms) {
+    z@taxonNames <- z@taxonNames[z@taxonNames$TaxonUsageID %in%
+      z@taxonRelations$AcceptedName, ]
   }
   return(z)
 }

@@ -15,7 +15,13 @@ used_synonyms(x, ...)
 
 used_concepts(x, ...)
 
-\method{used_concepts}{vegtable}(x, keep_children = FALSE, keep_parents = FALSE, ...)
+\method{used_concepts}{vegtable}(
+  x,
+  keep_children = FALSE,
+  keep_parents = FALSE,
+  keep_synonyms = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{A \linkS4class{vegtable} object.}
@@ -26,9 +32,12 @@ used_concepts(x, ...)
 selected taxa should be included in the output or not.
 This argument passed to \code{\link[=get_children]{get_children()}}.}
 
-\item{keep_parents}{A logical argument indicating whether parents of
+\item{keep_parents}{A logical value indicating whether parents of
 selected taxa should be included in the output or not.
 This argument passed to \code{\link[=get_parents]{get_parents()}}.}
+
+\item{keep_synonyms}{A logical value indicating whether synonyms should be
+included or not.}
 }
 \value{
 The function \code{used_synonyms()} returns a data frame including following
