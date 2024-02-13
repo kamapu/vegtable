@@ -5,6 +5,7 @@
 \alias{new_layer,vegtable,data.frame-method}
 \alias{new_layer<-}
 \alias{new_layer<-,vegtable,data.frame-method}
+\alias{new_layer<-,vegtable,character-method}
 \title{Insert new classification of vegetation layers}
 \usage{
 new_layer(object, layer, ...)
@@ -14,13 +15,24 @@ new_layer(object, layer, ...)
 new_layer(object, ...) <- value
 
 \S4method{new_layer}{vegtable,data.frame}(object, ...) <- value
+
+\S4method{new_layer}{vegtable,character}(object, levels, ...) <- value
 }
 \arguments{
 \item{object}{A \linkS4class{vegtable} object.}
 
-\item{layer, value}{A data frame including information on vegetation layers.}
+\item{layer}{A data frame including information on vegetation layers.}
 
 \item{...}{Further arguments passed among methods.}
+
+\item{value}{Either a data frame or a character value. In the second case,
+this value indicates the name of the variable at slot samples that will
+be set as layer information.}
+
+\item{levels}{A character vector used to set the levels of the new layer.
+This is only used in the replacement method using a character value.
+This input is mandatory when the new layer does not exist in slot
+samples, otherwise an error message will be retrieved.}
 }
 \value{
 A \linkS4class{vegtable} object with the inserted new relation.
@@ -38,4 +50,12 @@ new_layer(Kenya_veg) <- veg_layers
 
 ## Take a look in the result
 summary(Kenya_veg@samples$layer)
+
+## Do it with existing values
+data(Kenya_veg)
+new_layer(Kenya_veg) <- "LAYER"
+summary(Kenya_veg@samples$LAYER)
+}
+\seealso{
+\code{\link[=layers2samples]{layers2samples()}}
 }

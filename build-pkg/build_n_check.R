@@ -12,7 +12,7 @@ rm(list = ls())
 
 # Clean folder
 unlink(file.path("build-pkg", list.files("build-pkg", ".tar.gz")))
-unlink(file.path("build-pkg", list.files("build-pkg", ".pdf")))
+#unlink(file.path("build-pkg", list.files("build-pkg", ".pdf")))
 
 # Write data
 ## source("data-raw/create-data.R")
