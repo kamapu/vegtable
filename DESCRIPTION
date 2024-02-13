@@ -67,9 +67,11 @@ Collate:
 	'trait_stats.R'
 	'update_det.R'
 	'veg_diversity.R'
+	'new_layer.R'
 	'aspect_conv-data.R'
 	'braun_blanquet-data.R'
 	'dune_veg-data.R'
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
-RoxygenNote: 7.2.3
+	'veg_layers-data.R'
+RoxygenNote: 7.3.1
