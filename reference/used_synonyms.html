@@ -74,7 +74,13 @@ concepts linked to records in the slot <strong>samples</strong>.</p>
 <span><span class="fu">used_concepts</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for vegtable</span></span>
-<span><span class="fu">used_concepts</span><span class="op">(</span><span class="va">x</span>, keep_children <span class="op">=</span> <span class="cn">FALSE</span>, keep_parents <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">used_concepts</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  keep_children <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  keep_parents <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  keep_synonyms <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -94,9 +100,14 @@ This argument passed to <code><a href="https://docs.ropensci.org/taxlist/referen
 
 
 <dt>keep_parents</dt>
-<dd><p>A logical argument indicating whether parents of
+<dd><p>A logical value indicating whether parents of
 selected taxa should be included in the output or not.
 This argument passed to <code><a href="https://docs.ropensci.org/taxlist/reference/get_children.html" class="external-link">get_parents()</a></code>.</p></dd>
+
+
+<dt>keep_synonyms</dt>
+<dd><p>A logical value indicating whether synonyms should be
+included or not.</p></dd>
 
 </dl></div>
     <div class="section level2">
