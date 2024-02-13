@@ -1,0 +1,11 @@
+layer,abbreviation,description
+0,-,No layer
+1,t1,Tree layer (high)
+2,t2,Tree layer (middle)
+3,t3,Tree layer (low)
+4,s1,Shrub layer (high)
+5,s2,Shrub layer (low)
+6,hl,Herb layer
+7,jl,Juvenile
+8,sl,Seedling (< 1 year)
+9,m,Moss layer

@@ -1,5 +1,11 @@
 # vegtable 0.1.9
 
+## New Features
+
+- New data set `veg_layers` with information about vegetation layers.
+- New function `new_layer()` to add layer information tables in vegtable
+  objects.
+
 ## Improvements
 
 - Function `count_taxa()` also inserts results into slot **relations**.
@@ -7,6 +13,10 @@
   They enable selection and/or merging of taxon ranks in cross tables.
 - Function `cross2db()` implemented in two methods, a `data.frame-method`
   and a `matrix-method`.
+
+## Bug fixes
+
+- Fuction `crosstable()` was not applying properly the argument **use_nas**.
 
 vegtable 0.1.8
 ==============

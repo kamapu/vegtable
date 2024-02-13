@@ -7,7 +7,7 @@
 \usage{
 veg_aggregate(object, data, FUN, ...)
 
-\S4method{veg_aggregate}{formula,vegtable,`function`}(object, data, FUN, use_nas = TRUE, ...)
+\S4method{veg_aggregate}{formula,vegtable,function}(object, data, FUN, use_nas = TRUE, ...)
 }
 \arguments{
 \item{object}{A formula indicating the variables used for the summary.

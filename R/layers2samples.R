@@ -22,7 +22,6 @@
 #' @rdname layers2samples
 #'
 #' @exportMethod layers2samples
-#'
 setGeneric(
   "layers2samples",
   function(object, layer, variable, ...) {
@@ -31,7 +30,6 @@ setGeneric(
 )
 
 #' @rdname layers2samples
-#'
 #' @aliases layers2samples,vegtable,character,character-method
 setMethod(
   "layers2samples", signature(
@@ -60,7 +58,6 @@ setMethod(
 )
 
 #' @rdname layers2samples
-#'
 #' @aliases layers2samples,vegtable,character,missing-method
 setMethod(
   "layers2samples", signature(
