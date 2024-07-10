@@ -1,20 +1,32 @@
 
+
+- [vegtable
+  <img src='man/figures/logo.png' align="right" height="139"/>](#vegtable-)
+- [Updating to the last version of
+  vegtable](#updating-to-the-last-version-of-vegtable)
+- [Some examples](#some-examples)
+- [Further readings](#further-readings)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- Use snippet 'render_markdown' for it -->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- Use snippet 'render_markdown' for it -->
 
-# vegtable
+# vegtable <img src='man/figures/logo.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
-[![DOI](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
+[![cran-status-badge](https://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
+[![runiverse-status-badge](https://kamapu.r-universe.dev/badges/vegtable)](https://kamapu.r-universe.dev/vegtable)
+[![cran-downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/vegtable)](https://cran.r-project.org/package=vegtable)
+[![cran-downloads-month](http://cranlogs.r-pkg.org/badges/last-month/vegtable)](https://cran.r-project.org/package=vegtable)
 <br>
 [![R-CMD-check](https://github.com/kamapu/vegtable/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/vegtable/actions)
-[![codecov](https://codecov.io/gh/kamapu/vegtable/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/vegtable)
+[![cran-checks](https://badges.cranchecks.info/worst/vegtable.svg)](https://cran.r-project.org/web/checks/check_results_vegtable.html)
+[![codecov](https://codecov.io/gh/ropensci/vegtable/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/vegtable)
 <br>
-[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/vegtable)](https://cran.r-project.org/package=vegtable)
-[![total
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/vegtable)](https://cran.r-project.org/package=vegtable)
+[![cran-doi](https://img.shields.io/badge/DOI-10.32614/CRAN.package.vegtable-blue.svg)](https://doi.org/10.32614/CRAN.package.vegtable)
+[![zenodo-doi](https://zenodo.org/badge/55006983.svg)](https://zenodo.org/badge/latestdoi/55006983)
 <!-- badges: end -->
 
 The aim of `vegtable` is to provide a way for handling databases stored
@@ -39,7 +51,7 @@ enthusiastic discussions during several versions of the [Meetings on
 Vegetation
 Databases](http://www.hswt.de/person/joerg-ewald/vegetationsdatenbanken.html).
 
-## Updating to the last version of vegtable
+# Updating to the last version of vegtable
 
 The very first step is to install the package
 [devtools](https://github.com/hadley/devtools) and dependencies. Then
@@ -50,7 +62,7 @@ library(devtools)
 install_github("kamapu/vegtable")
 ```
 
-## Some examples
+# Some examples
 
 The current version of `vegtable` includes an example data, which
 corresponds to a subset from
@@ -64,12 +76,7 @@ library(vegtable)
 #> Attaching package: 'taxlist'
 #> The following objects are masked from 'package:base':
 #> 
-#>     levels, print
-#> 
-#> Attaching package: 'vegtable'
-#> The following object is masked from 'package:base':
-#> 
-#>     transform
+#>     levels, levels<-, print
 data(Kenya_veg)
 
 # validate and explore
@@ -129,16 +136,20 @@ the package `leaflet`.
 ``` r
 library(leaflet)
 leaflet(JPcomm@header) %>%
-        addTiles() %>%
-        addCircleMarkers(lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
-                opacity = 0.3, radius = 1)
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
+    opacity = 0.3, radius = 1
+  )
 ```
 
-## Further readings
+![](man/figures/unnamed-chunk-5-1.png)
 
--   [Basics on the work with vegetation-plots in
-    vegtable](https://kamapu.github.io/posts/vegtable-press-2/)
--   [Introduction to the package
-    vegtable](https://kamapu.github.io/posts/vegtable-intro/)
--   [vegtable: An R object for vegetation-plot data
-    sets](https://kamapu.github.io/posts/2020-10-29-vegtablepress/)
+# Further readings
+
+- [Basics on the work with vegetation-plots in
+  vegtable](https://kamapu.github.io/posts/vegtable-press-2/)
+- [Introduction to the package
+  vegtable](https://kamapu.github.io/posts/vegtable-intro/)
+- [vegtable: An R object for vegetation-plot data
+  sets](https://kamapu.github.io/posts/2020-10-29-vegtablepress/)
