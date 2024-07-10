@@ -1,7 +1,5 @@
 
 
-- [vegtable
-  <img src='man/figures/logo.png' align="right" height="139"/>](#vegtable-)
 - [Updating to the last version of
   vegtable](#updating-to-the-last-version-of-vegtable)
 - [Some examples](#some-examples)
@@ -11,9 +9,7 @@
 <!-- Use snippet 'render_markdown' for it -->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- Use snippet 'render_markdown' for it -->
-
-# vegtable <img src='man/figures/logo.png' align="right" height="139"/>
-
+<!-- # vegtable <img src='man/figures/logo.png' align="right" height="139"/> -->
 <!-- badges: start -->
 
 [![cran-status-badge](https://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
