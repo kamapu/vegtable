@@ -1,141 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://kamapu.github.io/vegtable/404.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/authors.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/index.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/map-leaflet.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/news/index.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/Extract.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/Kenya_veg-data.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/Wetlands-data.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/add_releves.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/aspect_conv-data.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/braun_blanquet-data.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/check_args.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/clean.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/coerce-methods.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/count_taxa.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/cover_trans.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/coverconvert.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/crosstable.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/df2coverconvert.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/df2vegtable.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/dune_veg-data.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/format_F2.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/header.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/layers2samples.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/make_cocktail.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/names.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/new_layer.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/new_relation.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/relation2heder.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/rewrite_formulas.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/shaker-class.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/subset.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/summary.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/taxa2samples.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/trait_stats.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/tv2vegtable.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/update_det.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/used_synonyms.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/veg_aggregate.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/veg_diversity.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/veg_layers-data.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/veg_relation.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/vegtable-class.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/vegtable_stat.html</loc>
-  </url>
-  <url>
-    <loc>http://kamapu.github.io/vegtable/reference/write_juice.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>http://kamapu.github.io/vegtable/404.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/authors.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/index.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/map-leaflet.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/news/index.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/Extract.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/Kenya_veg-data.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/Wetlands-data.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/add_releves.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/aspect_conv-data.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/braun_blanquet-data.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/check_args.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/clean.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/coerce-methods.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/count_taxa.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/cover_trans.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/coverconvert.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/crosstable.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/df2coverconvert.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/df2vegtable.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/dune_veg-data.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/format_F2.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/header.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/index.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/layers2samples.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/make_cocktail.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/names.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/new_layer.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/new_relation.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/relation2heder.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/rewrite_formulas.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/shaker-class.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/subset.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/summary.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/taxa2samples.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/trait_stats.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/tv2vegtable.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/update_det.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/used_synonyms.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/veg_aggregate.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/veg_diversity.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/veg_layers-data.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/veg_relation.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/vegtable-class.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/vegtable_stat.html</loc></url>
+<url><loc>http://kamapu.github.io/vegtable/reference/write_juice.html</loc></url>
 </urlset>
+
