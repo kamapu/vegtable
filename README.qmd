@@ -106,21 +106,6 @@ leaflet(JPcomm@header) %>%
   )
 ```
 
-```{r}
-#| echo: false
-library(leaflet)
-library(htmlwidgets)
-map <- leaflet(JPcomm@header) %>%
-  addTiles() %>%
-  addCircleMarkers(
-    lng = ~LONGITUDE, lat = ~LATITUDE, color = "red",
-    opacity = 0.3, radius = 1
-  )
-saveWidget(map, "assets/map-leaflet.html")
-```
-
-<iframe src="https://raw.githubusercontent.com/kamapu/vegtable/main/assets/map-leaflet.html"></iframe>
-
 
 # Further readings
 

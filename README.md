@@ -144,10 +144,6 @@ leaflet(JPcomm@header) %>%
   )
 ```
 
-<iframe src="https://raw.githubusercontent.com/kamapu/vegtable/main/assets/map-leaflet.html">
-
-</iframe>
-
 # Further readings
 
 - [Basics on the work with vegetation-plots in
