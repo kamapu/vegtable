@@ -119,7 +119,7 @@ map <- leaflet(JPcomm@header) %>%
 saveWidget(map, "assets/map-leaflet.html")
 ```
 
-<iframe src="./assets/map-leaflet.html"></iframe>
+<iframe src="https://raw.githubusercontent.com/kamapu/vegtable/main/assets/map-leaflet.html"></iframe>
 
 
 # Further readings

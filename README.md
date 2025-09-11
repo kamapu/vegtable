@@ -144,7 +144,7 @@ leaflet(JPcomm@header) %>%
   )
 ```
 
-<iframe src="./assets/map-leaflet.html">
+<iframe src="https://raw.githubusercontent.com/kamapu/vegtable/main/assets/map-leaflet.html">
 
 </iframe>
 
