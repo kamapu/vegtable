@@ -31,8 +31,8 @@
 #' @param include_lower A logical value indicating wether lower value to the
 #'     requested levels should be merged or not. It works only if `'level'` is
 #'     not missing. Note that if you like to include higher ranks or rankless
-#'     taxa in the cross table, you will rahter need to run [merge_taxa()] on
-#'     slot **species**.
+#'     taxa in the cross table, you will rahter need to run
+#'     [taxlist::merge_taxa()] on slot **species**.
 #' @param na_to_zero A logical value indicating whether zeros should be
 #'     inserted into empty cells or not.
 #' @param use_nas Logical value indicating whether NAs should be considered as

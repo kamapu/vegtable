@@ -4,8 +4,8 @@
 #' @title Count taxa included in vegtable objects
 #'
 #' @description
-#' Counting number of taxa within [taxlist-class] objects or character vectors
-#' containing taxon names.
+#' Counting number of taxa within [taxlist::taxlist-class] objects or character
+#' vectors containing taxon names.
 #'
 #' This function provides a quick calculation of taxa in [vegtable-class]
 #' objects, considering only records in slot samples.

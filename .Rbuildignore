@@ -4,6 +4,7 @@
 ^\.github$
 ^\.gitignore$
 ^\.project$
+^\.quarto$
 ^\.settings$
 
 # extra folders
@@ -19,4 +20,4 @@
 # extra files
 ^_pkgdown\.yml$
 ^README\.md$
-^README\.Rmd$
+^README\.qmd$

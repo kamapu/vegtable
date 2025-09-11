@@ -30,11 +30,11 @@ used_concepts(x, ...)
 
 \item{keep_children}{A logical argument indicating whether children of
 selected taxa should be included in the output or not.
-This argument passed to \code{\link[=get_children]{get_children()}}.}
+This argument passed to \code{\link[taxlist:get_children]{taxlist::get_children()}}.}
 
 \item{keep_parents}{A logical value indicating whether parents of
 selected taxa should be included in the output or not.
-This argument passed to \code{\link[=get_parents]{get_parents()}}.}
+This argument passed to \code{\link[taxlist:get_children]{taxlist::get_parents()}}.}
 
 \item{keep_synonyms}{A logical value indicating whether synonyms should be
 included or not.}
@@ -53,9 +53,9 @@ the taxon concept.}
 \item{AcceptedNameAuthor}{The author of the accepted name.}
 }
 
-The function \code{used_concepts()} returns a \linkS4class{taxlist} object including
-only taxa occurring in the plot observations of the input \linkS4class{vegtable}
-object.
+The function \code{used_concepts()} returns a \link[taxlist:taxlist-class]{taxlist::taxlist} object
+including only taxa occurring in the plot observations of the input
+\linkS4class{vegtable} object.
 }
 \description{
 Plots records are rather linked to plant names than plant taxon concepts and
@@ -78,7 +78,7 @@ species
 
 }
 \seealso{
-\code{\link[=accepted_name]{accepted_name()}}
+\code{\link[taxlist:accepted_name]{taxlist::accepted_name()}}
 }
 \author{
 Miguel Alvarez \email{kamapu78@gmail.com}

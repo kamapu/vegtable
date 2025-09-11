@@ -8,7 +8,8 @@ default-image-extension: ""
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- Use snippet 'render_markdown' for it -->
 
-```{r,echo=FALSE}
+```{r}
+#| echo: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -95,6 +96,7 @@ If you have geo-referenced plot observations, you can use the coordinates to
 produce a map of the distribution of your plots by using the package `leaflet`.
 
 ```{r}
+#| eval: false
 library(leaflet)
 leaflet(JPcomm@header) %>%
   addTiles() %>%

@@ -15,12 +15,12 @@
 #' @slot description A named character vector containing metadata.
 #' @slot samples A data frame with samples list.
 #' @slot header A data frame with plots data.
-#' @slot species Species list as a [taxlist-class] object.
+#' @slot species Species list as a [taxlist::taxlist-class] object.
 #' @slot layers A list including strata within samples as data frames.
 #' @slot relations A list including popup lists as data frames.
 #' @slot coverconvert A scale conversion object of class [coverconvert-class].
 #' @slot syntax A list including syntaxonomic lists either as data frames or as
-#'   [taxlist-class] objects.
+#'   [taxlist::taxlist-class] objects.
 #'
 #' @seealso [tv2vegtable()]
 #'

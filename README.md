@@ -6,10 +6,15 @@
 - [Further readings](#further-readings)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
+
 <!-- # vegtable <img src='man/figures/logo.png' align="right" height="139"/> -->
+
 <!-- badges: start -->
 
 [![cran-status-badge](https://www.r-pkg.org/badges/version/vegtable)](https://cran.r-project.org/package=vegtable)
@@ -138,8 +143,6 @@ leaflet(JPcomm@header) %>%
     opacity = 0.3, radius = 1
   )
 ```
-
-![](man/figures/unnamed-chunk-5-1.png)
 
 # Further readings
 

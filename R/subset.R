@@ -19,7 +19,7 @@
 #'     At the moment only the values "taxonNames", "taxonRelations",
 #'     "taxonTraits", "header", "samples", and "relations" are accepted.
 #'     The three first values will be applied to the respective slots in the
-#'     contained [taxlist-class] object (slot **species**).
+#'     contained [taxlist::taxlist-class] object (slot **species**).
 #' @param keep_children Argument passed to [taxlist::get_children()].
 #' @param keep_parents Argument passed to [taxlist::get_parents()].
 #' @param relation Character value indicating the relation (slot **relations**)

@@ -14,11 +14,12 @@
 #'
 #' For objects of class [shaker-class], the function `summary()` will either
 #' retrieve general statistics when `companion` is missing, or a more detailed
-#' display when accompained by a [taxlist-class] or [vegtable-class] object.
+#' display when accompained by a [taxlist::taxlist-class] or [vegtable-class]
+#' object.
 #'
 #' @param object,x Object to be summarized.
 #' @param units Units used for object size (passed to [format()]).
-#' @param companion Companion object (either a [taxlist-class] or a
+#' @param companion Companion object (either a [taxlist::taxlist-class] or a
 #'     [vegtable-class] object.
 #' @param authority Logical value indicating whether authors should be
 #'     displayed or not.

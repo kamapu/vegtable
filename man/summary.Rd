@@ -38,7 +38,7 @@
 
 \item{...}{further arguments to be passed to or from other methods.}
 
-\item{companion}{Companion object (either a \linkS4class{taxlist} or a
+\item{companion}{Companion object (either a \link[taxlist:taxlist-class]{taxlist::taxlist} or a
 \linkS4class{vegtable} object.}
 
 \item{authority}{Logical value indicating whether authors should be
@@ -56,7 +56,8 @@ object.
 
 For objects of class \linkS4class{shaker}, the function \code{summary()} will either
 retrieve general statistics when \code{companion} is missing, or a more detailed
-display when accompained by a \linkS4class{taxlist} or \linkS4class{vegtable} object.
+display when accompained by a \link[taxlist:taxlist-class]{taxlist::taxlist} or \linkS4class{vegtable}
+object.
 }
 \examples{
 ## Summary for 'vegtable' objects

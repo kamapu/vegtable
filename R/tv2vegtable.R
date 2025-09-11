@@ -11,7 +11,8 @@
 #' [vegdata::tv.home()] but it can be customised by the argument `tv_home`.
 #'
 #' The species list will be imported by using the function
-#' [taxlist::tv2taxlist()] and therefore formatted as a [taxlist-class] object.
+#' [taxlist::tv2taxlist()] and therefore formatted as a [taxlist::taxlist-class]
+#' object.
 #' Similarly, conversion tables will be handled as [coverconvert-class] objects.
 #'
 #' Empty columns in the header will be deleted in the imported object.
@@ -213,7 +214,7 @@ tv2vegtable <- function(db, tv_home = tv.home(), skip_empty_relations = TRUE,
 #'
 #' @param file A connection to a DBF file containing conversion table in
 #'     **Turboveg**.
-#' @param as.is A logical value passed to [read.dbf()].
+#' @param as.is A logical value passed to [foreign::read.dbf()].
 #'
 #' @examples
 #' ## Installed 'Turboveg' version of "Fujiwara et al. (2014)"

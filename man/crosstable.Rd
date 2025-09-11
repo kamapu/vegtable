@@ -69,8 +69,8 @@ the cross table.}
 \item{include_lower}{A logical value indicating wether lower value to the
 requested levels should be merged or not. It works only if \code{'level'} is
 not missing. Note that if you like to include higher ranks or rankless
-taxa in the cross table, you will rahter need to run \code{\link[=merge_taxa]{merge_taxa()}} on
-slot \strong{species}.}
+taxa in the cross table, you will rahter need to run
+\code{\link[taxlist:merge_taxa]{taxlist::merge_taxa()}} on slot \strong{species}.}
 
 \item{object}{A data frame or a matrix including a cross table. Note that
 \code{cross2db()} assumes observations as columns and species (and layers)

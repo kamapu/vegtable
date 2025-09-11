@@ -5,6 +5,8 @@ test_that("used_synonyms() is working", {
 })
 
 test_that("used_concepts() is working", {
-  expect_equal(nrow(used_concepts(Kenya_veg)@taxonRelations),
-      nrow(used_concepts(Kenya_veg, keep_synonyms = FALSE)@taxonNames))
+  expect_equal(
+    nrow(used_concepts(Kenya_veg)@taxonRelations),
+    nrow(used_concepts(Kenya_veg, keep_synonyms = FALSE)@taxonNames)
+  )
 })

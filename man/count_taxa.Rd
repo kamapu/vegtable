@@ -49,8 +49,8 @@ An data frame with the number of taxa from requested level at requested
 units for the formula method, or just an integer value.
 }
 \description{
-Counting number of taxa within \linkS4class{taxlist} objects or character vectors
-containing taxon names.
+Counting number of taxa within \link[taxlist:taxlist-class]{taxlist::taxlist} objects or character
+vectors containing taxon names.
 
 This function provides a quick calculation of taxa in \linkS4class{vegtable}
 objects, considering only records in slot samples.

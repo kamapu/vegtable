@@ -23,7 +23,7 @@ species in just one object. Objects can be created by calls of the form
 
 \item{\code{header}}{A data frame with plots data.}
 
-\item{\code{species}}{Species list as a \linkS4class{taxlist} object.}
+\item{\code{species}}{Species list as a \link[taxlist:taxlist-class]{taxlist::taxlist} object.}
 
 \item{\code{layers}}{A list including strata within samples as data frames.}
 
@@ -32,7 +32,7 @@ species in just one object. Objects can be created by calls of the form
 \item{\code{coverconvert}}{A scale conversion object of class \linkS4class{coverconvert}.}
 
 \item{\code{syntax}}{A list including syntaxonomic lists either as data frames or as
-\linkS4class{taxlist} objects.}
+\link[taxlist:taxlist-class]{taxlist::taxlist} objects.}
 }}
 
 \examples{

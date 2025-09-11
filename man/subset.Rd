@@ -24,7 +24,7 @@
 At the moment only the values "taxonNames", "taxonRelations",
 "taxonTraits", "header", "samples", and "relations" are accepted.
 The three first values will be applied to the respective slots in the
-contained \linkS4class{taxlist} object (slot \strong{species}).}
+contained \link[taxlist:taxlist-class]{taxlist::taxlist} object (slot \strong{species}).}
 
 \item{keep_children}{Argument passed to \code{\link[taxlist:get_children]{taxlist::get_children()}}.}
 

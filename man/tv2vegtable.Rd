@@ -32,7 +32,7 @@ cleaned or not.}
 \item{file}{A connection to a DBF file containing conversion table in
 \strong{Turboveg}.}
 
-\item{as.is}{A logical value passed to \code{\link[=read.dbf]{read.dbf()}}.}
+\item{as.is}{A logical value passed to \code{\link[foreign:read.dbf]{foreign::read.dbf()}}.}
 }
 \value{
 A \linkS4class{vegtable} object in the case of \code{tv2vegtable()}.
@@ -47,7 +47,8 @@ The automatic setting of database path will be done by the function
 \code{\link[vegdata:tv.home]{vegdata::tv.home()}} but it can be customised by the argument \code{tv_home}.
 
 The species list will be imported by using the function
-\code{\link[taxlist:tv2taxlist]{taxlist::tv2taxlist()}} and therefore formatted as a \linkS4class{taxlist} object.
+\code{\link[taxlist:tv2taxlist]{taxlist::tv2taxlist()}} and therefore formatted as a \link[taxlist:taxlist-class]{taxlist::taxlist}
+object.
 Similarly, conversion tables will be handled as \linkS4class{coverconvert} objects.
 
 Empty columns in the header will be deleted in the imported object.

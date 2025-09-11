@@ -14,10 +14,10 @@
 #' @param x A [vegtable-class] object.
 #' @param keep_children A logical argument indicating whether children of
 #'     selected taxa should be included in the output or not.
-#'     This argument passed to [get_children()].
+#'     This argument passed to [taxlist::get_children()].
 #' @param keep_parents A logical value indicating whether parents of
 #'     selected taxa should be included in the output or not.
-#'     This argument passed to [get_parents()].
+#'     This argument passed to [taxlist::get_parents()].
 #' @param keep_synonyms A logical value indicating whether synonyms should be
 #'     included or not.
 #' @param ... Further arguments to be passed from or to another methods.
@@ -36,13 +36,13 @@
 #'   \item{AcceptedNameAuthor}{The author of the accepted name.}
 #' }
 #'
-#' The function `used_concepts()` returns a [taxlist-class] object including
-#' only taxa occurring in the plot observations of the input [vegtable-class]
-#' object.
+#' The function `used_concepts()` returns a [taxlist::taxlist-class] object
+#' including only taxa occurring in the plot observations of the input
+#' [vegtable-class] object.
 #'
 #' @author Miguel Alvarez \email{kamapu78@@gmail.com}
 #'
-#' @seealso [accepted_name()]
+#' @seealso [taxlist::accepted_name()]
 #'
 #' @examples
 #' ## Synonyms used in the Kenya_veg

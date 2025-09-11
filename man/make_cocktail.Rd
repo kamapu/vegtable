@@ -76,7 +76,8 @@ make_cocktail(shaker, vegtable, ...)
 \item{shaker}{An object of class \linkS4class{shaker} containing the respective
 cocktail definitions.}
 
-\item{companion}{Either a \linkS4class{taxlist} or a \linkS4class{vegtable} object.}
+\item{companion}{Either a \link[taxlist:taxlist-class]{taxlist::taxlist} or a \linkS4class{vegtable}
+object.}
 
 \item{...}{Further arguments passes from or to other methods.}
 
@@ -138,7 +139,7 @@ specified by the argument \code{which}.
 These functions are implemented for constructing or complementing
 \linkS4class{shaker} objects.
 Note that construction of those objects will always require a \code{companion}
-object, which is either an object of class \linkS4class{taxlist} or
+object, which is either an object of class \link[taxlist:taxlist-class]{taxlist::taxlist} or
 \linkS4class{vegtable}.
 }
 \examples{

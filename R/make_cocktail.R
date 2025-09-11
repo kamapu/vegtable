@@ -22,7 +22,7 @@
 #' These functions are implemented for constructing or complementing
 #' [shaker-class] objects.
 #' Note that construction of those objects will always require a `companion`
-#' object, which is either an object of class [taxlist-class] or
+#' object, which is either an object of class [taxlist::taxlist-class] or
 #' [vegtable-class].
 #'
 #' @param shaker An object of class [shaker-class] containing the respective
@@ -36,7 +36,8 @@
 #'     including the final classification of plots.
 #' @param FUN Function used for merging multiple occurrence of species in a
 #'     single plot.
-#' @param companion Either a [taxlist-class] or a [vegtable-class] object.
+#' @param companion Either a [taxlist::taxlist-class] or a [vegtable-class]
+#'     object.
 #' @param pseudo,group Character vector with names of taxa included in a
 #'     pseudo-species or a species group.
 #' @param formula Character vector including a formula as definition of a

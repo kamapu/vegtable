@@ -1,5 +1,5 @@
 Package: vegtable
-Version: 0.1.9
+Version: 0.1.10
 Encoding: UTF-8
 Title: Handling Vegetation Data Sets
 Authors@R:
@@ -74,4 +74,4 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'veg_layers-data.R'
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
