@@ -7,6 +7,8 @@
 \alias{cross2db}
 \alias{cross2db.data.frame}
 \alias{cross2db,data.frame-method}
+\alias{cross2db.formula}
+\alias{cross2db,formula-method}
 \alias{cross2db.matrix}
 \alias{cross2db,matrix-method}
 \title{Generating cross tables from database lists}
@@ -45,6 +47,8 @@ cross2db(object, ...)
   split_cover,
   ...
 )
+
+\method{cross2db}{formula}(object, data, ...)
 
 \method{cross2db}{matrix}(object, ...)
 }

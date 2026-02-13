@@ -325,6 +325,14 @@ cross2db.data.frame <- function(
 }
 
 #' @rdname crosstable
+#' @aliases cross2db,formula-method
+#' @export
+cross2db.formula <- function(object, data, ...) {
+  terms <- attr(terms(object), "term.labels")
+  cross2db(object = data, terms = terms, ...)
+}
+
+#' @rdname crosstable
 #' @aliases cross2db,matrix-method
 #' @export
 cross2db.matrix <- function(object, ...) {

@@ -28,9 +28,14 @@ library(vegtable)
 samples <- as.data.frame(readRDS("lab/samples-veg.rds"))
 head(samples)
 
-# Generate database
+# Generate database (data.frame method)
 samples_l <- cross2db(samples)
 head(samples_l)
 
+# Split cover
 samples_l <- cross2db(samples, split_cover = ".")
+head(samples_l)
+
+# Using formula method
+samples_l <- cross2db(~species, data = samples, split_cover = ".")
 head(samples_l)
