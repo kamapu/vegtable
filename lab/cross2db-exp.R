@@ -21,11 +21,16 @@ obs_m <- as.matrix(lalashan$spe)
 dbl_2 <- cross2db(obs_m, na_strings = 0)
 head(dbl_2)
 
-# Failing example ---------------------------------------------
+# Failing example --------------------------------------------------------------
 library(vegtable)
 
-samples <- readRDS("lab/samples-veg.rds")
+# New table
+samples <- as.data.frame(readRDS("lab/samples-veg.rds"))
+head(samples)
+
+# Generate database
 samples_l <- cross2db(samples)
+head(samples_l)
 
-any(duplicated(samples$species))
-
+samples_l <- cross2db(samples, split_cover = ".")
+head(samples_l)

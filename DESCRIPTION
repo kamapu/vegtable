@@ -1,15 +1,15 @@
 Package: vegtable
-Version: 0.1.10
+Version: 0.1.11
 Encoding: UTF-8
 Title: Handling Vegetation Data Sets
 Authors@R:
 	person("Miguel", "Alvarez", email="kamapu78@gmail.com",
 		role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834"))
 Depends:
-	R(>= 3.5.0),
+	R(>= 4.5.0),
 	taxlist (>= 0.2.4)
 Imports:
-    foreign,
+  foreign,
 	methods,
 	qdapRegex,
 	sp,
@@ -74,4 +74,4 @@ Collate:
 	'Kenya_veg-data.R'
 	'Wetlands-data.R'
 	'veg_layers-data.R'
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

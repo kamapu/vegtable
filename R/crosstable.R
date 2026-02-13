@@ -39,14 +39,22 @@
 #'     levels for categorical variables or not.
 #' @param as_matrix A logical value, whether output should be done as matrix or
 #'     data frame.
+#' @param terms A character vector with the names of columns used by
+#'     `cross2db()` as species and layers.
 #' @param ... Further arguments passed to the function [stats::aggregate()].
 #' @param object A data frame or a matrix including a cross table. Note that
 #'     `cross2db()` assumes observations as columns and species (and layers)
 #'     as rows in the `data.frame-method` but species as columns and
 #'     observations as rows in the `matrix-method`.
 #' @param layers Logical value, whether the cross table includes a layer column
-#'     or not.
+#'     besides the species column or not. This apply for `cross2db()` and will
+#'     be ignored if 'terms' are provided.
 #' @param na_strings Character vector indicating no records in the cross table.
+#' @param na.rm A logical value indicating to `cross2db()` whether empty cells
+#'     should be included in the database list or not.
+#' @param split_cover A character value showing a symbol used to split the
+#'     column cover by `cross2db()`. This is used in the case that a vegetation
+#'     table includes abundance and sociability in a same value.
 #'
 #' @return An object of class [data.frame].
 #'
@@ -267,39 +275,53 @@ cross2db <- function(object, ...) {
 #' @rdname crosstable
 #' @aliases cross2db,data.frame-method
 #' @export
-cross2db.data.frame <- function(object, layers = FALSE, na_strings, ...) {
-  species <- object[, 1]
-  if (layers) {
-    LAY <- object[, 2]
-    Cover <- object[, -1:-2]
-    object <- lapply(split(1:ncol(Cover), 1:ncol(Cover)),
-      function(x, cov, spec, lay) {
-        releve <- data.frame(
-          plot = colnames(cov)[x], species = spec,
-          layers = lay, cover = cov[, x], stringsAsFactors = FALSE
-        )
-        return(releve)
-      },
-      cov = Cover, spec = species, lay = LAY
-    )
-  } else {
-    Cover <- object[, -1, drop = FALSE]
-    object <- lapply(split(1:ncol(Cover), 1:ncol(Cover)),
-      function(x, cov, spec) {
-        releve <- data.frame(
-          plot = colnames(cov)[x], species = spec,
-          cover = cov[, x], stringsAsFactors = FALSE
-        )
-        return(releve)
-      },
-      cov = Cover, spec = species
-    )
+cross2db.data.frame <- function(
+  object, layers = FALSE, na_strings,
+  terms, na.rm = TRUE, split_cover, ...
+) {
+  # Set the terms
+  if (missing(terms)) {
+    if (layers) {
+      terms <- names(object)[1:2]
+    } else {
+      terms <- names(object)[1]
+    }
   }
-  object <- do.call(rbind, object)
+  # Check terms
+  if (!all(terms %in% names(object))) {
+    missing_terms <- terms[!terms %in% names(object)]
+    stop(paste0(
+      "Following terms are not in the column names of 'object':\n  ",
+      paste0(missing_terms, collapse = ", ")
+    ))
+  }
+  # Names of plots
+  plots <- names(object)[!names(object) %in% terms]
+  N <- length(terms)
+  # Extract
+  db_list <- lapply(plots, function(i) {
+    df <- object[, c(terms, i)]
+    names(df)[N + 1] <- "cover"
+    df$plot <- i
+    df
+  })
+  db_list <- do.call(rbind, db_list)[, c(terms, "plot", "cover")]
+  # Handle NAs
   if (!missing(na_strings)) {
-    object$cover[paste(object$cover) %in% na_strings] <- NA
+    db_list$cover[paste(db_list$cover) %in% na_strings] <- NA
   }
-  return(object[!is.na(object$cover), ])
+  if (na.rm) {
+    db_list <- db_list[!is.na(db_list$cover), ]
+  }
+  # Split cover
+  if (!missing(split_cover)) {
+    db_list[c("cover1", "cover2")] <- do.call(
+      rbind,
+      strsplit(db_list$cover, split_cover, fixed = TRUE)
+    )
+    db_list$cover <- NULL
+  }
+  db_list
 }
 
 #' @rdname crosstable
