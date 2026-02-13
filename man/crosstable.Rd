@@ -7,6 +7,8 @@
 \alias{cross2db}
 \alias{cross2db.data.frame}
 \alias{cross2db,data.frame-method}
+\alias{cross2db.formula}
+\alias{cross2db,formula-method}
 \alias{cross2db.matrix}
 \alias{cross2db,matrix-method}
 \title{Generating cross tables from database lists}
@@ -36,7 +38,17 @@ crosstable(formula, data, ...)
 
 cross2db(object, ...)
 
-\method{cross2db}{data.frame}(object, layers = FALSE, na_strings, ...)
+\method{cross2db}{data.frame}(
+  object,
+  layers = FALSE,
+  na_strings,
+  terms,
+  na.rm = TRUE,
+  split_cover,
+  ...
+)
+
+\method{cross2db}{formula}(object, data, ...)
 
 \method{cross2db}{matrix}(object, ...)
 }
@@ -78,9 +90,20 @@ as rows in the \code{data.frame-method} but species as columns and
 observations as rows in the \code{matrix-method}.}
 
 \item{layers}{Logical value, whether the cross table includes a layer column
-or not.}
+besides the species column or not. This apply for \code{cross2db()} and will
+be ignored if 'terms' are provided.}
 
 \item{na_strings}{Character vector indicating no records in the cross table.}
+
+\item{terms}{A character vector with the names of columns used by
+\code{cross2db()} as species and layers.}
+
+\item{na.rm}{A logical value indicating to \code{cross2db()} whether empty cells
+should be included in the database list or not.}
+
+\item{split_cover}{A character value showing a symbol used to split the
+column cover by \code{cross2db()}. This is used in the case that a vegetation
+table includes abundance and sociability in a same value.}
 }
 \value{
 An object of class \link{data.frame}.

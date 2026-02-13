@@ -5,6 +5,7 @@
 - New data set `veg_layers` with information about vegetation layers.
 - New function `new_layer()` to add layer information tables in vegtable
   objects.
+- A formula method for `cross2db()`.
 
 ## Improvements
 
@@ -19,6 +20,8 @@
 ## Bug fixes
 
 - Fuction `crosstable()` was not applying properly the argument **use_nas**.
+- Errors in function `cross2db()` were solved. In this process became this
+  function additional arguments.
 
 vegtable 0.1.8
 ==============
