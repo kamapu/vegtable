@@ -29,7 +29,7 @@ column-oriented tables by using the function cross2db()."><meta property="og:ima
 
     <a class="navbar-brand me-2" href="../index.html">vegtable</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.10</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.11</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ column-oriented tables by using the function cross2db()."><meta property="og:ima
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Generating cross tables from database lists</h1>
-      <small class="dont-index">Source: <a href="https://github.com/kamapu/vegtable/blob/v0.1.10/R/crosstable.R" class="external-link"><code>R/crosstable.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kamapu/vegtable/blob/main/R/crosstable.R" class="external-link"><code>R/crosstable.R</code></a></small>
       <div class="d-none name"><code>crosstable.Rd</code></div>
     </div>
 
@@ -99,7 +99,18 @@ column-oriented tables by using the function <code>cross2db()</code>.</p>
 <span><span class="fu">cross2db</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for class 'data.frame'</span></span>
-<span><span class="fu">cross2db</span><span class="op">(</span><span class="va">object</span>, layers <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">na_strings</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">cross2db</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  layers <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">na_strings</span>,</span>
+<span>  <span class="va">terms</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">split_cover</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for class 'formula'</span></span>
+<span><span class="fu">cross2db</span><span class="op">(</span><span class="va">object</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for class 'matrix'</span></span>
 <span><span class="fu">cross2db</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -167,11 +178,28 @@ observations as rows in the <code>matrix-method</code>.</p></dd>
 
 <dt id="arg-layers">layers<a class="anchor" aria-label="anchor" href="#arg-layers"></a></dt>
 <dd><p>Logical value, whether the cross table includes a layer column
-or not.</p></dd>
+besides the species column or not. This apply for <code>cross2db()</code> and will
+be ignored if 'terms' are provided.</p></dd>
 
 
 <dt id="arg-na-strings">na_strings<a class="anchor" aria-label="anchor" href="#arg-na-strings"></a></dt>
 <dd><p>Character vector indicating no records in the cross table.</p></dd>
+
+
+<dt id="arg-terms">terms<a class="anchor" aria-label="anchor" href="#arg-terms"></a></dt>
+<dd><p>A character vector with the names of columns used by
+<code>cross2db()</code> as species and layers.</p></dd>
+
+
+<dt id="arg-na-rm">na.rm<a class="anchor" aria-label="anchor" href="#arg-na-rm"></a></dt>
+<dd><p>A logical value indicating to <code>cross2db()</code> whether empty cells
+should be included in the database list or not.</p></dd>
+
+
+<dt id="arg-split-cover">split_cover<a class="anchor" aria-label="anchor" href="#arg-split-cover"></a></dt>
+<dd><p>A character value showing a symbol used to split the
+column cover by <code>cross2db()</code>. This is used in the case that a vegetation
+table includes abundance and sociability in a same value.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -256,7 +284,7 @@ or not.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
